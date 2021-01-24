@@ -1,0 +1,49 @@
+@import url("style.css");
+
+.body .container {
+    flex-direction: column;
+}
+/* ---------------- Aside ---------------- */
+.body .aside .calendar__weekly{
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+    
+    border: 1px solid gray;
+}
+.body .aside .calendar__weekly>li{
+    padding: 10px 30px;
+
+    /* border: 1px solid gray; */
+}
+
+/* ---------------- Main ---------------- */
+.body .main {
+    border: 1px solid gray;
+}
+
+.body .main .search {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    border: 1px solid gray;
+}
+
+.body .main .search .search__form {
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 20px;
+
+    border: 1px solid gray;
+}
+
+.body .main .goals {
+    border: 1px solid gray;
+}
+.body .main .goals .goals__list {
+    
+}

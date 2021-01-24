@@ -1,0 +1,46 @@
+@import url("../../reset.css");
+@import url("layout.css");
+
+@font-face {
+    font-family: 'lotte';
+    src: url('donggramy.otf');
+    font-size: 50px;
+}
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+*,
+h1,
+li {
+    font-size: 15px;
+    font-family: 'Jua', sans-serif;
+}
+
+.d-none {
+    display: none;
+}
+
+/* ---------------- Header ---------------- */
+.header .container {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .allbareun__logo {
+    padding: 15px 20px;
+
+    border: 1px solid gray;
+}
+
+.header .navbar {
+    border: 1px solid gray;
+}
+.header .navbar ul{
+    display: flex;
+}
+.header .navbar ul li{
+    padding: 15px 20px;
+
+    border: 1px solid gray;
+}
+
+/* ---------------- Footer ---------------- */
