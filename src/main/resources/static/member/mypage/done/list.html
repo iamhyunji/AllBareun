@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Page > Done > List</title>
-    <link rel="stylesheet" href="../../../css/member/현지/layout.css">
+    <link rel="stylesheet" href="../../../css/member/현지/list.css">
 </head>
 <body>
     <!-- ------------------------------------- Header ------------------------------------- -->
-    <header>
-        <div>
-            <h1>All바른생활</h1>
+    <header class="header">
+        <div class="container">
+            <h1 class="allbareun__logo"><a href="#">All바른생활</a></h1>
 
-            <nav>
-                <h1>Header Navigation Bar</h1>
-                <ul>
+            <nav class="navbar">
+                <h1 class="d-none">Header Navigation Bar</h1>
+                <ul class="navbar__links">
                     <li><a href="#">서비스 소개</a></li>
                     <li><a href="#">목표</a></li>
                     <li><a href="#">내 목표</a></li>
@@ -30,77 +30,101 @@
 
 
     <!-- ------------------------------------- Body ------------------------------------- -->
-    <section>
-        <div>
-            <h1>Content Body</h1>
+    <section class="body">
+        <div class="container">
+            <h1 class="d-none">Content Body</h1>
             
             <!-- ------------------------ Body > Main ------------------------ -->
-            <main>
-                <h1>Content Body > Main</h1>
+            <main class="main">
+                <h1 class="d-none">Content Body > Main</h1>
 
-                <section>
-                    <h1>검색폼</h1>
-                    <form action="#" method="get">
-                        <input type="checkbox" name="category" />역량
-                        <input type="checkbox" name="category" />생활
-                        <input type="checkbox" name="category" />관계
-                        <input type="checkbox" name="category" />건강
-                        <input type="checkbox" name="category" />취미
-                        <input type="checkbox" name="category" />자산
+                <section class="search">
+                    <h1 class="d-none">검색폼</h1>
+                    <form action="#" method="get" class="search__form">
+                        <div>
+                            <input type="checkbox" name="category" />
+                            <label>역량</label>
+                            <input type="checkbox" name="category" />
+                            <label>생활</label>
+                            <input type="checkbox" name="category" />
+                            <label>관계</label>
+                            <input type="checkbox" name="category" />
+                            <label>건강</label>
+                            <input type="checkbox" name="category" />
+                            <label>취미</label>
+                            <input type="checkbox" name="category" />
+                            <label>자산</label>
+                        </div>
 
-                        <label>참가 인원</label>
-                        <select name="participation">
-                            <option value="#">전체</option>
-                            <option value="#">개인</option>
-                            <option value="#">그룹</option>
-                        </select>
+                        <div>
+                            <label>참가 인원</label>
+                            <select name="participation">
+                                <option value="">전체</option>
+                                <option value="">개인</option>
+                                <option value="">그룹</option>
+                            </select>
+                        </div>
 
-                        <label>종료</label>
-                        <select name="finish">
-                            <option value="#">전체</option>
-                            <option value="#">완료</option>
-                            <option value="#">미완료</option>
-                        </select>
+                        <div>
+                            <label>종료</label>
+                            <select name="finish">
+                                <option value="#">전체</option>
+                                <option value="#">완료</option>
+                                <option value="#">미완료</option>
+                            </select>
+                        </div>
 
                         <input type="submit" value="검색" />
                     </form>
                 </section>
 
-                <section>
-                    <h1>목표 리스트</h1>
-                    <ul>
+                <section class="goals">
+                    <h1 class="d-none">목표 리스트</h1>
+                    <ul class="goals__list">
                         <li>
                             <img src="../../../images/img1.JPG" alt="" style="width: 200px; height: 150px;" />
-                            <h2><a href="#">10분 독서</a></h2>
-                            <span>카테고리 : 취미, 역량</span>
-                            <span>기간 : 4주 (2020.09.09 - 2021.01.09)</span>
-                            <span>횟수 : 3회 (월, 수, 금)</span>
-                            <span>참가 : 4명 (중언, 본율, 혜영, 현지)</span>
-                            <input type="button" value="x" />
-                            <a href="#">결과 리포트</a>
+                            <div>
+                                <h2><a href="#">10분 독서</a></h2>
+                                <span>카테고리 : 취미, 역량</span>
+                                <span>기간 : 4주 (2020.09.09 - 2021.01.09)</span>
+                                <span>횟수 : 3회 (월, 수, 금)</span>
+                                <span>참가 : 4명 (중언, 본율, 혜영, 현지)</span>
+                            </div>
+                            <div>
+                                <input type="button" value="x" />
+                                <a href="#">결과 리포트</a>
+                            </div>
                         </li>
 
                         <li>
                             <img src="../../../images/img2.jpeg" alt="" style="width: 200px; height: 150px;" />
-                            <h2><a href="#">6시 기상하기</a></h2>
-                            <span>카테고리 : 생활</span>
-                            <span>기간 : 4주 (2020.09.09 - 2021.01.09)</span>
-                            <span>횟수 : 매일</span>
-                            <span>참가 : 4명 (본율, 혜영, 현지, 중언)</span>
-                            <input type="button" value="x" />
-                            <input type="button" value="재도전" />
-                            <a href="#">결과 리포트</a>
+                            <div>
+                                <h2><a href="#">6시 기상하기</a></h2>
+                                <span>카테고리 : 생활</span>
+                                <span>기간 : 4주 (2020.09.09 - 2021.01.09)</span>
+                                <span>횟수 : 매일</span>
+                                <span>참가 : 4명 (본율, 혜영, 현지, 중언)</span>
+                            </div>
+                            <div>
+                                <input type="button" value="x" />
+                                <input type="button" value="재도전" />
+                                <a href="#">결과 리포트</a>
+                            </div>
                         </li>
 
                         <li>
                             <img src="../../../images/img3.jpeg" alt="" style="width: 200px; height: 150px;" >
-                            <h2><a href="#">저녁 일기 쓰기</a></h2>
-                            <span>카테고리 : 취미, 생활</span>
-                            <span>기간 : 4주 (2020.09.09 - 2021.01.09)</span>
-                            <span>횟수 : 3회 (월, 수, 금)</span>
-                            <span>참가 : 4명 (혜영, 현지, 중언, 본율)</span>
-                            <input type="button" value="x" />
-                            <a href="#">결과 리포트</a>
+                            <div>
+                                <h2><a href="#">저녁 일기 쓰기</a></h2>
+                                <span>카테고리 : 취미, 생활</span>
+                                <span>기간 : 4주 (2020.09.09 - 2021.01.09)</span>
+                                <span>횟수 : 3회 (월, 수, 금)</span>
+                                <span>참가 : 4명 (혜영, 현지, 중언, 본율)</span>
+                            </div>
+                            <div>
+                                <input type="button" value="x" />
+                                <a href="#">결과 리포트</a>
+                            </div>
                         </li>
                     </ul>
                 </section>
@@ -113,9 +137,9 @@
 
     
     <!-- ------------------------------------- Footer ------------------------------------- -->
-    <footer>
-        <div>
-            <h1>Footer</h1>
+    <footer class="footer">
+        <div class="container">
+            <h1 class="d-none">Footer</h1>
         </div>
     </footer>
 </body>
