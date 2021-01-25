@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>참가하기</title>
+
+<link href="/css/member/goal/participate.css" type="text/css"
+	rel="stylesheet">
+</head>
+<body>
+	<!-- header 부분 -->
+	<!-- <tiles:insertAttribute name="header" /> -->
+	<header id="header">
+		<div class="main-logo">
+			<a href=""><img src="static/images/all.png" alt=""></a>
+		</div>
+			<nav>
+				<ul>
+					<li><a href="#">서비스 소개</a></li>
+					<li><a href="">목표</a></li>
+					<li><a href="">내 목표</a></li>
+					<li><a href=""> </a></li>
+				</ul>
+			</nav>
+	
+	</header>
+
+	<!-- --------------------------- <body> --------------------------------------- -->
+	<div id="body">
+		<div class="content-container">
+
+			<!-- --------------------------- main --------------------------------------- -->
+
+			<!-- <tiles:insertAttribute name="main" /> -->
+			<main id="main">
+				<section class="detail-info">
+					<div class="detail-info-img">
+						<img src="img3.jpg" alt="메인 이미지" />
+	
+					</div>
+					<div class="detail-info-text">
+						<h1> 저녁일기 쓰기 </h1> 
+						<span>한줄이라도 좋아요</span>
+						<table class="detail-table">
+							<tbody>
+	
+								<tr>
+									<td class="center">기간</td>
+									<td class="center">${n.memberNick}</td>
+								</tr>
+								<tr>
+									<td class="center">인증횟수</td>
+									<td class="center">${n.regDate}</td>
+								</tr>
+	
+								<tr>
+									<td class="center">참여인원</td>
+									<td class="center">${n.recommendCnt}</td>
+									<td class="center">${n.recommendCnt}</td>
+	
+								</tr>
+	
+	
+							</tbody>
+						</table>
+						<a class="a-input-white" href="delete?c=${param.c}&id=${n.id}">목록</a>
+						<a class="a-input-orange" href="delete?c=${param.c}&id=${n.id}">신청</a>
+					</div>
+
+				</section>
+				
+
+				<div class="detail-ex">
+					<div class="detail-ex-good">
+						<span> 인증예시 : 좋은 예시 </span> 
+						<img class="image" src="img3.jpg" alt="좋은예시" />
+
+					</div>
+
+					<div class="detail-ex-bad">
+						<span> 인증예시 : 나쁜 예시 </span> 
+						 <img src="img3.jpg" alt="나쁜예시" />
+					</div>
+					<div>
+						인증방법가지고 오는 곳입니다.
+					</div>
+				</div>
+
+
+
+			</main>
+
+		</div>
+	</div>
+
+	<!-- ------------------- <footer> --------------------------------------- -->
+	<!-- <tiles:insertAttribute name="footer" /> -->
+
+	<footer id="footer"> </footer>
+</body>
+</html>
