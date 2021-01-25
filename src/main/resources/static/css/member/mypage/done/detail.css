@@ -1,0 +1,104 @@
+/* ---------------import------------------------ */
+
+@import "/css/layout.css";
+
+/* ---------------body-------------------------- */
+
+.detail-info{
+display: flex;
+margin-bottom: 40px;
+}
+
+.detail-info .detail-info-img img{
+   width: 350px;
+   height: 250px;
+   margin-right: 100px;
+
+}
+
+
+
+.detail-info .detail-info-text h1{
+   font-size: 28px;
+   font-weight: 600;
+   --margin: 10px 10px 15px 15px;
+
+}
+
+.detail-info .detail-info-text span{
+   display: block;
+   font-size: 18px;
+   margin: 10px;
+   color: gray;
+}
+
+
+.detail-table tr{
+   display: block;
+   margin: 10px;
+}
+
+.detail-table td{
+   width: 100px;
+}
+
+
+.detail-result{
+    display: flex;
+    padding-top: 30px;
+}
+
+.detail-result h2{
+   padding-bottom: 10px;
+    font-size: 20px;
+
+}
+
+.detail-result span{
+    font-size: 13px;
+    
+}
+
+.detail-result-chart{
+    width: 50%;
+    padding-right: 30px;
+}
+
+.detail-img-part{
+
+}
+
+.detail-img-part h2{
+    padding-bottom: 15px;
+    font-size: 20px;
+    padding-top: 30px;
+}
+
+.detail-recent-img{
+    display: flex;
+    
+}
+
+.detail-recent-img img{
+    width: 300px;
+    height: 200px;
+    padding-right: 45px;
+    margin-bottom: 100px;
+}
+
+
+
+/* media query */
+@media (max-width: 991px) {
+}
+
+@media (max-width: 767px) {
+
+}
+
+@media (max-width: 575px) {
+ 
+}
+
+
+

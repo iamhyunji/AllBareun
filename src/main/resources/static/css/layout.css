@@ -1,0 +1,20 @@
+/* ---------------import------------------------ */
+@import "/css/reset.css";
+@import "/css/header.css";
+@import "/css/style.css";
+/* ---------------------------------------------- */
+#body{
+    background-color: rgba(255, 253, 248, 0.726);
+}
+#body .content-container{
+    
+    flex: 0 1 auto;
+    width: 900px;
+    height: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    
+}
+#main{
+    padding-top: 50px;
+}

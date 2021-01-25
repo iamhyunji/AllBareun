@@ -1,0 +1,44 @@
+@font-face { font-family: 'normal'; src: url(static/fonts/BinggraeTaom.ttf)
+    format('truetype'); } 
+    *{
+   margin:0;
+   padding:0;
+   color:#000;
+   box-sizing: border-box;
+   font-family: normal; 
+   
+}
+
+
+/* 200px 오렌지 버튼 */
+.a-input-orange{
+   display:inline-block;
+   width: 200px;
+   height: 40px;
+   background-color: #ff8f00;
+   color: white;
+   border-radius: 5px;
+   text-align: center;
+   font-size: 15px;
+   padding-top: 8px;
+   border: solid #e66700 1px;
+   border-bottom: solid #e66700 3px;
+   
+ }
+
+/* 200px 화이트 버튼 */
+ .a-input-white{
+   display:inline-block;
+   width: 200px;
+   height: 40px;
+   background-color: white;
+   color: #ff8f00;
+   border-radius: 5px;
+   text-align: center;
+   font-size: 15px;
+   padding-top: 8px;
+   border: solid #e66700 1px;
+   border-bottom: solid #e66700 3px;
+ }
+
+ 

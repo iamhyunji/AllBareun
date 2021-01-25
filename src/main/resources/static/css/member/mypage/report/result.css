@@ -1,0 +1,44 @@
+/* ---------------import------------------------ */
+
+@import "/css/layout.css";
+
+/* ---------------body-------------------------- */
+
+.result-chart{
+    padding-bottom: 40px;
+}
+
+
+.result-chart h1{
+    display: inline;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.result-chart span{
+    font-size: 15px;
+}
+
+.chart1
+,.chart2
+,.cahrt3{
+    
+    width: 80%;
+    padding-left: 40px;
+}
+
+
+/* --------------media query ------------------*/
+@media (max-width: 991px) {
+}
+
+@media (max-width: 767px) {
+
+}
+
+@media (max-width: 575px) {
+ 
+}
+
+
+
