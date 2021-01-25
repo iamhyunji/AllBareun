@@ -1,0 +1,84 @@
+/* ---------------import------------------------ */
+
+@import "/css/layout.css";
+
+/* ---------------body-------------------------- */
+.detail-info{
+ display: flex;
+ margin-bottom: 40px;
+}
+
+.detail-info .detail-info-img img{
+    width: 350px;
+    height: 250px;
+    margin-right: 100px;
+
+}
+.detail-info .detail-info-text h1{
+    font-size: 28px;
+    font-weight: 600;
+    --margin: 10px 10px 15px 15px;
+
+}
+
+.detail-info .detail-info-text span{
+    display: block;
+    font-size: 16px;
+    margin: 10px;
+    color: gray;
+}
+
+
+.detail-table tr{
+    display: block;
+    margin: 10px;
+}
+
+.detail-table td{
+    width: 100px;
+}
+
+
+.detail-ex{
+    display: flex;
+    padding-bottom: 50px;
+
+}
+
+.detail-ex span{
+    display: block;
+    font-size: 17px;
+}
+
+.detail-ex-good{
+    margin-right: 50px;
+}
+
+.detail-ex-good img{
+    padding: 15px;
+}
+
+.detail-ex-bad{
+    margin-right: 50px;
+
+}
+
+.detail-ex-bad img{
+    padding: 15px;
+}
+
+
+/* media query */
+@media (max-width: 991px) {
+}
+
+@media (max-width: 767px) {
+ 
+}
+
+@media (max-width: 575px) {
+  
+}
+
+
+
