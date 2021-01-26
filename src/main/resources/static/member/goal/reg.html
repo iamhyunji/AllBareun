@@ -4,25 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Goal > Reg</title>
-    <link rel="stylesheet" href="../../css/member/현지/goal-reg.css">
+    <link rel="stylesheet" href="/css/member/goal/reg.css">
 </head>
 <body>
     <!-- ------------------------------------- Header ------------------------------------- -->
-    <header class="header">
-        <div class="container">
-            <h1 class="allbareun__logo"><a href="#">All바른생활</a></h1>
-
-            <nav class="navbar">
-                <h1 class="d-none">Header Navigation Bar</h1>
-                <ul class="navbar__links">
-                    <li><a href="#">서비스 소개</a></li>
-                    <li><a href="#">목표</a></li>
-                    <li><a href="#">내 목표</a></li>
-                    <li><a href="#">개설</a></li>
-                    <li><a href="#">login</a></li>
-                </ul>
-            </nav>
+    <header id="header">
+        <h1 class="d-none">All바른생각</h1>
+        
+        <div class="main-logo">
+            <a href="#"><img src="/images/all.png"></a>
         </div>
+        <nav>
+            <h1 class="d-none">Header Navigation Bar</h1>
+            <ul>
+                <li><a href="#">서비스 소개</a></li>
+                <li><a href="#">목표</a></li>
+                <li><a href="#">내 목표</a></li>
+                <li><a href="#">개설</a></li>
+                <li><a href="#">login</a></li>
+            </ul>
+        </nav>
     </header>
 
 
@@ -30,95 +31,113 @@
 
 
     <!-- ------------------------------------- Body ------------------------------------- -->
-    <section class="body">
-        <div class="container">
+    <section id="body">
+        <div class="content-container">
             <h1 class="d-none">Content Body</h1>
 
             <!-- ------------------------ Body > Main ------------------------ -->
-            <main class="main">
-                <form action="#" method="post" class="">
-                    <section>
+            <main id="main">
+                <form action="#" method="post">
+                    <section class="required">
                         <h1 class="d-none">Main 1 : 목표 기본 등록폼</h1>
-                        <section>
-                            <h1>목표 메인 이미지</h1>
-                            <div>
+                        <section class="required__image">
+                            <h1 class="d-none">목표 메인 이미지</h1>
+                            <div class="img">
                                 메인 이미지 등록
                                 선택 / 드래그&드롭
                             </div>
                         </section>
-                        <section>
-                            <h1>등록폼</h1>
+                        <section class="required__content">
+                            <h1 class="d-none">등록폼</h1>
                             <div>
                                 <input type="text" placeholder="제목을 입력해주세요" />
                                 <textarea name="#" rows="2" cols="30" placeholder="목표에 대한 설명을 간단히 작성해주세요"></textarea>
 
-                                <label>기간</label>
-                                <span>4주</span>
-                                <input type="date" name="#" /> - <input type="date" name="" />
+                                <div>
+                                    <label>기간</label>
+                                    <span>4주</span>
+                                    <input type="date" name="#" /> - <input type="date" name="" />
+                                </div>
 
-                                <label>카테고리</label>
-                                <input type="checkbox" name="#" />생활
-                                <input type="checkbox" name="#" />건강
-                                <input type="checkbox" name="#" />관계
-                                <input type="checkbox" name="#" />역량
-                                <input type="checkbox" name="#" />자산
-                                <input type="checkbox" name="#" />취미
+                                <div>
+                                    <label>카테고리</label>
+                                    <input type="checkbox" name="#" />생활
+                                    <input type="checkbox" name="#" />건강
+                                    <input type="checkbox" name="#" />관계
+                                    <input type="checkbox" name="#" />역량
+                                    <input type="checkbox" name="#" />자산
+                                    <input type="checkbox" name="#" />취미
+                                </div>
 
-                                <label>목표</label>
-                                <select name="#">
-                                    <option value="#">공개</option>
-                                    <option value="#">비공개</option>
-                                </select>
+                                <div>
+                                    <label>목표</label>
+                                    <select name="#">
+                                        <option value="#">공개</option>
+                                        <option value="#">비공개</option>
+                                    </select>
+                                </div>
 
-                                <label>참가</label>
-                                <input type="number" name="" value="2" min="2" max="10" />
-                                <select name="#">
-                                    <option value="#">개인</option>
-                                    <option value="#">그룹</option>
-                                </select>
-                                <input type="button" value="초대">
+                                <div>
+                                    <label>참가</label>
+                                    <input type="number" name="" value="2" min="2" max="10" />
+                                    <select name="#">
+                                        <option value="#">개인</option>
+                                        <option value="#">그룹</option>
+                                    </select>
+                                    <input type="button" value="초대">
+                                </div>
 
-                                <label>인증횟수</label>
-                                <select name="#">
-                                    <option value="#">매일</option>
-                                    <option value="#">주중</option>
-                                    <option value="#">주말</option>
-                                    <option value="#">매주</option>
-                                </select>
-                                <input type="number" name="" min="1" max="99" value="1" />회/일
-                                <input type="checkbox" name="#" />월
-                                <input type="checkbox" name="#" />화
-                                <input type="checkbox" name="#" />수
-                                <input type="checkbox" name="#" />목
-                                <input type="checkbox" name="#" />금
-                                <input type="checkbox" name="#" />토
-                                <input type="checkbox" name="#" />일
+                                <div>
+                                    <label>인증횟수</label>
+                                    <select name="#">
+                                        <option value="#">매일</option>
+                                        <option value="#">주중</option>
+                                        <option value="#">주말</option>
+                                        <option value="#">매주</option>
+                                    </select>
+                                    <input type="number" name="" min="1" max="99" value="1" />회/일
+                                    <input type="checkbox" name="#" />월
+                                    <input type="checkbox" name="#" />화
+                                    <input type="checkbox" name="#" />수
+                                    <input type="checkbox" name="#" />목
+                                    <input type="checkbox" name="#" />금
+                                    <input type="checkbox" name="#" />토
+                                    <input type="checkbox" name="#" />일
+                                </div>
 
-                                <label>인증 사진</label>
-                                <input type="radio" name="certification" value="n" />인증 사진 있음
-                                <input type="radio" name="certification" value="y" />인증 사진 없음
-                                
-                                <label>인증 기준</label>
-                                <input type="radio" name="#" value="n" />있음
-                                <input type="radio" name="#" value="y" />없음
+                                <div>
+                                    <label>인증 사진</label>
+                                    <input type="radio" name="certification" value="n" />인증 사진 있음
+                                    <input type="radio" name="certification" value="y" />인증 사진 없음
+                                </div>
+
+                                <div>
+                                    <label>인증 기준</label>
+                                    <input type="radio" name="#" value="n" />있음
+                                    <input type="radio" name="#" value="y" />없음
+                                </div>
                             </div>
                         </section>
                     </section>
-                    <section>
-                        <h1>Main 2 : 추가 선택 등록폼</h1>
+                    <section class="non-required">
+                        <h1 class="d-none">Main 2 : 추가 선택 등록폼</h1>
                         <div>
-                            <h2>좋은 인증</h2>
-                            <div>좋은 인증 예시 사진</div>
+                            <div>
+                                <h2>좋은 인증</h2>
+                                <div class="img">좋은 인증 예시 사진</div>
+                            </div>
 
-                            <h2>나쁜 인증</h2>
-                            <div>나쁜 인증 예시 사진</div>
-                            
+                            <div>
+                                <h2>나쁜 인증</h2>
+                                <div class="img">나쁜 인증 예시 사진</div>
+                            </div>
+
                             <textarea name="#" rows="2" cols="30" placeholder="인증 기준과 인증 방법을 서술해주세요"></textarea>
                         </div>
                     </section>
 
-                    <section>
-                        <h1>버튼</h1>
+                    <section class="buttons">
+                        <h1 class="d-none">버튼</h1>
                         <a href="#">취소</a>
                         <input type="submit" value="제 목표를 개설해주세요">
                     </section>
@@ -132,10 +151,8 @@
 
 
     <!-- ------------------------------------- Footer ------------------------------------- -->
-    <footer class="footer">
-        <div class="container">
-            <h1 class="d-none">Footer</h1>
-        </div>
+    <footer id="footer">
+        <h1 class="d-none">Footer</h1>
     </footer>
 </body>
 </html>

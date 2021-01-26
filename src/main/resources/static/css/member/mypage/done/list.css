@@ -1,0 +1,71 @@
+@import url("/css/layout.css");
+
+.body .container {
+    flex-direction: column;
+}
+/* ---------------- Aside ---------------- */
+.body .aside .calendar__weekly{
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+    
+    border: 1px solid gray;
+}
+.body .aside .calendar__weekly>li{
+    padding: 10px 30px;
+
+    /* border: 1px solid gray; */
+}
+
+/* ---------------- Main ---------------- */
+.body .main {
+    width: 100%;
+    border: 1px solid gray;
+}
+
+/* --------- Search Form --------- */
+.body .main .search {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    border: 1px solid gray;
+}
+.body .main .search .search__form {
+    width: 650px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 20px;
+
+    border: 1px solid gray;
+}
+.search__form input {
+    padding: 0px 15px;
+}
+
+/* --------- Goal List --------- */
+.body .main .goals {
+    border: 1px solid gray;
+}
+.body .main .goals .goals__list li {
+    margin: 20px 30px;
+    display: flex;
+    border-right: 1px solid gray;
+}
+.body .main .goals .goals__list>li div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px 20px;
+    position: relative;
+
+    border: 1px solid gray;
+}
+.body .main .goals .goals__list>li div:nth-child(2) {
+    flex-grow: 1;
+}
+.goals__list .setting {
+    align-self: flex-end;
+}

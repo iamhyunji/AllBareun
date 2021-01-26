@@ -1,0 +1,65 @@
+@font-face {
+    font-family: 'normal';
+    src: url(/fonts/BinggraeTaom.ttf);
+}
+
+*,
+html {
+    font-family: 'normal';
+    font-size: 16px;
+    font-weight: 200;
+}
+.d-none {
+    display: none;
+}
+
+/* --------------- select --------------- */
+.select-s {
+    /* 2-4글자 정도 */
+    width: 100px;
+    padding: 3px 5px;
+    font-size: 0.8rem;
+}
+.select-m {
+    /* 4-8글자 정도 */
+    width: 150px;
+    padding: 3px 5px;
+    font-size: 0.8rem;
+}
+.select-l {
+    /* 8-12글자 정도 */
+    width: 200px;
+    padding: 3px 5px;
+    font-size: 0.8rem;
+}
+.select-xl {
+    /* 8-12글자 정도 */
+    width: 400px;
+    padding: 3px 5px;
+    font-size: 0.8rem;
+}
+
+/* --------------- text --------------- */
+.text-xl {
+    /* index/list 제목 정도 */
+    font-size: 2.5rem;
+    font-weight: 900;
+}
+.text-l {
+    /* index 설명/detail 인증 날짜 정도 */
+    font-size: 2rem;
+    font-weight: 600;
+}
+.text-m {
+    /* 기본 텍스트 정도 */
+    font-size: 1rem;
+}
+.text-m-bold {
+    /* 헤더 nav 정도 */
+    font-size: 1rem;
+    font-weight: 900;
+}
+.text-s {
+    /* 검색폼/select box 정도 */
+    font-size: 0.8rem;
+}

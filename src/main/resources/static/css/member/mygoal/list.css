@@ -1,4 +1,4 @@
-@import url("style.css");
+@import url("/css/layout.css");
 
 .body .container {
     flex-direction: column;
@@ -19,6 +19,7 @@
 
 /* ---------------- Main ---------------- */
 .body .main {
+    width: 100%;
     border: 1px solid gray;
 }
 
