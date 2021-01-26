@@ -1,0 +1,42 @@
+.img-container{
+    width: 1200px;
+    height: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+    .img-container img{
+        object-fit: fill;
+        width: 1200px;
+        height: 700px;
+        position: absolute;
+        margin-top: 6px;
+    }
+    .img-container .text{
+        color: white;
+        position: relative;
+
+        left: 150px;
+    }
+    .img-container .text1{
+        font-size: 45px;
+        font-weight: bold;
+        width: 380px;
+        top: 130px;
+        line-height: 60px;
+    }
+    .img-container .text2{
+        font-size: 30px;
+        top: 160px;
+    }
+    .img-container .text3{
+        font-size: 30px;
+        top: 280px;
+        border: 5px solid white;
+        border-radius: 10px;
+        width: 430px;
+        padding: 20px 50px;
+    }
+
+
+
