@@ -21,7 +21,7 @@
     .img-container .text1{
         font-size: 45px;
         font-weight: bold;
-        width: 380px;
+        width: 360px;
         top: 130px;
         line-height: 60px;
     }
@@ -30,13 +30,15 @@
         top: 160px;
     }
     .img-container .text3{
-        font-size: 30px;
+        font-size: 45px;
         top: 280px;
-        border: 5px solid white;
+        border: 3px solid white;
         border-radius: 10px;
         width: 430px;
         padding: 20px 50px;
     }
-
+    a:hover{
+        text-decoration: none;
+    }
 
 
