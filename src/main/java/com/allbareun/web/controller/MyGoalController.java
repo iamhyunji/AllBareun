@@ -14,6 +14,7 @@ public class MyGoalController {
 		return "user.mygoal.auth";
 	}
 	
+
 	@GetMapping("cert/detail")
 	public String certDetail() {
 		
@@ -23,5 +24,11 @@ public class MyGoalController {
 	public String certList() {
 		
 		return "user.mygoal.cert.list";
+	}
+	
+	@GetMapping("list")
+	public String list() {
+		return "user.mygoal.list";
+
 	}
 }
