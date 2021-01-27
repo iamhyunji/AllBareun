@@ -47,11 +47,12 @@
                                 선택 / 드래그&드롭
                             </div>
                         </section>
+
                         <section class="required__content">
                             <h1 class="d-none">등록폼</h1>
                             <div>
-                                <input type="text" placeholder="제목을 입력해주세요" />
-                                <textarea name="#" rows="2" cols="30" placeholder="목표에 대한 설명을 간단히 작성해주세요"></textarea>
+                                <input class="text-xl" type="text" placeholder="제목을 입력해주세요" />
+                                <textarea class="description" name="#" rows="2" cols="30" placeholder="목표에 대한 설명을 간단히 작성해주세요"></textarea>
 
                                 <div>
                                     <label>기간</label>
@@ -71,7 +72,7 @@
 
                                 <div>
                                     <label>목표</label>
-                                    <select name="#">
+                                    <select class="select-s" name="#">
                                         <option value="#">공개</option>
                                         <option value="#">비공개</option>
                                     </select>
@@ -79,8 +80,8 @@
 
                                 <div>
                                     <label>참가</label>
-                                    <input type="number" name="" value="2" min="2" max="10" />
-                                    <select name="#">
+                                    <input class="select-s" type="number" name="" value="1" min="1" max="10" />
+                                    <select class="select-s" name="#">
                                         <option value="#">개인</option>
                                         <option value="#">그룹</option>
                                     </select>
@@ -89,13 +90,13 @@
 
                                 <div>
                                     <label>인증횟수</label>
-                                    <select name="#">
+                                    <select class="select-s" name="#">
                                         <option value="#">매일</option>
                                         <option value="#">주중</option>
                                         <option value="#">주말</option>
                                         <option value="#">매주</option>
                                     </select>
-                                    <input type="number" name="" min="1" max="99" value="1" />회/일
+                                    <input class="select-s" type="number" name="" min="1" max="99" value="1" />회/일
                                     <input type="checkbox" name="#" />월
                                     <input type="checkbox" name="#" />화
                                     <input type="checkbox" name="#" />수
@@ -119,20 +120,21 @@
                             </div>
                         </section>
                     </section>
+
                     <section class="non-required">
                         <h1 class="d-none">Main 2 : 추가 선택 등록폼</h1>
                         <div>
                             <div>
-                                <h2>좋은 인증</h2>
+                                <h2 class="text-l">좋은 인증</h2>
                                 <div class="img">좋은 인증 예시 사진</div>
                             </div>
 
                             <div>
-                                <h2>나쁜 인증</h2>
+                                <h2 class="text-l">나쁜 인증</h2>
                                 <div class="img">나쁜 인증 예시 사진</div>
                             </div>
 
-                            <textarea name="#" rows="2" cols="30" placeholder="인증 기준과 인증 방법을 서술해주세요"></textarea>
+                            <textarea class="description" name="#" rows="2" cols="30" placeholder="인증 기준과 인증 방법을 서술해주세요"></textarea>
                         </div>
                     </section>
 

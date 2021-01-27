@@ -1,36 +1,50 @@
 @import url("/css/layout.css");
+@import url("/css/member/현지/component.css");
 
-.body .main {
-    width: 100%;
-    border: 1px solid gray;
+#body {
 }
-.body .main form > section {
-    margin: 30px 20px;
+.content-container {
 }
-.body .main .img {
-    width: 200px;
-    height: 200px;
+.img { 
+    width: 400px;
+    height: 100%;
     background: #e9e9e9;
 }
-
+.description {
+    width: 100%;
+    resize: none;
+}
+/* ---------------- Main ---------------- */
 /* --------- Required --------- */
-.body .main .required{
+.required{
+    height: 300px;
     display: flex;
 }
-.body .main .required .required__content > div{
+.required .required__content {
+    flex: 1;
+}
+.required .required__content > div {
+    height: 100%;
     display: flex;
     flex-direction: column;
-    border: 1px solid gray;
+    justify-content: space-between;
 }
 
 /* --------- Non-Required --------- */
-.body .main .non-required > div{
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid gray;
+.non-required > div > div{
+    display: inline-block;
 }
-
+.non-required .img {
+    height: 300px;
+}
+.non-required .description {
+    margin-top: 10px;
+}
 /* --------- Buttons --------- */
-.body .main .buttons {
-    border: 1px solid gray;
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+.buttons > * {
+    padding-right: 20px;
 }

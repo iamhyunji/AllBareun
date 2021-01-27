@@ -1,70 +1,64 @@
 @import url("/css/layout.css");
+@import url("/css/member/현지/component.css");
 
-.body .container {
-    flex-direction: column;
+#body {
+    
 }
+.content-container {
+
+}
+
 /* ---------------- Aside ---------------- */
-.body .aside .calendar__weekly{
+.calendar__weekly{
     height: 150px;
     display: flex;
-    justify-content: space-between;
-    
-    border: 1px solid gray;
 }
-.body .aside .calendar__weekly>li{
-    padding: 10px 30px;
+.calendar__weekly>li{
+    padding: 8px 10px;
+    flex: 1 0;
 
-    /* border: 1px solid gray; */
+    background: white;
+    border-right: 1px solid gray;
 }
 
 /* ---------------- Main ---------------- */
-.body .main {
-    width: 100%;
-    border: 1px solid gray;
-}
-
 /* --------- Search Form --------- */
-.body .main .search {
-    height: 50px;
+.search {
+    height: 40px;
     display: flex;
-    align-items: center;
     justify-content: flex-end;
-
-    border: 1px solid gray;
 }
-.body .main .search .search__form {
+.search__form {
     width: 650px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 5px 20px;
-
-    border: 1px solid gray;
+    justify-content: space-around;
 }
 .search__form input {
     padding: 0px 15px;
 }
 
 /* --------- Goal List --------- */
-.body .main .goals {
-    border: 1px solid gray;
+.goals img{
+    width: 250px;
+    height: 140px;
 }
-.body .main .goals .goals__list li {
-    margin: 20px 30px;
+.goals .goals__list>li {
+    margin: 20px 0px;
     display: flex;
+
     border-right: 1px solid gray;
 }
-.body .main .goals .goals__list>li div {
+.goals .goals__list>li div {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 5px 20px;
-    position: relative;
-
-    border: 1px solid gray;
 }
-.body .main .goals .goals__list>li div:nth-child(2) {
+.goals .goals__list>li div:nth-child(2) {
     flex-grow: 1;
+}
+.goals .goals__list>li div>* {
+    margin: 0px 20px;
 }
 .goals__list .setting {
     align-self: flex-end;
