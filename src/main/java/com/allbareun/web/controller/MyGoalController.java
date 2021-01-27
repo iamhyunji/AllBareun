@@ -13,7 +13,6 @@ public class MyGoalController {
 	@GetMapping("auth")
 	public String auth() {
 		
-		System.out.println("11");
 		return "user.mygoal.auth";
 	}
 	
@@ -22,4 +21,21 @@ public class MyGoalController {
 	      return "user.mygoal.detail";
 	   }
 
+
+	@GetMapping("cert/detail")
+	public String certDetail() {
+		
+		return "user.mygoal.cert.detail";
+	}
+	@GetMapping("cert/list")
+	public String certList() {
+		
+		return "user.mygoal.cert.list";
+	}
+	
+	@GetMapping("list")
+	public String list() {
+		return "user.mygoal.list";
+
+	}
 }
