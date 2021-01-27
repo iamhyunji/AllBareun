@@ -12,17 +12,17 @@
         <h1 class="d-none">All바른생각</h1>
         
         <div class="main-logo">
-			<a href="#"><img src="/images/all.png" alt=""></a>
+			<a href="/index.html"><img src="/images/all.png" alt=""></a>
 		</div>
 
         <nav>
             <h1 class="d-none">Header Navigation Bar</h1>
             <ul>
                 <li><a href="#">서비스 소개</a></li>
-                <li><a href="#">목표</a></li>
-                <li><a href="#">내 목표</a></li>
-                <li><a href="#">개설</a></li>
-                <li><a href="#">로그인</a></li>
+                <li><a href="/common/goal/list.html">목표</a></li>
+                <li><a href="/member/mygoal/list.html">내 목표</a></li>
+                <li><a href="/member/goal/reg.html">개설</a></li>
+                <li><a href="/common/login.html">로그인</a></li>
             </ul>
         </nav>
     </header>
@@ -60,7 +60,7 @@
 
                         <div>
                             <label>참가 인원</label>
-                            <select name="participation">
+                            <select class="select-s" name="participation">
                                 <option value="">전체</option>
                                 <option value="">개인</option>
                                 <option value="">그룹</option>
@@ -69,14 +69,14 @@
 
                         <div>
                             <label>종료</label>
-                            <select name="finish">
+                            <select class="select-s" name="finish">
                                 <option value="#">전체</option>
                                 <option value="#">완료</option>
                                 <option value="#">미완료</option>
                             </select>
                         </div>
 
-                        <input type="submit" value="검색" />
+                        <input class="a-input-white-s" type="submit" value="검색" />
                     </form>
                 </section>
 
@@ -84,7 +84,7 @@
                     <h1 class="d-none">목표 리스트</h1>
                     <ul class="goals__list">
                         <li>
-                            <img src="../../../images/img1.JPG" alt="" style="width: 200px; height: 150px;" />
+                            <img class="s-img" src="../../../images/img1.JPG" alt="" />
                             <div>
                                 <h2 class="text-l"><a href="#">10분 독서</a></h2>
                                 <span>카테고리 : 취미, 역량</span>
@@ -93,13 +93,13 @@
                                 <span>참가 : 4명 (중언, 본율, 혜영, 현지)</span>
                             </div>
                             <div>
-                                <input type="button" value="x" />
-                                <a href="#">결과 리포트</a>
+                                <input class="del-button" type="button" value="x" />
+                                <a class="a-input-orange-s" href="#">결과 리포트</a>
                             </div>
                         </li>
 
                         <li>
-                            <img src="../../../images/img2.jpeg" alt="" style="width: 200px; height: 150px;" />
+                            <img class="s-img" src="../../../images/img2.jpeg" alt="" />
                             <div>
                                 <h2 class="text-l"><a href="#">6시 기상하기</a></h2>
                                 <span>카테고리 : 생활</span>
@@ -108,14 +108,16 @@
                                 <span>참가 : 4명 (본율, 혜영, 현지, 중언)</span>
                             </div>
                             <div>
-                                <input type="button" value="x" />
-                                <input type="button" value="재도전" />
-                                <a href="#">결과 리포트</a>
+                                <input class="del-button" type="button" value="x" />
+                                <div>
+                                    <input class="a-input-white-s" type="button" value="재도전" />
+                                    <a class="a-input-orange-s" href="#">결과 리포트</a>
+                                </div>
                             </div>
                         </li>
 
                         <li>
-                            <img src="../../../images/img3.jpeg" alt="" style="width: 200px; height: 150px;" >
+                            <img class="s-img" src="../../../images/img3.jpeg" alt="" />
                             <div>
                                 <h2 class="text-l"><a href="#">저녁 일기 쓰기</a></h2>
                                 <span>카테고리 : 취미, 생활</span>
@@ -124,8 +126,8 @@
                                 <span>참가 : 4명 (혜영, 현지, 중언, 본율)</span>
                             </div>
                             <div>
-                                <input type="button" value="x" />
-                                <a href="#">결과 리포트</a>
+                                <input class="del-button" type="button" value="x" />
+                                <a class="a-input-orange-s" href="#">결과 리포트</a>
                             </div>
                         </li>
                     </ul>
