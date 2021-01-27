@@ -12,12 +12,16 @@ public class Goal {
 	private String badEx;
 	private Date startDate;
 	private Date endDate;
-	private int publicState;
+	private boolean publicStatus;
 	private Date regDate;
 	private int count;
 	
+	public Goal() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Goal(int id, String userId, String title, String explanation, String mainImage, String goodEx, String badEx,
-			Date startDate, Date endDate, int publicState, Date regDate, int count) {
+			Date startDate, Date endDate, boolean publicStatus, Date regDate, int count) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -28,7 +32,7 @@ public class Goal {
 		this.badEx = badEx;
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.publicState = publicState;
+		this.publicStatus = publicStatus;
 		this.regDate = regDate;
 		this.count = count;
 	}
@@ -105,12 +109,12 @@ public class Goal {
 		this.endDate = endDate;
 	}
 
-	public int getPublicState() {
-		return publicState;
+	public boolean getPublicStatus() {
+		return publicStatus;
 	}
 
-	public void setPublicState(int publicState) {
-		this.publicState = publicState;
+	public void setPublicStatus(boolean publicStatus) {
+		this.publicStatus = publicStatus;
 	}
 
 	public Date getRegDate() {
@@ -133,9 +137,12 @@ public class Goal {
 	public String toString() {
 		return "Goal [id=" + id + ", userId=" + userId + ", title=" + title + ", explanation=" + explanation
 				+ ", mainImage=" + mainImage + ", goodEx=" + goodEx + ", badEx=" + badEx + ", startDate=" + startDate
-				+ ", endDate=" + endDate + ", publicState=" + publicState + ", regDate=" + regDate + ", count=" + count
-				+ "]";
+				+ ", endDate=" + endDate + ", publicStatus=" + publicStatus + ", regDate=" + regDate + ", count="
+				+ count + "]";
 	}
+	
+	
+
 	
 	
 }
