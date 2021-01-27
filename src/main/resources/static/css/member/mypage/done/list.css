@@ -1,14 +1,6 @@
 @import url("/css/layout.css");
-@import url("/css/member/현지/component.css");
 
-#body {
-    
-}
-.content-container {
-
-}
-
-/* ---------------- Aside ---------------- */
+/* --------- Calendar --------- */
 .calendar__weekly{
     height: 150px;
     display: flex;
@@ -21,7 +13,10 @@
     border-right: 1px solid gray;
 }
 
-/* ---------------- Main ---------------- */
+
+
+
+
 /* --------- Search Form --------- */
 .search {
     height: 40px;
@@ -29,7 +24,7 @@
     justify-content: flex-end;
 }
 .search__form {
-    width: 650px;
+    width: 850px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -38,10 +33,20 @@
     padding: 0px 15px;
 }
 
+
+
+
+
 /* --------- Goal List --------- */
-.goals img{
-    width: 250px;
-    height: 140px;
+.goals .s-img {
+    padding: 0px;
+}
+.goals .del-button {
+    background: none;
+    border: none;
+    text-align: right;
+    outline: none;
+    cursor: pointer;
 }
 .goals .goals__list>li {
     margin: 20px 0px;
@@ -49,15 +54,15 @@
 
     border-right: 1px solid gray;
 }
-.goals .goals__list>li div {
+.goals .goals__list>li>div {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-.goals .goals__list>li div:nth-child(2) {
+.goals .goals__list>li>div:nth-child(2) {
     flex-grow: 1;
 }
-.goals .goals__list>li div>* {
+.goals .goals__list>li>div>* {
     margin: 0px 20px;
 }
 .goals__list .setting {

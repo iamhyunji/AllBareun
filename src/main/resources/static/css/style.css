@@ -19,59 +19,65 @@ html {
 /* --------------- select --------------- */
 /* small, medium, large, x-large */
 .select-s {
-    /* 2-4글자 정도 예상 */
-    width: 100px;
-    padding: 3px 5px;
-    font-size: 0.8rem;
+  /* 2-4글자 정도 예상 */
+  width: 100px;
+  padding: 3px 5px;
+  font-size: 0.8rem;
 }
 .select-m {
-    /* 4-8글자 정도 예상 */
-    width: 150px;
-    padding: 3px 5px;
-    font-size: 0.8rem;
+  /* 4-8글자 정도 예상 */
+  width: 150px;
+  padding: 3px 5px;
+  font-size: 0.8rem;
 }
 .select-l {
-    /* 8-12글자 정도 예상 */
-    width: 200px;
-    padding: 3px 5px;
-    font-size: 0.8rem;
+  /* 8-12글자 정도 예상 */
+  width: 200px;
+  padding: 3px 5px;
+  font-size: 0.8rem;
 }
 .select-xl {
-    /* 15자 이상 글자 정도 예상 */
-    width: 400px;
-    padding: 3px 5px;
-    font-size: 0.8rem;
+  /* 15자 이상 글자 정도 예상 */
+  width: 400px;
+  padding: 3px 5px;
+  font-size: 0.8rem;
 }
 
 /* --------------- text --------------- */
 /* small, medium, large, x-large */
 .text-s,
 .text-s > * {
-    /* 검색폼/select box의 텍스트 정도 */
-    font-size: 0.8rem;
-}
-.text-m,
-.text-m > * {
-    /* 기본 텍스트 정도 */
-    font-size: 1rem;
+  /* 검색폼/select box의 텍스트 정도 */
+  font-size: 0.8rem;
 }
 .text-m-bold,
 .text-m-bold > * {
-    /* 헤더의 nav 정도 */
-    font-size: 1rem;
-    font-weight: 900;
+  /* 헤더의 nav 정도 */
+  font-size: 1rem;
+  font-weight: 900;
 }
 .text-l,
 .text-l > * {
-    /* index 설명/detail 인증 날짜/부제목 정도 */
-    font-size: 2rem;
-    font-weight: 600;
+  /* index 설명/detail 인증 날짜/부제목 정도 */
+  font-size: 2rem;
+  font-weight: 600;
 }
 .text-xl,
 .text-xl > * {
-    /* index/list 제목 정도 */
-    font-size: 2.5rem;
-    font-weight: 900;
+  /* index/list 제목 정도 */
+  font-size: 2.5rem;
+  font-weight: 900;
+}
+a.text-s:hover,
+a.text-s > *:hover,
+a.text-m-bold:hover,
+a.text-m-bold > *:hover,
+a.text-l:hover,
+a.text-l > *:hover,
+a.text-xl:hover,
+a.text-xl > *:hover {
+  text-decoration: none;
+  color: #ff8f00;
 }
 
 /* --------------- img --------------- */
