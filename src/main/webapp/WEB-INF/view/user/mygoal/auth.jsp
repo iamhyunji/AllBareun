@@ -1,32 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>asdasd</title>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
     <link rel="stylesheet" href="../../css/reset.css" />
     <link rel="stylesheet" href="../../css/user/mygoal/auth.css" />
-  </head>
-  <body>
-    <!-- header 부분 -->
-    <!-- <tiles:insertAttribute name="header" /> -->
-    <header id="header">
-      <div class="main-logo">
-        <a href=""><img src="/images/all.png" alt="" /></a>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#">서비스 소개</a></li>
-          <li><a href="">목표</a></li>
-          <li><a href="">내 목표</a></li>
-          <li><a href=""> </a></li>
-        </ul>
-      </nav>
-    </header>
+
+
 
     <!-- --------------------------- <body> --------------------------------------- -->
-    <div id="body">
-      <div class="content-container">
+
         <!-- --------------------------- main --------------------------------------- -->
 
         <!-- <tiles:insertAttribute name="main" /> -->
@@ -99,7 +80,4 @@
             </section>
           </form>
         </main>
-      </div>
-    </div>
-  </body>
-</html>
+    
