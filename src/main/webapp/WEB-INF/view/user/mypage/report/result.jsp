@@ -1,10 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>결과 리포트</title>
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -21,44 +16,12 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script> <!-- 차트 -->
 
-    <link href="/css/member/mypage/report/result.css" type="text/css"
+    <link href="/css/user/mypage/report/result.css" type="text/css"
 	rel="stylesheet">
 
-</head>
-<body>
-        <!-- header 부분 -->
-	<!-- <tiles:insertAttribute name="header" /> -->
-	<header id="header">
-		<div class="main-logo">
-			<a href=""><img src="/images/all.png" alt=""></a>
-		</div>
-			<nav>
-				<ul>
-					<li><a href="#">서비스 소개</a></li>
-					<li><a href="">목표</a></li>
-					<li><a href="">내 목표</a></li>
-					<li><a href=""> </a></li>
-				</ul>
-			</nav>
-	
-	</header>
-	
-	
-	
-	
-	<!-- --------------------------- <body> --------------------------------------- -->
-	<div id="body">
-		<div class="tab-part">
-			<div class="tab">
-				<a class="tab-button">전체결과 리포트</a>
-				<a class="tab-button">완료 목표</a>
-				
-			</div>
-		</div>
-		<div class="content-container">
+	<!----------------------------- <body> --------------------------------------- -->
 
-
-			<!-- --------------------------- main --------------------------------------- -->
+			<!----------------------------- main --------------------------------------- -->
 
 			<!-- <tiles:insertAttribute name="main" /> -->
 			<main id="main">
@@ -91,19 +54,6 @@
                 </div>
 			
 			</main>
-		
-		</div>
-	</div>
-	
-	
-
-    <!-- ------------------- <footer> --------------------------------------- -->
-	<!-- <tiles:insertAttribute name="footer" /> -->
-	
-	<footer id="footer">
-	</footer>
-</body>
-</html>
 
 <script>
     var ctx = document.getElementById('myChart').getContext('2d');
