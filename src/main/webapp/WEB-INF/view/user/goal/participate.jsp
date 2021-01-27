@@ -1,40 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>참가하기</title>
 <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
       integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
       crossorigin="anonymous"/>
-<link href="/css/member/goal/participate.css" type="text/css"
+<link href="/css/user/goal/participate.css" type="text/css"
 	rel="stylesheet">
-</head>
-<body>
-	<!-- header 부분 -->
-	<!-- <tiles:insertAttribute name="header" /> -->
-	<header id="header">
-		<div class="main-logo">
-			<a href=""><img src="/images/all.png" alt=""></a>
-		</div>
-			<nav>
-				<ul>
-					<li><a href="#">서비스 소개</a></li>
-					<li><a href="">목표</a></li>
-					<li><a href="">내 목표</a></li>
-					<li><a href=""> </a></li>
-				</ul>
-			</nav>
-	
-	</header>
-
-	<!-- --------------------------- <body> --------------------------------------- -->
-	<div id="body">
-		<div class="content-container">
 
 			<!-- --------------------------- main --------------------------------------- -->
 
@@ -96,13 +69,3 @@
 
 
 			</main>
-
-		</div>
-	</div>
-
-	<!-- ------------------- <footer> --------------------------------------- -->
-	<!-- <tiles:insertAttribute name="footer" /> -->
-
-	<footer id="footer"> </footer>
-</body>
-</html>

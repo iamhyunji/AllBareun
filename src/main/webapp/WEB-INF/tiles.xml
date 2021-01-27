@@ -10,7 +10,7 @@
     <put-attribute name="main" value="/WEB-INF/view/user/mypage/{1}/{2}.jsp" />
   </definition>
   
-  <definition name="user.*.*" template="/WEB-INF/view/user/inc/layout.jsp">
+  <definition name="user.*.*" template="/WEB-INF/view/inc/layout.jsp">
     <put-attribute name="title" value="Tiles tutorial homepage" />
     <put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
     <put-attribute name="main" value="/WEB-INF/view/user/{1}/{2}.jsp" />
