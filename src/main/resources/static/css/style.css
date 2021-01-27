@@ -2,19 +2,164 @@
   font-family: "normal";
   src: url(/fonts/BinggraeTaom.ttf) format("truetype");
 }
-* {
+*,
+html {
   margin: 0;
   padding: 0;
   color: #000;
   box-sizing: border-box;
-  font-family: normal;
+  font-family: 'normal';
+  font-size: 16px;
 }
 
-/* 200px 오렌지 버튼 */
-.a-input-orange {
-  display: inline-block;
+.d-none {
+  display: none;
+}
+
+/* --------------- select --------------- */
+/* small, medium, large, x-large */
+.select-s {
+    /* 2-4글자 정도 예상 */
+    width: 100px;
+    padding: 3px 5px;
+    font-size: 0.8rem;
+}
+.select-m {
+    /* 4-8글자 정도 예상 */
+    width: 150px;
+    padding: 3px 5px;
+    font-size: 0.8rem;
+}
+.select-l {
+    /* 8-12글자 정도 예상 */
+    width: 200px;
+    padding: 3px 5px;
+    font-size: 0.8rem;
+}
+.select-xl {
+    /* 15자 이상 글자 정도 예상 */
+    width: 400px;
+    padding: 3px 5px;
+    font-size: 0.8rem;
+}
+
+/* --------------- text --------------- */
+/* small, medium, large, x-large */
+.text-s,
+.text-s > * {
+    /* 검색폼/select box의 텍스트 정도 */
+    font-size: 0.8rem;
+}
+.text-m,
+.text-m > * {
+    /* 기본 텍스트 정도 */
+    font-size: 1rem;
+}
+.text-m-bold,
+.text-m-bold > * {
+    /* 헤더의 nav 정도 */
+    font-size: 1rem;
+    font-weight: 900;
+}
+.text-l,
+.text-l > * {
+    /* index 설명/detail 인증 날짜/부제목 정도 */
+    font-size: 2rem;
+    font-weight: 600;
+}
+.text-xl,
+.text-xl > * {
+    /* index/list 제목 정도 */
+    font-size: 2.5rem;
+    font-weight: 900;
+}
+
+/* --------------- img --------------- */
+.l-img {
+  width: 1200px;
+  height: 500px;
+  padding: 25px;
+}
+.m-img {
+  width: 500px;
+  height: 330px;
+  padding: 20px;
+}
+.s-img {
+  width: 350px;
+  height: 230px;
+  padding: 15px;
+}
+
+/* --------------- button --------------- */
+/* 200px 오렌지 빅버튼 */
+.a-input-orange-l{
+  display:inline-block;
   width: 200px;
-  height: 40px;
+  height: 35px;
+  background-color: #ff8f00;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 18px;
+  padding-top: 12px;
+  border: solid #e66700 1px;
+  border-bottom: solid #e66700 3px;
+  
+}
+
+/* 200px 화이트 빅버튼 */
+.a-input-white-l{
+  display:inline-block;
+  width: 200px;
+  height: 35px;
+  background-color: white;
+  color: #ff8f00;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 18px;
+  padding-top: 12px;
+  border: solid #e66700 1px;
+  border-bottom: solid #e66700 3px;
+}
+
+/* ---------------------------------------------------------------------- */
+/* 200px 오렌지 미디움버튼 */
+.a-input-orange-m{
+  display:inline-block;
+  width: 150px;
+  height: 30px;
+  background-color: #ff8f00;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 15px;
+  padding-top: 10px;
+  border: solid #e66700 1px;
+  border-bottom: solid #e66700 3px;
+}
+
+/* 200px 화이트 미디움버튼 */
+.a-input-white-m{
+  display:inline-block;
+  width: 150px;
+  height: 30px;
+  background-color: white;
+  color: #ff8f00;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 15px;
+  padding-top: 10px;
+  border: solid #e66700 1px;
+  border-bottom: solid #e66700 3px;
+}
+
+/* ---------------------------------------------------------------------- */
+/* 200px 오렌지 스몰버튼 */
+.a-input-orange-s{
+  display:inline-block;
+  width: 100px;
+  height: 30px;
   background-color: #ff8f00;
   color: white;
   border-radius: 5px;
@@ -25,11 +170,11 @@
   border-bottom: solid #e66700 3px;
 }
 
-/* 200px 화이트 버튼 */
-.a-input-white {
-  display: inline-block;
-  width: 200px;
-  height: 40px;
+/* 200px 화이트 스몰버튼 */
+.a-input-white-s{
+  display:inline-block;
+  width: 100px;
+  height: 30px;
   background-color: white;
   color: #ff8f00;
   border-radius: 5px;
@@ -38,4 +183,9 @@
   padding-top: 8px;
   border: solid #e66700 1px;
   border-bottom: solid #e66700 3px;
+}
+
+.hover:hover{
+  font-weight: bold;
+  text-decoration: none;
 }
