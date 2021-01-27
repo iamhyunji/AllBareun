@@ -1,31 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index</title>
-    <link rel="stylesheet" href="../css/reset.css" type="text/css" />
-    <link rel="stylesheet" href="../css/layout.css" type="text/css" />
     <link rel="stylesheet" href="../css/common/index.css" type="text/css" />
-</head>
-<body>
-    <!-- header -->
-    <header id="header">
-		<div class="main-logo">
-			<a href=""><img src="../images/all.png" alt=""></a>
-		</div>
-			<nav>
-				<ul>
-					<li><a href="#">서비스 소개</a></li>
-					<li><a href="">목표</a></li>
-					<li><a href="">내 목표</a></li>
-					<li><a href=""> </a></li>
-				</ul>
-			</nav>
-	
-	</header>
 
     <!-- main -->
     <section class="main">
@@ -38,6 +13,3 @@
         </div>
     </section>
     
-
-</body>
-</html>
