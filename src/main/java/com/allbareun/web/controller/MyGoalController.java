@@ -11,7 +11,17 @@ public class MyGoalController {
 	@GetMapping("auth")
 	public String auth() {
 		
-		System.out.println("11");
 		return "user.mygoal.auth";
+	}
+	
+	@GetMapping("cert/detail")
+	public String certDetail() {
+		
+		return "user.mygoal.cert.detail";
+	}
+	@GetMapping("cert/list")
+	public String certList() {
+		
+		return "user.mygoal.cert.list";
 	}
 }
