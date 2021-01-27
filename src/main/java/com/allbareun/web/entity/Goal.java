@@ -102,7 +102,7 @@ public class Goal {
 		this.startDate = startDate;
 	}
 
-	public boolean isPublicStatus() {
+	public boolean getPublicStatus() {
 		return publicStatus;
 	}
 

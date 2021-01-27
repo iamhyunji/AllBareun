@@ -68,7 +68,7 @@ public class Group {
 		this.requestDate = requestDate;
 	}
 
-	public boolean isAnswer() {
+	public boolean getAnswer() {
 		return answer;
 	}
 
