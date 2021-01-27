@@ -4,37 +4,38 @@ import java.util.Date;
 
 public class Goal {
 	private int id;
-	private String userId;
-	private String title;
-	private String explanation;
-	private String mainImage;
-	private String goodEx;
-	private String badEx;
-	private Date startDate;
-	private Date endDate;
-	private boolean publicStatus;
-	private Date regDate;
-	private int count;
-	
-	public Goal() {
-		// TODO Auto-generated constructor stub
+    private String title;
+    private String explanation;
+    private String mainImage;
+    private String goodEx;
+    private String badEx;
+    private Date endDate;
+    private Date startDate;
+    private boolean publicStatus;
+    private Date regdate;
+    private int count;
+    private int userId;
+    private int totalParticipants;
+    
+    public Goal() {
+		this(0, null, null, null, null, null, null, null, false, null, 0, 0, 0);
 	}
 
-	public Goal(int id, String userId, String title, String explanation, String mainImage, String goodEx, String badEx,
-			Date startDate, Date endDate, boolean publicStatus, Date regDate, int count) {
-		super();
+	public Goal(int id, String title, String explanation, String mainImage, String goodEx, String badEx, Date endDate,
+			Date startDate, boolean publicStatus, Date regdate, int count, int userId, int totalParticipants) {
 		this.id = id;
-		this.userId = userId;
 		this.title = title;
 		this.explanation = explanation;
 		this.mainImage = mainImage;
 		this.goodEx = goodEx;
 		this.badEx = badEx;
-		this.startDate = startDate;
 		this.endDate = endDate;
+		this.startDate = startDate;
 		this.publicStatus = publicStatus;
-		this.regDate = regDate;
+		this.regdate = regdate;
 		this.count = count;
+		this.userId = userId;
+		this.totalParticipants = totalParticipants;
 	}
 
 	public int getId() {
@@ -43,14 +44,6 @@ public class Goal {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
 	}
 
 	public String getTitle() {
@@ -93,14 +86,6 @@ public class Goal {
 		this.badEx = badEx;
 	}
 
-	public Date getStartDate() {
-		return startDate;
-	}
-
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-
 	public Date getEndDate() {
 		return endDate;
 	}
@@ -109,7 +94,15 @@ public class Goal {
 		this.endDate = endDate;
 	}
 
-	public boolean getPublicStatus() {
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public boolean isPublicStatus() {
 		return publicStatus;
 	}
 
@@ -117,12 +110,12 @@ public class Goal {
 		this.publicStatus = publicStatus;
 	}
 
-	public Date getRegDate() {
-		return regDate;
+	public Date getRegdate() {
+		return regdate;
 	}
 
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
 	}
 
 	public int getCount() {
@@ -133,16 +126,28 @@ public class Goal {
 		this.count = count;
 	}
 
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	public int getTotalParticipants() {
+		return totalParticipants;
+	}
+
+	public void setTotalParticipants(int totalParticipants) {
+		this.totalParticipants = totalParticipants;
+	}
+
 	@Override
 	public String toString() {
-		return "Goal [id=" + id + ", userId=" + userId + ", title=" + title + ", explanation=" + explanation
-				+ ", mainImage=" + mainImage + ", goodEx=" + goodEx + ", badEx=" + badEx + ", startDate=" + startDate
-				+ ", endDate=" + endDate + ", publicStatus=" + publicStatus + ", regDate=" + regDate + ", count="
-				+ count + "]";
+		return "Goal [id=" + id + ", title=" + title + ", explanation=" + explanation + ", mainImage=" + mainImage
+				+ ", goodEx=" + goodEx + ", badEx=" + badEx + ", endDate=" + endDate + ", startDate=" + startDate
+				+ ", publicStatus=" + publicStatus + ", regdate=" + regdate + ", count=" + count + ", userId=" + userId
+				+ ", totalParticipants=" + totalParticipants + "]";
 	}
-	
-	
-
-	
-	
+    
 }
