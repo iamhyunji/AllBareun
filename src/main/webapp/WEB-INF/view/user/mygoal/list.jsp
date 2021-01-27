@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<link rel="stylesheet" href="/css/member/mygoal/list.css">
+<link rel="stylesheet" href="/css/user/mygoal/list.css">
 
 <main id="main">
 <h1 class="d-none">Content Body > Main</h1>
