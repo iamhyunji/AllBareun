@@ -16,9 +16,22 @@ html {
   display: none;
 }
 
+.w200{
+	width: 200px;
+}
+
+.w150{
+	width: 150px;
+}
+
+.w100{
+	width: 100px;
+}
+
 /* --------------- select --------------- */
 /* small, medium, large, x-large */
 .select-s {
+
   /* 2-4글자 정도 예상 */
   width: 100px;
   padding: 3px 5px;
@@ -47,6 +60,7 @@ html {
 /* small, medium, large, x-large */
 .text-s,
 .text-s > * {
+
   /* 검색폼/select box의 텍스트 정도 */
   font-size: 0.8rem;
 }
@@ -92,6 +106,7 @@ html {
 }
 
 /* --------------- button --------------- */
+
 /* 200px 오렌지 빅버튼 */
 .a-input-orange-l {
   display: inline-block;
@@ -105,6 +120,7 @@ html {
   border: solid #e66700 1px;
   border-bottom: solid #e66700 3px;
 }
+
 
 /* 200px 화이트 빅버튼 */
 .a-input-white-l {
@@ -121,6 +137,7 @@ html {
 }
 
 /* ---------------------------------------------------------------------- */
+
 /* 200px 오렌지 미디움버튼 */
 .a-input-orange-m {
   display: inline-block;
@@ -134,6 +151,7 @@ html {
   border: solid #e66700 1px;
   border-bottom: solid #e66700 3px;
 }
+
 
 /* 200px 화이트 미디움버튼 */
 .a-input-white-m {
@@ -150,6 +168,7 @@ html {
 }
 
 /* ---------------------------------------------------------------------- */
+
 /* 200px 오렌지 스몰버튼 */
 .a-input-orange-s {
   display: inline-block;
@@ -163,6 +182,7 @@ html {
   border: solid #e66700 1px;
   border-bottom: solid #e66700 3px;
 }
+
 
 /* 200px 화이트 스몰버튼 */
 .a-input-white-s {
