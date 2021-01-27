@@ -14,4 +14,9 @@ public class MyGoalController {
 		System.out.println("11");
 		return "user.mygoal.auth";
 	}
+	
+	@GetMapping("list")
+	public String list() {
+		return "user.mygoal.list";
+	}
 }
