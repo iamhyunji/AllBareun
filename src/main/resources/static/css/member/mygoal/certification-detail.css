@@ -7,7 +7,6 @@
 .major {
   position: relative;
   text-align: center;
-  border-top: solid 1px #ccc;
   top: 16px;
   margin: 0 0 48px 0;
 }
@@ -27,7 +26,7 @@
 }
 
 .goal-container .image {
-  width: 100%;
+  width: 900px;
   height: 500px;
   padding: 25px;
 }
@@ -51,24 +50,43 @@
   justify-content: flex-start;
 }
 .answer > li {
-  font-size: 20px;
+  font-weight: bold;
   padding: 10px 0;
 }
 .circle-box {
   display: flex;
+  align-items: center;
 }
 .circle {
-  width: 30px;
-  height: 30px;
   border: 1px solid black;
   border-radius: 50%;
-  margin-left: 15px;
+  margin: 0 10px;
   outline: none;
 }
-.selected {
-  background-color: blue;
+.circle-box .c-xl {
+  width: 60px;
+  height: 60px;
+}
+.circle-box .c-l {
+  width: 50px;
+  height: 50px;
+}
+.circle-box .c-m {
+  width: 40px;
+  height: 40px;
+}
+.circle-box .c-s {
+  width: 30px;
+  height: 30px;
 }
 
+.circle-box input[type="radio"]:checked {
+  appearance: none;
+  background-color: #ff8f00;
+}
+.circle-box span {
+  color: #ff8f00;
+}
 .review {
   margin: 30px 0;
   padding: 30px 0;
@@ -83,19 +101,4 @@
   display: flex;
   justify-content: space-between;
   padding: 30px 0;
-}
-.button-container input {
-  width: 300px;
-  height: 50px;
-  border: none;
-  cursor: pointer;
-  font-size: 20px;
-  font-weight: 600;
-}
-
-.button-container input:first-child {
-  background-color: skyblue;
-}
-.button-container input:last-child {
-  background-color: bisque;
 }

@@ -38,6 +38,7 @@
   width: 50%;
   height: 200px;
   resize: none;
+  outline: none;
 }
 
 .drag-box {
@@ -50,28 +51,51 @@
   justify-content: center;
 }
 .answer > li {
-  font-size: 20px;
+  font-weight: bold;
   padding: 10px 0;
 }
 .circle-box {
   display: flex;
+  align-items: center;
 }
 .circle {
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
   border: 1px solid black;
   border-radius: 50%;
-  margin-left: 15px;
+  margin: 0 10px;
   outline: none;
 }
+.circle-box .c-xl {
+  width: 60px;
+  height: 60px;
+}
+.circle-box .c-l {
+  width: 50px;
+  height: 50px;
+}
+.circle-box .c-m {
+  width: 40px;
+  height: 40px;
+}
+.circle-box .c-s {
+  width: 30px;
+  height: 30px;
+}
+
+.circle-box input[type="radio"]:checked {
+  appearance: none;
+  background-color: #ff8f00;
+}
+.circle-box span {
+  color: #ff8f00;
+}
+
 .button-container {
   display: flex;
   justify-content: space-evenly;
   padding: 30px;
   margin-bottom: 30px;
 }
-.button-container input {
+/* .button-container input {
   width: 300px;
   height: 50px;
   border: none;
@@ -85,4 +109,4 @@
 }
 .button-container input:last-child {
   background-color: bisque;
-}
+} */
