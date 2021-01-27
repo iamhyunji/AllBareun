@@ -8,7 +8,7 @@ html {
   padding: 0;
   color: #000;
   box-sizing: border-box;
-  font-family: 'normal';
+  font-family: "normal";
   font-size: 16px;
 }
 
@@ -19,59 +19,59 @@ html {
 /* --------------- select --------------- */
 /* small, medium, large, x-large */
 .select-s {
-    /* 2-4글자 정도 예상 */
-    width: 100px;
-    padding: 3px 5px;
-    font-size: 0.8rem;
+  /* 2-4글자 정도 예상 */
+  width: 100px;
+  padding: 3px 5px;
+  font-size: 0.8rem;
 }
 .select-m {
-    /* 4-8글자 정도 예상 */
-    width: 150px;
-    padding: 3px 5px;
-    font-size: 0.8rem;
+  /* 4-8글자 정도 예상 */
+  width: 150px;
+  padding: 3px 5px;
+  font-size: 0.8rem;
 }
 .select-l {
-    /* 8-12글자 정도 예상 */
-    width: 200px;
-    padding: 3px 5px;
-    font-size: 0.8rem;
+  /* 8-12글자 정도 예상 */
+  width: 200px;
+  padding: 3px 5px;
+  font-size: 0.8rem;
 }
 .select-xl {
-    /* 15자 이상 글자 정도 예상 */
-    width: 400px;
-    padding: 3px 5px;
-    font-size: 0.8rem;
+  /* 15자 이상 글자 정도 예상 */
+  width: 400px;
+  padding: 3px 5px;
+  font-size: 0.8rem;
 }
 
 /* --------------- text --------------- */
 /* small, medium, large, x-large */
 .text-s,
 .text-s > * {
-    /* 검색폼/select box의 텍스트 정도 */
-    font-size: 0.8rem;
+  /* 검색폼/select box의 텍스트 정도 */
+  font-size: 0.8rem;
 }
 .text-m,
 .text-m > * {
-    /* 기본 텍스트 정도 */
-    font-size: 1rem;
+  /* 기본 텍스트 정도 */
+  font-size: 1rem;
 }
 .text-m-bold,
 .text-m-bold > * {
-    /* 헤더의 nav 정도 */
-    font-size: 1rem;
-    font-weight: 900;
+  /* 헤더의 nav 정도 */
+  font-size: 1rem;
+  font-weight: 900;
 }
 .text-l,
 .text-l > * {
-    /* index 설명/detail 인증 날짜/부제목 정도 */
-    font-size: 2rem;
-    font-weight: 600;
+  /* index 설명/detail 인증 날짜/부제목 정도 */
+  font-size: 2rem;
+  font-weight: 600;
 }
 .text-xl,
 .text-xl > * {
-    /* index/list 제목 정도 */
-    font-size: 2.5rem;
-    font-weight: 900;
+  /* index/list 제목 정도 */
+  font-size: 2.5rem;
+  font-weight: 900;
 }
 
 /* --------------- img --------------- */
@@ -93,8 +93,8 @@ html {
 
 /* --------------- button --------------- */
 /* 200px 오렌지 빅버튼 */
-.a-input-orange-l{
-  display:inline-block;
+.a-input-orange-l {
+  display: inline-block;
   width: 200px;
   height: 35px;
   background-color: #ff8f00;
@@ -102,15 +102,13 @@ html {
   border-radius: 5px;
   text-align: center;
   font-size: 18px;
-  padding-top: 12px;
   border: solid #e66700 1px;
   border-bottom: solid #e66700 3px;
-  
 }
 
 /* 200px 화이트 빅버튼 */
-.a-input-white-l{
-  display:inline-block;
+.a-input-white-l {
+  display: inline-block;
   width: 200px;
   height: 35px;
   background-color: white;
@@ -118,15 +116,14 @@ html {
   border-radius: 5px;
   text-align: center;
   font-size: 18px;
-  padding-top: 12px;
   border: solid #e66700 1px;
   border-bottom: solid #e66700 3px;
 }
 
 /* ---------------------------------------------------------------------- */
 /* 200px 오렌지 미디움버튼 */
-.a-input-orange-m{
-  display:inline-block;
+.a-input-orange-m {
+  display: inline-block;
   width: 150px;
   height: 30px;
   background-color: #ff8f00;
@@ -134,14 +131,13 @@ html {
   border-radius: 5px;
   text-align: center;
   font-size: 15px;
-  padding-top: 10px;
   border: solid #e66700 1px;
   border-bottom: solid #e66700 3px;
 }
 
 /* 200px 화이트 미디움버튼 */
-.a-input-white-m{
-  display:inline-block;
+.a-input-white-m {
+  display: inline-block;
   width: 150px;
   height: 30px;
   background-color: white;
@@ -149,15 +145,14 @@ html {
   border-radius: 5px;
   text-align: center;
   font-size: 15px;
-  padding-top: 10px;
   border: solid #e66700 1px;
   border-bottom: solid #e66700 3px;
 }
 
 /* ---------------------------------------------------------------------- */
 /* 200px 오렌지 스몰버튼 */
-.a-input-orange-s{
-  display:inline-block;
+.a-input-orange-s {
+  display: inline-block;
   width: 100px;
   height: 30px;
   background-color: #ff8f00;
@@ -165,14 +160,13 @@ html {
   border-radius: 5px;
   text-align: center;
   font-size: 15px;
-  padding-top: 8px;
   border: solid #e66700 1px;
   border-bottom: solid #e66700 3px;
 }
 
 /* 200px 화이트 스몰버튼 */
-.a-input-white-s{
-  display:inline-block;
+.a-input-white-s {
+  display: inline-block;
   width: 100px;
   height: 30px;
   background-color: white;
@@ -180,12 +174,68 @@ html {
   border-radius: 5px;
   text-align: center;
   font-size: 15px;
-  padding-top: 8px;
   border: solid #e66700 1px;
   border-bottom: solid #e66700 3px;
 }
 
-.hover:hover{
+.hover:hover {
   font-weight: bold;
+  text-decoration: none;
+}
+
+/*---------------------------------------*/
+/*----------------변경 탭----------------*/
+.tab-part {
+  border-bottom: solid orange 1px;
+  width: 1200px;
+  margin: auto;
+}
+
+.tab {
+  padding-top: 100px;
+  display: flex;
+}
+
+.tab-button {
+  display: inline-block;
+  width: 200px;
+  height: 50px;
+  background-color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  text-align: center;
+  font-size: 18px;
+  padding-top: 10px;
+  border-right: solid #e66700 1px;
+  border-top: solid #e66700 3px;
+}
+
+.tab-button:first-child {
+  display: inline-block;
+  width: 200px;
+  height: 50px;
+  background-color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  text-align: center;
+  font-size: 18px;
+  padding-top: 10px;
+  border-left: solid #e66700 1px;
+  border-top: solid #e66700 3px;
+  margin-left: 10px;
+}
+
+.tab-button:hover {
+  display: inline-block;
+  width: 200px;
+  height: 50px;
+  background-color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  text-align: center;
+  font-size: 18px;
+  padding-top: 10px;
+  border: solid #e66700 1px;
+  border-top: solid #e66700 6px;
   text-decoration: none;
 }
