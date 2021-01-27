@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,9 +21,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script> <!-- 차트 -->
-        <link href="reset.css" type="text/css"
-	rel="stylesheet">
-<link href="personal-report.css" type="text/css"
+        <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+      integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+      crossorigin="anonymous"/>
+
+<link href="/css/member/mypage/done/detail.css" type="text/css"
 	rel="stylesheet">
 
 </head>
@@ -32,7 +38,7 @@
 	<!-- <tiles:insertAttribute name="header" /> -->
 	<header id="header">
 		<div class="main-logo">
-			<a href=""><img src="static/images/all.png" alt=""></a>
+			<a href=""><img src="/images/all.png" alt=""></a>
 		</div>
 			<nav>
 				<ul>
@@ -55,7 +61,7 @@
 			<main id="main">
 				<section class="detail-info">
 					<div class="detail-info-img">
-						<img src="img3.jpg" alt="메인 이미지" />
+						<img src="/images/img1.jpg" alt="메인 이미지" />
 	
 					</div>
 					<div class="detail-info-text">
@@ -65,20 +71,21 @@
 							<tbody>
 	
 								<tr>
-									<td class="center">기간</td>
-									<td class="center">${n.memberNick}</td>
+									<td class="center w100">기간</td>
+									<td class="left w200">2021/03/20 - 2021/06/31</td>
 								</tr>
 								<tr>
-									<td class="center">인증횟수</td>
-									<td class="center">${n.regDate}</td>
+									<td class="center w100">인증횟수</td>
+									<td class="left w200">2회</td>
 								</tr>
 	
 								<tr>
-									<td class="center">참여인원</td>
-									<td class="center">${n.recommendCnt}</td>
-									<td class="center">${n.recommendCnt}</td>
+									<td class="center w100">참여인원</td>
+									<td class="left w200">본율,중언,현지,혜영</td>
+									<td class="center w200"><i class="fa-2x fas fa-user-circle"></i></td>
 	
 								</tr>
+	
 	
 	
 							</tbody>
