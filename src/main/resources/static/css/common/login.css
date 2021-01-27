@@ -11,7 +11,6 @@ main{
     background: white;
 }
     .main>h1{
-        font-size: 40px;
         width: 210px;
         margin: 0px auto 80px auto;
     }
@@ -47,11 +46,7 @@ main{
         background-color: #ff8f00;
         border: 1px solid white;
     }
-    .main .auto-login{
-        width: 400px;
-        margin: 15px auto;
-        font-size: 17px;
-    }
+
     .reg-id{
         width: 320px;
         height: 50px;

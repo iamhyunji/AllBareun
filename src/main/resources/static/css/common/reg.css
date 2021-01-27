@@ -9,15 +9,19 @@ main{
     margin-right: auto;
     background: white;
 }
+.main .page-back{
+    font-size: 30px;
+    width: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
     .main h1{
-        font-size: 40px;
         width: 210px;
         margin: 30px auto 10px auto;
     }
     .main h2{
-        font-size: 20px;
         font-weight: bold;
-        width: 100px;
+        width: 140px;
         margin: 0px auto 20px auto;
     }
     .member-box{
