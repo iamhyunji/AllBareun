@@ -63,11 +63,7 @@ html {
 
   /* 검색폼/select box의 텍스트 정도 */
   font-size: 0.8rem;
-}
-.text-m,
-.text-m > * {
-  /* 기본 텍스트 정도 */
-  font-size: 1rem;
+
 }
 .text-m-bold,
 .text-m-bold > * {
@@ -86,6 +82,19 @@ html {
   /* index/list 제목 정도 */
   font-size: 2.5rem;
   font-weight: 900;
+
+}
+a.text-s:hover,
+a.text-s > *:hover,
+a.text-m-bold:hover,
+a.text-m-bold > *:hover,
+a.text-l:hover,
+a.text-l > *:hover,
+a.text-xl:hover,
+a.text-xl > *:hover {
+  text-decoration: none;
+  color: #ff8f00;
+
 }
 
 /* --------------- img --------------- */
