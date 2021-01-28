@@ -6,7 +6,7 @@
 <mapper namespace="com.allbareun.web.dao.GoalDao">
 
 
-   <select id="getList" resultType="com.allbareun.web.entity.Goal">
-      select * from Goal
+   <select id="getViewList" resultType="com.allbareun.web.entity.GoalView">
+      select * from GoalView
    </select>
 </mapper>

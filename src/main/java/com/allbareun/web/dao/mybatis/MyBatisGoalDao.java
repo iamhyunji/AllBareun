@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.allbareun.web.dao.GoalDao;
-import com.allbareun.web.entity.Goal;
+import com.allbareun.web.entity.GoalView;
 
 @Repository
 public class MyBatisGoalDao implements GoalDao {
@@ -20,9 +20,9 @@ public class MyBatisGoalDao implements GoalDao {
 	}
 	
 	@Override
-	public List<Goal> getList() {
+	public List<GoalView> getViewList() {
 		// TODO Auto-generated method stub
-		return mapper.getList();
+		return mapper.getViewList();
 	}
 
 }
