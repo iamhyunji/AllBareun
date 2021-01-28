@@ -75,7 +75,7 @@ public class GoalAllView extends Goal {
 				+ participants + ", groupParticipants=" + groupParticipants + ", getId()=" + getId() + ", getTitle()="
 				+ getTitle() + ", getExplanation()=" + getExplanation() + ", getMainImage()=" + getMainImage()
 				+ ", getGoodEx()=" + getGoodEx() + ", getBadEx()=" + getBadEx() + ", getEndDate()=" + getEndDate()
-				+ ", getStartDate()=" + getStartDate() + ", isPublicStatus()=" + getPublicStatus() + ", getRegdate()="
+				+ ", getStartDate()=" + getStartDate() + ", getPublicStatus()=" + getPublicStatus() + ", getRegdate()="
 				+ getRegdate() + ", getCount()=" + getCount() + ", getUserId()=" + getUserId()
 				+ ", getTotalParticipants()=" + getTotalParticipants() + ", toString()=" + super.toString()
 				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + "]";

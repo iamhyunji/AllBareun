@@ -6,9 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.allbareun.web.dao.GoalDao;
+import com.allbareun.web.entity.Cycle;
 import com.allbareun.web.entity.Goal;
 import com.allbareun.web.entity.GoalAllView;
+import com.allbareun.web.entity.GoalCategory;
 import com.allbareun.web.entity.GoalView;
+import com.allbareun.web.entity.Group;
+import com.allbareun.web.entity.Participation;
 
 @Service
 public class GoalServiceImp implements GoalService {
@@ -17,13 +21,19 @@ public class GoalServiceImp implements GoalService {
 	private GoalDao goalDao;
 
 	@Override
-	public int insert(Goal goal) {
+	public int insert(Goal goal, GoalCategory goalCategory, Cycle cycle, Participation participation, Group group) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public int update(Goal goal) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	@Override
+	public int update(Goal goal, GoalCategory goalCategory, Cycle cycle, Participation participation, Group group) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -47,9 +57,8 @@ public class GoalServiceImp implements GoalService {
 	}
 
 	@Override
-	public List<GoalAllView> getAllViewList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<GoalAllView> getAllViewList(int userId) {
+		return goalDao.getAllViewList(userId);
 	}
 	
 }

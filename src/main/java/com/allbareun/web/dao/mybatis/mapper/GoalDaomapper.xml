@@ -9,4 +9,10 @@
    <select id="getViewList" resultType="com.allbareun.web.entity.GoalView">
       select * from GoalView
    </select>
+
+   <select id="getAllViewList" resultType="com.allbareun.web.entity.GoalAllView">
+      select * from GoalAllView
+      where userId=${userId}
+   </select>
+   
 </mapper>
