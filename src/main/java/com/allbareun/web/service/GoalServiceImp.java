@@ -25,7 +25,7 @@ public class GoalServiceImp implements GoalService {
 	@Override
 	public Goal get(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return goalDao.get(id);
 	}
 	
 	public List<Goal> getList() {

@@ -25,4 +25,10 @@ public class MyBatisGoalDao implements GoalDao {
 		return mapper.getList();
 	}
 
+	@Override
+	public Goal get(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

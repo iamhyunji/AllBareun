@@ -1,12 +1,8 @@
 package com.allbareun.web.dao;
 
-import java.util.List;
-
 import com.allbareun.web.entity.Goal;
 
+public interface MyGoalDao {
 
-public interface GoalDao {
-
-	List<Goal> getList();
 	Goal get(int id);
 }
