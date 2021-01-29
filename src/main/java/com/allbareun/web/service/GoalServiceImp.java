@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.allbareun.web.dao.GoalCategoryDao;
 import com.allbareun.web.dao.GoalDao;
 import com.allbareun.web.entity.Cycle;
 import com.allbareun.web.entity.Goal;
@@ -27,15 +28,18 @@ public class GoalServiceImp implements GoalService {
 	}
 
 	@Override
-	public int update(Goal goal) {
-		// TODO Auto-generated method stub
-		return 0;
+	public Goal get(int id) {
+		
+		return goalDao.get(id);
 	}
 	
 	@Override
 	public int update(Goal goal, GoalCategory goalCategory, Cycle cycle, Participation participation, Group group) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		goalDao.update(goal);
+		result++;
+		
+		return result;
 	}
 
 	@Override
@@ -45,9 +49,9 @@ public class GoalServiceImp implements GoalService {
 	}
 
 	@Override
-	public Goal get(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public GoalAllView getAllView(int id) {
+		
+		return goalDao.getAllView(id);
 	}
 
 	@Override
@@ -60,5 +64,5 @@ public class GoalServiceImp implements GoalService {
 	public List<GoalAllView> getAllViewList(int userId) {
 		return goalDao.getAllViewList(userId);
 	}
-	
+
 }

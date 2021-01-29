@@ -7,8 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.allbareun.web.dao.GoalDao;
+import com.allbareun.web.entity.Cycle;
+import com.allbareun.web.entity.Goal;
 import com.allbareun.web.entity.GoalAllView;
+import com.allbareun.web.entity.GoalCategory;
 import com.allbareun.web.entity.GoalView;
+import com.allbareun.web.entity.Group;
+import com.allbareun.web.entity.Participation;
 
 @Repository
 public class MyBatisGoalDao implements GoalDao {
@@ -18,6 +23,24 @@ public class MyBatisGoalDao implements GoalDao {
 	@Autowired
 	public MyBatisGoalDao(SqlSession session) {
 		mapper = session.getMapper(GoalDao.class);
+	}
+	
+	@Override
+	public int update(Goal goal) {
+		
+		return mapper.update(goal);
+	}
+	
+	@Override
+	public Goal get(int id) {
+
+		return mapper.get(id);
+	}
+	
+	@Override
+	public GoalAllView getAllView(int id) {
+		
+		return mapper.getAllView(id);
 	}
 	
 	@Override

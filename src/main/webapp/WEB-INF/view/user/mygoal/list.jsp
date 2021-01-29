@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/user/mygoal/list.css">
 
 <main id="main">
@@ -111,7 +112,7 @@
 		<ul class="goals__list">
 			<c:forEach var="g" items="${list }">
 				<li>
-					<img class="s-img" src="${g.mainImage }" alt="" />
+					<a href="#"><img class="s-img" src="${g.mainImage }" alt="" /></a>
 					<div>
 						<h2 class="text-l"><a href="#">${g.title }</a></h2>
 						<span>카테고리 : ${g.categories }</span>
@@ -120,7 +121,7 @@
 						<span>참가 : ${g.totalParticipants }명 (${g.groupParticipants })</span>
 					</div>
 					<div>
-						<a href="#" class="setting">*</a>
+						<a href="./${g.id }/edit" class="setting"><i class="fas fa-cog"></i></a>
 						<a class="a-input-orange-s" href="#">인증하기</a>
 					</div>
 				</li>

@@ -13,10 +13,10 @@ import com.allbareun.web.entity.Participation;
 public interface GoalService {
 
 	int insert(Goal goal, GoalCategory goalCategory, Cycle cycle, Participation participation, Group group);
-	int update(Goal goal);
 	int update(Goal goal, GoalCategory goalCategory, Cycle cycle, Participation participation, Group group);
 	int delete(Goal goal);
 	Goal get(int id);
+	GoalAllView getAllView(int id);
 	List<GoalView> getViewList();
 	List<GoalAllView> getAllViewList(int userId);
 	

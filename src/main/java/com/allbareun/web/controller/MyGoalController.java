@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.allbareun.web.entity.Goal;
 import com.allbareun.web.entity.GoalAllView;
 import com.allbareun.web.service.GoalService;
 
@@ -53,4 +56,37 @@ public class MyGoalController {
 		
 		return "user.mygoal.list";
 	}
+	
+	@GetMapping("{id}/edit")
+	public String edit(@PathVariable("id") int id, Model model) {
+		
+		GoalAllView goalAllView = service.getAllView(id);
+		model.addAttribute("g", goalAllView);
+		
+		return "user.mygoal.edit";
+	}
+	
+	@PostMapping("{id}/edit")
+	public String edit(@PathVariable("id") int id, GoalAllView goalAllView) {
+		
+		Goal origin = service.get(id);
+		
+		String mainImage = goalAllView.getMainImage();
+		String title = goalAllView.getTitle();
+		String explanation = goalAllView.getExplanation();
+		
+		if(mainImage != null)
+			origin.setMainImage(mainImage);
+		
+		if(title != null)
+			origin.setTitle(title);
+		
+		if(explanation != null)
+			origin.setExplanation(explanation);
+		
+		service.update(origin, null, null, null, null);
+		
+		return "redirect:../list";
+	}
+	
 }

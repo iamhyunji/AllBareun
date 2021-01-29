@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/user/mypage/done/list.css">
 
 <main id="main">
@@ -60,7 +61,7 @@
 						<span>참가 : ${g.totalParticipants }명 (${g.groupParticipants })</span>
 					</div>
 					<div>
-						<input class="del-button" type="button" value="x" />
+						<i class="fas fa-times del-button"></i>
 						<a class="a-input-orange-s" href="#">결과 리포트</a>
 					</div>
 				</li>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<link rel="stylesheet" href="/css/member/goal/reg.css">
+<link rel="stylesheet" href="/css/user/goal/reg.css">
 
 <main id="main">
 	<form action="reg" method="post">
@@ -8,78 +8,64 @@
 			<h1 class="d-none">Main 1 : 목표 기본 등록폼</h1>
 			<section class="required__image">
 				<h1 class="d-none">목표 메인 이미지</h1>
-				<div class="m-img">메인 이미지 등록 선택 / 드래그&드롭</div>
+				<div class="m-img" name="gMainImg">메인 이미지 등록 선택 / 드래그&드롭</div>
 			</section>
 
 			<section class="required__content">
 				<h1 class="d-none">등록폼</h1>
 				<div>
-					<input class="text-xl" type="text" placeholder="제목을 입력해주세요" />
-					<textarea class="description" name="#" rows="2" cols="30"
-						placeholder="목표에 대한 설명을 간단히 작성해주세요"></textarea>
+					<input class="text-xl" type="text" name="gt" placeholder="제목을 입력해주세요" />
+					<textarea class="description" name="gEx" rows="2" cols="30" placeholder="목표에 대한 설명을 간단히 작성해주세요"></textarea>
 
 					<div>
 						<label>기간</label>
 						<span>4주</span>
-						<input type="date" name="#" /> - <input type="date" name="" />
+						<input type="date" name="gsd" /> - <input type="date" name="ged" />
 					</div>
 
 					<div>
 						<label>카테고리</label>
-						<input type="checkbox" name="#" />생활
-						<input type="checkbox" name="#" />건강
-						<input type="checkbox" name="#" />관계
-						<input type="checkbox" name="#" />역량
-						<input type="checkbox" name="#" />자산
-						<input type="checkbox" name="#" />취미
-					</div>
-
-					<div>
-						<label>목표</label>
-						<select class="select-s" name="#">
-							<option value="#">공개</option>
-							<option value="#">비공개</option>
-						</select>
+						<input type="checkbox" name="gcId" value="1" />생활
+						<input type="checkbox" name="gcId" value="2" />건강
+						<input type="checkbox" name="gcId" value="3" />관계
+						<input type="checkbox" name="gcId" value="4" />역량
+						<input type="checkbox" name="gcId" value="5" />자산
+						<input type="checkbox" name="gcId" value="6" />취미
 					</div>
 
 					<div>
 						<label>참가</label>
-						<input class="select-s" type="number" name="" value="1" min="1" max="10" />
-						<select class="select-s" name="#">
-							<option value="#">개인</option>
-							<option value="#">그룹</option>
+						<select class="select-s" name="gps">
+							<option value="0">개인</option>
+							<option value="0">지인 그룹</option>
+							<option value="1">공개 그룹</option>
 						</select>
+						<input class="select-s" type="number" name="gtp" value="1" min="1" max="10" />
 						<input class="a-input-white-s" type="button" value="초대">
 					</div>
 
 					<div>
 						<label>인증횟수</label>
-						<select class="select-s" name="#">
-							<option value="#">매일</option>
-							<option value="#">주중</option>
-							<option value="#">주말</option>
-							<option value="#">매주</option>
+						<select class="select-s">
+							<option>매일</option>
+							<option>매주</option>
+							<option>주중</option>
+							<option>주말</option>
 						</select>
-						<input class="select-s" type="number" name="" min="1" max="99" value="1" />회/일
-						<input type="checkbox" name="#" />월
-						<input type="checkbox" name="#" />화
-						<input type="checkbox" name="#" />수
-						<input type="checkbox" name="#" />목
-						<input type="checkbox" name="#" />금
-						<input type="checkbox" name="#" />토
-						<input type="checkbox" name="#" />일
+						<input class="select-s" type="number" name="gc" min="1" max="99" value="1" />회/일
+						<input type="checkbox" name="" value="1" />월
+						<input type="checkbox" name="dId" value="2" />화
+						<input type="checkbox" name="dId" value="3" />수
+						<input type="checkbox" name="dId" value="4" />목
+						<input type="checkbox" name="dId" value="5" />금
+						<input type="checkbox" name="dId" value="6" />토
+						<input type="checkbox" name="dId" value="7" />일
 					</div>
 
 					<div>
 						<label>인증 사진</label>
-						<input type="radio" name="certification" value="n" />인증 사진 있음
-						<input type="radio" name="certification" value="y" />인증 사진 없음
-					</div>
-
-					<div>
-						<label>인증 기준</label>
-						<input type="radio" name="#" value="n" />있음
-						<input type="radio" name="#" value="y" />없음
+						<input type="radio" />인증 사진 있음
+						<input type="radio" />인증 사진 없음
 					</div>
 				</div>
 			</section>
@@ -90,16 +76,16 @@
 			<div>
 				<div>
 					<h2 class="text-l">좋은 인증</h2>
-					<div class="m-img">좋은 인증 예시 사진</div>
+					<div class="m-img" name="gGEx">좋은 인증 예시 사진</div>
 				</div>
 
 				<div>
 					<h2 class="text-l">나쁜 인증</h2>
-					<div class="m-img">나쁜 인증 예시 사진</div>
+					<div class="m-img" name="gBEx">나쁜 인증 예시 사진</div>
 				</div>
 
-				<textarea class="description" name="#" rows="2" cols="30"
-					placeholder="인증 기준과 인증 방법을 서술해주세요"></textarea>
+				<!-- <textarea class="description" name="#" value="#" rows="2" cols="30" placeholder="인증 기준과 인증 방법을 서술해주세요"></textarea> -->
+				<textarea class="description" rows="2" cols="30" placeholder="인증 기준과 인증 방법을 서술해주세요"></textarea>
 			</div>
 		</section>
 

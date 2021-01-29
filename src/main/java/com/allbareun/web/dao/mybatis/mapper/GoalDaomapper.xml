@@ -5,6 +5,19 @@
 
 <mapper namespace="com.allbareun.web.dao.GoalDao">
 
+   <update id="update">
+		UPDATE Goal
+		SET title = #{title}, explanation = #{explanation}, mainImage = #{mainImage}
+		WHERE id = #{id}
+   </update>
+   
+   <select id="get" resultType="com.allbareun.web.entity.Goal">
+      select * from Goal where id = #{id}
+   </select>
+   
+   <select id="getAllView" resultType="com.allbareun.web.entity.GoalAllView">
+      select * from GoalAllView where id = #{id}
+   </select>
 
    <select id="getViewList" resultType="com.allbareun.web.entity.GoalView">
       select * from GoalView
