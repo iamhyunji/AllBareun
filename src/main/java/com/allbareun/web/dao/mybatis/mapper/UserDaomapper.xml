@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.allbareun.web.dao.UserDao">
+
+   <select id="isValid" resultType="com.allbareun.web.entity.User">
+      select count(*) from User where email = #{email} and password = #{password}
+   </select>
+   
+   <select id="get" resultType="com.allbareun.web.entity.User">
+      select * from User where email = #{email} and password = #{password}
+   </select>
+   
+   <select id="getEmail" resultType="com.allbareun.web.entity.User">
+      select email from User where name = #{name} and phone= #{phone};
+   </select>
+   
+   <select id="getPassword" resultType="com.allbareun.web.entity.User">
+      select password from User where email = #{email} and name = #{name} and phone= #{phone};
+   </select>
+   
+   <select id="insert" resultType="com.allbareun.web.entity.User">
+      insert into User (email, password, name, gender, age, phone, profile) values (#{email}, #{password}, #{name}, #{gender}, #{age}, #{phone}, #{profile} )
+   </select>
+   
+   <select id="updaate" resultType="com.allbareun.web.entity.User">
+      update User set
+      	email = #{email},
+      	password = #{password},
+      	name = #{name},
+      	gender = #{gender},
+      	profile = #{profile},
+      	age = #{age},
+      	phone = #{phone}
+      where id = #{id}
+   </select>
+   
+   <select id="delete" resultType="com.allbareun.web.entity.User">
+      delete from User where id = #{id}
+   </select>
+</mapper>
