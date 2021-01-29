@@ -16,11 +16,36 @@ public class Goal {
     private int count;
     private int userId;
     private int totalParticipants;
+	/*
+	 *  [혜영]21.01.29 예시설명 추가
+	 */   
+    private String exExplanation;
     
     public Goal() {
-		this(0, null, null, null, null, null, null, null, false, null, 0, 0, 0);
+		this(0, null, null, null, null, null, null, null, false, null, 0, 0, 0,null);
 	}
-
+    
+	/*
+	 *  [혜영]21.01.29 exExplanation추가 생성자
+	 */ 
+	public Goal(int id, String title, String explanation, String mainImage, String goodEx, String badEx, Date endDate,
+			Date startDate, boolean publicStatus, Date regdate, int count, int userId, int totalParticipants,String exExplanation) {
+		this.id = id;
+		this.title = title;
+		this.explanation = explanation;
+		this.mainImage = mainImage;
+		this.goodEx = goodEx;
+		this.badEx = badEx;
+		this.endDate = endDate;
+		this.startDate = startDate;
+		this.publicStatus = publicStatus;
+		this.regdate = regdate;
+		this.count = count;
+		this.userId = userId;
+		this.totalParticipants = totalParticipants;
+		this.exExplanation = exExplanation;
+	}
+	
 	public Goal(int id, String title, String explanation, String mainImage, String goodEx, String badEx, Date endDate,
 			Date startDate, boolean publicStatus, Date regdate, int count, int userId, int totalParticipants) {
 		this.id = id;
@@ -141,13 +166,24 @@ public class Goal {
 	public void setTotalParticipants(int totalParticipants) {
 		this.totalParticipants = totalParticipants;
 	}
+	
+	
+
+	public String getExExplanation() {
+		return exExplanation;
+	}
+
+	public void setExExplanation(String exExplanation) {
+		this.exExplanation = exExplanation;
+	}
 
 	@Override
 	public String toString() {
 		return "Goal [id=" + id + ", title=" + title + ", explanation=" + explanation + ", mainImage=" + mainImage
 				+ ", goodEx=" + goodEx + ", badEx=" + badEx + ", endDate=" + endDate + ", startDate=" + startDate
 				+ ", publicStatus=" + publicStatus + ", regdate=" + regdate + ", count=" + count + ", userId=" + userId
-				+ ", totalParticipants=" + totalParticipants + "]";
+				+ ", totalParticipants=" + totalParticipants + ", exExplanation=" + exExplanation + "]";
 	}
+
     
 }

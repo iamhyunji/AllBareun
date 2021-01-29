@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
     
 <title>디테일 인덱스</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -31,27 +33,39 @@ rel="stylesheet">
 			<main id="main">
 				<section class="detail-info">
 					<div class="detail-info-img">
-						<img src="/images/default-image2.png" alt="메인 이미지" />
+						<img src="${detail.mainImage}" alt="메인 이미지" />
 	
 					</div>
 					<div class="detail-info-text">
-						<h1> 저녁일기 쓰기 </h1> 
-						<span>한줄이라도 좋아요</span>
+						<h1>${detail.title} </h1> 
+						<span>${detail.explanation}</span>
 						<table class="detail-table">
 							<tbody>
 	
 								<tr>
 									<td class="center w100">기간</td>
-									<td class="left w200">2021/03/20 - 2021/06/31</td>
+									
+									<td class="left w200"><fmt:formatDate value="${detail.startDate}" type="both" pattern="yyyy/MM/dd"/>- 
+									<fmt:formatDate value="${detail.endDate}" type="both" pattern="yyyy/MM/dd"/></td>
 								</tr>
 								<tr>
 									<td class="center w100">인증횟수</td>
-									<td class="left w200">2회</td>
+									<td class="left w200">${detail.count}회</td>
+								</tr>
+								
+								<tr>
+									<td class="center w100">인증 요일</td>
+									<td class="left w200">${detail.days}</td>
+								</tr>
+								
+								<tr>
+									<td class="center w100">카테고리</td>
+									<td class="left w200">${detail.categories}</td>
 								</tr>
 	
 								<tr>
 									<td class="center w100">참여인원</td>
-									<td class="left w200">본율,중언,현지,혜영</td>
+									<td class="left w200">${detail.participants}</td>
 									<td class="center w200"><i class="fa-2x fas fa-user-circle"></i></td>
 	
 								</tr>

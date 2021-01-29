@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
     
 <title>참가하기</title>
 <link rel="stylesheet"
@@ -15,36 +17,54 @@
 			<main id="main">
 				<section class="detail-info">
 					<div class="detail-info-img">
-						<img src="/images/img3.jpeg" alt="메인 이미지" />
+						<img src="${detail.mainImage}" alt="메인 이미지" />
 	
 					</div>
 					<div class="detail-info-text">
-						<h1> 저녁일기 쓰기 </h1> 
-						<span>한줄이라도 좋아요</span>
+						<h1>${detail.title} </h1> 
+						<span>${detail.explanation}</span>
 						<table class="detail-table">
 							<tbody>
 	
 								<tr>
 									<td class="center w100">기간</td>
-									<td class="left w200">2021/03/20 - 2021/06/31</td>
+									
+									<td class="left w200"><fmt:formatDate value="${detail.startDate}" type="both" pattern="yyyy/MM/dd"/>- 
+									<fmt:formatDate value="${detail.endDate}" type="both" pattern="yyyy/MM/dd"/></td>
 								</tr>
 								<tr>
 									<td class="center w100">인증횟수</td>
-									<td class="left w200">2회</td>
+									<td class="left w200">${detail.count}회</td>
+								</tr>
+								
+								<tr>
+									<td class="center w100">인증 요일</td>
+									<td class="left w200">${detail.days}</td>
+								</tr>
+								
+								<tr>
+									<td class="center w100">카테고리</td>
+									<td class="left w200">${detail.categories}</td>
 								</tr>
 	
 								<tr>
 									<td class="center w100">참여인원</td>
-									<td class="left w200">본율,중언,현지,혜영</td>
-									<td class="center w200"><i class="fa-2x fas fa-user-circle"></i></td>
+									<td class="left w200">${detail.participants}</td>
+									
+									<td class="center w200">
+									<c:forEach var="n" items="${profile}">
+										<img class="w30" src="${n.profile}" alt="프로필" />
+									</c:forEach>
+									</td>
+										
 	
 								</tr>
 	
 	
 							</tbody>
 						</table>
-						<a class="a-input-white-l" href="delete?c=${param.c}&id=${n.id}">목록</a>
-						<a class="a-input-orange-l" href="delete?c=${param.c}&id=${n.id}">신청</a>
+						<a class="a-input-white-l" href="">목록</a>
+						<a class="a-input-orange-l" href="">신청</a>
 					</div>
 
 				</section>
@@ -53,16 +73,16 @@
 				<div class="detail-ex">
 					<div class="detail-ex-good">
 						<span> 인증예시 : 좋은 예시 </span> 
-						<img class="image s-img" src="/images/default-image2.png" alt="좋은예시" />
+						<img class="image s-img" src="${detail.goodEx}" alt="좋은예시" />
 
 					</div>
 
 					<div class="detail-ex-bad">
 						<span> 인증예시 : 나쁜 예시 </span> 
-						 <img class="s-img" src="/images/default-image2.png" alt="나쁜예시" />
+						 <img class="s-img" src="${detail.badEx}" alt="나쁜예시" />
 					</div>
 					<div>
-						인증방법가지고 오는 곳입니다.
+						${detail.exExplanation}
 					</div>
 				</div>
 
