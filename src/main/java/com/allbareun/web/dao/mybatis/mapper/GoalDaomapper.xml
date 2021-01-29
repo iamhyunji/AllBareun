@@ -20,12 +20,42 @@
    </select>
 
    <select id="getViewList" resultType="com.allbareun.web.entity.GoalView">
-      select * from GoalView
+      select * from GoalView where publicStatus=1
+		<if test="categories != null and categories !=''">       
+		and categories like concat('%',replace(#{categories}, ',','%'),'%')
+		</if>
+		<if test="startDate != null and startDate !=''"> 
+		and date_format(startDate, '%Y-%m-%d') &gt;=#{startDate} 
+		</if>
+		<if test="endDate != null and endDate !=''"> 
+		and date_format(endDate, '%Y-%m-%d')&lt;=#{endDate} 
+		</if>
+		<if test="days != null and days !=''"> 
+		and days like concat('%',replace(#{days}, ',','%'),'%') 
+		</if>
+		<if test="totalParticipants != null and totalParticipants !=0"> 
+		and totalParticipants = #{totalParticipants} 
+		</if>
+		<if test="query != null and query !=''"> 
+		and title like '%${query}%';
+		</if>
    </select>
 
    <select id="getAllViewList" resultType="com.allbareun.web.entity.GoalAllView">
       select * from GoalAllView
       where userId=${userId}
+	</select>
+   <select id="getDetailView" resultType="com.allbareun.web.entity.GoalDetailView">
+      select * from GoalDetailView
+      where id = ${param1}
+   </select>
+   
+    <select id="getProfile" resultType="com.allbareun.web.entity.User">
+    
+    select G.*,PV.name,PV.profile from (SELECT P.id , P.userId , P.goalId , U.name ,U.profile
+			FROM Participation P
+            LEFT JOIN User U ON P.userId = U.id) PV left join Goal G on PV.goalId = G.Id where G.id = ${param1};
+            
    </select>
    
 </mapper>

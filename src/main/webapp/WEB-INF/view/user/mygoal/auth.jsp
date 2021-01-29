@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
     <link rel="stylesheet" href="../../css/user/mygoal/auth.css" />
-
+	<script type="module" src="../../js/user/mygoal/auth.js"></script>
 
 
     <!-- --------------------------- <body> --------------------------------------- -->
@@ -24,20 +24,20 @@
                     </div>
                   </div>
                 </div>
-                <div class="drag-box">드래그 박스</div>
+                <div class="drag-box"><span></span></div>
                 <div class="answer-container">
                   <ul>
                     <div class="answer">
                       <li>1. 오늘 목표를 잘 실행했다고 느낀다</li>
                       <div class="circle-box">
                         <span>그렇지 않다</span>
-                        <input type="radio" class="circle c-xl no" name="q2" value="1" />
-                        <input type="radio" class="circle c-l no" name="q2" value="2" />
-                        <input type="radio" class="circle c-m no" name="q2" value="3" />
-                        <input type="radio" class="circle c-s" checked name="q2" value="4" />
-                        <input type="radio" class="circle c-m ok" name="q2" value="5" />
-                        <input type="radio" class="circle c-l ok" name="q2" value="6" />
-                        <input type="radio" class="circle c-xl ok" name="q2" value="7" />
+                        <input type="radio" class="circle c-xl no" name="q1" value="1" />
+                        <input type="radio" class="circle c-l no" name="q1" value="2" />
+                        <input type="radio" class="circle c-m no" name="q1" value="3" />
+                        <input type="radio" class="circle c-s" checked name="q1" value="4" />
+                        <input type="radio" class="circle c-m ok" name="q1" value="5" />
+                        <input type="radio" class="circle c-l ok" name="q1" value="6" />
+                        <input type="radio" class="circle c-xl ok" name="q1" value="7" />
                         <span>그렇다</span>
                       </div>
                     </div>
@@ -59,13 +59,13 @@
                       <li>3. 앞으로도 내 스스로 목표를 실천할 의향이 있다.</li>
                       <div class="circle-box">
                         <span>그렇지 않다</span>
-                        <input type="radio" class="circle c-xl no" name="q2" value="1" />
-                        <input type="radio" class="circle c-l no" name="q2" value="2" />
-                        <input type="radio" class="circle c-m no" name="q2" value="3" />
-                        <input type="radio" class="circle c-s" checked name="q2" value="4" />
-                        <input type="radio" class="circle c-m ok" name="q2" value="5" />
-                        <input type="radio" class="circle c-l ok" name="q2" value="6" />
-                        <input type="radio" class="circle c-xl ok" name="q2" value="7" />
+                        <input type="radio" class="circle c-xl no" name="q3" value="1" />
+                        <input type="radio" class="circle c-l no" name="q3" value="2" />
+                        <input type="radio" class="circle c-m no" name="q3" value="3" />
+                        <input type="radio" class="circle c-s" checked name="q3" value="4" />
+                        <input type="radio" class="circle c-m ok" name="q3" value="5" />
+                        <input type="radio" class="circle c-l ok" name="q3" value="6" />
+                        <input type="radio" class="circle c-xl ok" name="q3" value="7" />
                         <span>그렇다</span>
                       </div>
                     </div>

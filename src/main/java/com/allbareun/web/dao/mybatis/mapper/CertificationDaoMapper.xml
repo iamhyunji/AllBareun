@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.allbareun.web.dao.CertificationDao">
+
+
+   <select id="getCertListById" resultType="com.allbareun.web.entity.Certification">
+      select * from Certification where id=#{id};
+   </select>
+</mapper>

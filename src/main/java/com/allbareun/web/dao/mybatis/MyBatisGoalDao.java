@@ -11,9 +11,15 @@ import com.allbareun.web.entity.Cycle;
 import com.allbareun.web.entity.Goal;
 import com.allbareun.web.entity.GoalAllView;
 import com.allbareun.web.entity.GoalCategory;
+import com.allbareun.web.entity.Certification;
+import com.allbareun.web.entity.CertificationView;
+import com.allbareun.web.entity.Goal;
+import com.allbareun.web.entity.GoalAllView;
+import com.allbareun.web.entity.GoalDetailView;
 import com.allbareun.web.entity.GoalView;
 import com.allbareun.web.entity.Group;
 import com.allbareun.web.entity.Participation;
+import com.allbareun.web.entity.User;
 
 @Repository
 public class MyBatisGoalDao implements GoalDao {
@@ -24,17 +30,12 @@ public class MyBatisGoalDao implements GoalDao {
 	public MyBatisGoalDao(SqlSession session) {
 		mapper = session.getMapper(GoalDao.class);
 	}
-	
+
+
 	@Override
 	public int update(Goal goal) {
 		
 		return mapper.update(goal);
-	}
-	
-	@Override
-	public Goal get(int id) {
-
-		return mapper.get(id);
 	}
 	
 	@Override
@@ -43,15 +44,47 @@ public class MyBatisGoalDao implements GoalDao {
 		return mapper.getAllView(id);
 	}
 	
+	public List<GoalView> getViewList(String categories, String startDate, String endDate, String days, int totalParticipants,
+			String query) {
+
+		return mapper.getViewList(categories, startDate, endDate, days, totalParticipants, query);
+	}
+
 	@Override
-	public List<GoalView> getViewList() {
+	public GoalDetailView getDetailView(int id) {
 		// TODO Auto-generated method stub
-		return mapper.getViewList();
+		return mapper.getDetailView(id);
+	}
+
+	@Override
+	public List<User> getProfile(int id) {
+		// TODO Auto-generated method stub
+		return mapper.getProfile(id);
+	}
+
+	@Override
+	public CertificationView getAuthImage(int id) {
+		// TODO Auto-generated method stub
+		return mapper.getAuthImage(id);
+	}
+
+
+	@Override
+	public Goal get(int id) {
+
+		return mapper.get(id);
 	}
 
 	@Override
 	public List<GoalAllView> getAllViewList(int userId) {
 		return mapper.getAllViewList(userId);
+	}
+
+
+	@Override
+	public List<GoalView> getViewList() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

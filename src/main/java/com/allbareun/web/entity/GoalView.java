@@ -5,22 +5,19 @@ import java.util.Date;
 public class GoalView {
 	private int id;
 	private String title;
-	private String explanation;
 	private String mainImage;
-	private String goodEx;
-	private String badEx;
 	private Date endDate;
 	private Date startDate;
+	private int dateDiff;  // 총 기간
 	private boolean publicStatus;
 	private Date regdate;
-	private int count;
+	private int count;  // 1주에 인증횟수
 	private String userName;
 	private String categories;
 	private String days;
-	private int userId;
 	private int totalParticipants;
-	private String participants;
-
+	private int nowParticipantsCount;
+	private String categoriesColor;
 	
 	
 	public GoalView() {
@@ -28,30 +25,26 @@ public class GoalView {
 	}
 
 
-
-	public GoalView(int id, String title, String explanation, String mainImage, String goodEx, String badEx,
-			Date endDate, Date startDate, boolean publicStatus, Date regdate, int count, String userName,
-			String categories, String days, int userId, int totalParticipants, String participants) {
+	public GoalView(int id, String title, String mainImage, Date endDate, Date startDate, int dateDiff,
+			boolean publicStatus, Date regdate, int count, String userName, String categories, String days,
+			int totalParticipants, int nowParticipantsCount, String categoriesColor) {
 		super();
 		this.id = id;
 		this.title = title;
-		this.explanation = explanation;
 		this.mainImage = mainImage;
-		this.goodEx = goodEx;
-		this.badEx = badEx;
 		this.endDate = endDate;
 		this.startDate = startDate;
+		this.dateDiff = dateDiff;
 		this.publicStatus = publicStatus;
 		this.regdate = regdate;
 		this.count = count;
 		this.userName = userName;
 		this.categories = categories;
 		this.days = days;
-		this.userId = userId;
 		this.totalParticipants = totalParticipants;
-		this.participants = participants;
+		this.nowParticipantsCount = nowParticipantsCount;
+		this.categoriesColor = categoriesColor;
 	}
-
 
 
 	public int getId() {
@@ -59,11 +52,9 @@ public class GoalView {
 	}
 
 
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 
 
 	public String getTitle() {
@@ -71,23 +62,9 @@ public class GoalView {
 	}
 
 
-
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
-
-
-	public String getExplanation() {
-		return explanation;
-	}
-
-
-
-	public void setExplanation(String explanation) {
-		this.explanation = explanation;
-	}
-
 
 
 	public String getMainImage() {
@@ -95,35 +72,9 @@ public class GoalView {
 	}
 
 
-
 	public void setMainImage(String mainImage) {
 		this.mainImage = mainImage;
 	}
-
-
-
-	public String getGoodEx() {
-		return goodEx;
-	}
-
-
-
-	public void setGoodEx(String goodEx) {
-		this.goodEx = goodEx;
-	}
-
-
-
-	public String getBadEx() {
-		return badEx;
-	}
-
-
-
-	public void setBadEx(String badEx) {
-		this.badEx = badEx;
-	}
-
 
 
 	public Date getEndDate() {
@@ -131,11 +82,9 @@ public class GoalView {
 	}
 
 
-
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
-
 
 
 	public Date getStartDate() {
@@ -143,17 +92,24 @@ public class GoalView {
 	}
 
 
-
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
 
 
-
-	public boolean getPublicStatus() {
-		return publicStatus;
+	public int getDateDiff() {
+		return dateDiff;
 	}
 
+
+	public void setDateDiff(int dateDiff) {
+		this.dateDiff = dateDiff;
+	}
+
+
+	public boolean isPublicStatus() {
+		return publicStatus;
+	}
 
 
 	public void setPublicStatus(boolean publicStatus) {
@@ -161,11 +117,9 @@ public class GoalView {
 	}
 
 
-
 	public Date getRegdate() {
 		return regdate;
 	}
-
 
 
 	public void setRegdate(Date regdate) {
@@ -173,11 +127,9 @@ public class GoalView {
 	}
 
 
-
 	public int getCount() {
 		return count;
 	}
-
 
 
 	public void setCount(int count) {
@@ -185,11 +137,9 @@ public class GoalView {
 	}
 
 
-
 	public String getUserName() {
 		return userName;
 	}
-
 
 
 	public void setUserName(String userName) {
@@ -197,11 +147,9 @@ public class GoalView {
 	}
 
 
-
 	public String getCategories() {
 		return categories;
 	}
-
 
 
 	public void setCategories(String categories) {
@@ -209,11 +157,9 @@ public class GoalView {
 	}
 
 
-
 	public String getDays() {
 		return days;
 	}
-
 
 
 	public void setDays(String days) {
@@ -221,23 +167,9 @@ public class GoalView {
 	}
 
 
-
-	public int getUserId() {
-		return userId;
-	}
-
-
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-
-
-
 	public int getTotalParticipants() {
 		return totalParticipants;
 	}
-
 
 
 	public void setTotalParticipants(int totalParticipants) {
@@ -245,19 +177,37 @@ public class GoalView {
 	}
 
 
+	public int getNowParticipantsCount() {
+		return nowParticipantsCount;
+	}
 
-	public String getParticipants() {
-		return participants;
+
+	public void setNowParticipantsCount(int nowParticipantsCount) {
+		this.nowParticipantsCount = nowParticipantsCount;
+	}
+
+
+	public String getCategoriesColor() {
+		return categoriesColor;
+	}
+
+
+	public void setCategoriesColor(String categoriesColor) {
+		this.categoriesColor = categoriesColor;
+	}
+
+
+	@Override
+	public String toString() {
+		return "GoalView [id=" + id + ", title=" + title + ", mainImage=" + mainImage + ", endDate=" + endDate
+				+ ", startDate=" + startDate + ", dateDiff=" + dateDiff + ", publicStatus=" + publicStatus
+				+ ", regdate=" + regdate + ", count=" + count + ", userName=" + userName + ", categories=" + categories
+				+ ", days=" + days + ", totalParticipants=" + totalParticipants + ", nowParticipantsCount="
+				+ nowParticipantsCount + ", categoriesColor=" + categoriesColor + "]";
 	}
 
 
 
-	public void setParticipants(String participants) {
-		this.participants = participants;
-	}
-
-	
-	
 	
 	
 	

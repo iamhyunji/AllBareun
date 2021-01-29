@@ -1,36 +1,39 @@
 package com.allbareun.web.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.allbareun.web.dao.GoalCategoryDao;
+import com.allbareun.web.dao.CertificationDao;
 import com.allbareun.web.dao.GoalDao;
 import com.allbareun.web.entity.Cycle;
+import com.allbareun.web.entity.Certification;
+import com.allbareun.web.entity.CertificationView;
 import com.allbareun.web.entity.Goal;
 import com.allbareun.web.entity.GoalAllView;
 import com.allbareun.web.entity.GoalCategory;
+import com.allbareun.web.entity.GoalDetailView;
 import com.allbareun.web.entity.GoalView;
 import com.allbareun.web.entity.Group;
 import com.allbareun.web.entity.Participation;
+import com.allbareun.web.entity.User;
 
 @Service
 public class GoalServiceImp implements GoalService {
 
 	@Autowired
 	private GoalDao goalDao;
+	
+	@Autowired
+	private CertificationDao certificationDao;
 
 	@Override
 	public int insert(Goal goal, GoalCategory goalCategory, Cycle cycle, Participation participation, Group group) {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-
-	@Override
-	public Goal get(int id) {
-		
-		return goalDao.get(id);
 	}
 	
 	@Override
@@ -48,21 +51,56 @@ public class GoalServiceImp implements GoalService {
 		return 0;
 	}
 
-	@Override
-	public GoalAllView getAllView(int id) {
-		
-		return goalDao.getAllView(id);
+	public GoalDetailView getDetailView(int id) {
+		// TODO Auto-generated method stub
+		return goalDao.getDetailView(id);
 	}
 
 	@Override
-	public List<GoalView> getViewList() {
+	public List<GoalView> getViewList(String categories, String startDate,String endDate, String days, int totalParticipants,
+			String query) {
 		// TODO Auto-generated method stub
-		return goalDao.getViewList();
+		return goalDao.getViewList(categories, startDate, endDate, days, totalParticipants, query);
+	}
+
+
+
+	@Override
+	public List<Certification> getCertListById(int goalId) {
+		// TODO Auto-generated method stub
+		return certificationDao.getCertListById(goalId);
+	}
+
+
+
+
+	public List<User> getProfile(int id) {
+		// TODO Auto-generated method stub
+		return goalDao.getProfile(id);
+	}
+
+	@Override
+	public CertificationView getAuthImage(int id) {
+		// TODO Auto-generated method stub
+		return goalDao.getAuthImage(id);
+	}
+//	////////////////////////////////////////////////
+
+	@Override
+	public Goal get(int id) {
+		
+		return goalDao.get(id);
 	}
 
 	@Override
 	public List<GoalAllView> getAllViewList(int userId) {
 		return goalDao.getAllViewList(userId);
+	}
+
+	@Override
+	public GoalAllView getAllView(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

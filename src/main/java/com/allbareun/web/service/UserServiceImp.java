@@ -10,9 +10,9 @@ public class UserServiceImp implements UserService{
 	@Autowired
 	private UserDao userDao;
 	@Override
-	public int isValid(String email, String password) {
+	public boolean isValid(String email, String password) {
 		// TODO Auto-generated method stub
-		return 0;
+		return false;
 	}
 
 	@Override
@@ -31,6 +31,24 @@ public class UserServiceImp implements UserService{
 	public String getPassword(String email, String name, String phone) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int insert(User user) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int update(User user) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int delete(User user) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 

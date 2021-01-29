@@ -6,77 +6,84 @@ public class Certification {
 	
 	private int goalId; 
 	private int id;
-	private String image;
-	private Date regDate;
+	private String authImage;
+	private Date regdate;
 	private int userId;
 	
 	
-	public Certification(int goalId, int id, String image, Date regDate, int userId) {
-		super();
-		this.goalId = goalId;
-		this.id = id;
-		this.image = image;
-		this.regDate = regDate;
-		this.userId = userId;
-	}
+public Certification() {
+	// TODO Auto-generated constructor stub
+}
 
 
-	public int getGoalId() {
-		return goalId;
-	}
+public Certification(int goalId, int id, String authImage, Date regdate, int userId) {
+	super();
+	this.goalId = goalId;
+	this.id = id;
+	this.authImage = authImage;
+	this.regdate = regdate;
+	this.userId = userId;
+}
 
 
-	public void setGoalId(int goalId) {
-		this.goalId = goalId;
-	}
+public int getGoalId() {
+	return goalId;
+}
 
 
-	public int getId() {
-		return id;
-	}
+public void setGoalId(int goalId) {
+	this.goalId = goalId;
+}
 
 
-	public void setId(int id) {
-		this.id = id;
-	}
+public int getId() {
+	return id;
+}
 
 
-	public String getImage() {
-		return image;
-	}
+public void setId(int id) {
+	this.id = id;
+}
 
 
-	public void setImage(String image) {
-		this.image = image;
-	}
+public String getAuthImage() {
+	return authImage;
+}
 
 
-	public Date getRegDate() {
-		return regDate;
-	}
+public void setAuthImage(String authImage) {
+	this.authImage = authImage;
+}
 
 
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
-	}
+public Date getRegdate() {
+	return regdate;
+}
 
 
-	public int getUserId() {
-		return userId;
-	}
+public void setRegdate(Date regdate) {
+	this.regdate = regdate;
+}
 
 
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+public int getUserId() {
+	return userId;
+}
 
 
-	@Override
-	public String toString() {
-		return "Certification [goalId=" + goalId + ", id=" + id + ", image=" + image + ", regDate=" + regDate
-				+ ", userId=" + userId + "]";
-	}
-	
+public void setUserId(int userId) {
+	this.userId = userId;
+}
+
+
+@Override
+public String toString() {
+	return "Certification [goalId=" + goalId + ", id=" + id + ", authImage=" + authImage + ", regdate=" + regdate
+			+ ", userId=" + userId + "]";
+}
+
+
+
 	
 	
 }
