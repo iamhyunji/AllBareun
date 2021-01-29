@@ -20,7 +20,7 @@ public class MyBatisUserDao implements UserDao{
 	
 	
 	@Override
-	public int isValid(String email, String password) {
+	public boolean isValid(String email, String password) {
 		// TODO Auto-generated method stub
 		return mapper.isValid(email, password);
 	}
@@ -41,6 +41,27 @@ public class MyBatisUserDao implements UserDao{
 	public String getPassword(String email, String name, String phone) {
 		// TODO Auto-generated method stub
 		return mapper.getPassword(email, name, phone);
+	}
+
+
+	@Override
+	public int insert(User user) {
+		// TODO Auto-generated method stub
+		return mapper.insert(user);
+	}
+
+
+	@Override
+	public int update(User user) {
+		// TODO Auto-generated method stub
+		return mapper.update(user);
+	}
+
+
+	@Override
+	public int delete(User user) {
+		// TODO Auto-generated method stub
+		return mapper.delete(user);
 	}
 
 }
