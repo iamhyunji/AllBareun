@@ -7,7 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.allbareun.web.dao.GoalDao;
+import com.allbareun.web.entity.Certification;
+import com.allbareun.web.entity.CertificationView;
+import com.allbareun.web.entity.Goal;
+import com.allbareun.web.entity.GoalAllView;
+import com.allbareun.web.entity.GoalDetailView;
 import com.allbareun.web.entity.GoalView;
+import com.allbareun.web.entity.User;
 
 @Repository
 public class MyBatisGoalDao implements GoalDao {
@@ -25,6 +31,31 @@ public class MyBatisGoalDao implements GoalDao {
 			String query) {
 		// TODO Auto-generated method stub
 		return mapper.getViewList(categories, startDate, endDate, days, totalParticipants, query);
+	}
+
+	@Override
+	public GoalDetailView getDetailView(int id) {
+		// TODO Auto-generated method stub
+		return mapper.getDetailView(id);
+	}
+
+	@Override
+	public List<User> getProfile(int id) {
+		// TODO Auto-generated method stub
+		return mapper.getProfile(id);
+	}
+
+	@Override
+	public CertificationView getAuthImage(int id) {
+		// TODO Auto-generated method stub
+		return mapper.getAuthImage(id);
+	}
+
+
+	@Override
+	public Goal get(int id) {
+		// TODO Auto-generated method stub
+		return mapper.get(id);
 	}
 
 }

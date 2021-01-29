@@ -9,9 +9,11 @@ import org.springframework.stereotype.Service;
 import com.allbareun.web.dao.CertificationDao;
 import com.allbareun.web.dao.GoalDao;
 import com.allbareun.web.entity.Certification;
+import com.allbareun.web.entity.CertificationView;
 import com.allbareun.web.entity.Goal;
-import com.allbareun.web.entity.GoalAllView;
+import com.allbareun.web.entity.GoalDetailView;
 import com.allbareun.web.entity.GoalView;
+import com.allbareun.web.entity.User;
 
 @Service
 public class GoalServiceImp implements GoalService {
@@ -41,9 +43,9 @@ public class GoalServiceImp implements GoalService {
 	}
 
 	@Override
-	public Goal get(int id) {
+	public GoalDetailView getDetailView(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return goalDao.getDetailView(id);
 	}
 
 	@Override
@@ -53,11 +55,7 @@ public class GoalServiceImp implements GoalService {
 		return goalDao.getViewList(categories, startDate, endDate, days, totalParticipants, query);
 	}
 
-	@Override
-	public List<GoalAllView> getAllViewList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	@Override
 	public List<Certification> getCertListById(int goalId) {
@@ -67,5 +65,27 @@ public class GoalServiceImp implements GoalService {
 
 
 
+
+	public List<User> getProfile(int id) {
+		// TODO Auto-generated method stub
+		return goalDao.getProfile(id);
+	}
+
+	@Override
+	public CertificationView getAuthImage(int id) {
+		// TODO Auto-generated method stub
+		return goalDao.getAuthImage(id);
+	}
+//	////////////////////////////////////////////////
+
+	@Override
+	public Goal get(int id) {
+		// TODO Auto-generated method stub
+		return goalDao.get(id);
+	}
+
+
+
+	
 
 }

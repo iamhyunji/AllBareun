@@ -28,6 +28,14 @@ html {
 	width: 100px;
 }
 
+.w50{
+	width: 50px;
+}
+
+.w30{
+	width: 30px;
+}
+
 /* --------------- select --------------- */
 /* small, medium, large, x-large */
 .select-s {

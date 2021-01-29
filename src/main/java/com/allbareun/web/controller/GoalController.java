@@ -9,10 +9,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.allbareun.web.entity.Goal;
+import com.allbareun.web.entity.GoalAllView;
+import com.allbareun.web.entity.GoalDetailView;
 import com.allbareun.web.entity.GoalView;
+import com.allbareun.web.entity.User;
 import com.allbareun.web.service.GoalServiceImp;
 
 
@@ -23,12 +28,20 @@ public class GoalController {
 	@Autowired
 	private GoalServiceImp service;
 
-	@GetMapping("participate")
-	public String participate() {
+	 @RequestMapping("{id}")
+	public String participate(Model model, @PathVariable(name="id") int id) {
+		 
+		 GoalDetailView detail = service.getDetailView(id);
+		 List<User> profile = service.getProfile(id);
+
+		
+		 model.addAttribute("detail", detail);
+		 model.addAttribute("profile", profile);
 
 		return "user.goal.participate";
 	}
-
+	
+	
 	@GetMapping("list")
 	public String list(
 			@RequestParam(name="categories", defaultValue = "") String categories,

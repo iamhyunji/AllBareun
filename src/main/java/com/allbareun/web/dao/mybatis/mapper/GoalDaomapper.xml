@@ -27,4 +27,18 @@ and totalParticipants = #{totalParticipants}
 and title like '%${query}%';
 </if>
    </select>
+   
+   <select id="getDetailView" resultType="com.allbareun.web.entity.GoalDetailView">
+      select * from GoalDetailView
+      where id = ${param1}
+   </select>
+   
+    <select id="getProfile" resultType="com.allbareun.web.entity.User">
+    
+    select G.*,PV.name,PV.profile from (SELECT P.id , P.userId , P.goalId , U.name ,U.profile
+			FROM Participation P
+            LEFT JOIN User U ON P.userId = U.id) PV left join Goal G on PV.goalId = G.Id where G.id = ${param1};
+            
+   </select>
+   
 </mapper>
