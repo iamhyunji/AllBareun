@@ -42,9 +42,13 @@
 }
 
 .drag-box {
+  position: relative;
   margin: 20px 0;
   height: 300px;
+  width: 400px;
   border: 1px solid black;
+  object-fit: contain;
+  left: 400px;
 }
 .answer-container {
   display: flex;

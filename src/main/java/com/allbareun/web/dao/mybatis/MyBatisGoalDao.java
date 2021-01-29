@@ -18,11 +18,13 @@ public class MyBatisGoalDao implements GoalDao {
 	public MyBatisGoalDao(SqlSession session) {
 		mapper = session.getMapper(GoalDao.class);
 	}
-	
+
+
 	@Override
-	public List<GoalView> getViewList() {
+	public List<GoalView> getViewList(String categories, String startDate, String endDate, String days, int totalParticipants,
+			String query) {
 		// TODO Auto-generated method stub
-		return mapper.getViewList();
+		return mapper.getViewList(categories, startDate, endDate, days, totalParticipants, query);
 	}
 
 }
