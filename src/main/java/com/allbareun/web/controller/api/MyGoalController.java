@@ -1,5 +1,6 @@
 package com.allbareun.web.controller.api;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.allbareun.web.entity.CertDetailView;
 import com.allbareun.web.entity.CertificationView;
 import com.allbareun.web.service.GoalService;
 
@@ -27,14 +29,23 @@ public class MyGoalController {
 			@RequestParam(name = "startDate", defaultValue = "") String startDate,
 			@RequestParam(name = "endDate", defaultValue = "") String endDate
 			) {
-		System.out.printf("%d,%s,%s,%s\n",id,name,startDate,endDate);
 		List<CertificationView>  list = service.getCertViewListById(id,name,startDate,endDate);
-		for (CertificationView c : list) {
-			System.out.println(c);
-		}
 		
 		
 		return list;
 	}
-	
+	@RequestMapping("cert/{goalId}/detail/{id}")
+	public List<Integer> certList(
+			@PathVariable(name = "id") int id,
+			@PathVariable(name = "goalId") int goalId
+			) {
+		CertDetailView  detail = service.getCertDetailView(id);
+		List<Integer> list = new ArrayList<Integer>();
+		list.add(detail.getAnswer1());
+		list.add(detail.getAnswer2());
+		list.add(detail.getAnswer3());
+		
+		
+		return list;
+	}
 }

@@ -14,6 +14,7 @@ import com.allbareun.web.dao.CertificationDao;
 import com.allbareun.web.dao.GoalDao;
 import com.allbareun.web.dao.UserDao;
 import com.allbareun.web.entity.Cycle;
+import com.allbareun.web.entity.CertDetailView;
 import com.allbareun.web.entity.Certification;
 import com.allbareun.web.entity.CertificationView;
 import com.allbareun.web.entity.Goal;
@@ -151,6 +152,24 @@ public class GoalServiceImp implements GoalService {
 			list.add(name);
 		}
 		return list;
+	}
+
+	@Override
+	public CertDetailView getCertDetailView(int id) {
+		// TODO Auto-generated method stub
+		return certificationDao.getCertDetailView(id);
+	}
+
+	@Override
+	public CertDetailView getPrev(int id,int goalId) {
+		// TODO Auto-generated method stub
+		return certificationDao.getPrev(id,goalId);
+	}
+
+	@Override
+	public CertDetailView getNext(int id,int goalId) {
+		// TODO Auto-generated method stub
+		return certificationDao.getNext(id,goalId);
 	}
 
 

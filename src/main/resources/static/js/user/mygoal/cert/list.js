@@ -32,7 +32,7 @@ window.addEventListener("load", () => {
               let aDate = getFormatDate(new Date(a.regdate));
               if (aDate == dateVar) {
                 tr += `  <li class="goal-list">
-                        <a href="#" class="image"><img src="${a.authImage}" alt="" /><img class="fa-user-circle" src="${a.profile}"/></a>
+                        <a href="/mygoal/cert/${a.goalId}/detail/${a.id}" class="image"><img src="${a.authImage}" alt="" /><img class="fa-user-circle" src="${a.profile}"/></a>
                     </li>`;
               }
             }

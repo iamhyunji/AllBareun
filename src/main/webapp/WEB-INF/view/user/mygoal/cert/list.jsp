@@ -4,14 +4,14 @@
 <!DOCTYPE html>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-    <link rel="stylesheet" href="../../../css/user/mygoal/cert/list.css" />
+    <link rel="stylesheet" href="/css/user/mygoal/cert/list.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
       integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
       crossorigin="anonymous"
     />
-  	<script src="../../../js/user/mygoal/cert/list.js"></script>
+  	<script src="/js/user/mygoal/cert/list.js"></script>
 
         <!-- --------------------------- main --------------------------------------- -->
 
@@ -60,7 +60,7 @@
 				       
 				       <c:if test="${aDateFmt eq dateVar}" >
      				       <li class="goal-list">
-		                   		<a href="#" class="image"><img src="${a.authImage}" alt="" /><img class="fa-user-circle" src="${a.profile}"/></a>
+		                   		<a href="/mygoal/cert/${a.goalId}/detail/${a.id}" class="image"><img src="${a.authImage}" alt="" /><img class="fa-user-circle" src="${a.profile}"/></a>
 		                   		
 	               			</li>
 				       </c:if>

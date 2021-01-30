@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.allbareun.web.entity.Goal;
 import com.allbareun.web.entity.GoalAllView;
+import com.allbareun.web.entity.CertDetailView;
 import com.allbareun.web.entity.Certification;
 import com.allbareun.web.entity.CertificationView;
 import com.allbareun.web.entity.GoalDetailView;
@@ -82,14 +83,25 @@ public class MyGoalController {
 		 */
 	}
 
-	@GetMapping("cert/detail")
-	public String certDetail() {
+	@GetMapping("cert/{goalId}/detail/{id}")
+	public String certDetail(
+			@PathVariable(name="goalId") int goalId,
+			@PathVariable(name="id") int id,
+			Model model) {
+
+		CertDetailView detail = service.getCertDetailView(id);
+		CertDetailView prev = service.getPrev(id,goalId);
+		CertDetailView next = service.getNext(id,goalId);
+		
+		model.addAttribute("d", detail);
+		model.addAttribute("prev", prev);
+		model.addAttribute("next", next);
 
 		return "user.mygoal.cert.detail";
 	}
 
-	@GetMapping("cert/list/{id}")
-	public String certList(@PathVariable("id") int goalId ,Model model) {
+	@GetMapping("cert/list/{goalId}")
+	public String certList(@PathVariable(name = "goalId") int goalId ,Model model) {
 		
 		List<CertificationView> list = service.getCertViewListById(goalId);
 		String ids = service.getParticipantsId(goalId); // 참가자 id 받아오기

@@ -3,6 +3,7 @@ package com.allbareun.web.service;
 import java.util.List;
 
 import com.allbareun.web.entity.Cycle;
+import com.allbareun.web.entity.CertDetailView;
 import com.allbareun.web.entity.Certification;
 import com.allbareun.web.entity.CertificationView;
 import com.allbareun.web.entity.Goal;
@@ -35,5 +36,8 @@ public interface GoalService {
 	String getParticipantsId(int goalId);
 	List<String> getUserName(String ids);
 	List<String> getUserProfile(String ids);
+	CertDetailView getCertDetailView(int id);
+	CertDetailView getPrev(int id,int goalId);
+	CertDetailView getNext(int id,int goalId);
 	
 }
