@@ -26,10 +26,14 @@ public interface GoalService {
 	List<GoalAllView> getAllViewList(int userId);
 	
 	List<GoalView> getViewList(String categories, String startDate, String endDate, String days, int totalParticipants, String query);
-	List<Certification> getCertListById(int goalId);
 	
 	GoalDetailView getDetailView(int id);
 	CertificationView getAuthImage(int id);
 	List<User> getProfile(int id);
+	List<CertificationView> getCertViewListById(int goalId);
+	List<CertificationView> getCertViewListById(int goalId, String name, String startDate, String endDate);
+	String getParticipantsId(int goalId);
+	List<String> getUserName(String ids);
+	List<String> getUserProfile(String ids);
 	
 }

@@ -1,6 +1,9 @@
 package com.allbareun.web.service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.allbareun.web.dao.GoalCategoryDao;
 import com.allbareun.web.dao.CertificationDao;
 import com.allbareun.web.dao.GoalDao;
+import com.allbareun.web.dao.UserDao;
 import com.allbareun.web.entity.Cycle;
 import com.allbareun.web.entity.Certification;
 import com.allbareun.web.entity.CertificationView;
@@ -29,7 +33,10 @@ public class GoalServiceImp implements GoalService {
 	
 	@Autowired
 	private CertificationDao certificationDao;
-
+	
+	@Autowired
+	private UserDao userDao;
+	
 	@Override
 	public int insert(Goal goal, GoalCategory goalCategory, Cycle cycle, Participation participation, Group group) {
 		// TODO Auto-generated method stub
@@ -65,11 +72,6 @@ public class GoalServiceImp implements GoalService {
 
 
 
-	@Override
-	public List<Certification> getCertListById(int goalId) {
-		// TODO Auto-generated method stub
-		return certificationDao.getCertListById(goalId);
-	}
 
 
 
@@ -102,5 +104,55 @@ public class GoalServiceImp implements GoalService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+
+	@Override
+	public List<CertificationView> getCertViewListById(int goalId) {
+		// TODO Auto-generated method stub
+		return certificationDao.getCertViewListById(goalId,null,null,null);
+	}
+
+	@Override
+	public List<CertificationView> getCertViewListById(int goalId, String name, String startDate, String endDate) {
+		// TODO Auto-generated method stub
+		return certificationDao.getCertViewListById(goalId,name,startDate,endDate);
+	}
+	
+	@Override
+	public String getParticipantsId(int goalId) {
+		// TODO Auto-generated method stub
+		return goalDao.getParticipantsId(goalId);
+	}
+
+
+	@Override
+	public List<String> getUserProfile(String ids) {
+		List<String> list = new ArrayList<String>();
+		
+		String[] idStr = ids.split(","); 
+		int[] id = Arrays.stream(idStr).mapToInt(Integer::parseInt).toArray();
+		for(int i=0; i<id.length; i++) {
+			User user = userDao.getById(id[i]);
+			String profile = user.getProfile();
+			list.add(profile);
+		}
+		return list;
+	}
+	@Override
+	public List<String> getUserName(String ids) {
+		List<String> list = new ArrayList<String>();
+
+		String[] idStr = ids.split(","); 
+		int[] id = Arrays.stream(idStr).mapToInt(Integer::parseInt).toArray();
+		for(int i=0; i<id.length; i++) {
+			User user = userDao.getById(id[i]);
+			String name = user.getName();
+			list.add(name);
+		}
+		return list;
+	}
+
+
 
 }

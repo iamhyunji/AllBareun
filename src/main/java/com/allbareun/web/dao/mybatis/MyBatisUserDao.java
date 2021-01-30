@@ -2,10 +2,12 @@ package com.allbareun.web.dao.mybatis;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.allbareun.web.dao.UserDao;
 import com.allbareun.web.entity.User;
 
+@Repository
 public class MyBatisUserDao implements UserDao{
 
 	@Autowired
@@ -62,6 +64,14 @@ public class MyBatisUserDao implements UserDao{
 	public int delete(User user) {
 		// TODO Auto-generated method stub
 		return mapper.delete(user);
+	}
+
+
+	
+	@Override
+	public User getById(int id) {
+		// TODO Auto-generated method stub
+		return mapper.getById(id);
 	}
 
 }

@@ -91,11 +91,15 @@ public class MyGoalController {
 	@GetMapping("cert/list/{id}")
 	public String certList(@PathVariable("id") int goalId ,Model model) {
 		
-		List<Certification> list = service.getCertListById(goalId);
-		for (Certification certification : list) {
-			System.out.println(certification);
-		}
+		List<CertificationView> list = service.getCertViewListById(goalId);
+		String ids = service.getParticipantsId(goalId); // 참가자 id 받아오기
+		List<String> profileInfo = service.getUserProfile(ids);
+		List<String> nameInfo = service.getUserName(ids);
+		
+		
 		model.addAttribute("list", list);
+		model.addAttribute("profileInfo", profileInfo);
+		model.addAttribute("nameInfo", nameInfo);
 		
 		return "user.mygoal.cert.list";
 	}

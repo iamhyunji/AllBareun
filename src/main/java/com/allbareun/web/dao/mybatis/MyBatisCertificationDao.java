@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.allbareun.web.dao.CertificationDao;
 import com.allbareun.web.entity.Certification;
+import com.allbareun.web.entity.CertificationView;
 
 @Repository
 public class MyBatisCertificationDao implements CertificationDao {
@@ -19,10 +20,12 @@ public class MyBatisCertificationDao implements CertificationDao {
 		mapper = session.getMapper(CertificationDao.class);
 	}
 
+
+
 	@Override
-	public List<Certification> getCertListById(int goalId) {
+	public List<CertificationView> getCertViewListById(int goalId, String name, String startDate, String endDate) {
 		// TODO Auto-generated method stub
-		return mapper.getCertListById(goalId);
+		return mapper.getCertViewListById(goalId,name,startDate,endDate);
 	}
 
 

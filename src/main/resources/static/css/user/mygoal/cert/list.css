@@ -3,7 +3,58 @@
 @import "/css/layout.css";
 
 /* ---------------body-------------------------- */
-
+.tab-part {
+	display: flex;
+ 	justify-content: space-between;
+ 	position: relative;
+}
+.profile-box {
+	position:relative;
+	top: 65px;
+}
+.profile-box .profile-img {
+	width: 80px;
+	height: 80px;
+	
+}
+/*profile °ãÄ¡±â*/
+.profile-box .profile-img:nth-of-type(2) {
+	position:relative;
+	right: 30px;
+}
+.profile-box .profile-img:nth-of-type(3) {
+	position:relative;
+	right: 60px;
+}
+.profile-box .profile-img:nth-of-type(4) {
+	position:relative;
+	right: 90px;
+}
+.profile-box .profile-img:nth-of-type(5) {
+	position:relative;
+	right: 120px;
+}
+.profile-box .profile-img:nth-of-type(6) {
+	position:relative;
+	right: 150px;
+}
+.profile-box .profile-img:nth-of-type(7) {
+	position:relative;
+	right: 180px;
+}
+.profile-box .profile-img:nth-of-type(8) {
+	position:relative;
+	right: 210px;
+}
+.profile-box .profile-img:nth-of-type(9) {
+	position:relative;
+	right: 240px;
+}
+.profile-box .profile-img:nth-of-type(10) {
+	position:relative;
+	right: 270px;
+}
+/*profile °ãÄ¡±â*/
 .major {
   position: relative;
   text-align: center;
@@ -15,11 +66,16 @@
   position: relative;
   display: inline-block;
   right: -230px;
-  top: 30px;
+  top:65px;
+  
+  
 }
 .major .input-box select {
   position: relative;
   right: 10px;
+}
+.major .input-box select, .major .input-box input {
+	 outline: none;
 }
 .image-container {
   margin-bottom: 50px;
@@ -43,6 +99,8 @@
 }
 .goal-list .image .fa-user-circle {
   position: absolute;
+  width:70px;
+  height:70px;
   right: 15px;
   bottom: 15px;
 }

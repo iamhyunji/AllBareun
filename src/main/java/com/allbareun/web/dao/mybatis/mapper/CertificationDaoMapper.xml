@@ -6,7 +6,16 @@
 <mapper namespace="com.allbareun.web.dao.CertificationDao">
 
 
-   <select id="getCertListById" resultType="com.allbareun.web.entity.Certification">
-      select * from Certification where id=#{id};
+   <select id="getCertViewListById" resultType="com.allbareun.web.entity.CertificationView">
+     select * from CertificationView where goalId=#{goalId} 
+	<if test="name != null and name !=''">       
+     and name = #{name}  
+	</if>
+	<if test="startDate != null and startDate !=''"> 
+     and date_format(regdate, '%Y-%m-%d') &gt;=#{startDate} 
+	</if>
+	<if test="endDate != null and endDate !=''"> 
+     and date_format(regdate, '%Y-%m-%d') &lt;=#{endDate};
+	</if>
    </select>
 </mapper>
