@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <link rel="stylesheet" href="../../css/common/list.css" />
+    <link rel="stylesheet" href="../../css/common/goal/list.css" />
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
- 
+   	<script src="/js/common/goal/list.js"></script> 
+   	
+   	
         <main id="main">
           <!-- Main -->
 
@@ -27,7 +29,9 @@
                   <tr>
                     <th class="select-s">기간</th>
                     <td>
-                      <div><input name="startDate" type="date" /> ~ <input name="endDate" type="date" /></div>
+                      <div><input class="start-date" name="startDate" type="date" /> ~ <input class="end-date" name="endDate" type="date" />
+                       <input class="a-input-orange-s all-date-button"  type="button" value="전체 날짜"/>
+                       </div>
                     </td>
                   </tr>
                   <tr>
@@ -48,7 +52,7 @@
                     <th class="select-s">인원</th>
                     <td>
                       <div>
-                        <select name="totalParticipants" id="">
+                        <select name="totalParticipants" class="select-count">
                           <option value="0">전체</option>
                           <option value="1">1명</option>
                           <option value="2">2명</option>
@@ -68,7 +72,7 @@
                     <td colspan="2">
                       <div>
                         <input class="search-bar select-xl" type="text" name="query" placeholder="목표 검색!" />
-                        <input class="a-input-white-s" type="submit" value="검색" />
+                        <input class="a-input-white-s search-button" type="submit" value="검색" />
                       </div>
                     </td>
                   </tr>

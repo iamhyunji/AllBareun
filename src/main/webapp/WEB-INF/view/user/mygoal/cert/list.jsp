@@ -41,6 +41,7 @@
                   </select>
                   <input class="start-date" type="date" value="" /> -
                   <input class="end-date" type="date" value="" />
+                  <input class="a-input-orange-s all-date-button"  type="button" value="전체 날짜"/>
                 </div>
 
               </div>
