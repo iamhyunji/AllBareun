@@ -25,7 +25,7 @@ public class MyPageController {
 	@GetMapping("done/list")
 	public String doneList(Model model) {
 		// 임시 회원 아이디입니다. 추후 회원 아이디 정보 얻는 로직을 구현해주세요.
-		int userId = 1;
+		int userId = 2;
 		
 		List<GoalAllView> list = service.getAllViewList(userId);
 		model.addAttribute("list", list);

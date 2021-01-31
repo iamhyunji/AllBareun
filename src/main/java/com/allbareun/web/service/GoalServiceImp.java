@@ -5,10 +5,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.allbareun.web.dao.GoalCategoryDao;
 import com.allbareun.web.dao.CertificationDao;
+import com.allbareun.web.dao.CycleDao;
 import com.allbareun.web.dao.GoalDao;
+import com.allbareun.web.dao.GroupDao;
 import com.allbareun.web.entity.Cycle;
 import com.allbareun.web.entity.Certification;
 import com.allbareun.web.entity.CertificationView;
@@ -26,16 +29,51 @@ public class GoalServiceImp implements GoalService {
 
 	@Autowired
 	private GoalDao goalDao;
+	@Autowired
+	GoalCategoryDao goalCategoryDao;
+	@Autowired
+	CycleDao cycleDao;
+	@Autowired
+	GroupDao groupDao;
 	
 	@Autowired
 	private CertificationDao certificationDao;
 
+
 	@Override
-	public int insert(Goal goal, GoalCategory goalCategory, Cycle cycle, Participation participation, Group group) {
-		// TODO Auto-generated method stub
+	@Transactional
+	public int insert(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList) {
+		
+		int result = 0;
+		goalDao.insert(goal);
+		
+		Goal insertedGoal = goalDao.getLastInserted(2);
+		int goalId = insertedGoal.getId();
+		
+		// 카테고리
+		for(GoalCategory gc : gcList) {
+			gc.setGoalId(goalId);
+			goalCategoryDao.insert(gc);
+		}
+		
+		// 인증 주기
+		for(Cycle c : cList) {
+			c.setGoalId(goalId);
+			cycleDao.insert(c);
+		}
+		
+		// 지인 그룹
+		if(gList != null)
+			for(Group g : gList) {
+				g.setGoalId(goalId);
+				groupDao.insert(g);
+			}
+				
+		result++;
+		
 		return 0;
 	}
-	
+
 	@Override
 	public int update(Goal goal, GoalCategory goalCategory, Cycle cycle, Participation participation, Group group) {
 		int result = 0;
@@ -102,5 +140,5 @@ public class GoalServiceImp implements GoalService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 }

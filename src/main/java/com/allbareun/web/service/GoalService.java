@@ -16,7 +16,7 @@ import com.allbareun.web.entity.User;
 
 public interface GoalService {
 
-	int insert(Goal goal, GoalCategory goalCategory, Cycle cycle, Participation participation, Group group);
+	int insert(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList);
 	int update(Goal goal, GoalCategory goalCategory, Cycle cycle, Participation participation, Group group);
 	int delete(Goal goal);
 	Goal get(int id);

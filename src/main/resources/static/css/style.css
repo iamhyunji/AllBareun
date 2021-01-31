@@ -92,17 +92,16 @@ html {
   font-weight: 900;
 
 }
-a.text-s:hover,
-a.text-s > *:hover,
-a.text-m-bold:hover,
-a.text-m-bold > *:hover,
-a.text-l:hover,
-a.text-l > *:hover,
-a.text-xl:hover,
-a.text-xl > *:hover {
+*.text-s > a:hover,
+*.text-s > * > a:hover,
+*.text-m-bold > a:hover,
+*.text-m-bold > * > a:hover,
+*.text-l >  a:hover,
+*.text-l > * > a:hover,
+*.text-xl > a:hover,
+*.text-xl > * > a:hover {
   text-decoration: none;
   color: #ff8f00;
-
 }
 
 /* --------------- img --------------- */

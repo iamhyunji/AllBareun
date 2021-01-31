@@ -31,6 +31,11 @@ public class MyBatisGoalDao implements GoalDao {
 		mapper = session.getMapper(GoalDao.class);
 	}
 
+	@Override
+	public int insert(Goal goal) {
+		
+		return mapper.insert(goal);
+	}
 
 	@Override
 	public int update(Goal goal) {
@@ -85,6 +90,12 @@ public class MyBatisGoalDao implements GoalDao {
 	public List<GoalView> getViewList() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Goal getLastInserted(int userId) {
+		
+		return mapper.getLastInserted(userId);
 	}
 
 }

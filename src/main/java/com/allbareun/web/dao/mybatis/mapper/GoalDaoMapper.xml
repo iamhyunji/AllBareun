@@ -5,6 +5,41 @@
 
 <mapper namespace="com.allbareun.web.dao.GoalDao">
 
+	<insert id="insert">
+		INSERT INTO Goal
+		(
+			`title`,
+			`explanation`,
+			`mainImage`,
+			<if test="goodEx != null and goodEx != ''">
+			`goodEx`,
+			`badEx`,
+			</if>
+			`exExplanation`,
+			`startDate`,
+			`endDate`,
+			`publicStatus`,
+			`userId`,
+			`totalParticipants`
+		)
+		VALUES
+		(
+			#{title},
+			#{explanation},
+			#{mainImage},
+			<if test="goodEx != null and goodEx != ''">
+			#{goodEx},
+			#{badEx},
+			</if>
+			#{exExplanation},
+			#{startDate},
+			#{endDate},
+			#{publicStatus},
+			#{userId},
+			#{totalParticipants}
+		);
+	</insert>
+	
    <update id="update">
 		UPDATE Goal
 		SET title = #{title}, explanation = #{explanation}, mainImage = #{mainImage}
@@ -56,6 +91,13 @@
 			FROM Participation P
             LEFT JOIN User U ON P.userId = U.id) PV left join Goal G on PV.goalId = G.Id where G.id = ${param1};
             
+   </select>
+   
+   <select id="getLastInserted" resultType="com.allbareun.web.entity.Goal">
+   		select * from Goal
+   		where userId = #{userId}
+   		order by regdate desc
+   		limit 1;
    </select>
    
 </mapper>
