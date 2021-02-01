@@ -26,6 +26,7 @@ public interface GoalDao {
 	
 	// -------------------------- View --------------------------
 	GoalDetailView getDetailView(int id);
+	GoalAllView getAllView(int id);
 	List<GoalView> getViewList();
 	List<GoalAllView> getAllViewList(int userId);
 	List<GoalView> getViewList(String categories, String startDate, String endDate, String days, int totalParticipants, String query);

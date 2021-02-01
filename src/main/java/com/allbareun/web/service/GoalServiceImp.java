@@ -74,7 +74,18 @@ public class GoalServiceImp implements GoalService {
 	}
 
 	@Override
-	public int update(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList) {
+	public int update(Goal goal) {
+		
+		int result = 0;
+		goalDao.update(goal);
+		result++;
+		
+		return result;
+		
+	}
+	
+	@Override
+	public int updateRetryGoal(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList) {
 		int result = 0;
 		int goalId = goal.getId();
 		Goal origin = goalDao.get(goalId);
@@ -180,8 +191,8 @@ public class GoalServiceImp implements GoalService {
 
 	@Override
 	public GoalAllView getAllView(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return goalDao.getAllView(id);
 	}
 	
 }

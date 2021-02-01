@@ -3,6 +3,7 @@ package com.allbareun.web.entity;
 import java.util.Date;
 
 public class GoalAllView extends Goal {
+	private int dateDiff;
 	private String userName;
 	private String categories;
 	private String days;
@@ -11,23 +12,32 @@ public class GoalAllView extends Goal {
 
     // --------------------------------- Constructor ---------------------------------
 	public GoalAllView() {
-		this(0, null, null, null, null, null, null, null, false, null, 0, 0, 0, null, null, null, null, null);
+		
 	}
 
 	public GoalAllView(int id, String title, String explanation, String mainImage, String goodEx, String badEx,
-						Date endDate, Date startDate, boolean publicStatus, Date regdate, int count, int userId, int totalParticipants,
-						String userName, String categories, String days, String participants, String groupParticipants) {
-		
-		super(id, title, explanation, mainImage, goodEx, badEx, endDate, startDate, publicStatus, regdate, count, userId, totalParticipants);
-		
+			Date endDate, Date startDate, boolean publicStatus, Date regdate, int count, int userId,
+			int totalParticipants, int dateDiff, String userName, String categories, String days, String participants,
+			String groupParticipants) {
+		super(id, title, explanation, mainImage, goodEx, badEx, endDate, startDate, publicStatus, regdate, count,
+				userId, totalParticipants);
+		this.dateDiff = dateDiff;
 		this.userName = userName;
 		this.categories = categories;
 		this.days = days;
 		this.participants = participants;
 		this.groupParticipants = groupParticipants;
 	}
-
+	
 	// --------------------------------- Getters/Setters ---------------------------------
+	public int getDateDiff() {
+		return dateDiff;
+	}
+
+	public void setDateDiff(int dateDiff) {
+		this.dateDiff = dateDiff;
+	}
+
 	public String getUserName() {
 		return userName;
 	}
@@ -67,18 +77,19 @@ public class GoalAllView extends Goal {
 	public void setGroupParticipants(String groupParticipants) {
 		this.groupParticipants = groupParticipants;
 	}
-
+	
 	// --------------------------------- Function ---------------------------------
 	@Override
 	public String toString() {
-		return "GoalAllView [userName=" + userName + ", categories=" + categories + ", days=" + days + ", participants="
-				+ participants + ", groupParticipants=" + groupParticipants + ", getId()=" + getId() + ", getTitle()="
-				+ getTitle() + ", getExplanation()=" + getExplanation() + ", getMainImage()=" + getMainImage()
-				+ ", getGoodEx()=" + getGoodEx() + ", getBadEx()=" + getBadEx() + ", getEndDate()=" + getEndDate()
-				+ ", getStartDate()=" + getStartDate() + ", getPublicStatus()=" + getPublicStatus() + ", getRegdate()="
-				+ getRegdate() + ", getCount()=" + getCount() + ", getUserId()=" + getUserId()
-				+ ", getTotalParticipants()=" + getTotalParticipants() + ", toString()=" + super.toString()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + "]";
+		return "GoalAllView [dateDiff=" + dateDiff + ", userName=" + userName + ", categories=" + categories + ", days="
+				+ days + ", participants=" + participants + ", groupParticipants=" + groupParticipants + ", getId()="
+				+ getId() + ", getTitle()=" + getTitle() + ", getExplanation()=" + getExplanation()
+				+ ", getMainImage()=" + getMainImage() + ", getGoodEx()=" + getGoodEx() + ", getBadEx()=" + getBadEx()
+				+ ", getEndDate()=" + getEndDate() + ", getStartDate()=" + getStartDate() + ", getPublicStatus()="
+				+ getPublicStatus() + ", getRegdate()=" + getRegdate() + ", getCount()=" + getCount() + ", getUserId()="
+				+ getUserId() + ", getTotalParticipants()=" + getTotalParticipants() + ", getExExplanation()="
+				+ getExExplanation() + ", toString()=" + super.toString() + ", getClass()=" + getClass()
+				+ ", hashCode()=" + hashCode() + "]";
 	}
 	
 }

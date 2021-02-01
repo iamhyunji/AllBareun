@@ -93,6 +93,7 @@ window.addEventListener("load", () => {
 
 				cycleContainer.insertAdjacentHTML('beforeend', cycleBox);
 				break;
+				
 			case "week":
 				cycle.remove();
 
@@ -108,6 +109,7 @@ window.addEventListener("load", () => {
 
 				cycleContainer.insertAdjacentHTML('beforeend', cycleBoxWeek);
 				break;
+				
 			case "weekday":
 				cycle.remove();
 
@@ -123,6 +125,7 @@ window.addEventListener("load", () => {
 
 				cycleContainer.insertAdjacentHTML('beforeend', cycleBoxWeekday);
 				break;
+				
 			case "weekend":
 				cycle.remove();
 
@@ -143,10 +146,16 @@ window.addEventListener("load", () => {
 	
 	// 등록 시 실행 사항
 	regButton.addEventListener("click", (e) => {
+		// 참가 개인일 대 초기화
 		if(participationSelect.value == "-1")
 			participationSelect.value = "0";
+			
+		// 요일 개수
+		let checkeds = document.querySelectorAll(`input[name="d-id"]:checked`);
+		let countInput = `<input type="hidden" name="g-c" value=${checkeds.length}/>`;
+		cycleContainer.insertAdjacentHTML('beforeend', countInput);
 		
-		console.log(participationSelect.value);
+		// console.log(checkeds.length);
 	});
 
 	// 문제 ) 제목 입력 시 Enter 키 누르면 submit됨.

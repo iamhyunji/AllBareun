@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/user/mypage/done/list.css">
@@ -56,7 +57,7 @@
 					<div>
 						<h2 class="text-l"><a href="#">${g.title }</a></h2>
 						<span>카테고리 : ${g.categories }</span>
-						<span>기간 : 4주 (${g.startDate } - ${g.endDate })</span>
+						<span>기간 : ${g.dateDiff }주 (<fmt:formatDate value="${g.startDate }" pattern="yyyy-MM-dd" /> - <fmt:formatDate value="${g.endDate }" pattern="yyyy-MM-dd" />)</span>
 						<span>횟수 : ${g.count }회 (${g.days })</span>
 						<span>참가 : ${g.totalParticipants }명 (${g.groupParticipants })</span>
 					</div>

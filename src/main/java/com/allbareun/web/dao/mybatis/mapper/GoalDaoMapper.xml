@@ -51,7 +51,7 @@
    </select>
    
    <select id="getAllView" resultType="com.allbareun.web.entity.GoalAllView">
-      	
+      	select * from GoalAllView where id = #{id};
    </select>
 
    <select id="getViewList" resultType="com.allbareun.web.entity.GoalView">

@@ -103,9 +103,10 @@ public class MyGoalController {
 	@GetMapping("list")
 	public String list(Model model) {
 		// 임시 회원 아이디입니다. 추후 회원 아이디 정보 얻는 로직을 구현해주세요.
-		int userId = 1;
+		int userId = 3;
 		
 		List<GoalAllView> list = service.getAllViewList(userId);
+		
 		model.addAttribute("list", list);
 		
 		return "user.mygoal.list";
@@ -116,7 +117,7 @@ public class MyGoalController {
 		
 		GoalAllView goalAllView = service.getAllView(id);
 		model.addAttribute("g", goalAllView);
-		
+
 		return "user.mygoal.edit";
 	}
 	
@@ -138,7 +139,7 @@ public class MyGoalController {
 		if(explanation != null)
 			origin.setExplanation(explanation);
 		
-		service.update(origin, null, null, null);
+		service.update(origin);
 		
 		return "redirect:../list";
 	}

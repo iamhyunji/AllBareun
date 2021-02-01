@@ -38,6 +38,17 @@ public class MyPageController {
 		int userId = 3;
 		
 		List<GoalAllView> list = service.getAllViewList(userId);
+		for(GoalAllView gav : list) {
+			String cycle = gav.getDays();
+			
+			if(cycle == null)
+				gav.setCount(0);
+			else {
+				String[] splitedCycle = cycle.split(",");
+				int cycleCnt = splitedCycle.length;
+				gav.setCount(cycleCnt);
+			}
+		}
 		model.addAttribute("list", list);
 		
 		return "user.mypage.done.list";
@@ -93,7 +104,7 @@ public class MyPageController {
 		else
 			gList = null;
 		
-		service.update(goal, gcList, cList, gList);
+		service.updateRetryGoal(goal, gcList, cList, gList);
 		
 		return "redirect:/mygoal/list";
 	}

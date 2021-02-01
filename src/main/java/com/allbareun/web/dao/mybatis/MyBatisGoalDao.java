@@ -93,4 +93,10 @@ public class MyBatisGoalDao implements GoalDao {
 		return mapper.getLastInserted(userId);
 	}
 
+	@Override
+	public GoalAllView getAllView(int id) {
+		
+		return mapper.getAllView(id);
+	}
+
 }
