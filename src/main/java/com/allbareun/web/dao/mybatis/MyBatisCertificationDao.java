@@ -55,5 +55,21 @@ public class MyBatisCertificationDao implements CertificationDao {
 
 
 
+	@Override
+	public int insert(int id, int goalId,String authImage) {
+		// TODO Auto-generated method stub
+		return mapper.insert(id,goalId,authImage);
+	}
+
+
+
+	@Override
+	public int deleteAuthImage(int id, int goalId, String fileName) {
+		// TODO Auto-generated method stub
+		return mapper.deleteAuthImage(id, goalId, fileName);
+	}
+
+
+
 
 }

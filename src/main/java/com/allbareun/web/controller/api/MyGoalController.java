@@ -1,9 +1,13 @@
 package com.allbareun.web.controller.api;
 
+import java.io.File;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,5 +51,25 @@ public class MyGoalController {
 		
 		
 		return list;
+	}
+	
+	@RequestMapping("{goalId}/auth/delete")
+	public String authImageDelete(
+			@PathVariable(name = "goalId") int goalId,
+			@RequestParam(name = "id") int id,
+			@RequestParam(name = "fileName") String fileName,
+			HttpServletRequest request
+			) {
+		
+		int result = service.deleteAuthImage(id,goalId,fileName); // db에서 삭제
+		LocalDate date = LocalDate.now(); // 현재날짜 받기
+		String url = "/upload/auth/images/"+goalId+"/"+date+"/"+id; // 파일이 저장될 경로 webapp/upload.. 폴더
+	      String realPath = request.getServletContext().getRealPath(url);
+	      System.out.println(realPath); 
+	      
+	      File realPathFile = new File(realPath+"/"+fileName);
+	      if(realPathFile.exists())
+	         realPathFile.delete(); // 파일 삭제
+		return "ok11";
 	}
 }

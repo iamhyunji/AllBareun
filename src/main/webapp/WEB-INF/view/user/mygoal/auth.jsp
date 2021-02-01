@@ -11,20 +11,22 @@
 
         <!-- <tiles:insertAttribute name="main" /> -->
         <main id="main">
-          <form action="">
+          <form action="" method="post">
             <section>
               <div class="main-container">
                 <div class="contents-box">
                   <div class="ex-box">
                     <h1 class="title">인증 방법 예시</h1>
                     <div class="auth-box">
-                      <div class="image-box">인증 예시 사진</div>
-                      <div class="image-box">인증 예시 사진</div>
-                      <textarea class="textarea" rows="5" cols="33" readonly>인증방법</textarea>
+                       <div><span class="auth-text">좋은 예시</span><div class="image-box"><img class="auth-image" src="${g.goodEx}" /></div></div>
+                      <div><span class="auth-text">나쁜 예시</span><div class="image-box"> <img class="auth-image"src="${g.badEx}" /></div></div>
+                      <textarea class="textarea" rows="5" cols="33" readonly>${g.exExplanation}</textarea>
                     </div>
                   </div>
                 </div>
-                <div class="drag-box"><span></span></div>
+                <div class="drag-box"><span>업로드할 파일을 드래그 드롭하세요!<span></div>
+                <div class="drag-result"></div>
+                <input class="hidden-id" type="hidden" value="1">;
                 <div class="answer-container">
                   <ul>
                     <div class="answer">

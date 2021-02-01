@@ -8,6 +8,7 @@ import com.allbareun.web.entity.CertificationView;
 public interface CertificationDao {
 
 
+	int insert(int id, int goalId,String authImage);
 
 
 	List<CertificationView> getCertViewListById(int goalId, String name, String startDate, String endDate);
@@ -17,6 +18,12 @@ public interface CertificationDao {
 	CertDetailView getPrev(int id,int goalId);
 
 	CertDetailView getNext(int id,int goalId);
+
+
+	int deleteAuthImage(int id, int goalId, String fileName);
+
+
+
 
 
 }

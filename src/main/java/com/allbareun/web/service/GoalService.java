@@ -31,6 +31,7 @@ public interface GoalService {
 	GoalDetailView getDetailView(int id);
 	CertificationView getAuthImage(int id);
 	List<User> getProfile(int id);
+	
 	List<CertificationView> getCertViewListById(int goalId);
 	List<CertificationView> getCertViewListById(int goalId, String name, String startDate, String endDate);
 	String getParticipantsId(int goalId);
@@ -39,5 +40,7 @@ public interface GoalService {
 	CertDetailView getCertDetailView(int id);
 	CertDetailView getPrev(int id,int goalId);
 	CertDetailView getNext(int id,int goalId);
+	int authImageInsert(int id,int goalId,String authImage);
+	int deleteAuthImage(int id, int goalId, String fileName);
 	
 }

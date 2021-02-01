@@ -172,6 +172,18 @@ public class GoalServiceImp implements GoalService {
 		return certificationDao.getNext(id,goalId);
 	}
 
+	@Override
+	public int authImageInsert(int id,int goalId,String authImage) {
+		// TODO Auto-generated method stub
+		return certificationDao.insert(id,goalId,authImage);
+	}
+
+	@Override
+	public int deleteAuthImage(int id, int goalId, String fileName) {
+		// TODO Auto-generated method stub
+		return certificationDao.deleteAuthImage(id,goalId,fileName);
+	}
+
 
 
 }

@@ -36,6 +36,14 @@
       order by regdate asc 
       limit 1;
    </select>
- 	
+   
+ 	<insert id="insert" parameterType="com.allbareun.web.entity.Certification">
+   		insert into Certification(userId,goalId,authImage) 
+   		values(#{id}, #{goalId}, #{authImage});
+   </insert>
+	<delete id="deleteAuthImage" parameterType="com.allbareun.web.entity.Certification">
+	delete from Certification 
+	where userId=#{id} and goalId=#{goalId} order by regdate desc limit 1;
+   </delete>
  	
 </mapper>

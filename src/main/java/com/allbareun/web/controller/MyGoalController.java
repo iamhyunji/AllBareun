@@ -2,6 +2,8 @@ package com.allbareun.web.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -33,18 +36,23 @@ public class MyGoalController {
 	@Autowired
 	private GoalService service;
 
-	@GetMapping("auth")
-	public String auth() {
-
+	@GetMapping("{id}/auth")
+	public String auth(@PathVariable(name="id") int id,Model model) {
+		
+		Goal goal = service.get(id);
+		model.addAttribute("g", goal);
 		return "user.mygoal.auth";
 	}
 
 	
-	@PostMapping("auth/upload")
+	@PostMapping("{goalId}/auth/upload")
 	@ResponseBody
-	public String upload(MultipartFile file,HttpServletRequest request) throws IllegalStateException, IOException {
-		
-		String url = "/upload"; // 파일이 저장될 경로 webapp/upload 폴더
+	public String upload(@PathVariable(name="goalId") int goalId,
+			@RequestParam(name="id") int id,
+			MultipartFile file,HttpServletRequest request) throws IllegalStateException, IOException {
+
+		LocalDate date = LocalDate.now(); // 현재날짜 받기
+		String url = "/upload/auth/images/"+goalId+"/"+date+"/"+id; // 파일이 저장될 경로 webapp/upload.. 폴더
 	      String realPath = request.getServletContext().getRealPath(url);
 	      System.out.println(realPath); 
 	      
@@ -56,7 +64,10 @@ public class MyGoalController {
 	      File uploadedFile = new File(uploadedFilePath);
 	      
 	      file.transferTo(uploadedFile);
-		
+	      
+	      String filePath = url +"/"+ file.getOriginalFilename();
+	
+	      int result = service.authImageInsert(id,goalId, filePath);
 		return "ok";
 		//System.out.println("file uploaded");
 		//System.out.println(file.getOriginalFilename());
