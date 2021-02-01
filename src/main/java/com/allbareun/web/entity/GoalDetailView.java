@@ -67,7 +67,17 @@ public class GoalDetailView extends Goal{
 		this.profile = profile;
 	}
 
-	
-	
+	@Override
+	public String toString() {
+		return "GoalDetailView [userName=" + userName + ", categories=" + categories + ", days=" + days
+				+ ", participants=" + participants + ", profile=" + profile + ", getId()=" + getId() + ", getTitle()="
+				+ getTitle() + ", getExplanation()=" + getExplanation() + ", getMainImage()=" + getMainImage()
+				+ ", getGoodEx()=" + getGoodEx() + ", getBadEx()=" + getBadEx() + ", getEndDate()=" + getEndDate()
+				+ ", getStartDate()=" + getStartDate() + ", getPublicStatus()=" + getPublicStatus() + ", getRegdate()="
+				+ getRegdate() + ", getCount()=" + getCount() + ", getUserId()=" + getUserId()
+				+ ", getTotalParticipants()=" + getTotalParticipants() + ", getExExplanation()=" + getExExplanation()
+				+ ", toString()=" + super.toString() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ "]";
+	}
 
 }

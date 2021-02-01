@@ -18,11 +18,11 @@ public class MyBatisGoalCategoryDao implements GoalCategoryDao {
 		
 		return session.getMapper(GoalCategoryDao.class).insert(goalCategory);
 	}
-	
+
 	@Override
-	public int update(GoalCategory goalCategory) {
+	public int delete(int goalId) {
 		
-		return session.getMapper(GoalCategoryDao.class).update(goalCategory);
+		return session.getMapper(GoalCategoryDao.class).delete(goalId);
 	}
 	
 }

@@ -43,12 +43,6 @@ public class MyBatisGoalDao implements GoalDao {
 		return mapper.update(goal);
 	}
 	
-	@Override
-	public GoalAllView getAllView(int id) {
-		
-		return mapper.getAllView(id);
-	}
-	
 	public List<GoalView> getViewList(String categories, String startDate, String endDate, String days, int totalParticipants,
 			String query) {
 
@@ -82,6 +76,7 @@ public class MyBatisGoalDao implements GoalDao {
 
 	@Override
 	public List<GoalAllView> getAllViewList(int userId) {
+		
 		return mapper.getAllViewList(userId);
 	}
 

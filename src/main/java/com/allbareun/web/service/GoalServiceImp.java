@@ -39,7 +39,6 @@ public class GoalServiceImp implements GoalService {
 	@Autowired
 	private CertificationDao certificationDao;
 
-
 	@Override
 	@Transactional
 	public int insert(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList) {
@@ -75,8 +74,52 @@ public class GoalServiceImp implements GoalService {
 	}
 
 	@Override
-	public int update(Goal goal, GoalCategory goalCategory, Cycle cycle, Participation participation, Group group) {
+	public int update(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList) {
 		int result = 0;
+		int goalId = goal.getId();
+		Goal origin = goalDao.get(goalId);
+		
+		// 카테고리
+		if(gcList != null) {
+			goalCategoryDao.delete(goalId);
+			
+			for(GoalCategory gc : gcList) {
+				gc.setGoalId(goalId);
+				goalCategoryDao.insert(gc);
+			}
+		}
+		
+		// 인증 주기
+		if(cList != null) {
+			cycleDao.delete(goalId);
+			
+			for(Cycle c : cList) {
+				c.setGoalId(goalId);
+				cycleDao.insert(c);
+			}
+		}
+		
+		// 지인 그룹
+		if ((origin.getPublicStatus() == false && origin.getCount() > 1)
+				|| gList != null) {
+			groupDao.delete(goalId);
+		
+			for (Group g : gList) {
+				g.setGoalId(goalId);
+				groupDao.insert(g);
+			}
+		}
+		
+		// 익명 그룹
+		if ((origin.getPublicStatus() && origin.getCount() > 1)) {
+			groupDao.delete(goalId);
+
+			for (Group g : gList) {
+				g.setGoalId(goalId);
+				groupDao.insert(g);
+			}
+		}
+		
 		goalDao.update(goal);
 		result++;
 		

@@ -16,7 +16,8 @@
 		);
 	</insert>
 	
-	<update id="update">
-	
-	</update>
+	<delete id="delete">
+		DELETE FROM GoalCategory
+		WHERE goalId = ${goalId};
+	</delete>
 </mapper>

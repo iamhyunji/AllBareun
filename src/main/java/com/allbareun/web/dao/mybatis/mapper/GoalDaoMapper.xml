@@ -51,7 +51,7 @@
    </select>
    
    <select id="getAllView" resultType="com.allbareun.web.entity.GoalAllView">
-      select * from GoalAllView where id = #{id}
+      	
    </select>
 
    <select id="getViewList" resultType="com.allbareun.web.entity.GoalView">
@@ -77,8 +77,25 @@
    </select>
 
    <select id="getAllViewList" resultType="com.allbareun.web.entity.GoalAllView">
-      select * from GoalAllView
-      where userId=${userId}
+      select GAV.*
+		from GoalAllView GAV join (
+				select TPS.*
+				from(
+					select @row_num:=@row_num+1 id, TP.*, U.profile, U.name
+					from(
+						select id goalId, userId from Goal
+						union
+						select goalId, userId from Participation
+						union
+						select goalId, requestReceiveUserId userId from `Group`
+						where answer = 1
+					) TP left join User U on TP.userId = U.id,
+					(SELECT @row_num:=0) AS RN
+					order by goalId, userId
+				) TPS
+				where TPS.userId = #{userId}
+			) TPV
+		on TPV.goalId = GAV.id;
 	</select>
    <select id="getDetailView" resultType="com.allbareun.web.entity.GoalDetailView">
       select * from GoalDetailView

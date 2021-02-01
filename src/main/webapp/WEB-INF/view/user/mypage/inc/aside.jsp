@@ -5,6 +5,6 @@
 <div class="tab-part">
 	<div class="tab">
 		<a class="tab-button">전체결과 리포트</a>
-		<a class="tab-button">완료 목표</a>
+		<a class="tab-button" href="/mypage/done/list">완료 목표</a>
 	</div>
 </div>

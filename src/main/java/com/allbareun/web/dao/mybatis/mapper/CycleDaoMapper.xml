@@ -6,4 +6,9 @@
 		INSERT INTO Cycle (`goalId`, `dayId`)
 		VALUES(#{goalId}, #{dayId});
 	</insert>
+	
+	<delete id="delete">
+		DELETE FROM Cycle
+		WHERE goalId = #{goalId};
+	</delete>
 </mapper>

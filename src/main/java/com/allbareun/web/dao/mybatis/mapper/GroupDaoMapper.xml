@@ -6,4 +6,9 @@
 		INSERT INTO `Group` (`goalId`, `requestDispatchUserId`, `requestReceiveUserId`)
 		VALUES(#{goalId}, #{requestDispatchUserId}, #{requestReceiveUserId});
 	</insert>
+	
+	<delete id="delete">
+		DELETE FROM `Group`
+		WHERE goalId = #{goalId};
+	</delete>
 </mapper>

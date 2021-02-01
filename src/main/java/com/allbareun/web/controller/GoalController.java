@@ -81,7 +81,7 @@ public class GoalController {
 		
 		service.insert(goal, gcList, cList, gList);
 		
-		return "";
+		return "redirect:/mygoal/list";
 	}
 	
 	 @RequestMapping("{id}")
