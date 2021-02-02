@@ -43,17 +43,17 @@ public class GoalController {
 	// 2021.01.29.금
 	@PostMapping("reg")
 	public String reg(@RequestParam(name = "g-mImg", defaultValue = "/images/default-image2.png") String mainImage,
-			@RequestParam(name = "g-t") String title, @RequestParam(name = "g-ex") String explanation,
-			@RequestParam(name = "g-sd") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startDate,
-			@RequestParam(name = "g-ed") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date endDate,
-			@RequestParam(name = "g-ps") boolean publicStatus, @RequestParam(name = "g-c") int count,
-			@RequestParam(name = "g-tp") int totalParticipants,
-			@RequestParam(name = "g-gEx", required = false) String goodEx,
-			@RequestParam(name = "g-bEx", required = false) String badEx,
-			@RequestParam(name = "g-exEx", required = false) String exExplanation,
-			@RequestParam(name = "gct-id") int[] goalCategoryTypeIds, @RequestParam(name = "d-id") int[] dayIds,
-			@RequestParam(name = "g-m", required = false) int[] members,
-			Principal principal) {
+						@RequestParam(name = "g-t") String title, @RequestParam(name = "g-ex") String explanation,
+						@RequestParam(name = "g-sd") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startDate,
+						@RequestParam(name = "g-ed") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date endDate,
+						@RequestParam(name = "g-ps") boolean publicStatus, @RequestParam(name = "g-c") int count,
+						@RequestParam(name = "g-tp") int totalParticipants,
+						@RequestParam(name = "g-gEx", required = false) String goodEx,
+						@RequestParam(name = "g-bEx", required = false) String badEx,
+						@RequestParam(name = "g-exEx", required = false) String exExplanation,
+						@RequestParam(name = "gct-id") int[] goalCategoryTypeIds, @RequestParam(name = "d-id") int[] dayIds,
+						@RequestParam(name = "g-m", required = false) int[] members,
+						Principal principal) {
 
 		int userId = service.getUserIdByEmail(principal.getName());
 		
@@ -76,7 +76,7 @@ public class GoalController {
 		if (publicStatus == false && totalParticipants > 1)
 			for (int i = 0; i < members.length; i++) {
 				Group member = new Group();
-				member.setRequestDispatchUserId(2);
+				member.setRequestDispatchUserId(userId);
 				member.setRequestReceiveUserId(members[i]);
 				gList.add(member);
 			}

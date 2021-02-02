@@ -132,7 +132,7 @@ public class MyGoalController {
 	public String list(Model model, Principal principal) {
 		
 		int userId = service.getUserIdByEmail(principal.getName());
-		List<GoalAllView> list = service.getAllViewList(userId);
+		List<GoalAllView> list = service.getAllViewList(userId, "present");
 		model.addAttribute("list", list);
 		
 		return "user.mygoal.list";

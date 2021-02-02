@@ -188,8 +188,9 @@ public class GoalServiceImp implements GoalService {
 	}
 
 	@Override
-	public List<GoalAllView> getAllViewList(int userId) {
-		return goalDao.getAllViewList(userId);
+	public List<GoalAllView> getAllViewList(int userId, String status) {
+		
+		return goalDao.getAllViewList(userId, status);
 	}
 
 	@Override

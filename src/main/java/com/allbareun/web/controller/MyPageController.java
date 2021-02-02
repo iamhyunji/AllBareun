@@ -37,20 +37,7 @@ public class MyPageController {
 	public String doneList(Model model, Principal principal) {
 		
 		int userId = service.getUserIdByEmail(principal.getName());
-		List<GoalAllView> list = service.getAllViewList(userId);
-		
-		for(GoalAllView gav : list) {
-			String cycle = gav.getDays();
-			
-			if(cycle == null)
-				gav.setCount(0);
-			else {
-				String[] splitedCycle = cycle.split(",");
-				int cycleCnt = splitedCycle.length;
-				gav.setCount(cycleCnt);
-			}
-		}
-		
+		List<GoalAllView> list = service.getAllViewList(userId, "done");
 		model.addAttribute("list", list);
 		
 		return "user.mypage.done.list";
@@ -59,8 +46,7 @@ public class MyPageController {
 	@GetMapping("done/{id}/retry")
 	public String doneRetry(@PathVariable(name="id") int id, Model model) {
 		
-		GoalDetailView retryGoal = service.getDetailView(id);
-		System.out.println(retryGoal);
+		GoalAllView retryGoal = service.getAllView(id);
 		model.addAttribute("rg", retryGoal);
 		
 		return "user.mypage.done.retry";

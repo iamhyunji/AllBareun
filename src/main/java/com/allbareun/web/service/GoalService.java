@@ -25,7 +25,7 @@ public interface GoalService {
 
 	// -------------------------- View --------------------------
 	GoalAllView getAllView(int id);
-	List<GoalAllView> getAllViewList(int userId);
+	List<GoalAllView> getAllViewList(int userId, String status);
 	
 	List<GoalView> getViewList(String categories, String startDate, String endDate, String days, int totalParticipants, String query);
 	
@@ -45,4 +45,5 @@ public interface GoalService {
 	int deleteAuthImage(int id, int goalId, String fileName);
 	int enter(Participation participation);
 	int getUserIdByEmail(String name);
+	
 }
