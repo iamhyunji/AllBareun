@@ -40,7 +40,6 @@ public class GoalController {
 		return "user.goal.reg";
 	}
 
-	// 2021.01.29.금
 	@PostMapping("reg")
 	public String reg(@RequestParam(name = "g-mImg", defaultValue = "/images/default-image2.png") String mainImage,
 						@RequestParam(name = "g-t") String title, @RequestParam(name = "g-ex") String explanation,

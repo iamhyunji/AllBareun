@@ -43,8 +43,16 @@
 	
    <update id="update">
 		UPDATE Goal
-		SET title = #{title}, explanation = #{explanation}, mainImage = #{mainImage}
-		WHERE id = #{id}
+		<choose>
+			<when test="userId == 0">
+				SET userId = null
+				where id = #{id}
+			</when>
+			<otherwise>
+				SET title = #{title}, explanation = #{explanation}, mainImage = #{mainImage}
+				WHERE id = #{id}			
+			</otherwise>
+		</choose>
 	</update>
    
    <select id="get" resultType="com.allbareun.web.entity.Goal">

@@ -19,7 +19,6 @@ public interface GoalService {
 
 	int insert(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList);
 	int update(Goal goal);
-	int updateRetryGoal(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList);
 	int delete(Goal goal);
 	Goal get(int id);
 
@@ -45,5 +44,5 @@ public interface GoalService {
 	int deleteAuthImage(int id, int goalId, String fileName);
 	int enter(Participation participation);
 	int getUserIdByEmail(String name);
-	
+	int retryGoal(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList);
 }
