@@ -16,9 +16,9 @@
     <main>
         <section class="main">
             <h1 class="text-xl"><a href="./index.html"> All바른생각</a></h1>
-            <form class="login">
-                <input type="text" class="text-box id-box" id="id-box" name="username" placeholder="아이디를 입력해 주세요.">
-                <input type="text" class="text-box pwd-box" id="pwd-box" name="password" placeholder="패스워드를 입력해 주세요">
+            <form action="login" method="post" class="login">
+                <input type="email" class="text-box id-box" id="id-box" name="username" placeholder="아이디를 입력해 주세요.">
+                <input type="password" class="text-box pwd-box" id="pwd-box" name="password" placeholder="패스워드를 입력해 주세요">
                 <input type="submit" class="login-box" value="로그인">
             </form>
 
@@ -27,15 +27,15 @@
             <div class="reg-id">
                 <ul>
                     <li>
-                        <a href="membership.html">회원가입</a>
+                        <a href="reg">회원가입</a>
                         <span>&nbsp;|&nbsp;</span>
                     </li>
                     <li>
-                        <a href="findID.html">아이디 찾기</a>
+                        <a href="findId">아이디 찾기</a>
                         <span>&nbsp;|&nbsp;</span>
                     </li>
                     <li>
-                        <a href="findpwd.html">비밀번호 찾기</a>
+                        <a href="findPwd">비밀번호 찾기</a>
                     </li>
                 </ul>
             </div>

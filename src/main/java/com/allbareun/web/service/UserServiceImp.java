@@ -1,12 +1,16 @@
 package com.allbareun.web.service;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.allbareun.web.dao.UserDao;
 import com.allbareun.web.entity.User;
 
+@Service
 public class UserServiceImp implements UserService{
-
+	
 	@Autowired
 	private UserDao userDao;
 	@Override
@@ -36,7 +40,7 @@ public class UserServiceImp implements UserService{
 	@Override
 	public int insert(User user) {
 		// TODO Auto-generated method stub
-		return 0;
+		return userDao.insert(user);
 	}
 
 	@Override
@@ -50,6 +54,24 @@ public class UserServiceImp implements UserService{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public int idCheck(String query) {
+		// TODO Auto-generated method stub
+		return userDao.idCheck(query);
+	}
+	
+	@Override
+	public void logout(HttpSession session) {
+		// TODO Auto-generated method stub
+		session.invalidate();
+	}
+
+	
+
+	
+
+	
 	
 
 
