@@ -45,5 +45,8 @@
 	delete from Certification 
 	where userId=#{id} and goalId=#{goalId} order by regdate desc limit 1;
    </delete>
- 	
+ 	<select id="getLast" resultType="com.allbareun.web.entity.Certification">
+ 	SELECT * from Certification 
+	where userId=#{userId} and goalId=#{goalId} order by regdate desc limit 1;
+ 	</select>
 </mapper>

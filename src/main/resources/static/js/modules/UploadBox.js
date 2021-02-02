@@ -3,7 +3,10 @@ class UploadBox {
   #dropZone;
   #url;
   #resultText;
+  #resultFileName;
   #nowImage;
+  #beforeImage;
+
   constructor(dropZone, url) {
     if (typeof dropZone == "string") this.#dropZone = document.querySelector(dropZone);
     else this.#dropZone = dropZone;
@@ -11,6 +14,8 @@ class UploadBox {
     this.#resultText = document.querySelector(".drag-result");
     this.#url = url;
     this.#nowImage = "";
+    this.#beforeImage = "";
+    this.#resultFileName = document.querySelector(".result-file-name");
     this.#dropZone.addEventListener("drop", this.#drop.bind(this));
     this.#dropZone.addEventListener("dragover", this.#dragover.bind(this));
     this.#dropZone.addEventListener("dragenter", this.#dragenter.bind(this));
@@ -29,8 +34,9 @@ class UploadBox {
         const goalId = document.location.href.split("/")[4];
         const hiddenId = document.querySelector(".hidden-id");
         const id = hiddenId.value;
-
-        fetch(`/api/mygoal/${goalId}/auth/delete?id=${id}&fileName=${this.#nowImage}`).then((data) => console.log(data));
+        this.#nowImage = e.dataTransfer.files[0].name;
+        this.#resultFileName.value = this.#nowImage;
+        fetch(`/api/mygoal/${goalId}/auth/delete?id=${id}&fileName=${this.#beforeImage}`).then((data) => console.log(data));
       } else return;
     }
     let fd = new FormData(); // 멀티 파트 지원하는 객체
@@ -41,7 +47,9 @@ class UploadBox {
         .next()
         .value.type.match(/image.*/)
     ) {
+      this.#beforeImage = e.dataTransfer.files[0].name;
       this.#nowImage = e.dataTransfer.files[0].name;
+      this.#resultFileName.value = this.#nowImage;
       CSS.set(this.#dropZone, {
         "background-image": "url(" + window.URL.createObjectURL(e.dataTransfer.files[0]) + ")",
         outline: "none",
@@ -60,7 +68,7 @@ class UploadBox {
       return;
     }
 
-    console.log(fd.has("file"));
+    //console.log(fd.has("file"));
 
     let request = new XMLHttpRequest();
 
@@ -90,7 +98,6 @@ class UploadBox {
     });
     //console.log("drop:" + e.dataTransfer);
 
-    console.log("ff");
     request.open("POST", this.#url);
     request.send(fd);
   }
@@ -114,7 +121,7 @@ class UploadBox {
     this.#dropZone.style.background = "#ff8f00";
     this.#dropZone.style.borderRadius = "0px";
 
-    console.log("enter:" + e.dataTransfer);
+    //console.log("enter:" + e.dataTransfer);
   }
 
   #dragleave(e) {
@@ -126,7 +133,7 @@ class UploadBox {
 
     this.#dropZone.firstElementChild.innerText = "업로드할 파일을 드래그 드롭하세요!";
 
-    console.log("exit");
+    //console.log("exit");
   }
 }
 

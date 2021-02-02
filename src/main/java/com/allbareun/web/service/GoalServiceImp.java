@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.allbareun.web.dao.GoalCategoryDao;
 import com.allbareun.web.dao.CertificationDao;
 import com.allbareun.web.dao.CycleDao;
+import com.allbareun.web.dao.EvaluationDao;
 import com.allbareun.web.dao.GoalDao;
 import com.allbareun.web.dao.GroupDao;
 import com.allbareun.web.dao.UserDao;
@@ -46,6 +47,9 @@ public class GoalServiceImp implements GoalService {
 	
 	@Autowired
 	private UserDao userDao;
+	
+	@Autowired
+	private EvaluationDao evaluationDao;
 	
 	@Override
 	@Transactional
@@ -281,5 +285,19 @@ public class GoalServiceImp implements GoalService {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	@Transactional
+	public int certAndEvalInsert(int goalId, int userId, String filePath, int answer1, int answer2, int answer3, String explanation) {
+		// TODO Auto-generated method stub
+		int cert = certificationDao.insert(userId,goalId,filePath);
+		Certification c = certificationDao.getLast(userId,goalId);
+		int certId = c.getId();
+		System.out.println("certId"+certId);
+		int eval = evaluationDao.insert(userId,goalId,answer1,answer2,answer3,explanation,certId);
+		return 1;
+	}
+
+
 
 }

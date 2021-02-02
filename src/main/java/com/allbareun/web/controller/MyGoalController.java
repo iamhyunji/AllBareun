@@ -3,6 +3,7 @@ package com.allbareun.web.controller;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -36,14 +37,32 @@ public class MyGoalController {
 	@Autowired
 	private GoalService service;
 
-	@GetMapping("{id}/auth")
-	public String auth(@PathVariable(name="id") int id,Model model) {
+	@GetMapping("{goalId}/auth")
+	public String auth(@PathVariable(name="goalId") int goalId,Principal principal,Model model) {
+		//principal.getName();
 		
-		Goal goal = service.get(id);
+		Goal goal = service.get(goalId);
 		model.addAttribute("g", goal);
 		return "user.mygoal.auth";
 	}
-
+	
+	@PostMapping("{goalId}/auth")
+	public String insertAuth(@PathVariable(name="goalId") int goalId,
+			@RequestParam(name="userId") int userId,
+			@RequestParam(name="resultFileName") String fileName,
+			@RequestParam(name="q1") int answer1,
+			@RequestParam(name="q2") int answer2,
+			@RequestParam(name="q3") int answer3,
+			@RequestParam(name="explanation") String explanation) {
+		
+			//System.out.printf("goalId:%d,userId:%d,fileName:%s",goalId,userId,fileName);
+		LocalDate date = LocalDate.now(); // 현재날짜 받기
+		String url = "/upload/auth/images/"+goalId+"/"+date+"/"+userId;
+		String filePath = url +"/"+ fileName;
+		int result = service.certAndEvalInsert(goalId,userId,filePath,answer1,answer2,answer3,explanation);
+		return "redirect:/mygoal/cert/list/"+userId;
+	} 
+	
 	
 	@PostMapping("{goalId}/auth/upload")
 	@ResponseBody
@@ -67,7 +86,7 @@ public class MyGoalController {
 	      
 	      String filePath = url +"/"+ file.getOriginalFilename();
 	
-	      int result = service.authImageInsert(id,goalId, filePath);
+	      //int result = service.authImageInsert(id,goalId, filePath);
 		return "ok";
 		//System.out.println("file uploaded");
 		//System.out.println(file.getOriginalFilename());

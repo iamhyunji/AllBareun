@@ -121,11 +121,14 @@ public class GoalController {
 			@RequestParam(name = "days", defaultValue = "") String days,
 			@RequestParam(name = "count", defaultValue = "0") int totalParticipants,
 			@RequestParam(name = "query", defaultValue = "") String query, Model model) {
-		// System.out.printf("categories:%s startDate:%s endDate:%s days:%s count:%d
-		// query:%s \n",categories, startDate, endDate, days, totalParticipants, query);
+		
 
 		List<GoalView> list = service.getViewList(categories, startDate, endDate, days, totalParticipants, query);
-
+		
+//		for (GoalView g : list) {
+//			System.out.println(g);
+//		}
+		
 		// color 변경
 		for (int i = 0; i < list.size(); i++) {
 			GoalView gv = list.get(i);

@@ -61,7 +61,7 @@ public class MyGoalController {
 			HttpServletRequest request
 			) {
 		
-		int result = service.deleteAuthImage(id,goalId,fileName); // db에서 삭제
+		//int result = service.deleteAuthImage(id,goalId,fileName); // db에서 삭제
 		LocalDate date = LocalDate.now(); // 현재날짜 받기
 		String url = "/upload/auth/images/"+goalId+"/"+date+"/"+id; // 파일이 저장될 경로 webapp/upload.. 폴더
 	      String realPath = request.getServletContext().getRealPath(url);

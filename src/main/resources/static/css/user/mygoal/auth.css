@@ -72,6 +72,10 @@
 	text-align:center;
 	padding-bottom: 3px;
 }
+.explanation {
+	position:relative;
+	left:300px;
+}
 .answer-container {
   display: flex;
   justify-content: center;

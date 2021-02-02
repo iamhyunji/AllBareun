@@ -71,5 +71,13 @@ public class MyBatisCertificationDao implements CertificationDao {
 
 
 
+	@Override
+	public Certification getLast(int userId, int goalId) {
+		// TODO Auto-generated method stub
+		return mapper.getLast(userId, goalId);
+	}
+
+
+
 
 }

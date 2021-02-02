@@ -44,4 +44,5 @@ public interface GoalService {
 	int authImageInsert(int id,int goalId,String authImage);
 	int deleteAuthImage(int id, int goalId, String fileName);
 	int enter(Participation participation);
+	int certAndEvalInsert(int goalId, int userId, String filePath, int answer1, int answer2, int answer3,String explanation);
 }
