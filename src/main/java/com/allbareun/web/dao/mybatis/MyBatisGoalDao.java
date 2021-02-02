@@ -98,5 +98,11 @@ public class MyBatisGoalDao implements GoalDao {
 		
 		return mapper.getAllView(id);
 	}
+	
+	@Override
+	public String getParticipantsId(int goalId) {
+		// TODO Auto-generated method stub
+		return mapper.getParticipantsId(goalId);
+	}
 
 }

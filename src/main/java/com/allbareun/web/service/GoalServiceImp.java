@@ -1,6 +1,9 @@
 package com.allbareun.web.service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +15,9 @@ import com.allbareun.web.dao.CertificationDao;
 import com.allbareun.web.dao.CycleDao;
 import com.allbareun.web.dao.GoalDao;
 import com.allbareun.web.dao.GroupDao;
+import com.allbareun.web.dao.UserDao;
 import com.allbareun.web.entity.Cycle;
+import com.allbareun.web.entity.CertDetailView;
 import com.allbareun.web.entity.Certification;
 import com.allbareun.web.entity.CertificationView;
 import com.allbareun.web.entity.Goal;
@@ -38,7 +43,10 @@ public class GoalServiceImp implements GoalService {
 	
 	@Autowired
 	private CertificationDao certificationDao;
-
+	
+	@Autowired
+	private UserDao userDao;
+	
 	@Override
 	@Transactional
 	public int insert(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList) {
@@ -157,11 +165,6 @@ public class GoalServiceImp implements GoalService {
 
 
 
-	@Override
-	public List<Certification> getCertListById(int goalId) {
-		// TODO Auto-generated method stub
-		return certificationDao.getCertListById(goalId);
-	}
 
 
 
@@ -194,5 +197,81 @@ public class GoalServiceImp implements GoalService {
 		
 		return goalDao.getAllView(id);
 	}
+
+	@Override
+	public List<CertificationView> getCertViewListById(int goalId) {
+		// TODO Auto-generated method stub
+		return certificationDao.getCertViewListById(goalId,null,null,null);
+	}
+
+	@Override
+	public List<CertificationView> getCertViewListById(int goalId, String name, String startDate, String endDate) {
+		// TODO Auto-generated method stub
+		return certificationDao.getCertViewListById(goalId,name,startDate,endDate);
+	}
 	
+	@Override
+	public String getParticipantsId(int goalId) {
+		// TODO Auto-generated method stub
+		return goalDao.getParticipantsId(goalId);
+	}
+
+
+	@Override
+	public List<String> getUserProfile(String ids) {
+		List<String> list = new ArrayList<String>();
+		
+		String[] idStr = ids.split(","); 
+		int[] id = Arrays.stream(idStr).mapToInt(Integer::parseInt).toArray();
+		for(int i=0; i<id.length; i++) {
+			User user = userDao.getById(id[i]);
+			String profile = user.getProfile();
+			list.add(profile);
+		}
+		return list;
+	}
+	@Override
+	public List<String> getUserName(String ids) {
+		List<String> list = new ArrayList<String>();
+
+		String[] idStr = ids.split(","); 
+		int[] id = Arrays.stream(idStr).mapToInt(Integer::parseInt).toArray();
+		for(int i=0; i<id.length; i++) {
+			User user = userDao.getById(id[i]);
+			String name = user.getName();
+			list.add(name);
+		}
+		return list;
+	}
+
+	@Override
+	public CertDetailView getCertDetailView(int id) {
+		// TODO Auto-generated method stub
+		return certificationDao.getCertDetailView(id);
+	}
+
+	@Override
+	public CertDetailView getPrev(int id,int goalId) {
+		// TODO Auto-generated method stub
+		return certificationDao.getPrev(id,goalId);
+	}
+
+	@Override
+	public CertDetailView getNext(int id,int goalId) {
+		// TODO Auto-generated method stub
+		return certificationDao.getNext(id,goalId);
+	}
+
+	@Override
+	public int authImageInsert(int id,int goalId,String authImage) {
+		// TODO Auto-generated method stub
+		return certificationDao.insert(id,goalId,authImage);
+	}
+
+	@Override
+	public int deleteAuthImage(int id, int goalId, String fileName) {
+		// TODO Auto-generated method stub
+		return certificationDao.deleteAuthImage(id,goalId,fileName);
+	}
+
 }

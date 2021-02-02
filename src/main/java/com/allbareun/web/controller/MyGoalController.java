@@ -2,6 +2,8 @@ package com.allbareun.web.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,11 +15,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.allbareun.web.entity.Goal;
 import com.allbareun.web.entity.GoalAllView;
+import com.allbareun.web.entity.CertDetailView;
 import com.allbareun.web.entity.Certification;
 import com.allbareun.web.entity.CertificationView;
 import com.allbareun.web.entity.GoalDetailView;
@@ -32,18 +36,23 @@ public class MyGoalController {
 	@Autowired
 	private GoalService service;
 
-	@GetMapping("auth")
-	public String auth() {
-
+	@GetMapping("{id}/auth")
+	public String auth(@PathVariable(name="id") int id,Model model) {
+		
+		Goal goal = service.get(id);
+		model.addAttribute("g", goal);
 		return "user.mygoal.auth";
 	}
 
 	
-	@PostMapping("auth/upload")
+	@PostMapping("{goalId}/auth/upload")
 	@ResponseBody
-	public String upload(MultipartFile file,HttpServletRequest request) throws IllegalStateException, IOException {
-		
-		String url = "/upload"; // 파일이 저장될 경로 webapp/upload 폴더
+	public String upload(@PathVariable(name="goalId") int goalId,
+			@RequestParam(name="id") int id,
+			MultipartFile file,HttpServletRequest request) throws IllegalStateException, IOException {
+
+		LocalDate date = LocalDate.now(); // 현재날짜 받기
+		String url = "/upload/auth/images/"+goalId+"/"+date+"/"+id; // 파일이 저장될 경로 webapp/upload.. 폴더
 	      String realPath = request.getServletContext().getRealPath(url);
 	      System.out.println(realPath); 
 	      
@@ -55,7 +64,10 @@ public class MyGoalController {
 	      File uploadedFile = new File(uploadedFilePath);
 	      
 	      file.transferTo(uploadedFile);
-		
+	      
+	      String filePath = url +"/"+ file.getOriginalFilename();
+	
+	      int result = service.authImageInsert(id,goalId, filePath);
 		return "ok";
 		//System.out.println("file uploaded");
 		//System.out.println(file.getOriginalFilename());
@@ -82,20 +94,35 @@ public class MyGoalController {
 		 */
 	}
 
-	@GetMapping("cert/detail")
-	public String certDetail() {
+	@GetMapping("cert/{goalId}/detail/{id}")
+	public String certDetail(
+			@PathVariable(name="goalId") int goalId,
+			@PathVariable(name="id") int id,
+			Model model) {
+
+		CertDetailView detail = service.getCertDetailView(id);
+		CertDetailView prev = service.getPrev(id,goalId);
+		CertDetailView next = service.getNext(id,goalId);
+		
+		model.addAttribute("d", detail);
+		model.addAttribute("prev", prev);
+		model.addAttribute("next", next);
 
 		return "user.mygoal.cert.detail";
 	}
 
-	@GetMapping("cert/list/{id}")
-	public String certList(@PathVariable("id") int goalId ,Model model) {
+	@GetMapping("cert/list/{goalId}")
+	public String certList(@PathVariable(name = "goalId") int goalId ,Model model) {
 		
-		List<Certification> list = service.getCertListById(goalId);
-		for (Certification certification : list) {
-			System.out.println(certification);
-		}
+		List<CertificationView> list = service.getCertViewListById(goalId);
+		String ids = service.getParticipantsId(goalId); // 참가자 id 받아오기
+		List<String> profileInfo = service.getUserProfile(ids);
+		List<String> nameInfo = service.getUserName(ids);
+		
+		
 		model.addAttribute("list", list);
+		model.addAttribute("profileInfo", profileInfo);
+		model.addAttribute("nameInfo", nameInfo);
 		
 		return "user.mygoal.cert.list";
 	}

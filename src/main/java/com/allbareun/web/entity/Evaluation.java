@@ -11,9 +11,16 @@ public class Evaluation {
 	private int id;
 	private int userId;
 	private Date regDate;
+	private int certificationId;
 	
 	
-	public Evaluation(int answer1, int answer2, int answer3, int goalId, int id, int userId, Date regDate) {
+	public Evaluation() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public Evaluation(int answer1, int answer2, int answer3, int goalId, int id, int userId, Date regDate,
+			int certificationId) {
 		super();
 		this.answer1 = answer1;
 		this.answer2 = answer2;
@@ -22,6 +29,7 @@ public class Evaluation {
 		this.id = id;
 		this.userId = userId;
 		this.regDate = regDate;
+		this.certificationId = certificationId;
 	}
 
 
@@ -95,11 +103,24 @@ public class Evaluation {
 	}
 
 
+	public int getCertificationId() {
+		return certificationId;
+	}
+
+
+	public void setCertificationId(int certificationId) {
+		this.certificationId = certificationId;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Evaluation [answer1=" + answer1 + ", answer2=" + answer2 + ", answer3=" + answer3 + ", goalId=" + goalId
-				+ ", id=" + id + ", userId=" + userId + ", regDate=" + regDate + "]";
+				+ ", id=" + id + ", userId=" + userId + ", regDate=" + regDate + ", certificationId=" + certificationId
+				+ "]";
 	}
+	
+	
 	
 	
 	

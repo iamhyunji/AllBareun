@@ -6,7 +6,44 @@
 <mapper namespace="com.allbareun.web.dao.CertificationDao">
 
 
-   <select id="getCertListById" resultType="com.allbareun.web.entity.Certification">
-      select * from Certification where id=#{id};
+   <select id="getCertViewListById" resultType="com.allbareun.web.entity.CertificationView">
+     select * from CertificationView where goalId=#{goalId}  
+	<if test="name != null and name !=''">       
+     and name = #{name}  
+	</if>
+	<if test="startDate != null and startDate !=''"> 
+     and date_format(regdate, '%Y-%m-%d') &gt;=#{startDate} 
+	</if>
+	<if test="endDate != null and endDate !=''"> 
+     and date_format(regdate, '%Y-%m-%d') &lt;=#{endDate} 
+	</if>
+	order by regdate desc;
    </select>
+   
+   	<select id="getCertDetailView" resultType="com.allbareun.web.entity.CertDetailView">
+ 		select * from CertDetailView where id = #{id} ;
+ 	</select>
+ 	
+ 	   <select id="getPrev" resultType="com.allbareun.web.entity.CertDetailView">
+	select * from CertDetailView where goalId=#{goalId} 
+	and regdate &lt; (select regdate from CertDetailView where id=#{id}) 
+	order by regdate desc 
+	limit 1;
+   </select>
+      <select id="getNext" resultType="com.allbareun.web.entity.CertDetailView">
+      select * from CertDetailView where goalId=#{goalId} 
+      and regdate &gt; (select regdate from CertDetailView where id=#{id}) 
+      order by regdate asc 
+      limit 1;
+   </select>
+   
+ 	<insert id="insert" parameterType="com.allbareun.web.entity.Certification">
+   		insert into Certification(userId,goalId,authImage) 
+   		values(#{id}, #{goalId}, #{authImage});
+   </insert>
+	<delete id="deleteAuthImage" parameterType="com.allbareun.web.entity.Certification">
+	delete from Certification 
+	where userId=#{id} and goalId=#{goalId} order by regdate desc limit 1;
+   </delete>
+ 	
 </mapper>
