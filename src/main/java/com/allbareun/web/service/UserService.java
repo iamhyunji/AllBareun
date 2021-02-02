@@ -1,5 +1,7 @@
 package com.allbareun.web.service;
 
+import javax.servlet.http.HttpSession;
+
 import com.allbareun.web.entity.User;
 
 public interface UserService{
@@ -10,4 +12,7 @@ public interface UserService{
 	int insert(User user);
 	int update(User user);
 	int delete(User user);
+	int idCheck(String query);
+	//회원로그아웃
+	void logout(HttpSession session);
 }
