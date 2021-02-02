@@ -9,7 +9,7 @@
 			<h1 class="d-none">Main 1 : 목표 기본 등록폼</h1>
 			<section class="required__image">
 				<h1 class="d-none">목표 메인 이미지</h1>
-				<div class="m-img" name="gMainImg">메인 이미지 등록 선택 / 드래그&드롭</div>
+				<div class="m-img" name="g-mImg">메인 이미지 등록 선택 / 드래그&드롭</div>
 			</section>
 
 			<section class="required__content">

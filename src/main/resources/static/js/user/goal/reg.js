@@ -152,7 +152,7 @@ window.addEventListener("load", () => {
 			
 		// 요일 개수
 		let checkeds = document.querySelectorAll(`input[name="d-id"]:checked`);
-		let countInput = `<input type="hidden" name="g-c" value=${checkeds.length}/>`;
+		let countInput = `<input type="hidden" name="g-c" value="${checkeds.length}" />`;
 		cycleContainer.insertAdjacentHTML('beforeend', countInput);
 		
 		// console.log(checkeds.length);

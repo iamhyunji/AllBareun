@@ -41,7 +41,8 @@ public class GoalController {
 	
 	// 2021.01.29.금
 	@PostMapping("reg")
-	public String reg(@RequestParam(name = "g-t") String title,
+	public String reg(@RequestParam(name = "g-mImg", defaultValue = "/images/default-image2.png") String mainImage,
+						@RequestParam(name = "g-t") String title,
 						@RequestParam(name = "g-ex") String explanation,
 						@RequestParam(name = "g-sd") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startDate,
 						@RequestParam(name = "g-ed") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date endDate,
@@ -55,7 +56,8 @@ public class GoalController {
 						@RequestParam(name = "d-id") int[] dayIds,
 						@RequestParam(name = "g-m", required = false) int[] members) {
 
-		Goal goal = new Goal(0, title, exExplanation, explanation, goodEx, badEx, endDate, startDate, publicStatus, null, count, 2, totalParticipants, exExplanation);
+		int userId = 3;
+		Goal goal = new Goal(0, title, explanation, mainImage, goodEx, badEx, endDate, startDate, publicStatus, null, count, userId, totalParticipants, exExplanation);
 		
 		List<GoalCategory> gcList = new ArrayList<>();
 		List<Cycle> cList = new ArrayList<>();
