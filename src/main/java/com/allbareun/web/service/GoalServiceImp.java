@@ -80,7 +80,7 @@ public class GoalServiceImp implements GoalService {
 	}
 
 	@Override
-	public CertificationView getAuthImage(int id) {
+	public List<CertificationView> getAuthImage(int id) {
 		// TODO Auto-generated method stub
 		return goalDao.getAuthImage(id);
 	}
@@ -101,6 +101,17 @@ public class GoalServiceImp implements GoalService {
 	public GoalAllView getAllView(int id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public Participation enter(int uid, int id) {
+		// TODO Auto-generated method stub
+		return goalDao.enter(uid,id);
+	}
+
+	public int enter(Participation participation) {
+		return goalDao.enter(participation);
+		// TODO Auto-generated method stub
+		
 	}
 
 }

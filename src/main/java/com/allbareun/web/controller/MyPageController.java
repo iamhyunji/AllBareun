@@ -49,7 +49,10 @@ public class MyPageController {
 	 
 	
 	@GetMapping("report/result")
-	public String reportResult() {
+	public String reportResult(Model model, @PathVariable(name="id") int id) {
+		 //List<> profile = service.getProfile(id);
+		 //model.addAttribute("detail", detail);
+		
 		return "user.mypage.report.result";
 	}
 	

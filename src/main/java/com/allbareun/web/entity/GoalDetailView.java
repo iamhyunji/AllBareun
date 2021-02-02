@@ -26,6 +26,9 @@ public class GoalDetailView extends Goal{
 		this.participants = participants;
 		this.profile = profile;
 	}
+	
+	
+	
 
 	public String getUserName() {
 		return userName;

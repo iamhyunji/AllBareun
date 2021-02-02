@@ -66,7 +66,7 @@ public class MyGoalController {
 
 		GoalDetailView detail = service.getDetailView(id);
 		List<User> profile = service.getProfile(id);
-		CertificationView detailImage = service.getAuthImage(id);
+		List<CertificationView> detailImage = service.getAuthImage(id);
 
 
 		 model.addAttribute("detail", detail);

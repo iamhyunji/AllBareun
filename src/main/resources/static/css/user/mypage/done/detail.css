@@ -86,6 +86,55 @@ margin-bottom: 40px;
     margin-bottom: 100px;
 }
 
+/* 이미지 동영상처럼 보이게 히는css */
+.detail-result2 h2{
+	  padding-bottom: 20px;
+    font-size: 20px;
+    padding-top: 50px;
+}
+
+.video-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.video-frame {
+  position: relative;
+  width: 300px;
+  height: 200px;
+}
+.video-img {
+  object-fit: cover;
+  width: 300px;
+  height: 200px;
+  position: absolute;
+  z-index: 1;
+}
+
+.video-stop {
+  background: url("images/play.png") no-repeat;
+  z-index: 1;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  top: 35%;
+  left: 40%;
+}
+.video-play {
+  animation: fade-in-fwd 3s cubic-bezier(0.39, 0.575, 0.565, 1) infinite both;
+}
+
+@keyframes fade-in-fwd {
+  0% {
+    transform: translateZ(-80px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+
 
 
 /* media query */

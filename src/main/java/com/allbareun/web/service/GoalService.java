@@ -29,7 +29,7 @@ public interface GoalService {
 	List<Certification> getCertListById(int goalId);
 	
 	GoalDetailView getDetailView(int id);
-	CertificationView getAuthImage(int id);
+	List<CertificationView> getAuthImage(int id);
 	List<User> getProfile(int id);
 	
 }

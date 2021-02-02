@@ -63,7 +63,7 @@ public class MyBatisGoalDao implements GoalDao {
 	}
 
 	@Override
-	public CertificationView getAuthImage(int id) {
+	public List<CertificationView> getAuthImage(int id) {
 		// TODO Auto-generated method stub
 		return mapper.getAuthImage(id);
 	}
@@ -85,6 +85,24 @@ public class MyBatisGoalDao implements GoalDao {
 	public List<GoalView> getViewList() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	@Override
+	public Participation enter(int uid, int id) {
+		// TODO Auto-generated method stub
+		return mapper.enter(uid, id);
+	}
+
+	/*
+	 * @Override public int enter1(Participation participation) { // TODO
+	 * Auto-generated method stub return mapper.enter(participation); }
+	 */
+
+	@Override
+	public int enter(Participation participation) {
+		// TODO Auto-generated method stub
+		 return mapper.enter(participation);
 	}
 
 }
