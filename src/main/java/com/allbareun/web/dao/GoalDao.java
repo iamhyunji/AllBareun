@@ -32,7 +32,6 @@ public interface GoalDao {
 	List<GoalView> getViewList(String categories, String startDate, String endDate, String days, int totalParticipants, String query);
 	List<User> getProfile(int id);
 	List<CertificationView> getAuthImages(int id);
-	Participation enter(int uid, int id);
 	int enter(Participation participation);
 	//CertificationView getAuthImage(int id);
 	String getParticipantsId(int goalId);

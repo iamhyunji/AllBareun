@@ -12,13 +12,10 @@ import com.allbareun.web.entity.User;
 @Repository
 public class MyBatisUserDao implements UserDao{
 
-	@Autowired
-	private SqlSession session;
 	private UserDao mapper;
 	
 	@Autowired
 	public MyBatisUserDao(SqlSession session) {
-		this.session = session;
 		mapper = session.getMapper(UserDao.class);
 	}
 	

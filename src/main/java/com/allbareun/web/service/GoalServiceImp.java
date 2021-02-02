@@ -35,11 +35,11 @@ public class GoalServiceImp implements GoalService {
 	@Autowired
 	private GoalDao goalDao;
 	@Autowired
-	GoalCategoryDao goalCategoryDao;
+	private GoalCategoryDao goalCategoryDao;
 	@Autowired
-	CycleDao cycleDao;
+	private CycleDao cycleDao;
 	@Autowired
-	GroupDao groupDao;
+	private GroupDao groupDao;
 	
 	@Autowired
 	private CertificationDao certificationDao;
@@ -274,10 +274,7 @@ public class GoalServiceImp implements GoalService {
 		return certificationDao.deleteAuthImage(id,goalId,fileName);
 	}
 
-	public Participation enter(int uid, int id) {
-		// TODO Auto-generated method stub
-		return goalDao.enter(uid,id);
-	}
+
 
 	public int enter(Participation participation) {
 		return goalDao.enter(participation);

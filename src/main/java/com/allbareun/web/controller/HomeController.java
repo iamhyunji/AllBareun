@@ -32,12 +32,10 @@ import com.allbareun.web.service.UserServiceImp;
 
 @Controller
 @RequestMapping("/")
-public class HomeController extends HttpServlet{
+public class HomeController{
 
 	@Autowired
 	private UserService service;
-	@Autowired
-	private UserDao userDao;
 	
 	
 	public HomeController() {

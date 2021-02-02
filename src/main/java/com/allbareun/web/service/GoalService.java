@@ -43,5 +43,5 @@ public interface GoalService {
 	CertDetailView getNext(int id,int goalId);
 	int authImageInsert(int id,int goalId,String authImage);
 	int deleteAuthImage(int id, int goalId, String fileName);
-	
+	int enter(Participation participation);
 }

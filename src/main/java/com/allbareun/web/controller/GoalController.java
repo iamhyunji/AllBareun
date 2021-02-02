@@ -24,14 +24,14 @@ import com.allbareun.web.entity.GoalView;
 import com.allbareun.web.entity.Group;
 import com.allbareun.web.entity.Participation;
 import com.allbareun.web.entity.User;
-import com.allbareun.web.service.GoalServiceImp;
+import com.allbareun.web.service.GoalService;
 
 @Controller
 @RequestMapping("/goal/")
 public class GoalController {
 
 	@Autowired
-	private GoalServiceImp service;
+	private GoalService service;
 
 	@GetMapping("reg")
 	public String reg() {

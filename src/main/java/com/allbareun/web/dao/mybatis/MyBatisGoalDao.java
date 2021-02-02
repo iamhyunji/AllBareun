@@ -87,11 +87,7 @@ public class MyBatisGoalDao implements GoalDao {
 		return null;
 	}
 
-	@Override
-	public Participation enter(int uid, int id) {
-		// TODO Auto-generated method stub
-		return mapper.enter(uid, id);
-	}
+
 
 	/*
 	 * @Override public int enter1(Participation participation) { // TODO
