@@ -19,6 +19,7 @@
 				<li><a href="/login">로그인</a></li>
 			</s:authorize>
 			<s:authorize access="isAuthenticated()">
+			<li><a href="/mypage/report/result">마이페이지</a></li>
 			<li><a href="/logout">로그아웃</a></li>
 			</s:authorize>
 		</ul>
