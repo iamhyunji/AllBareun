@@ -1,22 +1,48 @@
 package com.allbareun.web.controller;
 
-import javax.servlet.http.HttpServlet;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.allbareun.web.dao.UserDao;
+import com.allbareun.web.entity.User;
 import com.allbareun.web.service.UserService;
+import com.allbareun.web.service.UserServiceImp;
 
 @Controller
 @RequestMapping("/")
 public class HomeController extends HttpServlet{
 
+	@Autowired
 	private UserService service;
-//	public HomeController() {
-//	service = new UserService();
-//}
+	@Autowired
+	private UserDao userDao;
+	
+	
+	public HomeController() {
+		
+}
 	
 	@RequestMapping("index")
 	public String index() {
@@ -24,28 +50,47 @@ public class HomeController extends HttpServlet{
 		return "home.index";
 	}
 	
-	
-	@RequestMapping("login")
-	public String login() {
-		
-		return "common/login";
-	}
-	
-	
-	@RequestMapping("reg")
-	public String reg(
-		//service.insert();
-		@RequestParam(name="email", defaultValue = "") String email,
-		@RequestParam(name="password", defaultValue = "") String password,
-		@RequestParam(name="name", defaultValue = "") String name,
-		@RequestParam(name="gender", defaultValue = "") String gender,
-		@RequestParam(name="age", defaultValue = "") int age,
-		@RequestParam(name="phone", defaultValue = "") String phone,
-		@RequestParam(name="profile", defaultValue = "") String profile,
-		Model model) {
-		System.out.printf("email:%s, password:%s, name:%s, gender:%s, age:%s, phone:%s, profile:%s", email,password, name,gender,age, phone,profile);
+	@GetMapping("reg")
+	public String reg() {		
+
 		return "common/reg";
 	}
+	
+	@PostMapping("reg")
+	public String reg(User user,Model model) {
+		BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
+	      String encodePwd = pwdEncoder.encode(user.getPassword());
+	      user.setPassword(encodePwd);
+		int result = service.insert(user);
+			
+		return "redirect:login";
+	}
+
+	@PostMapping("checkDuplicate")
+	@ResponseBody
+	public Map<String, Object> checkDuplicate(String checkKey){
+		Map<String, Object> map = new HashMap<>();
+		int checkResult = service.idCheck(checkKey);
+		map.put("checkResult", checkResult);
+		
+		return map;
+	}
+	
+	
+	@RequestMapping("login")
+	public String login()  {
+		System.out.println("로그인 성공");
+		return "/common/login";
+	}
+
+
+	
+	@GetMapping("logout")
+	public String logout(HttpSession session) {
+		session.removeAttribute("user");
+		return "redirect:/";
+	}
+	
 	
 	
 	@RequestMapping("findId")
@@ -60,6 +105,7 @@ public class HomeController extends HttpServlet{
 		
 		return "common/findPwd";
 	}
-
+	
+	
 	
 }

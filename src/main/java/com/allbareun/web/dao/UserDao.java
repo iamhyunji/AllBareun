@@ -1,5 +1,7 @@
 package com.allbareun.web.dao;
 
+import javax.servlet.http.HttpSession;
+
 import com.allbareun.web.entity.User;
 
 public interface UserDao {
@@ -12,4 +14,7 @@ public interface UserDao {
 	int update(User user);
 	int delete(User user);
 	User getById(int id);
+	int idCheck(String query);
+	void logout(HttpSession session);
+
 }

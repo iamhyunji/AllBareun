@@ -21,9 +21,10 @@
       select password from User where email = #{email} and name = #{name} and phone= #{phone};
    </select>
    
-   <select id="insert" resultType="com.allbareun.web.entity.User">
-      insert into User (email, password, name, gender, age, phone, profile) values (#{email}, #{password}, #{name}, #{gender}, #{age}, #{phone}, #{profile} )
-   </select>
+   <insert id="insert" parameterType="com.allbareun.web.entity.User">
+      insert into User (email, password, name, gender, age, phone, profile)
+      		 values (#{email}, #{password}, #{name}, #{gender}, #{age}, #{phone}, #{profile} )
+   </insert>
    
    <select id="update" resultType="com.allbareun.web.entity.User">
       update User set
@@ -45,4 +46,7 @@
       select * from User where id= #{id}
    </select>
    
+	<select id="idCheck" resultType="int">
+		select count(*) from User where email=#{email}
+	</select>
 </mapper>

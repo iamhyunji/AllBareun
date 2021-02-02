@@ -1,5 +1,7 @@
 package com.allbareun.web.dao.mybatis;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -73,5 +75,21 @@ public class MyBatisUserDao implements UserDao{
 		// TODO Auto-generated method stub
 		return mapper.getById(id);
 	}
+
+	@Override
+	public int idCheck(String query) {
+		// TODO Auto-generated method stub
+		return mapper.idCheck(query);
+	}
+
+
+
+	@Override
+	public void logout(HttpSession session) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 
 }

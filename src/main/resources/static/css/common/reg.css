@@ -78,3 +78,16 @@ main{
         font-weight: bold;
         font-size: 15px;
     }
+    .id-button{
+        width: 70px;
+        height: 20px;
+        color: #ff8f00;
+        background: white;
+        border: 1px solid #ff8f00;
+        font-size: 13px;
+    }
+    .id-button:hover{
+        color: black;
+        background: white;
+        border: 1px solid black;
+    }
