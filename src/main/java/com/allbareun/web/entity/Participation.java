@@ -5,6 +5,9 @@ public class Participation {
 	private int id;
 	private int userId;
 	
+	public Participation() {
+		
+	}
 	
 	public Participation(int goalId, int id, int userId) {
 		super();

@@ -42,7 +42,7 @@
                     <img class="m-img" src="${g.badEx }" alt="">
                 </div>
 
-                <div class="description">g.certificationExplanation</div>
+                <div class="description">${g.exExplanation }</div>
             </div>
         </section>
 

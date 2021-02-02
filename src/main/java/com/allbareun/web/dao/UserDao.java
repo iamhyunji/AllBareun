@@ -13,6 +13,7 @@ public interface UserDao {
 	int insert(User user);
 	int update(User user);
 	int delete(User user);
+	User getById(int id);
 	int idCheck(String query);
 	void logout(HttpSession session);
 

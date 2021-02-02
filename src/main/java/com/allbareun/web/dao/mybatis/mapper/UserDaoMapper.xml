@@ -26,7 +26,7 @@
       		 values (#{email}, #{password}, #{name}, #{gender}, #{age}, #{phone}, #{profile} )
    </insert>
    
-   <select id="updaate" resultType="com.allbareun.web.entity.User">
+   <select id="update" resultType="com.allbareun.web.entity.User">
       update User set
       	email = #{email},
       	password = #{password},
@@ -40,6 +40,10 @@
    
    <select id="delete" resultType="com.allbareun.web.entity.User">
       delete from User where id = #{id}
+   </select>
+   
+   <select id="getById" resultType="com.allbareun.web.entity.User">
+      select * from User where id= #{id}
    </select>
    
 	<select id="idCheck" resultType="int">

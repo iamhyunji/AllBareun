@@ -34,6 +34,9 @@ input[type=text],
     margin-right: 10px;
     font-weight: bold;
 }
+.required .cycle{
+    display: inline-block;
+}
 
 /* --------- Non-Required --------- */
 .non-required > div > div{

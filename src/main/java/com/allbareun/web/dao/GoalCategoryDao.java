@@ -4,6 +4,7 @@ import com.allbareun.web.entity.GoalCategory;
 
 public interface GoalCategoryDao {
 
-	int update(GoalCategory goalCategory);
+	int insert(GoalCategory goalCategory);
+	int delete(int goalId);
 
 }

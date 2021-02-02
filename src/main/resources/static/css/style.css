@@ -40,25 +40,25 @@ html {
 /* small, medium, large, x-large */
 .select-s {
 
-  /* 2-4글자 정도 예상 */
+  /* 2-4湲��옄 �젙�룄 �삁�긽 */
   width: 100px;
   padding: 3px 5px;
   font-size: 0.8rem;
 }
 .select-m {
-  /* 4-8글자 정도 예상 */
+  /* 4-8湲��옄 �젙�룄 �삁�긽 */
   width: 150px;
   padding: 3px 5px;
   font-size: 0.8rem;
 }
 .select-l {
-  /* 8-12글자 정도 예상 */
+  /* 8-12湲��옄 �젙�룄 �삁�긽 */
   width: 200px;
   padding: 3px 5px;
   font-size: 0.8rem;
 }
 .select-xl {
-  /* 15자 이상 글자 정도 예상 */
+  /* 15�옄 �씠�긽 湲��옄 �젙�룄 �삁�긽 */
   width: 400px;
   padding: 3px 5px;
   font-size: 0.8rem;
@@ -69,40 +69,39 @@ html {
 .text-s,
 .text-s > * {
 
-  /* 검색폼/select box의 텍스트 정도 */
+  /* 寃��깋�뤌/select box�쓽 �뀓�뒪�듃 �젙�룄 */
   font-size: 0.8rem;
 
 }
 .text-m-bold,
 .text-m-bold > * {
-  /* 헤더의 nav 정도 */
+  /* �뿤�뜑�쓽 nav �젙�룄 */
   font-size: 1rem;
   font-weight: 900;
 }
 .text-l,
 .text-l > * {
-  /* index 설명/detail 인증 날짜/부제목 정도 */
+  /* index �꽕紐�/detail �씤利� �궇吏�/遺��젣紐� �젙�룄 */
   font-size: 2rem;
   font-weight: 600;
 }
 .text-xl,
 .text-xl > * {
-  /* index/list 제목 정도 */
+  /* index/list �젣紐� �젙�룄 */
   font-size: 2.5rem;
   font-weight: 900;
 
 }
-a.text-s:hover,
-a.text-s > *:hover,
-a.text-m-bold:hover,
-a.text-m-bold > *:hover,
-a.text-l:hover,
-a.text-l > *:hover,
-a.text-xl:hover,
-a.text-xl > *:hover {
+*.text-s > a:hover,
+*.text-s > * > a:hover,
+*.text-m-bold > a:hover,
+*.text-m-bold > * > a:hover,
+*.text-l >  a:hover,
+*.text-l > * > a:hover,
+*.text-xl > a:hover,
+*.text-xl > * > a:hover {
   text-decoration: none;
   color: #ff8f00;
-
 }
 
 /* --------------- img --------------- */
@@ -124,7 +123,7 @@ a.text-xl > *:hover {
 
 /* --------------- button --------------- */
 
-/* 200px 오렌지 빅버튼 */
+/* 200px �삤�젋吏� 鍮낅쾭�듉 */
 .a-input-orange-l {
   display: inline-block;
   width: 200px;
@@ -136,10 +135,12 @@ a.text-xl > *:hover {
   font-size: 18px;
   border: solid #e66700 1px;
   border-bottom: solid #e66700 3px;
+  outline:none;
+  cursor: pointer;
 }
 
 
-/* 200px 화이트 빅버튼 */
+/* 200px �솕�씠�듃 鍮낅쾭�듉 */
 .a-input-white-l {
   display: inline-block;
   width: 200px;
@@ -151,11 +152,13 @@ a.text-xl > *:hover {
   font-size: 18px;
   border: solid #e66700 1px;
   border-bottom: solid #e66700 3px;
+  outline:none;
+  cursor: pointer;
 }
 
 /* ---------------------------------------------------------------------- */
 
-/* 200px 오렌지 미디움버튼 */
+/* 200px �삤�젋吏� 誘몃뵒��踰꾪듉 */
 .a-input-orange-m {
   display: inline-block;
   width: 150px;
@@ -167,10 +170,12 @@ a.text-xl > *:hover {
   font-size: 15px;
   border: solid #e66700 1px;
   border-bottom: solid #e66700 3px;
+  outline:none;
+  cursor: pointer;
 }
 
 
-/* 200px 화이트 미디움버튼 */
+/* 200px �솕�씠�듃 誘몃뵒��踰꾪듉 */
 .a-input-white-m {
   display: inline-block;
   width: 150px;
@@ -182,11 +187,13 @@ a.text-xl > *:hover {
   font-size: 15px;
   border: solid #e66700 1px;
   border-bottom: solid #e66700 3px;
+  outline:none;
+  cursor: pointer;
 }
 
 /* ---------------------------------------------------------------------- */
 
-/* 200px 오렌지 스몰버튼 */
+/* 200px �삤�젋吏� �뒪紐곕쾭�듉 */
 .a-input-orange-s {
   display: inline-block;
   width: 100px;
@@ -198,10 +205,12 @@ a.text-xl > *:hover {
   font-size: 15px;
   border: solid #e66700 1px;
   border-bottom: solid #e66700 3px;
+  outline:none;
+  cursor: pointer;
 }
 
 
-/* 200px 화이트 스몰버튼 */
+/* 200px �솕�씠�듃 �뒪紐곕쾭�듉 */
 .a-input-white-s {
   display: inline-block;
   width: 100px;
@@ -213,6 +222,8 @@ a.text-xl > *:hover {
   font-size: 15px;
   border: solid #e66700 1px;
   border-bottom: solid #e66700 3px;
+  outline:none;
+  cursor: pointer;
 }
 
 .hover:hover {
@@ -221,7 +232,7 @@ a.text-xl > *:hover {
 }
 
 /*---------------------------------------*/
-/*----------------변경 탭----------------*/
+/*----------------蹂�寃� �꺆----------------*/
 .tab-part {
   border-bottom: solid orange 1px;
   width: 1200px;

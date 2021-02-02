@@ -31,17 +31,16 @@ public class MyBatisGoalDao implements GoalDao {
 		mapper = session.getMapper(GoalDao.class);
 	}
 
+	@Override
+	public int insert(Goal goal) {
+		
+		return mapper.insert(goal);
+	}
 
 	@Override
 	public int update(Goal goal) {
 		
 		return mapper.update(goal);
-	}
-	
-	@Override
-	public GoalAllView getAllView(int id) {
-		
-		return mapper.getAllView(id);
 	}
 	
 	public List<GoalView> getViewList(String categories, String startDate, String endDate, String days, int totalParticipants,
@@ -63,9 +62,9 @@ public class MyBatisGoalDao implements GoalDao {
 	}
 
 	@Override
-	public List<CertificationView> getAuthImage(int id) {
+	public List<CertificationView> getAuthImages(int id) {
 		// TODO Auto-generated method stub
-		return mapper.getAuthImage(id);
+		return mapper.getAuthImages(id);
 	}
 
 
@@ -77,6 +76,7 @@ public class MyBatisGoalDao implements GoalDao {
 
 	@Override
 	public List<GoalAllView> getAllViewList(int userId) {
+		
 		return mapper.getAllViewList(userId);
 	}
 
@@ -86,7 +86,6 @@ public class MyBatisGoalDao implements GoalDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 	@Override
 	public Participation enter(int uid, int id) {
@@ -104,5 +103,28 @@ public class MyBatisGoalDao implements GoalDao {
 		// TODO Auto-generated method stub
 		 return mapper.enter(participation);
 	}
+	@Override
+	public Goal getLastInserted(int userId) {
+		
+		return mapper.getLastInserted(userId);
+	}
+
+	@Override
+	public GoalAllView getAllView(int id) {
+		
+		return mapper.getAllView(id);
+	}
+	
+	@Override
+	public String getParticipantsId(int goalId) {
+		// TODO Auto-generated method stub
+		return mapper.getParticipantsId(goalId);
+	}
+
+//	@Override
+//	public CertificationView getAuthImage(int id) {
+//		// TODO Auto-generated method stub
+//		return mapper.getAuthImage(id);
+//	}
 
 }

@@ -5,15 +5,102 @@
 
 <mapper namespace="com.allbareun.web.dao.GoalDao">
 
-	<update id="update">
+	
+	<insert id="insert">
+		INSERT INTO Goal
+		(
+			`title`,
+			`explanation`,
+			`mainImage`,
+			<if test="goodEx != null and goodEx != ''">
+			`goodEx`,
+			`badEx`,
+			</if>
+			`exExplanation`,
+			`startDate`,
+			`endDate`,
+			`publicStatus`,
+			`userId`,
+			`totalParticipants`
+		)
+		VALUES
+		(
+			#{title},
+			#{explanation},
+			#{mainImage},
+			<if test="goodEx != null and goodEx != ''">
+			#{goodEx},
+			#{badEx},
+			</if>
+			#{exExplanation},
+			#{startDate},
+			#{endDate},
+			#{publicStatus},
+			#{userId},
+			#{totalParticipants}
+		);
+	</insert>
+	
+   <update id="update">
 		UPDATE Goal
 		SET title = #{title}, explanation =
 		#{explanation}, mainImage = #{mainImage}
 		WHERE id = #{id}
 	</update>
+   
+   <select id="get" resultType="com.allbareun.web.entity.Goal">
+      select * from Goal where id = #{id}
+   </select>
+   
+   <select id="getAllView" resultType="com.allbareun.web.entity.GoalAllView">
+      	select * from GoalAllView where id = #{id};
+   </select>
 
 	<select id="get" resultType="com.allbareun.web.entity.Goal">
 		select * from Goal where id = #{id}
+		</select>
+   <select id="getViewList" resultType="com.allbareun.web.entity.GoalView">
+      select * from GoalView where publicStatus=1
+		<if test="categories != null and categories !=''">       
+		and categories like concat('%',replace(#{categories}, ',','%'),'%')
+		</if>
+		<if test="startDate != null and startDate !=''"> 
+		and date_format(startDate, '%Y-%m-%d') &gt;=#{startDate} 
+		</if>
+		<if test="endDate != null and endDate !=''"> 
+		and date_format(endDate, '%Y-%m-%d')&lt;=#{endDate} 
+		</if>
+		<if test="days != null and days !=''"> 
+		and days like concat('%',replace(#{days}, ',','%'),'%') 
+		</if>
+		<if test="totalParticipants != null and totalParticipants !=0"> 
+		and totalParticipants = #{totalParticipants} 
+		</if>
+		<if test="query != null and query !=''"> 
+		and title like '%${query}%';
+		</if>
+   </select>
+
+   <select id="getAllViewList" resultType="com.allbareun.web.entity.GoalAllView">
+      select GAV.*
+		from GoalAllView GAV join (
+				select TPS.*
+				from(
+					select @row_num:=@row_num+1 id, TP.*, U.profile, U.name
+					from(
+						select id goalId, userId from Goal
+						union
+						select goalId, userId from Participation
+						union
+						select goalId, requestReceiveUserId userId from `Group`
+						where answer = 1
+					) TP left join User U on TP.userId = U.id,
+					(SELECT @row_num:=0) AS RN
+					order by goalId, userId
+				) TPS
+				where TPS.userId = #{userId}
+			) TPV
+		on TPV.goalId = GAV.id;
 	</select>
 
 	<select id="getAllView"
@@ -70,7 +157,7 @@
 	</select>
 
 
-	<select id="getAuthImage"
+	<select id="getAuthImages"
 		resultType="com.allbareun.web.entity.CertificationView">
 		select * from CertificationView where goalId = ${param1};
 
@@ -82,4 +169,34 @@
 		(#{userId},#{goalId});
 	</insert>
 
+   <select id="getDetailView" resultType="com.allbareun.web.entity.GoalDetailView">
+      select * from GoalDetailView
+      where id = ${param1}
+   </select>
+   
+    <select id="getProfile" resultType="com.allbareun.web.entity.User">
+    
+    select G.*,PV.name,PV.profile from (SELECT P.id , P.userId , P.goalId , U.name ,U.profile
+			FROM Participation P
+            LEFT JOIN User U ON P.userId = U.id) PV left join Goal G on PV.goalId = G.Id where G.id = ${param1};
+            
+   </select>
+   
+   <select id="getLastInserted" resultType="com.allbareun.web.entity.Goal">
+   		select * from Goal
+   		where userId = #{userId}
+   		order by regdate desc
+   		limit 1;
+   	</select>
+
+    <select id="getParticipantsId" resultType="string">
+			select if(isnull(b.초대응한사람),concat( b.목표개설자,',',b.지인),concat( b.목표개설자,',',b.초대응한사람)) as participantsId from (
+			select a.id, a.목표개설자, group_concat(distinct a.초대응한사람 separator ',') as 초대응한사람, group_concat(DISTINCT a.지인 separator ',') as 지인 from (
+			select G.id,G.userId 목표개설자,GR.requestReceiveUserId 초대응한사람, P.userId 지인 from
+			(
+			Goal G
+			left join (SELECT goalId,requestReceiveUserId, answer from a11.Group where answer=1) GR on GR.goalId= G.Id
+			left join Participation P on P.goalId = G.Id
+			)) a group by a.id ) b where id=#{goalId};
+   </select>
 </mapper>

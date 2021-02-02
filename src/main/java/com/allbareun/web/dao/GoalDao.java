@@ -20,6 +20,7 @@ import com.allbareun.web.entity.User;
 
 public interface GoalDao {
 
+	int insert(Goal goal);
 	int update(Goal goal);	
 	Goal get(int id);
 	
@@ -30,8 +31,12 @@ public interface GoalDao {
 	List<GoalAllView> getAllViewList(int userId);
 	List<GoalView> getViewList(String categories, String startDate, String endDate, String days, int totalParticipants, String query);
 	List<User> getProfile(int id);
-	List<CertificationView> getAuthImage(int id);
+	List<CertificationView> getAuthImages(int id);
 	Participation enter(int uid, int id);
 	int enter(Participation participation);
+	//CertificationView getAuthImage(int id);
+	String getParticipantsId(int goalId);
+
+	Goal getLastInserted(int userId);
 
 }

@@ -69,6 +69,13 @@ public class MyBatisUserDao implements UserDao{
 	}
 
 
+	
+	@Override
+	public User getById(int id) {
+		// TODO Auto-generated method stub
+		return mapper.getById(id);
+	}
+
 	@Override
 	public int idCheck(String query) {
 		// TODO Auto-generated method stub
