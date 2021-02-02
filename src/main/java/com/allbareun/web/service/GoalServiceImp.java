@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -115,8 +116,24 @@ public class GoalServiceImp implements GoalService {
 			goalDao.update(goal);
 		}
 		// 지인 그룹
-		else if (!originPub && originTotalParticipants > 1)
+		else if (!originPub && originTotalParticipants > 1) {
 			groupDao.delete(goalId, userId);
+			
+			if(gList != null) {
+				String originUserIds = goalDao.getAllView(goalId).getParticipantIds();
+				String[] stringIds = originUserIds.split(",");
+				int[] ids = new int[stringIds.length];
+				
+				for(int i=0; i < stringIds.length; i++)
+					ids[i] = Integer.parseInt(stringIds[i]);
+				
+				for(Group g : gList) {
+					int newUserId = g.getRequestReceiveUserId();				
+					if(IntStream.of(ids).anyMatch(x -> x == newUserId))
+						groupDao.delete(goalId, newUserId);
+				}
+			}
+		}
 		// 익명 그룹
 		else if (originPub && originTotalParticipants > 1)
 			participationDao.delete(goalId, userId);
@@ -124,48 +141,13 @@ public class GoalServiceImp implements GoalService {
 		
 		
 		// -------------------------- 후처리 --------------------------
-		// 카테고리
-		goalCategoryDao.delete(goalId);
-
-		for (GoalCategory gc : gcList) {
-			gc.setGoalId(goalId);
-			goalCategoryDao.insert(gc);
-		}
-
-		// 인증 주기
-		cycleDao.delete(goalId);
-
-		for (Cycle c : cList) {
-			c.setGoalId(goalId);
-			cycleDao.insert(c);
-		}
+		if(goal.getUserId() == 0)
+			goal.setUserId(userId);
 		
-		goalDao.update(goal);
-		// 개인
-		if(!originPub && originTotalParticipants == 1 || userId == origin.getUserId()) {
-			goal.setUserId(0);
-			goalDao.update(goal);
-		}
+		this.insert(goal, gcList, cList, gList);
 		
-		// 지인 그룹
-		if (!originPub && originTotalParticipants > 1) {
-			groupDao.delete(goalId, userId);
-
-			for (Group g : gList) {
-				g.setGoalId(goalId);
-				groupDao.insert(g);
-			}
-		}
-
-		// 익명 그룹
-		if (originPub && originTotalParticipants > 1) {
-			participationDao.delete(goalId, userId);
-
-			for (Group g : gList) {
-				g.setGoalId(goalId);
-				groupDao.insert(g);
-			}
-		}
+		
+		
 		result++;
 		
 		return result;

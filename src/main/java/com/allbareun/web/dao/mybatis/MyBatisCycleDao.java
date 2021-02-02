@@ -19,10 +19,4 @@ public class MyBatisCycleDao implements CycleDao {
 		return session.getMapper(CycleDao.class).insert(cycle);
 	}
 
-	@Override
-	public int delete(int goalId) {
-		
-		return session.getMapper(CycleDao.class).delete(goalId);
-	}
-	
 }
