@@ -34,7 +34,8 @@ public class GoalController {
 	private GoalService service;
 
 	@GetMapping("reg")
-	public String reg() {
+	public String reg(Principal principal) {
+		int userId = service.getUserIdByEmail(principal.getName());
 
 		return "user.goal.reg";
 	}
@@ -51,9 +52,11 @@ public class GoalController {
 			@RequestParam(name = "g-bEx", required = false) String badEx,
 			@RequestParam(name = "g-exEx", required = false) String exExplanation,
 			@RequestParam(name = "gct-id") int[] goalCategoryTypeIds, @RequestParam(name = "d-id") int[] dayIds,
-			@RequestParam(name = "g-m", required = false) int[] members) {
+			@RequestParam(name = "g-m", required = false) int[] members,
+			Principal principal) {
 
-		int userId = 3;
+		int userId = service.getUserIdByEmail(principal.getName());
+		
 		Goal goal = new Goal(0, title, explanation, mainImage, goodEx, badEx, endDate, startDate, publicStatus, null,
 				count, userId, totalParticipants, exExplanation);
 

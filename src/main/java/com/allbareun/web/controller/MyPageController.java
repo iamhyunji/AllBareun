@@ -1,5 +1,6 @@
 package com.allbareun.web.controller;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -33,11 +34,11 @@ public class MyPageController {
 	private GoalService service;
 	
 	@GetMapping("done/list")
-	public String doneList(Model model) {
-		// 임시 회원 아이디입니다. 추후 회원 아이디 정보 얻는 로직을 구현해주세요.
-		int userId = 3;
+	public String doneList(Model model, Principal principal) {
 		
+		int userId = service.getUserIdByEmail(principal.getName());
 		List<GoalAllView> list = service.getAllViewList(userId);
+		
 		for(GoalAllView gav : list) {
 			String cycle = gav.getDays();
 			
@@ -49,6 +50,7 @@ public class MyPageController {
 				gav.setCount(cycleCnt);
 			}
 		}
+		
 		model.addAttribute("list", list);
 		
 		return "user.mypage.done.list";

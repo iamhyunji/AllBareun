@@ -54,7 +54,7 @@ public class GoalServiceImp implements GoalService {
 		int result = 0;
 		goalDao.insert(goal);
 		
-		Goal insertedGoal = goalDao.getLastInserted(2);
+		Goal insertedGoal = goalDao.getLastInserted(goal.getUserId());
 		int goalId = insertedGoal.getId();
 		
 		// 카테고리
@@ -280,6 +280,12 @@ public class GoalServiceImp implements GoalService {
 		return goalDao.enter(participation);
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public int getUserIdByEmail(String email) {
+		
+		return userDao.getUserId(email);
 	}
 
 }
