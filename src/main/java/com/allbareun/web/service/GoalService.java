@@ -47,4 +47,5 @@ public interface GoalService {
 	int getinfo(String email);
 	int getUserIdByEmail(String name);
 	int retryGoal(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList);
+	int deleteGoalFromUser(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList);
 }

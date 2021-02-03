@@ -1,0 +1,59 @@
+@import url("/css/layout.css");
+
+#body {
+    margin-bottom: 50px;
+}
+#main form > * {
+    margin-bottom: 30px;
+}
+.m-img {
+    background: #e9e9e9;
+    margin-right: 20px;
+}
+input[type=text],
+.description {
+    padding: 3px 8px;
+    width: 100%;
+    resize: none;
+}
+
+/* --------- Required --------- */
+.required{
+    display: flex;
+}
+.required .required__content {
+    flex: 1;
+}
+.required .required__content > div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.required label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+.required .cycle{
+    display: inline-block;
+}
+
+/* --------- Non-Required --------- */
+.non-required > div > div{
+    display: inline-block;
+}
+.non-required .m-img {
+    margin-top: 20px;
+}
+.non-required .description {
+    margin-top: 20px;
+    min-height: 150px;
+}
+/* --------- Buttons --------- */
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+.buttons > * {
+    margin-right: 30px;
+}

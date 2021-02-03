@@ -34,11 +34,20 @@ public class MyPageController {
 	private GoalService service;
 	
 	@GetMapping("done/list")
-	public String doneList(Model model, Principal principal) {
+	public String doneList(@RequestParam(name = "del-goalId", required = false, defaultValue = "0") int goalId, Model model, Principal principal) {
 		
 		int userId = service.getUserIdByEmail(principal.getName());
+
 		List<GoalAllView> list = service.getAllViewList(userId, "done");
 		model.addAttribute("list", list);
+		
+		if(goalId != 0) {
+			Goal goal = service.get(goalId);
+			goal.setUserId(userId);
+			service.deleteGoalFromUser(goal, null, null, null);
+			
+			return "redirect:./list";
+		}
 		
 		return "user.mypage.done.list";
 	}

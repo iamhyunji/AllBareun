@@ -1,0 +1,116 @@
+/* ---------------import------------------------ */
+
+@import "/css/layout.css";
+
+/* ---------------body-------------------------- */
+
+.major {
+  position: relative;
+  text-align: center;
+  top: 16px;
+  margin: 0 0 48px 0;
+}
+.major a {
+  text-decoration: none;
+}
+.major li {
+  background: #fff;
+  position: relative;
+  top: -11px;
+  display: inline;
+  margin: 10px;
+  padding: 0 16px 0 16px;
+}
+.goal-container {
+  margin-bottom: 30px;
+}
+
+.goal-container .image {
+  width: 900px;
+  height: 500px;
+  padding: 25px;
+}
+.goal-container .detail-bar {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  font-size: 20px;
+}
+.detail-bar .date {
+	position: relative;
+	top: 20px;
+	font-weight: bold;
+}
+.detail-bar .fa-user-circle {
+  position: relative;
+  right: 10px;
+  width : 70px;
+  height : 70px;
+}
+.detail-bar .name {
+  font-size: 20px;
+  font-weight: bold;
+  position:relative;
+  top: -35px;
+}
+
+.answer-container {
+  display: flex;
+  justify-content: flex-start;
+}
+.answer > li {
+  font-weight: bold;
+  padding: 10px 0;
+}
+.circle-box {
+  display: flex;
+  align-items: center;
+}
+.circle {
+  border: 1px solid black;
+  border-radius: 50%;
+  margin: 0 10px;
+  outline: none;
+}
+.circle-box .c-xl {
+  width: 60px;
+  height: 60px;
+}
+.circle-box .c-l {
+  width: 50px;
+  height: 50px;
+}
+.circle-box .c-m {
+  width: 40px;
+  height: 40px;
+}
+.circle-box .c-s {
+  width: 30px;
+  height: 30px;
+}
+
+.circle-box .checked {
+  background-color: #ff8f00;
+}
+.circle-box span {
+  color: #ff8f00;
+}
+.review {
+  margin: 30px 0;
+  padding: 30px 0;
+  font-size: 20px;
+  font-weight: 300;
+  background: #eceff1;
+  border-radius: 5px;
+  border-bottom: 1px solid #ccc;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 0;
+}
+.button-container input{
+  outline:none;
+  cursor: pointer;
+}

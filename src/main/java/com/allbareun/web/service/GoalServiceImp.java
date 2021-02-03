@@ -102,7 +102,7 @@ public class GoalServiceImp implements GoalService {
 	
 	@Override
 	@Transactional
-	public int retryGoal(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList) {
+	public int deleteGoalFromUser(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList) {
 		int result = 0;
 		
 		int goalId = goal.getId();
@@ -111,9 +111,7 @@ public class GoalServiceImp implements GoalService {
 		Goal origin = goalDao.get(goalId);
 		boolean originPub = origin.getPublicStatus();
 		int originTotalParticipants = origin.getTotalParticipants();
-		
-		
-		
+
 		// -------------------------- 전처리 --------------------------
 		// 개인
 		if(!originPub && originTotalParticipants == 1 || userId == origin.getUserId()) {
@@ -121,24 +119,8 @@ public class GoalServiceImp implements GoalService {
 			goalDao.update(goal);
 		}
 		// 지인 그룹
-		else if (!originPub && originTotalParticipants > 1) {
+		else if (!originPub && originTotalParticipants > 1)
 			groupDao.update(goalId, userId);
-			
-//			if(gList != null) {
-//				String originUserIds = goalDao.getAllView(goalId).getParticipantIds();
-//				String[] stringIds = originUserIds.split(",");
-//				int[] ids = new int[stringIds.length];
-//				
-//				for(int i=0; i < stringIds.length; i++)
-//					ids[i] = Integer.parseInt(stringIds[i]);
-//				
-//				for(Group g : gList) {
-//					int newUserId = g.getRequestReceiveUserId();				
-//					if(IntStream.of(ids).anyMatch(x -> x == newUserId))
-//						groupDao.delete(goalId, newUserId);
-//				}
-//			}
-		}
 		// 익명 그룹
 		else if (originPub && originTotalParticipants > 1)
 			participationDao.delete(goalId, userId);
@@ -149,10 +131,18 @@ public class GoalServiceImp implements GoalService {
 		if(goal.getUserId() == 0)
 			goal.setUserId(userId);
 		
+		result++;
+		return result;
+	}
+	
+	@Override
+	@Transactional
+	public int retryGoal(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList) {
+		int result = 0;
+
+		this.deleteGoalFromUser(goal, gcList, cList, gList);
 		this.insert(goal, gcList, cList, gList);
-		
-		
-		
+
 		result++;
 		
 		return result;

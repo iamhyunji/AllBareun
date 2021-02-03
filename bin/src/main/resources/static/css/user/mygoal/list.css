@@ -1,0 +1,63 @@
+@import url("/css/layout.css");
+
+/* --------- Calendar --------- */
+.calendar__weekly{
+    height: 150px;
+    display: flex;
+}
+.calendar__weekly>li{
+    padding: 8px 10px;
+    flex: 1 0;
+
+    background: white;
+    border-right: 1px solid gray;
+}
+
+
+
+
+
+/* --------- Search Form --------- */
+.search {
+    height: 40px;
+    display: flex;
+    justify-content: flex-end;
+}
+.search__form {
+    width: 650px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.search__form input {
+    padding: 0px 15px;
+}
+
+
+
+
+
+/* --------- Goal List --------- */
+.goals .s-img {
+    padding: 0px;
+}
+.goals .goals__list>li {
+    margin: 20px 0px;
+    display: flex;
+
+    border-right: 1px solid gray;
+}
+.goals .goals__list>li div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.goals .goals__list>li div:nth-child(2) {
+    flex-grow: 1;
+}
+.goals .goals__list>li div>* {
+    margin: 0px 20px;
+}
+.goals__list .setting {
+    align-self: flex-end;
+}

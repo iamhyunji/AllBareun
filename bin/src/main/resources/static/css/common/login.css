@@ -1,0 +1,106 @@
+main{
+    background: #e9e9e9;
+
+}
+.main{
+    border: 1px solid white;
+    width: 500px;
+    height: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    background: white;
+}
+    .main>h1{
+        width: 210px;
+        margin: 0px auto 80px auto;
+    }
+    .main .text-box{
+        width: 400px;
+        height: 50px;
+        margin-left: 50px;
+        margin-bottom: 20px;
+        border: 1px solid #e9e9e9;
+    }
+    .main .text-box:hover{
+        background: skyblue;
+        border: 1px solid rgb(52, 59, 88);
+    }
+    .main .login-box{
+        width: 400px;
+        height: 40px;
+        margin-left: 50px;
+        margin-bottom: 20px;
+        font-size: 20px;
+        color: #ff8f00;
+        border: 1px solid #ff8f00;
+        background: white;
+    }
+    .login-box:hover{
+        font-weight: bold;
+        background: #ff8f00;
+        color:  rgb(52, 59, 88);
+    }
+    .main .login-box:active{
+        font-weight: bold;
+        color: white;
+        background-color: #ff8f00;
+        border: 1px solid white;
+    }
+
+    .reg-id{
+        width: 320px;
+        height: 50px;
+        margin-top: 25px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+        .reg-id ul{
+            display: flex;
+            font-size: 17px;
+        }
+        .reg-id li span{
+            color: #e9e9e9;
+        }
+
+    .sns-box{
+        margin-top: 100px;
+        width: 100%;
+        height: 200px;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-around;
+        
+    }
+    .main .login-btn{
+        width: 400px;
+        height: 50px;
+        /* border:  1px solid; */
+        border-radius: 7px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 20px;
+        position: relative;
+    }
+    .main .login-btn img{
+        margin-top: 3px;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+    }
+    .main .login-btn span{
+        font-size: 20px;
+        font-weight: bold;
+        position: relative;
+        top: 14px;
+        left: 40px;
+    }
+    .kakao{
+        background: #FAE100;
+    }
+    .naver{
+        background: rgb(33, 197, 2);
+    }
+    .google{
+        background: white;
+        border: 1px solid black;
+    }
