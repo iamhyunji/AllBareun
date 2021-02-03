@@ -45,10 +45,12 @@
                 </div>
 
               </div>
-  
+
     <main class="main-container">
+<fmt:timeZone value="KST">
     		<c:set var="dateVar" value=" " />
     		<c:forEach var="n" items="${list}" varStatus="i">
+    		  
     		<fmt:formatDate var="dateFmt" value="${n.regdate}" pattern="yyyy.MM.dd"/>
                 <c:if test="${dateFmt ne dateVar}"  var="res" scope="request">
                 <c:set var="dateVar" value="${dateFmt}" />
@@ -70,7 +72,9 @@
 	                </div>
 	              </c:if>
 			</c:forEach>
-        </main> 
+			</fmt:timeZone>
+        </main>
+        
             </section>
           </div>
         </main>

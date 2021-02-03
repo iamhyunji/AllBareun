@@ -22,6 +22,7 @@
                   <a class="tab-button">이미지/동영상</a>
                 </div>
               </div>
+              <fmt:timeZone value="KST">
               <div class="major"></div>
               <div class="goal-container">
                 <a href="#"><img src="${d.authImage}" alt="" class="l-img" /></a>
@@ -38,6 +39,7 @@
 	                 <span class="name">${d.name }</span>
 	                </div>
                  </div>
+                 </fmt:timeZone>
                 <div class="answer-container">
                   <ul>
                     <div class="answer">

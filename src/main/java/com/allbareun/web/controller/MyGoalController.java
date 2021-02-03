@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.security.Principal;
 import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -138,6 +140,8 @@ public class MyGoalController {
 		List<String> profileInfo = service.getUserProfile(ids);
 		List<String> nameInfo = service.getUserName(ids);
 		
+        TimeZone tz = Calendar.getInstance().getTimeZone();
+
 		
 		model.addAttribute("list", list);
 		model.addAttribute("profileInfo", profileInfo);
