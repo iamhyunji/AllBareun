@@ -97,6 +97,7 @@ public class GoalServiceImp implements GoalService {
 	}
 	
 	@Override
+	@Transactional
 	public int retryGoal(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList) {
 		int result = 0;
 		
@@ -117,22 +118,22 @@ public class GoalServiceImp implements GoalService {
 		}
 		// 지인 그룹
 		else if (!originPub && originTotalParticipants > 1) {
-			groupDao.delete(goalId, userId);
+			groupDao.update(goalId, userId);
 			
-			if(gList != null) {
-				String originUserIds = goalDao.getAllView(goalId).getParticipantIds();
-				String[] stringIds = originUserIds.split(",");
-				int[] ids = new int[stringIds.length];
-				
-				for(int i=0; i < stringIds.length; i++)
-					ids[i] = Integer.parseInt(stringIds[i]);
-				
-				for(Group g : gList) {
-					int newUserId = g.getRequestReceiveUserId();				
-					if(IntStream.of(ids).anyMatch(x -> x == newUserId))
-						groupDao.delete(goalId, newUserId);
-				}
-			}
+//			if(gList != null) {
+//				String originUserIds = goalDao.getAllView(goalId).getParticipantIds();
+//				String[] stringIds = originUserIds.split(",");
+//				int[] ids = new int[stringIds.length];
+//				
+//				for(int i=0; i < stringIds.length; i++)
+//					ids[i] = Integer.parseInt(stringIds[i]);
+//				
+//				for(Group g : gList) {
+//					int newUserId = g.getRequestReceiveUserId();				
+//					if(IntStream.of(ids).anyMatch(x -> x == newUserId))
+//						groupDao.delete(goalId, newUserId);
+//				}
+//			}
 		}
 		// 익명 그룹
 		else if (originPub && originTotalParticipants > 1)

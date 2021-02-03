@@ -7,6 +7,11 @@
 		VALUES(#{goalId}, #{requestDispatchUserId}, #{requestReceiveUserId});
 	</insert>
 	
+	<update id="update">
+		UPDATE `Group` SET answer = false
+		WHERE goalId = #{goalId} and requestReceiveUserId = #{userId};
+	</update>
+	
 	<delete id="delete">
 		delete from `Group`
 		where goalId = #{goalId} and requestReceiveUserId = #{userId};
