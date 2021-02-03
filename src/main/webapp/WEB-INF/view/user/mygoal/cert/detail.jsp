@@ -25,7 +25,7 @@
               <fmt:timeZone value="KST">
               <div class="major"></div>
               <div class="goal-container">
-                <a href="#"><img src="${d.authImage}" alt="" class="l-img" /></a>
+                <img src="${d.authImage}" alt="" class="l-img" />
                 <div class="detail-bar">
 	               <div class="date">
 	               <fmt:formatDate var="dateFmt" value="${d.regdate}" pattern="yyyy.MM.dd"/>

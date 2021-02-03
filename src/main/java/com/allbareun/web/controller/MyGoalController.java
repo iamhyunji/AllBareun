@@ -73,7 +73,7 @@ public class MyGoalController {
 		String url = "/upload/auth/images/"+goalId+"/"+date+"/"+userId;
 		String filePath = url +"/"+ fileName;
 		int result = service.certAndEvalInsert(goalId,userId,filePath,answer1,answer2,answer3,explanation);
-		return "redirect:/mygoal/cert/list/"+userId;
+		return "redirect:/mygoal/cert/list/"+goalId;
 	} 
 	
 	
