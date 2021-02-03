@@ -22,8 +22,8 @@
                 <div class="find-pwd find unclicked">비밀번호 찾기</div>
             </div>
 
-            <form class="find-pwd">
-                <input type="text" class="text-box id-box" name="id" placeholder="아이디를 입력해 주세요.">
+            <form class="find-pwd" role="form">
+                <input type="email" class="text-box id-box" name="id" placeholder="아이디를 입력해 주세요.">
                 <input type="text" class="text-box name-box" name="name" placeholder="이름을 입력해 주세요.">
                 <input type="text" class="text-box phone-box" name="phoen" placeholder="핸드폰 번호를 입력해 주세요.(-없이)">
 
