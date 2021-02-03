@@ -75,9 +75,9 @@ public class MyBatisGoalDao implements GoalDao {
 	}
 
 	@Override
-	public List<GoalAllView> getAllViewList(int userId) {
-		
-		return mapper.getAllViewList(userId);
+	public List<GoalAllView> getAllViewList(int userId, String status) {
+
+		return mapper.getAllViewList(userId, status);
 	}
 
 

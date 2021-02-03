@@ -87,6 +87,11 @@ public class MyBatisUserDao implements UserDao{
 		
 	}
 
-	
+
+	@Override
+	public int getUserId(String email) {
+		
+		return mapper.getUserId(email);
+	}
 
 }

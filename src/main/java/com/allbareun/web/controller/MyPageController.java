@@ -34,22 +34,10 @@ public class MyPageController {
 	private GoalService service;
 	
 	@GetMapping("done/list")
-	public String doneList(Model model) {
-		// 임시 회원 아이디입니다. 추후 회원 아이디 정보 얻는 로직을 구현해주세요.
-		int userId = 3;
+	public String doneList(Model model, Principal principal) {
 		
-		List<GoalAllView> list = service.getAllViewList(userId);
-		for(GoalAllView gav : list) {
-			String cycle = gav.getDays();
-			
-			if(cycle == null)
-				gav.setCount(0);
-			else {
-				String[] splitedCycle = cycle.split(",");
-				int cycleCnt = splitedCycle.length;
-				gav.setCount(cycleCnt);
-			}
-		}
+		int userId = service.getUserIdByEmail(principal.getName());
+		List<GoalAllView> list = service.getAllViewList(userId, "done");
 		model.addAttribute("list", list);
 		
 		return "user.mypage.done.list";
@@ -58,8 +46,7 @@ public class MyPageController {
 	@GetMapping("done/{id}/retry")
 	public String doneRetry(@PathVariable(name="id") int id, Model model) {
 		
-		GoalDetailView retryGoal = service.getDetailView(id);
-		System.out.println(retryGoal);
+		GoalAllView retryGoal = service.getAllView(id);
 		model.addAttribute("rg", retryGoal);
 		
 		return "user.mypage.done.retry";
@@ -67,20 +54,23 @@ public class MyPageController {
 	
 	@PostMapping("done/{id}/retry")
 	public String doneRetry(@RequestParam(name = "g-i") int id,
-						@RequestParam(name = "g-t") String title,
-						@RequestParam(name = "g-ex") String explanation,
-						@RequestParam(name = "g-sd") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startDate,
-						@RequestParam(name = "g-ed") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date endDate,
-						@RequestParam(name = "g-ps") boolean publicStatus,
-						@RequestParam(name = "g-tp") int totalParticipants,
-						@RequestParam(name = "g-gEx", required = false) String goodEx,
-						@RequestParam(name = "g-bEx", required = false) String badEx,
-						@RequestParam(name = "g-exEx", required = false) String exExplanation,
-						@RequestParam(name = "gct-id") int[] goalCategoryTypeIds,
-						@RequestParam(name = "d-id") int[] dayIds,
-						@RequestParam(name = "g-m", required = false) int[] members) {
-
-		Goal goal = new Goal(id, title, exExplanation, explanation, goodEx, badEx, endDate, startDate, publicStatus, null, 0, 2, totalParticipants, exExplanation);
+							@RequestParam(name = "g-mImg", defaultValue = "/images/default-image2.png") String mainImage,
+							@RequestParam(name = "g-t") String title,
+							@RequestParam(name = "g-ex") String explanation,
+							@RequestParam(name = "g-sd") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startDate,
+							@RequestParam(name = "g-ed") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date endDate,
+							@RequestParam(name = "g-ps") boolean publicStatus,
+							@RequestParam(name = "g-c") int count,
+							@RequestParam(name = "g-tp") int totalParticipants,
+							@RequestParam(name = "g-gEx", required = false) String goodEx,
+							@RequestParam(name = "g-bEx", required = false) String badEx,
+							@RequestParam(name = "g-exEx", required = false) String exExplanation,
+							@RequestParam(name = "gct-id") int[] goalCategoryTypeIds,
+							@RequestParam(name = "d-id") int[] dayIds,
+							@RequestParam(name = "g-m", required = false) int[] members,
+							Principal principal) {
+		int userId = service.getUserIdByEmail(principal.getName());
+		Goal goal = new Goal(id, title, explanation, mainImage, goodEx, badEx, endDate, startDate, publicStatus, null, count, userId, totalParticipants, exExplanation);
 		
 		List<GoalCategory> gcList = new ArrayList<>();
 		List<Cycle> cList = new ArrayList<>();
@@ -98,14 +88,14 @@ public class MyPageController {
 		if(publicStatus == false && totalParticipants > 1)
 			for(int i=0; i < members.length; i++) {
 				Group member = new Group();
-				member.setRequestDispatchUserId(2);
+				member.setRequestDispatchUserId(userId);
 				member.setRequestReceiveUserId(members[i]);
 				gList.add(member);
 			}
 		else
 			gList = null;
 		
-		service.updateRetryGoal(goal, gcList, cList, gList);
+		service.retryGoal(goal, gcList, cList, gList);
 		
 		return "redirect:/mygoal/list";
 	}

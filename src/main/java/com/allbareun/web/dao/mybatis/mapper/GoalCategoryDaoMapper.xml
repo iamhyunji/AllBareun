@@ -15,9 +15,4 @@
 			#{priority}
 		);
 	</insert>
-	
-	<delete id="delete">
-		DELETE FROM GoalCategory
-		WHERE goalId = ${goalId};
-	</delete>
 </mapper>

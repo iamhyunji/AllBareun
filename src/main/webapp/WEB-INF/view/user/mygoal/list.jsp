@@ -115,15 +115,15 @@
 				<li>
 					<a href="#"><img class="s-img" src="${g.mainImage }" alt="" /></a>
 					<div>
-						<h2 class="text-l"><a href="#">${g.title }</a></h2>
+						<h2 class="text-l"><a href="${g.id }">${g.title }</a></h2>
 						<span>카테고리 : ${g.categories }</span>
 						<span>기간 : ${g.dateDiff }주 (<fmt:formatDate value="${g.startDate }" pattern="yyyy-MM-dd" /> - <fmt:formatDate value="${g.endDate }" pattern="yyyy-MM-dd" />)</span>
 						<span>횟수 : ${g.count }회 (${g.days })</span>
-						<span>참가 : ${g.totalParticipants }명 (${g.groupParticipants })</span>
+						<span>참가 : ${g.totalParticipants }명 (${g.participants })</span>
 					</div>
 					<div>
 						<a href="./${g.id }/edit" class="setting"><i class="fas fa-cog"></i></a>
-						<a class="a-input-orange-s" href="#">인증하기</a>
+						<a class="a-input-orange-s" href="${g.id }/auth">인증하기</a>
 					</div>
 				</li>
 			</c:forEach>

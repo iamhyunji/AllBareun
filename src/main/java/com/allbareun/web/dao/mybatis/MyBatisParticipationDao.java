@@ -4,19 +4,18 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.allbareun.web.dao.CycleDao;
-import com.allbareun.web.entity.Cycle;
+import com.allbareun.web.dao.ParticipationDao;
 
 @Repository
-public class MyBatisCycleDao implements CycleDao {
-
+public class MyBatisParticipationDao implements ParticipationDao{
+	
 	@Autowired
 	SqlSession session;
-	
+
 	@Override
-	public int insert(Cycle cycle) {
+	public int delete(int goalId, int userId) {
 		
-		return session.getMapper(CycleDao.class).insert(cycle);
+		return session.getMapper(ParticipationDao.class).delete(goalId, userId);
 	}
 
 }
