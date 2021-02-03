@@ -23,7 +23,7 @@
                 <section class="member-box">
                     <p><span class="star">*</span>아이디</p>
                     <div id="email">
-                    	<input type="text" class="text-box" name="email" placeholder="이메일 입력">
+                    	<input type="email" class="text-box" name="email" placeholder="이메일 입력">
                     	<button type="button" class="id-button">ID중복검사</button>
                     </div>
                     

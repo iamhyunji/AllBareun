@@ -43,9 +43,16 @@
 	
    <update id="update">
 		UPDATE Goal
-		SET title = #{title}, explanation =
-		#{explanation}, mainImage = #{mainImage}
-		WHERE id = #{id}
+		<choose>
+			<when test="userId == 0">
+				SET userId = null
+				where id = #{id}
+			</when>
+			<otherwise>
+				SET title = #{title}, explanation = #{explanation}, mainImage = #{mainImage}
+				WHERE id = #{id}			
+			</otherwise>
+		</choose>
 	</update>
    
    <select id="get" resultType="com.allbareun.web.entity.Goal">
@@ -78,26 +85,18 @@
 		</if>
    </select>
 
-   <select id="getAllViewList" resultType="com.allbareun.web.entity.GoalAllView">
-      select GAV.*
-		from GoalAllView GAV join (
-				select TPS.*
-				from(
-					select @row_num:=@row_num+1 id, TP.*, U.profile, U.name
-					from(
-						select id goalId, userId from Goal
-						union
-						select goalId, userId from Participation
-						union
-						select goalId, requestReceiveUserId userId from `Group`
-						where answer = 1
-					) TP left join User U on TP.userId = U.id,
-					(SELECT @row_num:=0) AS RN
-					order by goalId, userId
-				) TPS
-				where TPS.userId = #{userId}
-			) TPV
-		on TPV.goalId = GAV.id;
+	<select id="getAllViewList" resultType="com.allbareun.web.entity.GoalAllView">
+		select GV.* from GoalAllParticipantsView GPV left join GoalAllView GV on GPV.goalId = GV.id
+		where GPV.userId = #{userId}
+		and
+		<choose>
+			<when test="status.equals('present')">
+				now() &lt;= endDate			
+			</when>
+			<otherwise>
+				endDate &lt; now()
+			</otherwise>
+		</choose>
 	</select>
 
 

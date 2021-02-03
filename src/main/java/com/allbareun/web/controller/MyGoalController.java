@@ -151,12 +151,10 @@ public class MyGoalController {
 	}
 
 	@GetMapping("list")
-	public String list(Model model) {
-		// 임시 회원 아이디입니다. 추후 회원 아이디 정보 얻는 로직을 구현해주세요.
-		int userId = 3;
+	public String list(Model model, Principal principal) {
 		
-		List<GoalAllView> list = service.getAllViewList(userId);
-		
+		int userId = service.getUserIdByEmail(principal.getName());
+		List<GoalAllView> list = service.getAllViewList(userId, "present");
 		model.addAttribute("list", list);
 		
 		return "user.mygoal.list";

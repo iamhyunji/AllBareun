@@ -56,6 +56,7 @@ window.addEventListener("load", () => {
 			case "0":
 				let groupInput = `<input class="select-s total-participants" type="number" name="g-tp" value="2" min="2" max="10" />
 				<input class="invited-list" name="g-m" value="#userId" />
+				<input class="invited-list" name="g-m" value="#userId" />
 				<input class="a-input-white-s invite" type="button" value="초대">`;
 				totalParticipantsInput.remove();
 				participationContainer.insertAdjacentHTML('beforeend', groupInput);

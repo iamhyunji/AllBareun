@@ -3,49 +3,35 @@ package com.allbareun.web.entity;
 import java.util.Date;
 
 public class GoalAllView extends Goal {
-	private int dateDiff;
-	private String userName;
 	private String categories;
-	private String days;
-	private String participants;
-	private String groupParticipants;
-
+    private String days;
+    private String participantIds;
+    private String participants;
+    private String profiles;
+    private int dateDiff;
+    
     // --------------------------------- Constructor ---------------------------------
-	public GoalAllView() {
-		
+    public GoalAllView() {
+    	
 	}
 
 	public GoalAllView(int id, String title, String explanation, String mainImage, String goodEx, String badEx,
 			Date endDate, Date startDate, boolean publicStatus, Date regdate, int count, int userId,
-			int totalParticipants, int dateDiff, String userName, String categories, String days, String participants,
-			String groupParticipants) {
+			int totalParticipants, String exExplanation, String categories, String days, String participantIds,
+			String participants, String profiles, int dateDiff) {
+		
 		super(id, title, explanation, mainImage, goodEx, badEx, endDate, startDate, publicStatus, regdate, count,
-				userId, totalParticipants);
-		this.dateDiff = dateDiff;
-		this.userName = userName;
+				userId, totalParticipants, exExplanation);
+		
 		this.categories = categories;
 		this.days = days;
+		this.participantIds = participantIds;
 		this.participants = participants;
-		this.groupParticipants = groupParticipants;
-	}
-	
-	// --------------------------------- Getters/Setters ---------------------------------
-	public int getDateDiff() {
-		return dateDiff;
-	}
-
-	public void setDateDiff(int dateDiff) {
+		this.profiles = profiles;
 		this.dateDiff = dateDiff;
 	}
 
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
+	// --------------------------------- Getters/Setters ---------------------------------
 	public String getCategories() {
 		return categories;
 	}
@@ -62,6 +48,14 @@ public class GoalAllView extends Goal {
 		this.days = days;
 	}
 
+	public String getParticipantIds() {
+		return participantIds;
+	}
+
+	public void setParticipantIds(String participantIds) {
+		this.participantIds = participantIds;
+	}
+
 	public String getParticipants() {
 		return participants;
 	}
@@ -70,19 +64,27 @@ public class GoalAllView extends Goal {
 		this.participants = participants;
 	}
 
-	public String getGroupParticipants() {
-		return groupParticipants;
+	public String getProfiles() {
+		return profiles;
 	}
 
-	public void setGroupParticipants(String groupParticipants) {
-		this.groupParticipants = groupParticipants;
+	public void setProfiles(String profiles) {
+		this.profiles = profiles;
 	}
-	
+
+	public int getDateDiff() {
+		return dateDiff;
+	}
+
+	public void setDateDiff(int dateDiff) {
+		this.dateDiff = dateDiff;
+	}
+
 	// --------------------------------- Function ---------------------------------
 	@Override
 	public String toString() {
-		return "GoalAllView [dateDiff=" + dateDiff + ", userName=" + userName + ", categories=" + categories + ", days="
-				+ days + ", participants=" + participants + ", groupParticipants=" + groupParticipants + ", getId()="
+		return "GoalAllView [categories=" + categories + ", days=" + days + ", participantIds=" + participantIds
+				+ ", participants=" + participants + ", profiles=" + profiles + ", dateDiff=" + dateDiff + ", getId()="
 				+ getId() + ", getTitle()=" + getTitle() + ", getExplanation()=" + getExplanation()
 				+ ", getMainImage()=" + getMainImage() + ", getGoodEx()=" + getGoodEx() + ", getBadEx()=" + getBadEx()
 				+ ", getEndDate()=" + getEndDate() + ", getStartDate()=" + getStartDate() + ", getPublicStatus()="
@@ -91,5 +93,5 @@ public class GoalAllView extends Goal {
 				+ getExExplanation() + ", toString()=" + super.toString() + ", getClass()=" + getClass()
 				+ ", hashCode()=" + hashCode() + "]";
 	}
-	
+    
 }

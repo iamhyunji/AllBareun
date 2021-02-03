@@ -22,9 +22,9 @@
                     <textarea class="description" name="explanation" rows="2" cols="30" placeholder="목표에 대한 설명을 간단히 작성해주세요">${g.explanation}</textarea>
 
                     <span>카테고리 : ${g.categories }</span>
-                    <span>기간 : 4주 (${g.startDate } - ${g.endDate })</span>
-                    <span>횟수 : ${g.days }</span>
-                    <span>참가 : ${g.totalParticipants }명 (${g.groupParticipants })</span>
+                    <span>기간 : ${g.dateDiff }주 (${g.startDate } - ${g.endDate })</span>
+                    <span>횟수 : ${g.count } (${g.days })</span>
+                    <span>참가 : ${g.totalParticipants }명 (${g.participants })</span>
                 </div>
             </section>
         </section>
