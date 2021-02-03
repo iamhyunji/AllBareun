@@ -66,7 +66,7 @@
 						 <form method="post" enctype="multipart/form-data">
 						<a class="a-input-white-l" href="list">목록</a>
 						<input type="hidden" name="goalId" value="${detail.id}">
-						<input type="hidden" name="userId" value="3">
+						<!-- <input type="hidden" name="userId" value=""> -->
 						<input class="a-input-orange-l" type="submit" value="참가">
 						<!-- <a class="a-input-orange-l" href="">참가</a> -->
 						</form>

@@ -15,11 +15,12 @@ public class Participation {
 		this.id = id;
 		this.userId = userId;
 	}
-
-
+	
 	public int getGoalId() {
 		return goalId;
 	}
+
+
 
 
 	public void setGoalId(int goalId) {
@@ -47,10 +48,10 @@ public class Participation {
 	}
 
 
-	@Override
-	public String toString() {
-		return "Participation [goalId=" + goalId + ", id=" + id + ", userId=" + userId + "]";
-	}
+	
+	 @Override public String toString() { return "Participation [goalId=" + goalId
+	  + ", id=" + id + ", userId=" + userId + "]"; }
+	 
 	
 	
 }

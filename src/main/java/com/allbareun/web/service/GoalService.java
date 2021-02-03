@@ -44,6 +44,7 @@ public interface GoalService {
 	int deleteAuthImage(int id, int goalId, String fileName);
 	int enter(Participation participation);
 	int certAndEvalInsert(int goalId, int userId, String filePath, int answer1, int answer2, int answer3,String explanation);
+	int getinfo(String email);
 	int getUserIdByEmail(String name);
 	int retryGoal(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList);
 }

@@ -100,13 +100,15 @@ public class GoalController {
 	}
 
 	@PostMapping("{id}")
-	public String enter(Principal principal, Participation participation) {
+	public String enter(Principal principal, Participation participation,User user) {
 
-		/*
-		 * int uid = Integer.parseInt(principal.getName()); // 로그인 인증 정보가 갖고와짐
-		 */
-		// String uid = principal.getName(); // 로그인 인증 정보가 갖고와짐
-		// participation.setUserId(uid);
+		
+		  //int uid = Integer.parseInt(principal.getName()); // 로그인 인증 정보가 갖고와짐
+		 
+		 String email = principal.getName(); // 로그인 인증 정보가 갖고와짐
+		 int uid = service.getinfo(email);
+		 System.out.println(uid);
+		 participation.setUserId(uid);
 
 		int result = service.enter(participation);
 		System.out.println("참가완료");
