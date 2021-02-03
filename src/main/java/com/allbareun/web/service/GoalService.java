@@ -19,13 +19,12 @@ public interface GoalService {
 
 	int insert(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList);
 	int update(Goal goal);
-	int updateRetryGoal(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList);
 	int delete(Goal goal);
 	Goal get(int id);
 
 	// -------------------------- View --------------------------
 	GoalAllView getAllView(int id);
-	List<GoalAllView> getAllViewList(int userId);
+	List<GoalAllView> getAllViewList(int userId, String status);
 	
 	List<GoalView> getViewList(String categories, String startDate, String endDate, String days, int totalParticipants, String query);
 	
@@ -44,4 +43,6 @@ public interface GoalService {
 	int authImageInsert(int id,int goalId,String authImage);
 	int deleteAuthImage(int id, int goalId, String fileName);
 	int enter(Participation participation);
+	int getUserIdByEmail(String name);
+	int retryGoal(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList);
 }

@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import com.allbareun.web.dao.CertificationDao;
 import com.allbareun.web.dao.CycleDao;
 import com.allbareun.web.dao.GoalDao;
 import com.allbareun.web.dao.GroupDao;
+import com.allbareun.web.dao.ParticipationDao;
 import com.allbareun.web.dao.UserDao;
 import com.allbareun.web.entity.Cycle;
 import com.allbareun.web.entity.CertDetailView;
@@ -40,6 +42,8 @@ public class GoalServiceImp implements GoalService {
 	private CycleDao cycleDao;
 	@Autowired
 	private GroupDao groupDao;
+	@Autowired
+	private ParticipationDao participationDao;
 	
 	@Autowired
 	private CertificationDao certificationDao;
@@ -54,7 +58,7 @@ public class GoalServiceImp implements GoalService {
 		int result = 0;
 		goalDao.insert(goal);
 		
-		Goal insertedGoal = goalDao.getLastInserted(2);
+		Goal insertedGoal = goalDao.getLastInserted(goal.getUserId());
 		int goalId = insertedGoal.getId();
 		
 		// 카테고리
@@ -78,7 +82,7 @@ public class GoalServiceImp implements GoalService {
 				
 		result++;
 		
-		return 0;
+		return result;
 	}
 
 	@Override
@@ -93,53 +97,57 @@ public class GoalServiceImp implements GoalService {
 	}
 	
 	@Override
-	public int updateRetryGoal(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList) {
+	public int retryGoal(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList) {
 		int result = 0;
+		
 		int goalId = goal.getId();
+		int userId = goal.getUserId();
+		
 		Goal origin = goalDao.get(goalId);
+		boolean originPub = origin.getPublicStatus();
+		int originTotalParticipants = origin.getTotalParticipants();
 		
-		// 카테고리
-		if(gcList != null) {
-			goalCategoryDao.delete(goalId);
-			
-			for(GoalCategory gc : gcList) {
-				gc.setGoalId(goalId);
-				goalCategoryDao.insert(gc);
-			}
+		
+		
+		// -------------------------- 전처리 --------------------------
+		// 개인
+		if(!originPub && originTotalParticipants == 1 || userId == origin.getUserId()) {
+			goal.setUserId(0);
+			goalDao.update(goal);
 		}
-		
-		// 인증 주기
-		if(cList != null) {
-			cycleDao.delete(goalId);
-			
-			for(Cycle c : cList) {
-				c.setGoalId(goalId);
-				cycleDao.insert(c);
-			}
-		}
-		
 		// 지인 그룹
-		if ((origin.getPublicStatus() == false && origin.getCount() > 1)
-				|| gList != null) {
-			groupDao.delete(goalId);
-		
-			for (Group g : gList) {
-				g.setGoalId(goalId);
-				groupDao.insert(g);
+		else if (!originPub && originTotalParticipants > 1) {
+			groupDao.delete(goalId, userId);
+			
+			if(gList != null) {
+				String originUserIds = goalDao.getAllView(goalId).getParticipantIds();
+				String[] stringIds = originUserIds.split(",");
+				int[] ids = new int[stringIds.length];
+				
+				for(int i=0; i < stringIds.length; i++)
+					ids[i] = Integer.parseInt(stringIds[i]);
+				
+				for(Group g : gList) {
+					int newUserId = g.getRequestReceiveUserId();				
+					if(IntStream.of(ids).anyMatch(x -> x == newUserId))
+						groupDao.delete(goalId, newUserId);
+				}
 			}
 		}
-		
 		// 익명 그룹
-		if ((origin.getPublicStatus() && origin.getCount() > 1)) {
-			groupDao.delete(goalId);
-
-			for (Group g : gList) {
-				g.setGoalId(goalId);
-				groupDao.insert(g);
-			}
-		}
+		else if (originPub && originTotalParticipants > 1)
+			participationDao.delete(goalId, userId);
 		
-		goalDao.update(goal);
+		
+		
+		// -------------------------- 후처리 --------------------------
+		if(goal.getUserId() == 0)
+			goal.setUserId(userId);
+		
+		this.insert(goal, gcList, cList, gList);
+		
+		
+		
 		result++;
 		
 		return result;
@@ -188,8 +196,9 @@ public class GoalServiceImp implements GoalService {
 	}
 
 	@Override
-	public List<GoalAllView> getAllViewList(int userId) {
-		return goalDao.getAllViewList(userId);
+	public List<GoalAllView> getAllViewList(int userId, String status) {
+		
+		return goalDao.getAllViewList(userId, status);
 	}
 
 	@Override
@@ -280,6 +289,12 @@ public class GoalServiceImp implements GoalService {
 		return goalDao.enter(participation);
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public int getUserIdByEmail(String email) {
+		
+		return userDao.getUserId(email);
 	}
 
 }

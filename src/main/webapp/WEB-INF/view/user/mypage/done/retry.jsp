@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <link rel="stylesheet" href="/css/user/goal/reg.css">
-<script src="/js/user/mypage/done/retry.js"></script>
+<script src="/js/user/goal/reg.js"></script>
 
 <main id="main">
 	<form action="retry" method="post">
@@ -92,7 +92,7 @@
 		<section class="buttons">
 			<h1 class="d-none">버튼</h1>
 			<input type="hidden" name="g-i" value="${rg.id }"/>
-			<a class="a-input-white-l" href="#">취소</a>
+			<a class="a-input-white-l" href="../list">취소</a>
 			<input class="a-input-orange-l reg-button" type="submit" value="이 목표를 재도전 합니다">
 		</section>
 	</form>

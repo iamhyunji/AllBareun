@@ -16,5 +16,6 @@ public interface UserDao {
 	User getById(int id);
 	int idCheck(String query);
 	void logout(HttpSession session);
+	int getUserId(String email);
 
 }
