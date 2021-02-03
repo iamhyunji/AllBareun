@@ -63,8 +63,7 @@
 						<span>참가 : ${g.totalParticipants }명 (${g.participants })</span>
 					</div>
 					<div>
-						<a href="list?del-goalId=${g.id }" class="del-reload" style="display : none"></a>
-						<i class="fas fa-times del-button"></i>
+						<i class="fas fa-times del-button"><a href="list?del-goalId=${g.id }" style="display : none"></a></i>
 						<a class="a-input-orange-s retry-button" href="${g.id }/retry">재도전</a>
 						<a class="a-input-orange-s" href="#">결과 리포트</a>
 					</div>
