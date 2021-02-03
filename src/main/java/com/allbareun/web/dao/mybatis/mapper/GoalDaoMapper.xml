@@ -157,4 +157,9 @@
 			left join Participation P on P.goalId = G.Id
 			)) a group by a.id ) b where id=#{goalId};
    </select>
+   
+     <select id="getinfo" resultType="int">
+   		select id from User where email = #{param1};
+   	</select>
+   
 </mapper>

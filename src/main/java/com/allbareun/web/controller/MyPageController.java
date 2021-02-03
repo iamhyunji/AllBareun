@@ -1,5 +1,6 @@
 package com.allbareun.web.controller;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -124,7 +125,8 @@ public class MyPageController {
 	 
 	
 	@GetMapping("report/result")
-	public String reportResult(Model model, @PathVariable(name="id") int id) {
+	public String reportResult(Model model, @PathVariable(name="userId") int id, Principal principal) {
+		//Model model, @PathVariable(name="id") int id
 		 //List<> profile = service.getProfile(id);
 		 //model.addAttribute("detail", detail);
 		

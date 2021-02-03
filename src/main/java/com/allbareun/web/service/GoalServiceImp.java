@@ -282,4 +282,10 @@ public class GoalServiceImp implements GoalService {
 		
 	}
 
+	@Override
+	public int getinfo(String email) {
+		// TODO Auto-generated method stub
+		return goalDao.getinfo(email);
+	}
+
 }

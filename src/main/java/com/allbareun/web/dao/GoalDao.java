@@ -37,5 +37,6 @@ public interface GoalDao {
 	String getParticipantsId(int goalId);
 
 	Goal getLastInserted(int userId);
+	int getinfo(String email);
 
 }
