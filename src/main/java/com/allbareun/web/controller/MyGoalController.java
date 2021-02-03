@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.security.Principal;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
 import java.util.TimeZone;
 
@@ -41,11 +43,20 @@ public class MyGoalController {
 
 	@GetMapping("{goalId}/auth")
 	public String auth(@PathVariable(name="goalId") int goalId,Principal principal,Model model) {
-		//principal.getName();
+		String ids = service.getParticipantsId(goalId); // 참가자 id 받아오기
+		int userId = service.getUserIdByEmail(principal.getName());
+		String[] idStr = ids.split(","); 
+		int[] id = Arrays.stream(idStr).mapToInt(Integer::parseInt).toArray();
+		for(int i=0; i<id.length; i++) {
+			if(id[i]==userId) {
+				Goal goal = service.get(goalId);
+				model.addAttribute("g", goal);
+				model.addAttribute("userId",userId);
+				return "user.mygoal.auth";
+			}
+		}
 		
-		Goal goal = service.get(goalId);
-		model.addAttribute("g", goal);
-		return "user.mygoal.auth";
+		return "error";
 	}
 	
 	@PostMapping("{goalId}/auth")
@@ -119,35 +130,53 @@ public class MyGoalController {
 	public String certDetail(
 			@PathVariable(name="goalId") int goalId,
 			@PathVariable(name="id") int id,
-			Model model) {
+			Model model,Principal principal) {
 
-		CertDetailView detail = service.getCertDetailView(id);
-		CertDetailView prev = service.getPrev(id,goalId);
-		CertDetailView next = service.getNext(id,goalId);
+		String ids = service.getParticipantsId(goalId); // 참가자 id 받아오기
+		int userId = service.getUserIdByEmail(principal.getName());
+		//System.out.println(userId);
+		String[] idStr = ids.split(","); 
+		int[] idArr = Arrays.stream(idStr).mapToInt(Integer::parseInt).toArray();
+		for(int i=0; i<idArr.length; i++) {
+			if(idArr[i]==userId) {
+				CertDetailView detail = service.getCertDetailView(id);
+				CertDetailView prev = service.getPrev(id,goalId);
+				CertDetailView next = service.getNext(id,goalId);
+				
+				model.addAttribute("d", detail);
+				model.addAttribute("prev", prev);
+				model.addAttribute("next", next);
+				return "user.mygoal.cert.detail";
+			}
+		}
 		
-		model.addAttribute("d", detail);
-		model.addAttribute("prev", prev);
-		model.addAttribute("next", next);
 
-		return "user.mygoal.cert.detail";
+
+		return "error";
 	}
 
 	@GetMapping("cert/list/{goalId}")
-	public String certList(@PathVariable(name = "goalId") int goalId ,Model model) {
+	public String certList(@PathVariable(name = "goalId") int goalId ,Model model,Principal principal) {
 		
 		List<CertificationView> list = service.getCertViewListById(goalId);
 		String ids = service.getParticipantsId(goalId); // 참가자 id 받아오기
-		List<String> profileInfo = service.getUserProfile(ids);
-		List<String> nameInfo = service.getUserName(ids);
+		int userId = service.getUserIdByEmail(principal.getName());
+		//System.out.println(userId);
+		String[] idStr = ids.split(","); 
+		int[] id = Arrays.stream(idStr).mapToInt(Integer::parseInt).toArray();
+		for(int i=0; i<id.length; i++) {
+			if(id[i]==userId) {
+				List<String> profileInfo = service.getUserProfile(ids);
+				List<String> nameInfo = service.getUserName(ids);
+				
+				model.addAttribute("list", list);
+				model.addAttribute("profileInfo", profileInfo);
+				model.addAttribute("nameInfo", nameInfo);
+				return "user.mygoal.cert.list";
+			} 
+		}
+		return "error";
 		
-        TimeZone tz = Calendar.getInstance().getTimeZone();
-
-		
-		model.addAttribute("list", list);
-		model.addAttribute("profileInfo", profileInfo);
-		model.addAttribute("nameInfo", nameInfo);
-		
-		return "user.mygoal.cert.list";
 	}
 
 	@GetMapping("list")

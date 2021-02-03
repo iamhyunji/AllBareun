@@ -27,7 +27,7 @@
                 <div class="drag-box"><span>업로드할 파일을 드래그 드롭하세요!<span></div>
                 <input class="result-file-name" type="hidden" name="resultFileName" value="">
                 <div class="drag-result"></div>
-                <input class="hidden-id" name="userId" type="hidden" value=1>
+                <input class="hidden-id" name="userId" type="hidden" value=${userId}>
                 <textarea class="textarea explanation" rows="5" cols="33" type="textarea" name="explanation" placeholder="사진에 대해 설명해주세요"></textarea>
           
                 <div class="answer-container">

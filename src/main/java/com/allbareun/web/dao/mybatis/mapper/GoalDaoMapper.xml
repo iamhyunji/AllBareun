@@ -147,13 +147,19 @@
    	</select>
 
     <select id="getParticipantsId" resultType="string">
-			select if(isnull(b.초대응한사람),concat( b.목표개설자,',',b.지인),concat( b.목표개설자,',',b.초대응한사람)) as participantsId from (
-			select a.id, a.목표개설자, group_concat(distinct a.초대응한사람 separator ',') as 초대응한사람, group_concat(DISTINCT a.지인 separator ',') as 지인 from (
-			select G.id,G.userId 목표개설자,GR.requestReceiveUserId 초대응한사람, P.userId 지인 from
-			(
-			Goal G
-			left join (SELECT goalId,requestReceiveUserId, answer from a11.Group where answer=1) GR on GR.goalId= G.Id
-			left join Participation P on P.goalId = G.Id
-			)) a group by a.id ) b where id=#{goalId};
+		select 
+		CASE
+			WHEN (isnull(b.초대응한사람) AND isnull(b.지인)) THEN b.목표개설자
+		    WHEN (isnull(b.초대응한사람)) THEN concat( b.목표개설자,',',b.지인)
+		    WHEN (isnull(b.지인)) THEN concat( b.목표개설자,',',b.초대응한사람)
+		END AS participantsId
+		from (
+		select a.id, a.목표개설자, group_concat(distinct a.초대응한사람 separator ',') as 초대응한사람, group_concat(DISTINCT a.지인 separator ',') as 지인 from (
+		select G.id,G.userId 목표개설자,GR.requestReceiveUserId 초대응한사람, P.userId 지인 from
+		(
+		Goal G
+		left join (SELECT goalId,requestReceiveUserId, answer from a11.Group where answer=1) GR on GR.goalId= G.Id
+		left join Participation P on P.goalId = G.Id
+		)) a group by a.id ) b where id=#{goalId};
    </select>
 </mapper>
