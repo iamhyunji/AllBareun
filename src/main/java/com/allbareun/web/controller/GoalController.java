@@ -45,7 +45,8 @@ public class GoalController {
 						@RequestParam(name = "g-t") String title, @RequestParam(name = "g-ex") String explanation,
 						@RequestParam(name = "g-sd") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startDate,
 						@RequestParam(name = "g-ed") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date endDate,
-						@RequestParam(name = "g-ps") boolean publicStatus, @RequestParam(name = "g-c") int count,
+						@RequestParam(name = "g-ps") boolean publicStatus,
+						@RequestParam(name = "g-c") int count,
 						@RequestParam(name = "g-tp") int totalParticipants,
 						@RequestParam(name = "g-gEx", required = false) String goodEx,
 						@RequestParam(name = "g-bEx", required = false) String badEx,
@@ -56,9 +57,8 @@ public class GoalController {
 
 		int userId = service.getUserIdByEmail(principal.getName());
 		
-		Goal goal = new Goal(0, title, explanation, mainImage, goodEx, badEx, endDate, startDate, publicStatus, null,
-				count, userId, totalParticipants, exExplanation);
-
+		Goal goal = new Goal(0, title, explanation, mainImage, goodEx, badEx, endDate, startDate, publicStatus, null, count, userId, totalParticipants, exExplanation);
+		
 		List<GoalCategory> gcList = new ArrayList<>();
 		List<Cycle> cList = new ArrayList<>();
 		List<Group> gList = new ArrayList<>();

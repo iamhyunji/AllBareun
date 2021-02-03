@@ -46,6 +46,9 @@ public class MyPageController {
 			goal.setUserId(userId);
 			service.deleteGoalFromUser(goal, null, null, null);
 			
+			System.out.println(goalId);
+			System.out.println(userId);
+			
 			return "redirect:./list";
 		}
 		

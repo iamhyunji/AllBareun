@@ -16,6 +16,7 @@
 			`goodEx`,
 			`badEx`,
 			</if>
+			`count`,
 			`exExplanation`,
 			`startDate`,
 			`endDate`,
@@ -32,6 +33,7 @@
 			#{goodEx},
 			#{badEx},
 			</if>
+			#{count},
 			#{exExplanation},
 			#{startDate},
 			#{endDate},
