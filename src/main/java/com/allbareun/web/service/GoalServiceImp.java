@@ -24,6 +24,7 @@ import com.allbareun.web.entity.CertDetailView;
 import com.allbareun.web.entity.Certification;
 import com.allbareun.web.entity.CertificationView;
 import com.allbareun.web.entity.Goal;
+import com.allbareun.web.entity.GoalAchievementView;
 import com.allbareun.web.entity.GoalAllView;
 import com.allbareun.web.entity.GoalCategory;
 import com.allbareun.web.entity.GoalDetailView;
@@ -307,6 +308,12 @@ public class GoalServiceImp implements GoalService {
 	public int getUserIdByEmail(String email) {
 		
 		return userDao.getUserId(email);
+	}
+
+	@Override
+	public List<GoalAchievementView> getGoalAchievementViewList(int userId) {
+		
+		return goalDao.getGoalAchievementViewList(userId);
 	}
 
 }

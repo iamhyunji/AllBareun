@@ -52,7 +52,7 @@
 	<section class="goals">
 		<h1 class="d-none">목표 리스트</h1>
 		<ul class="goals__list">
-			<c:forEach var="g" items="${list }">
+			<c:forEach var="g" items="${list }" varStatus="st">
 				<li>
 					<img class="s-img" src="${g.mainImage }" alt="" />
 					<div>
@@ -64,7 +64,9 @@
 					</div>
 					<div>
 						<i class="fas fa-times del-button"><a href="list?del-goalId=${g.id }" style="display : none"></a></i>
-						<a class="a-input-orange-s retry-button" href="${g.id }/retry">재도전</a>
+						<c:if test="${gaList[st.index].achieve < 3.0 }">
+							<a class="a-input-white-s retry-button" href="${g.id }/retry">재도전</a>
+						</c:if>
 						<a class="a-input-orange-s" href="#">결과 리포트</a>
 					</div>
 				</li>

@@ -7,17 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.allbareun.web.dao.GoalDao;
-import com.allbareun.web.entity.Cycle;
-import com.allbareun.web.entity.Goal;
-import com.allbareun.web.entity.GoalAllView;
-import com.allbareun.web.entity.GoalCategory;
-import com.allbareun.web.entity.Certification;
 import com.allbareun.web.entity.CertificationView;
 import com.allbareun.web.entity.Goal;
+import com.allbareun.web.entity.GoalAchievementView;
 import com.allbareun.web.entity.GoalAllView;
 import com.allbareun.web.entity.GoalDetailView;
 import com.allbareun.web.entity.GoalView;
-import com.allbareun.web.entity.Group;
 import com.allbareun.web.entity.Participation;
 import com.allbareun.web.entity.User;
 
@@ -121,6 +116,12 @@ public class MyBatisGoalDao implements GoalDao {
 	public int getinfo(String email) {
 		// TODO Auto-generated method stub
 		return mapper.getinfo(email);
+	}
+
+	@Override
+	public List<GoalAchievementView> getGoalAchievementViewList(int userId) {
+		
+		return mapper.getGoalAchievementViewList(userId);
 	}
 
 //	@Override

@@ -17,13 +17,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.allbareun.web.entity.Cycle;
 import com.allbareun.web.entity.Goal;
+import com.allbareun.web.entity.GoalAchievementView;
 import com.allbareun.web.entity.GoalAllView;
 import com.allbareun.web.entity.GoalCategory;
-import com.allbareun.web.service.GoalService;
 import com.allbareun.web.entity.GoalDetailView;
 import com.allbareun.web.entity.Group;
 import com.allbareun.web.entity.User;
-import com.allbareun.web.service.GoalServiceImp;
+import com.allbareun.web.service.GoalService;
 
 //localhost:8080/mypage/done/list
 @Controller
@@ -39,16 +39,16 @@ public class MyPageController {
 		int userId = service.getUserIdByEmail(principal.getName());
 
 		List<GoalAllView> list = service.getAllViewList(userId, "done");
+		List<GoalAchievementView> gaList= service.getGoalAchievementViewList(userId);
+		
 		model.addAttribute("list", list);
+		model.addAttribute("gaList", gaList);
 		
 		if(goalId != 0) {
 			Goal goal = service.get(goalId);
 			goal.setUserId(userId);
 			service.deleteGoalFromUser(goal, null, null, null);
-			
-			System.out.println(goalId);
-			System.out.println(userId);
-			
+
 			return "redirect:./list";
 		}
 		
