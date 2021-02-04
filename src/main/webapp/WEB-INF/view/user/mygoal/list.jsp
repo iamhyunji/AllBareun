@@ -121,11 +121,12 @@
 						</div>
 						<p>기간 : ${g.dateDiff }주 (<fmt:formatDate value="${g.startDate }" pattern="yyyy-MM-dd" /> - <fmt:formatDate value="${g.endDate }" pattern="yyyy-MM-dd" />)</p>
 						<p>횟수 : 주 ${g.count }회 (${g.days })</p>
-						<p>참가 : 총 ${g.totalParticipants }명 (
-							<%-- <c:forEach var="m" items="${ }">
-								<img src="#" />
-							</c:forEach> --%>
-						)</p>
+						<div class="participants__container">
+							참가 : 총 ${g.totalParticipants }명
+							<div class="profile__container">
+								${g.participants }
+							</div>
+						</div>
 					</div>
 					<div class="goal__buttons">
 						<a href="./${g.id }/edit" class="setting"><i class="fas fa-cog"></i></a>

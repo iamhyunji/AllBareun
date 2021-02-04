@@ -43,22 +43,6 @@ public class MyPageController {
 		List<GoalAllView> list = service.getAllViewList(userId, "done");
 		List<GoalAchievementView> gaList = service.getGoalAchievementViewList(userId);
 
-		// Change Category Color
-		for (GoalAllView gav : list) {
-			String[] colors = gav.getCategoriesColor().split(",");
-			String[] categoryArr = gav.getCategories().split(",");
-
-			if(colors == null || categoryArr == null)
-				continue;
-			
-			for (int j = 0; j < categoryArr.length; j++)
-				categoryArr[j] = "<span style=\"color:" + colors[j] + "; font-weight:bold;\">" + categoryArr[j]
-						+ "</span>";
-
-			String categoryStr = String.join(",", categoryArr);
-			gav.setCategories(categoryStr);
-		}
-
 		model.addAttribute("list", list);
 		model.addAttribute("gaList", gaList);
 

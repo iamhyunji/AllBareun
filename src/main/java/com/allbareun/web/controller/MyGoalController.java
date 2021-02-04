@@ -175,19 +175,6 @@ public class MyGoalController {
 		int userId = service.getUserIdByEmail(principal.getName());
 		List<GoalAllView> list = service.getAllViewList(userId, "present");
 
-		// Change Category Color
-		for(GoalAllView gav : list) {
-			String[] colors = gav.getCategoriesColor().split(",");
-			String[] categoryArr = gav.getCategories().split(",");
-			
-			for (int j = 0; j < categoryArr.length; j++)
-				categoryArr[j] = "<span style=\"color:" + colors[j] + "; font-weight:bold;\">" + categoryArr[j]
-						+ "</span>";
-			
-			String categoryStr = String.join(",", categoryArr);
-			gav.setCategories(categoryStr);
-		}
-
 		model.addAttribute("list", list);
 
 		return "user.mygoal.list";

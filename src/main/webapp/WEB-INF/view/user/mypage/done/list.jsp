@@ -62,7 +62,12 @@
 						</div>
 						<p>기간 : ${g.dateDiff }주 (<fmt:formatDate value="${g.startDate }" pattern="yyyy-MM-dd" /> - <fmt:formatDate value="${g.endDate }" pattern="yyyy-MM-dd" />)</p>
 						<p>횟수 : 주 ${g.count }회 (${g.days })</p>
-						<p>참가 : 총 ${g.totalParticipants }명 (${g.participants })</p>
+						<div class="participants__container">
+							참가 : 총 ${g.totalParticipants }명
+							<div class="profile__container">
+								${g.participants }
+							</div>
+						</div>
 					</div>
 					<div class="goal__buttons">
 						<i class="fas fa-times del-button"><a href="list?del-goalId=${g.id }" style="display : none"></a></i>

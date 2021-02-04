@@ -63,6 +63,17 @@
 	justify-content: space-between;
 	align-items: center;
 }
+.goals .participants__container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.goals .profile {
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	margin-left: 10px;
+}
 .goals .setting {
     align-self: flex-end;
 }
