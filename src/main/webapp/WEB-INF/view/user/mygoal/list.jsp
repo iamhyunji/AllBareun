@@ -113,15 +113,17 @@
 		<ul class="goals__list">
 			<c:forEach var="g" items="${list }">
 				<li>
-					<a href="#"><img class="s-img" src="${g.mainImage }" alt="" /></a>
-					<div>
-						<h2 class="text-l"><a href="${g.id }">${g.title }</a></h2>
-						<span>카테고리 : ${g.categories }</span>
-						<span>기간 : ${g.dateDiff }주 (<fmt:formatDate value="${g.startDate }" pattern="yyyy-MM-dd" /> - <fmt:formatDate value="${g.endDate }" pattern="yyyy-MM-dd" />)</span>
-						<span>횟수 : ${g.count }회 (${g.days })</span>
-						<span>참가 : ${g.totalParticipants }명 (${g.participants })</span>
+					<a href="${g.id }"><img class="s-img" src="${g.mainImage }" alt="" /></a>
+					<div class="goal__contents">
+						<div class="goal__title">
+							<h2 class="text-l"><a href="${g.id }">${g.title }</a></h2>
+							<p class="text-m-bold">${g.categories }</p>
+						</div>
+						<p>기간 : ${g.dateDiff }주 (<fmt:formatDate value="${g.startDate }" pattern="yyyy-MM-dd" /> - <fmt:formatDate value="${g.endDate }" pattern="yyyy-MM-dd" />)</p>
+						<p>횟수 : 주 ${g.count }회 (${g.days })</p>
+						<p>참가 : 총 ${g.totalParticipants }명 (${g.participants })</p>
 					</div>
-					<div>
+					<div class="goal__buttons">
 						<a href="./${g.id }/edit" class="setting"><i class="fas fa-cog"></i></a>
 						<a class="a-input-orange-s" href="${g.id }/auth">인증하기</a>
 					</div>

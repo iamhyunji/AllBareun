@@ -54,17 +54,22 @@
 
     border-right: 1px solid gray;
 }
-.goals .goals__list>li>div {
+.goals .goal__contents,
+.goals .goal__buttons {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin: 0px 20px;
+    padding: 10px 0px 20px;
 }
-.goals .goals__list>li>div:nth-child(2) {
+.goals .goal__contents {
     flex-grow: 1;
 }
-.goals .goals__list>li>div>* {
-    margin: 0px 20px;
+.goals .goal__title {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
-.goals__list .setting {
+.goals .setting {
     align-self: flex-end;
 }
