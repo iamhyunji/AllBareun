@@ -34,8 +34,7 @@ public class GoalController {
 	private GoalService service;
 
 	@GetMapping("reg")
-	public String reg(Principal principal) {
-		int userId = service.getUserIdByEmail(principal.getName());
+	public String reg() {
 
 		return "user.goal.reg";
 	}

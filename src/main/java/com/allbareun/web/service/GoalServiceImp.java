@@ -119,12 +119,11 @@ public class GoalServiceImp implements GoalService {
 			goal.setUserId(0);
 			goalDao.update(goal);
 		}
-		// 지인 그룹
-		else if (!originPub && originTotalParticipants > 1)
+		// 그룹 : 익명 & 지인
+		else if (originTotalParticipants > 1) {
 			groupDao.update(goalId, userId);
-		// 익명 그룹
-		else if (originPub && originTotalParticipants > 1)
 			participationDao.delete(goalId, userId);
+		}
 		
 		
 		
