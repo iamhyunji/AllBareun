@@ -81,29 +81,31 @@
 		<h1 class="d-none">검색폼</h1>
 		<form action="#" method="get" class="search__form">
 			<div>
-				<input type="checkbox" name="category" />
-				<label>역량</label>
-				<input type="checkbox" name="category" />
+				<input type="checkbox" name="s-c" value="1" />
 				<label>생활</label>
-				<input type="checkbox" name="category" />
-				<label>관계</label>
-				<input type="checkbox" name="category" />
-				<label>건강</label>
-				<input type="checkbox" name="category" />
+				<input type="checkbox" name="s-c" value="2" />
 				<label>취미</label>
-				<input type="checkbox" name="category" />
+				<input type="checkbox" name="s-c" value="3" />
+				<label>건강</label>
+				<input type="checkbox" name="s-c" value="4" />
+				<label>관계</label>
+				<input type="checkbox" name="s-c" value="5" />
+				<label>역량</label>
+				<input type="checkbox" name="s-c" value="6" />
 				<label>자산</label>
 			</div>
 	
 			<div>
 				<label>참가 인원</label>
-				<select class="select-s" name="participation">
-					<option value="">전체</option>
-					<option value="">개인</option>
-					<option value="">그룹</option>
+				<select class="select-s" name="s-p">
+					<option value="0">전체</option>
+					<option value="1">개인</option>
+					<option value="2">그룹</option>
 				</select>
 			</div>
-	
+			
+			<input type="text" name="q" />
+			
 			<input class="a-input-white-s hover" type="submit" value="검색" />
 		</form>
 	</section>
@@ -123,9 +125,7 @@
 						<p>횟수 : 주 ${g.count }회 (${g.days })</p>
 						<div class="participants__container">
 							참가 : 총 ${g.totalParticipants }명
-							<div class="profile__container">
-								${g.participants }
-							</div>
+							${g.participants }
 						</div>
 					</div>
 					<div class="goal__buttons">

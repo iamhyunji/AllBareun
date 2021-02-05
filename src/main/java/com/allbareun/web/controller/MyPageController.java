@@ -36,7 +36,7 @@ public class MyPageController {
 
 	@GetMapping("done/list")
 	public String doneList(@RequestParam(name = "del-goalId", required = false, defaultValue = "0") int goalId,
-			Model model, Principal principal) {
+							Model model, Principal principal) {
 
 		int userId = service.getUserIdByEmail(principal.getName());
 

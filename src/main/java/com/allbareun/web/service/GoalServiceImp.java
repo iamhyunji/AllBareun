@@ -201,11 +201,12 @@ public class GoalServiceImp implements GoalService {
 			gav.setCategories(categoryStr);
 			
 			// Set Participants Profile Image
-			String[] profiles = gav.getProfiles().split(",");
+			String[] profilesSrc = gav.getProfiles().split(",");
 			String[] participants = gav.getParticipants().split(",");
 			
 			for (int j = 0; j < participants.length; j++) {
-				participants[j] = "<img class=\"profile\" src=\"" + profiles[j] + "\" />";
+				participants[j] = "<div class=\"profile\"><img class=\"profile__image\" src=\"" + profilesSrc[j] + "\" />"
+						+ "<span class=\"profile__info\">" + participants[j] + "</span></div>";
 			}
 
 			String profilesStr = String.join("", participants);
