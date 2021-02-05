@@ -1,0 +1,93 @@
+main{
+    background: #e9e9e9;
+}
+.main{
+    border: 1px solid white;
+    width: 500px;
+    height: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    background: white;
+}
+.main .page-back{
+    font-size: 30px;
+    width: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+    .main h1{
+        width: 210px;
+        margin: 30px auto 10px auto;
+    }
+    .main h2{
+        font-weight: bold;
+        width: 140px;
+        margin: 0px auto 20px auto;
+    }
+    .member-box{
+        width: 400px;
+        height: 820px;
+        margin-left: auto;
+        margin-right: auto;
+        /* border: 1px solid black; */
+        padding-left: 15px;
+    }
+        p{
+            padding-top: 20px;
+            padding-bottom: 5px;
+        }
+            .star{
+                color: red;
+                font-size: 20px;
+            }
+        .text-box{
+            width: 350px;
+            height:30px;
+            margin-bottom: 10px;
+        }
+        .drop-zone{
+            width: 200px;
+            height: 200px;
+
+            margin-right: auto;
+            background:#909090;
+            border-radius: 10px;
+            transition: 500ms;
+            }
+            .hidden-btn{
+                display: none;
+            }
+    .submit-box{
+        width: 350px;
+        height:50px;
+        margin: 20px auto;
+
+    }
+    .submit-btn{
+        width: 350px;
+        height:40px;
+        color: #ff8f00;
+        border: 1px solid #ff8f00;
+        background: white;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    .submit-btn:hover{
+        background: #ff8f00;
+        color: white;
+        font-weight: bold;
+        font-size: 15px;
+    }
+    .id-button{
+        width: 70px;
+        height: 20px;
+        color: #ff8f00;
+        background: white;
+        border: 1px solid #ff8f00;
+        font-size: 13px;
+    }
+    .id-button:hover{
+        color: black;
+        background: white;
+        border: 1px solid black;
+    }

@@ -1,0 +1,289 @@
+@font-face {
+  font-family: "normal";
+  src: url(/fonts/BinggraeTaom.ttf) format("truetype");
+}
+*,
+html {
+  margin: 0;
+  padding: 0;
+  color: #000;
+  box-sizing: border-box;
+  font-family: "normal";
+  font-size: 16px;
+}
+
+.d-none {
+  display: none;
+}
+
+.w200{
+	width: 200px;
+}
+
+.w150{
+	width: 150px;
+}
+
+.w100{
+	width: 100px;
+}
+
+.w50{
+	width: 50px;
+}
+
+.w30{
+	width: 30px;
+}
+
+/* --------------- select --------------- */
+/* small, medium, large, x-large */
+.select-s {
+
+  /* 2-4湲��옄 �젙�룄 �삁�긽 */
+  width: 100px;
+  padding: 3px 5px;
+  font-size: 0.8rem;
+}
+.select-m {
+  /* 4-8湲��옄 �젙�룄 �삁�긽 */
+  width: 150px;
+  padding: 3px 5px;
+  font-size: 0.8rem;
+}
+.select-l {
+  /* 8-12湲��옄 �젙�룄 �삁�긽 */
+  width: 200px;
+  padding: 3px 5px;
+  font-size: 0.8rem;
+}
+.select-xl {
+  /* 15�옄 �씠�긽 湲��옄 �젙�룄 �삁�긽 */
+  width: 400px;
+  padding: 3px 5px;
+  font-size: 0.8rem;
+}
+
+/* --------------- text --------------- */
+/* small, medium, large, x-large */
+.text-s,
+.text-s > * {
+
+  /* 寃��깋�뤌/select box�쓽 �뀓�뒪�듃 �젙�룄 */
+  font-size: 0.8rem;
+
+}
+.text-m-bold,
+.text-m-bold > * {
+  /* �뿤�뜑�쓽 nav �젙�룄 */
+  font-size: 1rem;
+  font-weight: 900;
+}
+.text-l,
+.text-l > * {
+  /* index �꽕紐�/detail �씤利� �궇吏�/遺��젣紐� �젙�룄 */
+  font-size: 2rem;
+  font-weight: 600;
+}
+.text-xl,
+.text-xl > * {
+  /* index/list �젣紐� �젙�룄 */
+  font-size: 2.5rem;
+  font-weight: 900;
+
+}
+*.text-s > a:hover,
+*.text-s > * > a:hover,
+*.text-m-bold > a:hover,
+*.text-m-bold > * > a:hover,
+*.text-l >  a:hover,
+*.text-l > * > a:hover,
+*.text-xl > a:hover,
+*.text-xl > * > a:hover {
+  text-decoration: none;
+  color: #ff8f00;
+}
+
+/* --------------- img --------------- */
+.l-img {
+  width: 1200px;
+  height: 500px;
+  padding: 25px;
+}
+.m-img {
+  width: 500px;
+  height: 330px;
+  padding: 20px;
+}
+.s-img {
+  width: 350px;
+  height: 230px;
+  padding: 15px;
+}
+
+/* --------------- button --------------- */
+
+/* 200px �삤�젋吏� 鍮낅쾭�듉 */
+.a-input-orange-l {
+  display: inline-block;
+  width: 200px;
+  height: 35px;
+  background-color: #ff8f00;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 18px;
+  border: solid #e66700 1px;
+  border-bottom: solid #e66700 3px;
+  outline:none;
+  cursor: pointer;
+}
+
+
+/* 200px �솕�씠�듃 鍮낅쾭�듉 */
+.a-input-white-l {
+  display: inline-block;
+  width: 200px;
+  height: 35px;
+  background-color: white;
+  color: #ff8f00;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 18px;
+  border: solid #e66700 1px;
+  border-bottom: solid #e66700 3px;
+  outline:none;
+  cursor: pointer;
+}
+
+/* ---------------------------------------------------------------------- */
+
+/* 200px �삤�젋吏� 誘몃뵒��踰꾪듉 */
+.a-input-orange-m {
+  display: inline-block;
+  width: 150px;
+  height: 30px;
+  background-color: #ff8f00;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 15px;
+  border: solid #e66700 1px;
+  border-bottom: solid #e66700 3px;
+  outline:none;
+  cursor: pointer;
+}
+
+
+/* 200px �솕�씠�듃 誘몃뵒��踰꾪듉 */
+.a-input-white-m {
+  display: inline-block;
+  width: 150px;
+  height: 30px;
+  background-color: white;
+  color: #ff8f00;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 15px;
+  border: solid #e66700 1px;
+  border-bottom: solid #e66700 3px;
+  outline:none;
+  cursor: pointer;
+}
+
+/* ---------------------------------------------------------------------- */
+
+/* 200px �삤�젋吏� �뒪紐곕쾭�듉 */
+.a-input-orange-s {
+  display: inline-block;
+  width: 100px;
+  height: 30px;
+  background-color: #ff8f00;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 15px;
+  border: solid #e66700 1px;
+  border-bottom: solid #e66700 3px;
+  outline:none;
+  cursor: pointer;
+}
+
+
+/* 200px �솕�씠�듃 �뒪紐곕쾭�듉 */
+.a-input-white-s {
+  display: inline-block;
+  width: 100px;
+  height: 30px;
+  background-color: white;
+  color: #ff8f00;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 15px;
+  border: solid #e66700 1px;
+  border-bottom: solid #e66700 3px;
+  outline:none;
+  cursor: pointer;
+}
+
+.hover:hover {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/*---------------------------------------*/
+/*----------------蹂�寃� �꺆----------------*/
+.tab-part {
+  border-bottom: solid orange 1px;
+  width: 1200px;
+  margin: auto;
+}
+
+.tab {
+  padding-top: 100px;
+  display: flex;
+}
+
+.tab-button {
+  display: inline-block;
+  width: 200px;
+  height: 50px;
+  background-color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  text-align: center;
+  font-size: 18px;
+  padding-top: 10px;
+  border-right: solid #e66700 1px;
+  border-top: solid #e66700 3px;
+}
+
+.tab-button:first-child {
+  display: inline-block;
+  width: 200px;
+  height: 50px;
+  background-color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  text-align: center;
+  font-size: 18px;
+  padding-top: 10px;
+  border-left: solid #e66700 1px;
+  border-top: solid #e66700 3px;
+  margin-left: 10px;
+}
+
+.tab-button:hover {
+  display: inline-block;
+  width: 200px;
+  height: 50px;
+  background-color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  text-align: center;
+  font-size: 18px;
+  padding-top: 10px;
+  border: solid #e66700 1px;
+  border-top: solid #e66700 6px;
+  text-decoration: none;
+}

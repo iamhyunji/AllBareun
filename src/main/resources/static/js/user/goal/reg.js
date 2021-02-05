@@ -147,6 +147,8 @@ window.addEventListener("load", () => {
 	
 	// 등록 시 실행 사항
 	regButton.addEventListener("click", (e) => {
+//		e.preventDefault();
+		
 		// 참가 개인일 대 초기화
 		if(participationSelect.value == "-1")
 			participationSelect.value = "0";

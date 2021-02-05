@@ -7,6 +7,7 @@ import com.allbareun.web.entity.CertDetailView;
 import com.allbareun.web.entity.Certification;
 import com.allbareun.web.entity.CertificationView;
 import com.allbareun.web.entity.Goal;
+import com.allbareun.web.entity.GoalAchievementView;
 import com.allbareun.web.entity.GoalAllView;
 import com.allbareun.web.entity.GoalCategory;
 import com.allbareun.web.entity.GoalDetailView;
@@ -47,4 +48,7 @@ public interface GoalService {
 	int getinfo(String email);
 	int getUserIdByEmail(String name);
 	int retryGoal(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList);
+	int deleteGoalFromUser(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList);
+	List<GoalAchievementView> getGoalAchievementViewList(int userId);
+	
 }
