@@ -88,16 +88,47 @@
    </select>
 
 	<select id="getAllViewList" resultType="com.allbareun.web.entity.GoalAllView">
-		select GV.* from GoalAllParticipantsView GPV left join GoalAllView GV on GPV.goalId = GV.id
-		where GPV.userId = #{userId}
-		and
+		select GAV.* from(
+			select GV.*, ROUND((CV.certCnt / (GV.count * GV.dateDiff)) * 100, 2) achievement from GoalAllParticipantsView GPV
+			left join GoalAllView GV on GPV.goalId = GV.id
+			left join (select userId, goalId, count(id) certCnt from Certification group by goalId, userId) CV on GPV.goalId = CV.goalID and GPV.userId = CV.userId
+			where GPV.userId = #{userId}
+			<choose>
+				<when test="status.equals('present')">
+					and now() &lt;= endDate			
+				</when>
+				<otherwise>
+					and endDate &lt; now()
+				</otherwise>
+			</choose>
+			
+			<choose>
+				<when test="totalParticipants == 1">
+					and totalParticipants = 1
+				</when>
+				<when test="totalParticipants == 2">
+					and totalParticipants > 1
+				</when>
+			</choose>
+			
+			<if test="query != null and query != ''">
+				and (GV.title LIKE '%${query}%' OR GV.participants LIKE '%${query}%')
+			</if>
+			
+			<if test="categories != null and categories !=''">
+				and
+				<foreach item="category" index="index" collection="categories" open="(" separator="OR" close=")">
+					categories like '%${category}%'
+				</foreach>
+			</if>
+		) GAV
 		<choose>
-			<when test="status.equals('present')">
-				now() &lt;= endDate			
+			<when test="achievement == 0">
+				where achievement &lt; 5
 			</when>
-			<otherwise>
-				endDate &lt; now()
-			</otherwise>
+			<when test="achievement == 1">
+				where 5 &lt;= achievement
+			</when>
 		</choose>
 	</select>
 
@@ -169,7 +200,4 @@
    		select id from User where email = #{param1};
    	</select>
    
-	<select id="getGoalAchievementViewList" resultType="com.allbareun.web.entity.GoalAchievementView">
-		select * from GoalAchievementView where userId = #{userId};
-	</select>
 </mapper>

@@ -170,10 +170,15 @@ public class MyGoalController {
 	}
 
 	@GetMapping("list")
-	public String list(Model model, Principal principal) {
+	public String list(@RequestParam(name = "del-goalId", required = false, defaultValue = "0") int goalId,
+						@RequestParam(name = "sc", required = false) String[] categories,
+						@RequestParam(name = "sp", required = false, defaultValue = "0") int totalParticipants,
+						@RequestParam(name = "sa", required = false, defaultValue = "2") int achievement,
+						@RequestParam(name = "q", required = false) String query,
+						Model model, Principal principal) {
 
 		int userId = service.getUserIdByEmail(principal.getName());
-		List<GoalAllView> list = service.getAllViewList(userId, "present");
+		List<GoalAllView> list = service.getAllViewList(userId, "present",  categories, totalParticipants, achievement, query);
 
 		model.addAttribute("list", list);
 

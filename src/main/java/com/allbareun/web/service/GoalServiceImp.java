@@ -2,29 +2,25 @@ package com.allbareun.web.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-import java.util.stream.IntStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.allbareun.web.dao.GoalCategoryDao;
 import com.allbareun.web.dao.CertificationDao;
 import com.allbareun.web.dao.CycleDao;
 import com.allbareun.web.dao.EvaluationDao;
+import com.allbareun.web.dao.GoalCategoryDao;
 import com.allbareun.web.dao.GoalDao;
 import com.allbareun.web.dao.GroupDao;
 import com.allbareun.web.dao.ParticipationDao;
 import com.allbareun.web.dao.UserDao;
-import com.allbareun.web.entity.Cycle;
 import com.allbareun.web.entity.CertDetailView;
 import com.allbareun.web.entity.Certification;
 import com.allbareun.web.entity.CertificationView;
+import com.allbareun.web.entity.Cycle;
 import com.allbareun.web.entity.Goal;
-import com.allbareun.web.entity.GoalAchievementView;
 import com.allbareun.web.entity.GoalAllView;
 import com.allbareun.web.entity.GoalCategory;
 import com.allbareun.web.entity.GoalDetailView;
@@ -183,9 +179,9 @@ public class GoalServiceImp implements GoalService {
 	}
 
 	@Override
-	public List<GoalAllView> getAllViewList(int userId, String status) {
+	public List<GoalAllView> getAllViewList(int userId, String status, String[] categories, int totalParticipants, int achievement, String query) {
 
-		List<GoalAllView> list = goalDao.getAllViewList(userId, status);
+		List<GoalAllView> list = goalDao.getAllViewList(userId, status, categories, totalParticipants, achievement, query);
 
 		// Set Category Color & Set Participants Profile Image
 		for (GoalAllView gav : list) {
@@ -325,12 +321,6 @@ public class GoalServiceImp implements GoalService {
 	public int getUserIdByEmail(String email) {
 
 		return userDao.getUserId(email);
-	}
-
-	@Override
-	public List<GoalAchievementView> getGoalAchievementViewList(int userId) {
-
-		return goalDao.getGoalAchievementViewList(userId);
 	}
 
 }

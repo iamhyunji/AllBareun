@@ -2,7 +2,6 @@ package com.allbareun.web.controller;
 
 import java.security.Principal;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.allbareun.web.entity.Cycle;
 import com.allbareun.web.entity.Goal;
-import com.allbareun.web.entity.GoalAchievementView;
 import com.allbareun.web.entity.GoalAllView;
 import com.allbareun.web.entity.GoalCategory;
 import com.allbareun.web.entity.GoalDetailView;
@@ -36,15 +34,15 @@ public class MyPageController {
 
 	@GetMapping("done/list")
 	public String doneList(@RequestParam(name = "del-goalId", required = false, defaultValue = "0") int goalId,
+							@RequestParam(name = "sc", required = false) String[] categories,
+							@RequestParam(name = "sp", required = false, defaultValue = "0") int totalParticipants,
+							@RequestParam(name = "sa", required = false, defaultValue = "2") int achievement,
+							@RequestParam(name = "q", required = false) String query,
 							Model model, Principal principal) {
 
 		int userId = service.getUserIdByEmail(principal.getName());
-
-		List<GoalAllView> list = service.getAllViewList(userId, "done");
-		List<GoalAchievementView> gaList = service.getGoalAchievementViewList(userId);
-
+		List<GoalAllView> list = service.getAllViewList(userId, "done",  categories, totalParticipants, achievement, query);
 		model.addAttribute("list", list);
-		model.addAttribute("gaList", gaList);
 
 		// Delete Goal From User
 		if (goalId != 0) {
