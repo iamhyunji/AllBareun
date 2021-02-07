@@ -145,7 +145,9 @@ public class HomeController{
 			@RequestParam(name = "pwd") String password, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String email = (String) session.getAttribute("email");
-		service.changePassword(email, password);
+		BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
+		 String encodePwd = pwdEncoder.encode(password);
+		service.changePassword(email, encodePwd);
 		System.out.println(session);
 		System.out.println(email);
 		System.out.println(password);
