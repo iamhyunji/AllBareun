@@ -14,11 +14,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.allbareun.web.dao.GoalCategoryDao;
 import com.allbareun.web.dao.CertificationDao;
 import com.allbareun.web.dao.CycleDao;
+import com.allbareun.web.dao.EvaluationDao;
 import com.allbareun.web.dao.GoalDao;
 import com.allbareun.web.dao.GroupDao;
 import com.allbareun.web.dao.ParticipationDao;
 import com.allbareun.web.dao.UserDao;
 import com.allbareun.web.entity.Cycle;
+import com.allbareun.web.entity.Evaluation;
+import com.allbareun.web.entity.EvaluationView;
 import com.allbareun.web.entity.CertDetailView;
 import com.allbareun.web.entity.Certification;
 import com.allbareun.web.entity.CertificationView;
@@ -50,6 +53,9 @@ public class GoalServiceImp implements GoalService {
 	
 	@Autowired
 	private UserDao userDao;
+	
+	@Autowired
+	private EvaluationDao evaluationDao;
 	
 	@Override
 	@Transactional
@@ -299,6 +305,30 @@ public class GoalServiceImp implements GoalService {
 	public int getUserIdByEmail(String email) {
 		
 		return userDao.getUserId(email);
+	}
+
+	@Override
+	public List<EvaluationView> getReport(int uid) {
+		// TODO Auto-generated method stub
+		return evaluationDao.getReport(uid);
+	}
+
+	@Override
+	public List<EvaluationView> categoryChart(int uid) {
+		// TODO Auto-generated method stub
+		return evaluationDao.categoryChart(uid);
+	}
+
+	@Override
+	public List<EvaluationView> getDoneLineChart(int id, int uid) {
+		// TODO Auto-generated method stub
+		return evaluationDao.getDoneLineChart(id,uid);
+	}
+
+	@Override
+	public List<EvaluationView> getDoneBarChart(int id, int uid) {
+		// TODO Auto-generated method stub
+		return evaluationDao.getDoneBarChart(id,uid);
 	}
 
 }

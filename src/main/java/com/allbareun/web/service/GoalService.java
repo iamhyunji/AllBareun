@@ -3,6 +3,8 @@ package com.allbareun.web.service;
 import java.util.List;
 
 import com.allbareun.web.entity.Cycle;
+import com.allbareun.web.entity.Evaluation;
+import com.allbareun.web.entity.EvaluationView;
 import com.allbareun.web.entity.CertDetailView;
 import com.allbareun.web.entity.Certification;
 import com.allbareun.web.entity.CertificationView;
@@ -46,4 +48,8 @@ public interface GoalService {
 	int getinfo(String email);
 	int getUserIdByEmail(String name);
 	int retryGoal(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList);
+	List<EvaluationView> getReport(int uid);
+	List<EvaluationView> categoryChart(int uid);
+	List<EvaluationView> getDoneLineChart(int id, int uid);
+	List<EvaluationView> getDoneBarChart(int id, int uid);
 }

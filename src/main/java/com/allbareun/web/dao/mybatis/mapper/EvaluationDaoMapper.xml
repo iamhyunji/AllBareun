@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.allbareun.web.dao.EvaluationDao">
+
+
+	<select id="getReport"
+		resultType="com.allbareun.web.entity.EvaluationView">
+		SELECT MONTH(regdate) AS month,
+		sum(answer1+answer2+answer3) AS lineSum
+		FROM Evaluation
+		where userId = ${param1}
+		GROUP BY month;
+	</select>
+
+
+	<select id="categoryChart"
+		resultType="com.allbareun.web.entity.EvaluationView">
+		SELECT GC.goalCategoryTypeId categoryId, GCT.title categoryTitle,
+		sum(answer1+answer2+answer3) AS categorySum
+		FROM Evaluation E left join GoalCategory GC on E.goalId = GC.goalId
+		left join GoalCategoryType GCT on GCT.id = GC.goalCategoryTypeId
+		 where E.userId = ${param1}
+		 GROUP BY categoryId;
+	</select>
+	
+	
+	<select id="getDoneLineChart"
+		resultType="com.allbareun.web.entity.EvaluationView">
+		SELECT MONTH(regdate) AS month,
+		sum(answer1+answer2+answer3) AS lineSum
+		FROM Evaluation
+		where goalId = ${param1}
+		and userId = ${param2}
+		GROUP BY month;
+	</select>
+
+
+	<select id="getDoneBarChart"
+		resultType="com.allbareun.web.entity.EvaluationView">
+		<!-- SELECT GC.goalCategoryTypeId categoryId, GCT.title categoryTitle,
+		sum(answer1+answer2+answer3) AS categorySum
+		FROM Evaluation E left join GoalCategory GC on E.goalId = GC.goalId
+		left join GoalCategoryType GCT on GCT.id = GC.goalCategoryTypeId
+		 where E.goalId = ${param1}
+		 and E.userId = ${param2}
+		 GROUP BY categoryId; -->
+	</select>
+
+
+
+</mapper>

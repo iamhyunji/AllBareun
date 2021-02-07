@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.allbareun.web.entity.Cycle;
+import com.allbareun.web.entity.Evaluation;
+import com.allbareun.web.entity.EvaluationView;
 import com.allbareun.web.entity.Goal;
 import com.allbareun.web.entity.GoalAllView;
 import com.allbareun.web.entity.GoalCategory;
@@ -101,24 +103,47 @@ public class MyPageController {
 	}
 	
 	@GetMapping("done/{id}")
-	public String doneDetail(Model model, @PathVariable(name="id") int id) {
-		 GoalDetailView detail = service.getDetailView(id);
+	public String doneDetail(@PathVariable(name="id") int id ,Principal principal,Model model) {
+		
+		String email = principal.getName(); // 로그인 인증 정보가 갖고와짐
+		 int uid = service.getinfo(email);
+		 List<EvaluationView> lineChart = service.getDoneLineChart(id,uid);
+		 //List<EvaluationView> varChart = service.getDoneBarChart(id,uid);
+		 
+		GoalDetailView detail = service.getDetailView(id);
 		 List<User> profile = service.getProfile(id);
 
 		
 		 model.addAttribute("detail", detail);
 		 model.addAttribute("profile", profile);
+		 model.addAttribute("lineChart", lineChart);
+		 //model.addAttribute("categoryChart", varChart);
 
 		return "user.mypage.done.detail";
 	}
 	
+
 	 
 	
 	@GetMapping("report/result")
-	public String reportResult(Model model, @PathVariable(name="userId") int id, Principal principal) {
-		//Model model, @PathVariable(name="id") int id
-		 //List<> profile = service.getProfile(id);
-		 //model.addAttribute("detail", detail);
+	public String reportResult(Principal principal,Model model) {
+		
+		String email = principal.getName(); // 로그인 인증 정보가 갖고와짐
+		 int uid = service.getinfo(email);
+		 List<EvaluationView> evaluation = service.getReport(uid);
+		 List<EvaluationView> categoryChart = service.categoryChart(uid);
+		 
+		 
+		 
+//		 SELECT GC.goalCategoryTypeId, GCT.title,
+//	       sum(answer1+answer2+answer3)
+//	  FROM Evaluation E left join GoalCategory GC on E.goalId = GC.goalId
+//	  left join GoalCategoryType GCT on GCT.id = GC.goalCategoryTypeId
+//	 GROUP BY GC.goalCategoryTypeId;
+		 
+		 
+		 model.addAttribute("evaluation", evaluation);
+		 model.addAttribute("categoryChart", categoryChart);
 		
 		return "user.mypage.report.result";
 	}

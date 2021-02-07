@@ -53,7 +53,9 @@
 		<ul class="goals__list">
 			<c:forEach var="g" items="${list }">
 				<li>
-					<img class="s-img" src="${g.mainImage }" alt="" />
+				
+				<a href="${g.id}"><img class="s-img" src="${g.mainImage }" alt="" /></a>
+		
 					<div>
 						<h2 class="text-l"><a href="${g.id }">${g.title }</a></h2>
 						<span>카테고리 : ${g.categories }</span>
