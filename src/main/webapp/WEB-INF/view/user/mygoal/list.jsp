@@ -81,29 +81,31 @@
 		<h1 class="d-none">검색폼</h1>
 		<form action="#" method="get" class="search__form">
 			<div>
-				<input type="checkbox" name="category" />
-				<label>역량</label>
-				<input type="checkbox" name="category" />
+				<input type="checkbox" name="s-c" value="1" />
 				<label>생활</label>
-				<input type="checkbox" name="category" />
-				<label>관계</label>
-				<input type="checkbox" name="category" />
-				<label>건강</label>
-				<input type="checkbox" name="category" />
+				<input type="checkbox" name="s-c" value="2" />
 				<label>취미</label>
-				<input type="checkbox" name="category" />
+				<input type="checkbox" name="s-c" value="3" />
+				<label>건강</label>
+				<input type="checkbox" name="s-c" value="4" />
+				<label>관계</label>
+				<input type="checkbox" name="s-c" value="5" />
+				<label>역량</label>
+				<input type="checkbox" name="s-c" value="6" />
 				<label>자산</label>
 			</div>
 	
 			<div>
 				<label>참가 인원</label>
-				<select class="select-s" name="participation">
-					<option value="">전체</option>
-					<option value="">개인</option>
-					<option value="">그룹</option>
+				<select class="select-s" name="s-p">
+					<option value="0">전체</option>
+					<option value="1">개인</option>
+					<option value="2">그룹</option>
 				</select>
 			</div>
-	
+			
+			<input type="text" name="q" />
+			
 			<input class="a-input-white-s hover" type="submit" value="검색" />
 		</form>
 	</section>
@@ -113,15 +115,20 @@
 		<ul class="goals__list">
 			<c:forEach var="g" items="${list }">
 				<li>
-					<a href="#"><img class="s-img" src="${g.mainImage }" alt="" /></a>
-					<div>
-						<h2 class="text-l"><a href="${g.id }">${g.title }</a></h2>
-						<span>카테고리 : ${g.categories }</span>
-						<span>기간 : ${g.dateDiff }주 (<fmt:formatDate value="${g.startDate }" pattern="yyyy-MM-dd" /> - <fmt:formatDate value="${g.endDate }" pattern="yyyy-MM-dd" />)</span>
-						<span>횟수 : ${g.count }회 (${g.days })</span>
-						<span>참가 : ${g.totalParticipants }명 (${g.participants })</span>
+					<a href="${g.id }"><img class="s-img" src="${g.mainImage }" alt="" /></a>
+					<div class="goal__contents">
+						<div class="goal__title">
+							<h2 class="text-l"><a href="${g.id }">${g.title }</a></h2>
+							<p class="text-m-bold">${g.categories }</p>
+						</div>
+						<p>기간 : ${g.dateDiff }주 (<fmt:formatDate value="${g.startDate }" pattern="yyyy-MM-dd" /> - <fmt:formatDate value="${g.endDate }" pattern="yyyy-MM-dd" />)</p>
+						<p>횟수 : 주 ${g.count }회 (${g.days })</p>
+						<div class="participants__container">
+							참가 : 총 ${g.totalParticipants }명
+							${g.participants }
+						</div>
 					</div>
-					<div>
+					<div class="goal__buttons">
 						<a href="./${g.id }/edit" class="setting"><i class="fas fa-cog"></i></a>
 						<a class="a-input-orange-s" href="${g.id }/auth">인증하기</a>
 					</div>

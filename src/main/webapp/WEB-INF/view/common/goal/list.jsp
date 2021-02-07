@@ -95,7 +95,12 @@
                     <p>기간 : ${n.dateDiff}주 (${startDate}~${endDate})</p>
                     <p>횟수 : 주 ${n.count}회 (${n.days})</p>
                     <p>모집 : ${n.totalParticipants}명 (${n.nowParticipantsCount}/${n.totalParticipants})</p>
-                    <a href="#" class="button">참가하기</a>
+                    <c:if test="${n.totalParticipants == n.nowParticipantsCount}">
+                 		<div class="full-button">마감</div>
+                    </c:if>
+                    <c:if test="${n.totalParticipants > n.nowParticipantsCount}">
+                    	<a href="${n.id}" class="button">참가하기</a>
+                    </c:if>
                   </div>
                 </li>
               </c:forEach>

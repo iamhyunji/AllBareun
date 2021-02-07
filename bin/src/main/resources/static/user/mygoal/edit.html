@@ -1,0 +1,53 @@
+<main id="main">
+    <form action="#" method="post">
+        <section class="required">
+            <h1 class="d-none">Main 1 : 목표 기본 등록폼</h1>
+            <section class="required__image">
+                <h1 class="d-none">목표 메인 이미지</h1>
+                <div class="m-img">
+                    메인 이미지 등록
+                    선택 / 드래그&드롭
+                </div>
+            </section>
+
+            <section class="required__content">
+                <h1 class="d-none">등록폼</h1>
+                <div>
+                    <input class="text-xl" type="text" placeholder="제목을 입력해주세요" value="${g.title}" />
+                    <textarea class="description" name="#" rows="2" cols="30" placeholder="목표에 대한 설명을 간단히 작성해주세요">${g.explanation}</textarea>
+
+                    <div>
+                        <span>카테고리 : 생활</span>
+                        <span>기간 : 4주 (2020.09.09 - 2021.01.09)</span>
+                        <span>횟수 : 매일</span>
+                        <span>참가 : 4명 (본율, 혜영, 현지, 중언)</span>
+                    </div>
+
+                </div>
+            </section>
+        </section>
+
+        <section class="non-required">
+            <h1 class="d-none">Main 2 : 추가 선택 등록폼</h1>
+            <div>
+                <div>
+                    <h2 class="text-l">좋은 인증</h2>
+                    <img class="m-img" src="../../images/img1.JPG" alt="">
+                </div>
+
+                <div>
+                    <h2 class="text-l">나쁜 인증</h2>
+                    <img class="m-img" src="../../images/img1.JPG" alt="">
+                </div>
+
+                <div class="description"></div>
+            </div>
+        </section>
+
+        <section class="buttons">
+            <h1 class="d-none">버튼</h1>
+            <a class="a-input-white-l" href="#">취소</a>
+            <input class="a-input-orange-l" type="submit" value="확인">
+        </section>
+    </form>
+</main>

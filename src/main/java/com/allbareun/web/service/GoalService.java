@@ -9,6 +9,7 @@ import com.allbareun.web.entity.CertDetailView;
 import com.allbareun.web.entity.Certification;
 import com.allbareun.web.entity.CertificationView;
 import com.allbareun.web.entity.Goal;
+import com.allbareun.web.entity.GoalAchievementView;
 import com.allbareun.web.entity.GoalAllView;
 import com.allbareun.web.entity.GoalCategory;
 import com.allbareun.web.entity.GoalDetailView;
@@ -45,11 +46,15 @@ public interface GoalService {
 	int authImageInsert(int id,int goalId,String authImage);
 	int deleteAuthImage(int id, int goalId, String fileName);
 	int enter(Participation participation);
+	int certAndEvalInsert(int goalId, int userId, String filePath, int answer1, int answer2, int answer3,String explanation);
 	int getinfo(String email);
 	int getUserIdByEmail(String name);
 	int retryGoal(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList);
+
 	List<EvaluationView> getReport(int uid);
 	List<EvaluationView> categoryChart(int uid);
 	List<EvaluationView> getDoneLineChart(int id, int uid);
 	List<EvaluationView> getDoneBarChart(int id, int uid);
+	int deleteGoalFromUser(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList);
+	List<GoalAchievementView> getGoalAchievementViewList(int userId);
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
@@ -50,5 +51,16 @@
 	</select>
 
 
+=======
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.allbareun.web.dao.EvaluationDao">
+	<insert id="insert">
+		INSERT INTO Evaluation (`userId`,`goalId`,`answer1`, `answer2`,`answer3`,`certificationId`,`explanation`)
+		VALUES(#{userId},#{goalId},#{answer1}, #{answer2},#{answer3},#{certificationId},#{explanation});
+	</insert>
+	
+>>>>>>> branch 'master' of https://github.com/cyon13/AllBareun.git
 
 </mapper>

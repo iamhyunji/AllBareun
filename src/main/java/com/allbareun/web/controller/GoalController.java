@@ -34,8 +34,7 @@ public class GoalController {
 	private GoalService service;
 
 	@GetMapping("reg")
-	public String reg(Principal principal) {
-		int userId = service.getUserIdByEmail(principal.getName());
+	public String reg() {
 
 		return "user.goal.reg";
 	}
@@ -45,7 +44,8 @@ public class GoalController {
 						@RequestParam(name = "g-t") String title, @RequestParam(name = "g-ex") String explanation,
 						@RequestParam(name = "g-sd") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startDate,
 						@RequestParam(name = "g-ed") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date endDate,
-						@RequestParam(name = "g-ps") boolean publicStatus, @RequestParam(name = "g-c") int count,
+						@RequestParam(name = "g-ps") boolean publicStatus,
+						@RequestParam(name = "g-c") int count,
 						@RequestParam(name = "g-tp") int totalParticipants,
 						@RequestParam(name = "g-gEx", required = false) String goodEx,
 						@RequestParam(name = "g-bEx", required = false) String badEx,
@@ -56,9 +56,8 @@ public class GoalController {
 
 		int userId = service.getUserIdByEmail(principal.getName());
 		
-		Goal goal = new Goal(0, title, explanation, mainImage, goodEx, badEx, endDate, startDate, publicStatus, null,
-				count, userId, totalParticipants, exExplanation);
-
+		Goal goal = new Goal(0, title, explanation, mainImage, goodEx, badEx, endDate, startDate, publicStatus, null, count, userId, totalParticipants, exExplanation);
+		
 		List<GoalCategory> gcList = new ArrayList<>();
 		List<Cycle> cList = new ArrayList<>();
 		List<Group> gList = new ArrayList<>();
@@ -125,11 +124,14 @@ public class GoalController {
 			@RequestParam(name = "days", defaultValue = "") String days,
 			@RequestParam(name = "count", defaultValue = "0") int totalParticipants,
 			@RequestParam(name = "query", defaultValue = "") String query, Model model) {
-		// System.out.printf("categories:%s startDate:%s endDate:%s days:%s count:%d
-		// query:%s \n",categories, startDate, endDate, days, totalParticipants, query);
+		
 
 		List<GoalView> list = service.getViewList(categories, startDate, endDate, days, totalParticipants, query);
-
+		
+//		for (GoalView g : list) {
+//			System.out.println(g);
+//		}
+		
 		// color 변경
 		for (int i = 0; i < list.size(); i++) {
 			GoalView gv = list.get(i);

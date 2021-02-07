@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.allbareun.web.dao.GoalDao">
+
+	
+	<insert id="insert">
+		INSERT INTO Goal
+		(
+			`title`,
+			`explanation`,
+			`mainImage`,
+			<if test="goodEx != null and goodEx != ''">
+			`goodEx`,
+			`badEx`,
+			</if>
+			`exExplanation`,
+			`startDate`,
+			`endDate`,
+			`publicStatus`,
+			`userId`,
+			`totalParticipants`
+		)
+		VALUES
+		(
+			#{title},
+			#{explanation},
+			#{mainImage},
+			<if test="goodEx != null and goodEx != ''">
+			#{goodEx},
+			#{badEx},
+			</if>
+			#{exExplanation},
+			#{startDate},
+			#{endDate},
+			#{publicStatus},
+			#{userId},
+			#{totalParticipants}
+		);
+	</insert>
+	
+   <update id="update">
+		UPDATE Goal
+		<choose>
+			<when test="userId == 0">
+				SET userId = null
+				where id = #{id}
+			</when>
+			<otherwise>
+				SET title = #{title}, explanation = #{explanation}, mainImage = #{mainImage}
+				WHERE id = #{id}			
+			</otherwise>
+		</choose>
+	</update>
+   
+   <select id="get" resultType="com.allbareun.web.entity.Goal">
+      select * from Goal where id = #{id}
+   </select>
+   
+   <select id="getAllView" resultType="com.allbareun.web.entity.GoalAllView">
+      	select * from GoalAllView where id = #{id};
+   </select>
+
+   <select id="getViewList" resultType="com.allbareun.web.entity.GoalView">
+      select * from GoalView where publicStatus=1
+		<if test="categories != null and categories !=''">       
+		and categories like concat('%',replace(#{categories}, ',','%'),'%')
+		</if>
+		<if test="startDate != null and startDate !=''"> 
+		and date_format(startDate, '%Y-%m-%d') &gt;=#{startDate} 
+		</if>
+		<if test="endDate != null and endDate !=''"> 
+		and date_format(endDate, '%Y-%m-%d')&lt;=#{endDate} 
+		</if>
+		<if test="days != null and days !=''"> 
+		and days like concat('%',replace(#{days}, ',','%'),'%') 
+		</if>
+		<if test="totalParticipants != null and totalParticipants !=0"> 
+		and totalParticipants = #{totalParticipants} 
+		</if>
+		<if test="query != null and query !=''"> 
+		and title like '%${query}%';
+		</if>
+   </select>
+
+	<select id="getAllViewList" resultType="com.allbareun.web.entity.GoalAllView">
+		select GV.* from GoalAllParticipantsView GPV left join GoalAllView GV on GPV.goalId = GV.id
+		where GPV.userId = #{userId}
+		and
+		<choose>
+			<when test="status.equals('present')">
+				now() &lt;= endDate			
+			</when>
+			<otherwise>
+				endDate &lt; now()
+			</otherwise>
+		</choose>
+	</select>
+
+
+
+	<select id="getDetailView"
+		resultType="com.allbareun.web.entity.GoalDetailView">
+		select * from GoalDetailView
+		where id = ${param1}
+	</select>
+
+	<select id="getProfile"
+		resultType="com.allbareun.web.entity.User">
+		select G.*,PV.name,PV.profile from (SELECT P.id , P.userId
+		, P.goalId ,
+		U.name ,U.profile
+		FROM Participation P
+		LEFT JOIN User U ON
+		P.userId = U.id) PV left join Goal G on PV.goalId =
+		G.Id where G.id =
+		${param1};
+
+	</select>
+
+
+
+
+	<select id="getAuthImages"
+		resultType="com.allbareun.web.entity.CertificationView">
+		select * from CertificationView where goalId = ${param1};
+
+	</select>
+
+	<insert id="enter"
+		parameterType="com.allbareun.web.entity.Participation">
+		insert into Participation (userId,goalId) values
+		(#{userId},#{goalId});
+	</insert>
+
+
+   
+
+   
+   <select id="getLastInserted" resultType="com.allbareun.web.entity.Goal">
+   		select * from Goal
+   		where userId = #{userId}
+   		order by regdate desc
+   		limit 1;
+   	</select>
+
+    <select id="getParticipantsId" resultType="string">
+		select 
+		CASE
+			WHEN (isnull(b.초대응한사람) AND isnull(b.지인)) THEN b.목표개설자
+		    WHEN (isnull(b.초대응한사람)) THEN concat( b.목표개설자,',',b.지인)
+		    WHEN (isnull(b.지인)) THEN concat( b.목표개설자,',',b.초대응한사람)
+		END AS participantsId
+		from (
+		select a.id, a.목표개설자, group_concat(distinct a.초대응한사람 separator ',') as 초대응한사람, group_concat(DISTINCT a.지인 separator ',') as 지인 from (
+		select G.id,G.userId 목표개설자,GR.requestReceiveUserId 초대응한사람, P.userId 지인 from
+		(
+		Goal G
+		left join (SELECT goalId,requestReceiveUserId, answer from a11.Group where answer=1) GR on GR.goalId= G.Id
+		left join Participation P on P.goalId = G.Id
+		)) a group by a.id ) b where id=#{goalId};
+   </select>
+   
+     <select id="getinfo" resultType="int">
+   		select id from User where email = #{param1};
+   	</select>
+   
+</mapper>

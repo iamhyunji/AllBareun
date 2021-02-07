@@ -1,18 +1,14 @@
 package com.allbareun.web.dao.mybatis;
 
+
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.allbareun.web.dao.CertificationDao;
-import com.allbareun.web.dao.CycleDao;
+//github.com/cyon13/AllBareun.git
 import com.allbareun.web.dao.EvaluationDao;
-import com.allbareun.web.entity.CertDetailView;
-import com.allbareun.web.entity.Certification;
-import com.allbareun.web.entity.CertificationView;
-import com.allbareun.web.entity.Evaluation;
 import com.allbareun.web.entity.EvaluationView;
 
 @Repository
@@ -49,7 +45,11 @@ public class MyBatisEvaluationDao implements EvaluationDao{
 		return mapper.getDoneBarChart(id,uid);
 	}
 
+
+	@Override
+	public int insert(int userId, int goalId, int answer1, int answer2, int answer3, String explanation, int certificationId) {
+		// TODO Auto-generated method stub
+		return mapper.insert(userId, goalId, answer1, answer2, answer3, explanation, certificationId);
+	}
 	
-
-
 }

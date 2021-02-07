@@ -18,7 +18,13 @@ public class MyBatisGroupDao implements GroupDao {
 		
 		return session.getMapper(GroupDao.class).insert(group);
 	}
-	
+
+	@Override
+	public int update(int goalId, int userId) {
+		System.out.println("okay3");
+		return session.getMapper(GroupDao.class).update(goalId, userId);
+	}
+
 	@Override
 	public int delete(int goalId, int userId) {
 
