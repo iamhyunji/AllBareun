@@ -17,5 +17,10 @@ public interface UserDao {
 	int idCheck(String query);
 	void logout(HttpSession session);
 	int getUserId(String email);
+	int isValidId(String name, String phone);
+	int isValidPwd(String email, String name, String phone);
+	int changePassword(String email, String password);
+	User getUser(String email, String name, String phone);
+	
 
 }

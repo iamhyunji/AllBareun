@@ -1,6 +1,7 @@
 package com.allbareun.web.controller;
 
 import java.io.IOException;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.security.core.Authentication;
+import org.apache.catalina.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -76,7 +78,6 @@ public class HomeController{
 	
 	@RequestMapping("login")
 	public String login()  {
-		System.out.println("로그인 성공");
 		return "/common/login";
 	}
 
@@ -88,21 +89,94 @@ public class HomeController{
 		return "redirect:/";
 	}
 	
-	
+
 	
 	@RequestMapping("findId")
 	public String findId() {
 		
-		return "common/findId";
+		return "/common/findId";
+	}
+	
+	@PostMapping("findIdPage")
+	public String findIdPage(
+			@RequestParam(name = "name") String name,
+			@RequestParam(name = "phone")String phone,
+			Model model) {
+		String email = service.getEmail(name, phone);
+		model.addAttribute("name",name);
+		model.addAttribute("email", email);
+
+		
+		return "/common/findIdPage";
 	}
 	
 	
-	@RequestMapping("findPwd")
+	@GetMapping("findPwd")
 	public String findPwd() {
 		
-		return "common/findPwd";
+		return "/common/findPwd";
+	}
+	
+	@PostMapping("findPwd")
+	public String findPwd(
+			@RequestParam(name = "email") String email,
+			@RequestParam(name = "name") String name,
+			@RequestParam(name = "phone") String phone,
+			HttpServletRequest request) {
+		 int checkPwd = service.isValidPwd(email, name, phone);
+		 System.out.println(checkPwd);
+		 System.out.println(email);
+		 if(checkPwd == 1) {
+			//여기서 받은 email을 changePwd로 넘기려면 어떻게 해야할까?
+			 HttpSession session = request.getSession();
+			 session.setAttribute("email", email);
+			 System.out.println(session);
+		 }//예외처리해야할거같은뎅...?그치?
+		return "/common/changePwd";
+	}
+	
+	@GetMapping("changePwd")
+	public String changePwd() {
+		return "/common/changePwd";
+	}
+	
+	@PostMapping("changePwd")
+	public String changePwd(
+			@RequestParam(name = "pwd") String password, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String email = (String) session.getAttribute("email");
+		service.changePassword(email, password);
+		System.out.println(session);
+		System.out.println(email);
+		System.out.println(password);
+		return "redirect:/login";
 	}
 	
 	
+	//앞으로 만들 페이지
+	//회원정보
+//	@RequestMapping("detail")
+//	public String detail() {
+//		
+//		return "home.user.mypage.detail";
+//	}
+//	//정보 수정 페이지
+//	@RequestMapping("editPage")
+//	public String editPage() {
+//		
+//		return "home.user.mypage.editPage";
+//	}
+//	//정보수정
+//	@RequestMapping("edit")
+//	public String edit() {
+//	
+//		return "redirect:/home/user/mypage/detail";
+//	}
+//	//회원삭제
+//	@RequestMapping("delete")
+//	public String delete() {
+//		
+//		return "redirect:/login";
+//	}
 	
 }
