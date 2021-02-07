@@ -39,7 +39,7 @@ public interface GoalService {
 	List<CertificationView> getCertViewListById(int goalId, String name, String startDate, String endDate);
 	String getParticipantsId(int goalId);
 	List<String> getUserName(String ids);
-	List<String> getUserProfile(String ids);
+	List<User> getUserProfile(String ids);
 	CertDetailView getCertDetailView(int id);
 	CertDetailView getPrev(int id,int goalId);
 	CertDetailView getNext(int id,int goalId);

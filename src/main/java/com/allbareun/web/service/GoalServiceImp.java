@@ -245,15 +245,15 @@ public class GoalServiceImp implements GoalService {
 	}
 
 	@Override
-	public List<String> getUserProfile(String ids) {
-		List<String> list = new ArrayList<String>();
+	public List<User> getUserProfile(String ids) {
+		List<User> list = new ArrayList<User>();
 
 		String[] idStr = ids.split(",");
 		int[] id = Arrays.stream(idStr).mapToInt(Integer::parseInt).toArray();
 		for (int i = 0; i < id.length; i++) {
 			User user = userDao.getById(id[i]);
-			String profile = user.getProfile();
-			list.add(profile);
+			//String profile = user.getProfile();
+			list.add(user);
 		}
 		return list;
 	}

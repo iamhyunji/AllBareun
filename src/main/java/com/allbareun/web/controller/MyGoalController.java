@@ -159,9 +159,8 @@ public class MyGoalController {
 		int[] id = Arrays.stream(idStr).mapToInt(Integer::parseInt).toArray();
 		for (int i = 0; i < id.length; i++) {
 			if (id[i] == userId) {
-				List<String> profileInfo = service.getUserProfile(ids);
+				List<User> profileInfo = service.getUserProfile(ids);
 				List<String> nameInfo = service.getUserName(ids);
-
 				model.addAttribute("list", list);
 				model.addAttribute("profileInfo", profileInfo);
 				model.addAttribute("nameInfo", nameInfo);
