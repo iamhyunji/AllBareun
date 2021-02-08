@@ -23,7 +23,6 @@ public interface GoalDao {
 	GoalAllView getAllView(int id);
 	List<GoalView> getViewList();
 	List<GoalAllView> getAllViewList(int userId, String status);
-	List<GoalView> getViewList(String categories, String startDate, String endDate, String days, int totalParticipants, String query);
 	List<User> getProfile(int id);
 	List<CertificationView> getAuthImages(int id);
 	int enter(Participation participation);
@@ -33,5 +32,7 @@ public interface GoalDao {
 	Goal getLastInserted(int userId);
 	int getinfo(String email);
 	List<GoalAchievementView> getGoalAchievementViewList(int userId);
+	List<GoalView> getViewList(String categories, String startDate, String endDate, String days, int totalParticipants,
+			String query, int count,int offset);
 
 }

@@ -165,9 +165,17 @@ public class GoalServiceImp implements GoalService {
 	public List<GoalView> getViewList(String categories, String startDate, String endDate, String days,
 			int totalParticipants, String query) {
 		// TODO Auto-generated method stub
-		return goalDao.getViewList(categories, startDate, endDate, days, totalParticipants, query);
+		return goalDao.getViewList(categories, startDate, endDate, days, totalParticipants, query,12,0);
 	}
 
+	@Override
+	public List<GoalView> getViewList(String categories, String startDate, String endDate, String days,
+			int totalParticipants, String query, int count,int offset) {
+		// TODO Auto-generated method stub
+		return goalDao.getViewList(categories, startDate, endDate, days, totalParticipants, query,count,offset);
+
+	}
+	
 	public List<User> getProfile(int id) {
 		// TODO Auto-generated method stub
 		return goalDao.getProfile(id);
@@ -358,5 +366,13 @@ public class GoalServiceImp implements GoalService {
 
 		return goalDao.getGoalAchievementViewList(userId);
 }
+
+	@Override
+	public List<String> getDays(int goalId) {
+		// TODO Auto-generated method stub
+		return cycleDao.getDays(goalId);
+	}
+
+
 
 }

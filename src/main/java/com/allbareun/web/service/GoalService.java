@@ -30,7 +30,8 @@ public interface GoalService {
 	List<GoalAllView> getAllViewList(int userId, String status);
 	
 	List<GoalView> getViewList(String categories, String startDate, String endDate, String days, int totalParticipants, String query);
-	
+	List<GoalView> getViewList(String categories, String startDate, String endDate, String days, int totalParticipants,
+			String query, int count,int offset);
 	GoalDetailView getDetailView(int id);
 	List<CertificationView> getAuthImages(int id);
 	List<User> getProfile(int id);
@@ -57,4 +58,6 @@ public interface GoalService {
 	List<EvaluationView> getDoneBarChart(int id, int uid);
 	int deleteGoalFromUser(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList);
 	List<GoalAchievementView> getGoalAchievementViewList(int userId);
+	List<String> getDays(int goalId);
+
 }

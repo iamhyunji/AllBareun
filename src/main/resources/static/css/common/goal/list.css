@@ -92,7 +92,9 @@
   color: #fff;
   text-decoration: none;
 }
-
+.title:hover {
+	color:#ff8f00;
+}
 /* XLarge */
 
 @media screen and (max-width: 1680px) {
