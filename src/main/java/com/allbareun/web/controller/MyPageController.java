@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.allbareun.web.entity.CertificationView;
 import com.allbareun.web.entity.Cycle;
 import com.allbareun.web.entity.Evaluation;
 import com.allbareun.web.entity.EvaluationView;
@@ -124,11 +125,13 @@ public class MyPageController {
 		 
 		GoalDetailView detail = service.getDetailView(id);
 		 List<User> profile = service.getProfile(id);
+		 List<CertificationView> videoImage = service.getVideoImage(id);
 
 		
 		 model.addAttribute("detail", detail);
 		 model.addAttribute("profile", profile);
 		 model.addAttribute("lineChart", lineChart);
+		 model.addAttribute("videoImage", videoImage);
 
 		return "user.mypage.done.detail";
 	}

@@ -127,7 +127,10 @@
 
 	<select id="getAuthImages"
 		resultType="com.allbareun.web.entity.CertificationView">
-		select * from CertificationView where goalId = ${param1};
+		select * from CertificationView 
+		where goalId = ${param1} and
+		 regdate between ADDDATE(sysdate(),(-15 + date_format(sysdate(),'%w'))) 
+		 and ADDDATE(sysdate(),(4 + date_format(sysdate(),'%w')));
 
 	</select>
 

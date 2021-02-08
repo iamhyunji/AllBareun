@@ -131,7 +131,7 @@
 				<tr>
 					</c:if>
 					<td style="position: relative;"><img  class="s-img" src="${auth.authImage}" alt="최근 이미지" />
-					<img style="position: absolute; bottom: 20px; right: 20px;" class="w50" src="${auth.profile}" alt="프로필" /></td>
+					<img style="position: absolute; bottom: 20px; right: 20px;" class="w50-radius" src="${auth.profile}" alt="프로필" /></td>
 					</c:forEach>
 				</tr>
 			</table>

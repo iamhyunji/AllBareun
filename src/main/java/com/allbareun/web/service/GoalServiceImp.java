@@ -359,4 +359,10 @@ public class GoalServiceImp implements GoalService {
 		return goalDao.getGoalAchievementViewList(userId);
 }
 
+	@Override
+	public List<CertificationView> getVideoImage(int id) {
+		// TODO Auto-generated method stub
+		return certificationDao.getVideoImage(id);
+	}
+
 }

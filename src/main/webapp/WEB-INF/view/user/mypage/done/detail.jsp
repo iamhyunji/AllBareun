@@ -29,8 +29,8 @@
 
 <link href="/css/user/mypage/done/detail.css" type="text/css"
 	rel="stylesheet">
-<script type="module" src="/js/user/mypage/done/imageAnimation.js"></script>
-
+<script type="script" src="/js/user/mypage/done/imageAnimation.js"></script>
+<script type="script" src="/js/user/mypage/done/VideoPlayer.js"></script>
 
 
 
@@ -79,7 +79,7 @@
 						<td class="center w100">참여인원</td>
 						<td class="left w200">${detail.participants}</td>
 						<td class="center w200"><c:forEach var="n" items="${profile}">
-								<img class="w30" src="${n.profile}" alt="프로필" />
+								<img class="w30-radius" src="${n.profile}" alt="프로필" />
 							</c:forEach></td>
 
 					</tr>
@@ -132,6 +132,19 @@
 			</div>
 		</div>
 	</div>
+	
+	<table class="detail-recent-img">
+				<tr>
+					<c:forEach var="auth" items="${detailImage}" varStatus="status">
+						<c:if test="${status.index%3==0}">
+				</tr>
+				<tr>
+					</c:if>
+					<td style="position: relative;"><img  class="s-img" src="${auth.authImage}" alt="최근 이미지" />
+					<img style="position: absolute; bottom: 20px; right: 20px;" class="w50-radius" src="${auth.profile}" alt="프로필" /></td>
+					</c:forEach>
+				</tr>
+			</table>
 
 </main>
 
@@ -139,6 +152,24 @@
 
 
 <script>
+
+  const videoSection = document.querySelector(".video-section");
+  const videoFrame = document.querySelectorAll(".video-frame");
+  const imgTag = document.querySelectorAll(".video-img");
+  const stopIcon = document.querySelectorAll(".video-stop");
+  let imgArrs = [];
+  imgArrs[0] = ["/images/all.png", "/images/naver.png", "/images/all.png", "/images/naver.png", "/images/all.png"];
+  imgArrs[1] = ["/images/naver.png", "/images/kakao.png", "/images/naver.png", "/images/kakao.png", "/images/kakao.png", "/images/naver.png"];
+  imgArrs[2] = ["/images/kakao.png", "/images/all.png", "/images/kakao.png", "/images/all.png", "/images/kakao.png"];
+  let videoPlayers = [];
+  for (let i = 0; i < imgArrs.length; i++) {
+    videoPlayers[i] = new VideoPlayer(imgArrs[i], i, videoFrame, imgTag, stopIcon);
+  }
+
+
+
+
+
     var ctx = document.getElementById('myChart').getContext('2d');
     let month = new Array();
 	let lineSum = new Array();
@@ -190,4 +221,9 @@
             }
         }
     });
+    
+    
+    
+   
+
 </script>

@@ -1,5 +1,5 @@
 
-import VideoPlayer from "./VideoPlayer.js";
+/*import VideoPlayer from "./VideoPlayer.js";
 
 window.addEventListener("load", function () {
   const videoSection = document.querySelector(".video-section");
@@ -15,4 +15,4 @@ window.addEventListener("load", function () {
     videoPlayers[i] = new VideoPlayer(imgArrs[i], i, videoFrame, imgTag, stopIcon);
   }
 
-});
+});*/

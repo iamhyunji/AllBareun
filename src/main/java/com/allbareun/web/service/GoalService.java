@@ -57,4 +57,5 @@ public interface GoalService {
 	List<EvaluationView> getDoneBarChart(int id, int uid);
 	int deleteGoalFromUser(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList);
 	List<GoalAchievementView> getGoalAchievementViewList(int userId);
+	List<CertificationView> getVideoImage(int id);
 }
