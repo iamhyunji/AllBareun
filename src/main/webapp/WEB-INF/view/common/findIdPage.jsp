@@ -22,11 +22,12 @@
                 <a href="./findPwd"><div class="find-pwd find clicked">비밀번호 찾기</div></a>
             </div>
 
-            <form class="find-id" method="post" action="findIdPage">
-            <input type="text" class="text-box name-box" name="name" placeholder="이름을 입력해 주세요.">
-            <input type="text" class="text-box phone-box" name="phone" placeholder="핸드폰 번호를 입력해 주세요.(-없이)">
-			<br>
-			<input type="submit" class="find-btn" value="아이디 찾기">
+            <br>
+            <span class="color">${name}</span> 님의 아이디는<br>
+            <span class="color">${email} </span>입니다
+            
+            <a href="./login" class="a-input-orange-m" id="login-button">로그인</a>
+
             </form>
         </section>
     </main>

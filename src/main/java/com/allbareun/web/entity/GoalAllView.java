@@ -10,18 +10,21 @@ public class GoalAllView extends Goal {
     private String participants;
     private String profiles;
     private int dateDiff;
+    private float achievement;
     
     // --------------------------------- Constructor ---------------------------------
     public GoalAllView() {
     	
 	}
-
+    
 	public GoalAllView(int id, String title, String explanation, String mainImage, String goodEx, String badEx,
 			Date endDate, Date startDate, boolean publicStatus, Date regdate, int count, int userId,
 			int totalParticipants, String exExplanation, String categories, String categoriesColor, String days,
-			String participantIds, String participants, String profiles, int dateDiff) {
+			String participantIds, String participants, String profiles, int dateDiff, float achievement) {
+		
 		super(id, title, explanation, mainImage, goodEx, badEx, endDate, startDate, publicStatus, regdate, count,
 				userId, totalParticipants, exExplanation);
+		
 		this.categories = categories;
 		this.categoriesColor = categoriesColor;
 		this.days = days;
@@ -29,6 +32,7 @@ public class GoalAllView extends Goal {
 		this.participants = participants;
 		this.profiles = profiles;
 		this.dateDiff = dateDiff;
+		this.achievement = achievement;
 	}
 
 	// --------------------------------- Getters/Setters ---------------------------------
@@ -88,18 +92,27 @@ public class GoalAllView extends Goal {
 		this.dateDiff = dateDiff;
 	}
 
+	public float getAchievement() {
+		return achievement;
+	}
+
+	public void setAchievement(float achievement) {
+		this.achievement = achievement;
+	}
+
 	// --------------------------------- Function ---------------------------------
 	@Override
 	public String toString() {
 		return "GoalAllView [categories=" + categories + ", categoriesColor=" + categoriesColor + ", days=" + days
 				+ ", participantIds=" + participantIds + ", participants=" + participants + ", profiles=" + profiles
-				+ ", dateDiff=" + dateDiff + ", getId()=" + getId() + ", getTitle()=" + getTitle()
-				+ ", getExplanation()=" + getExplanation() + ", getMainImage()=" + getMainImage() + ", getGoodEx()="
-				+ getGoodEx() + ", getBadEx()=" + getBadEx() + ", getEndDate()=" + getEndDate() + ", getStartDate()="
-				+ getStartDate() + ", getPublicStatus()=" + getPublicStatus() + ", getRegdate()=" + getRegdate()
-				+ ", getCount()=" + getCount() + ", getUserId()=" + getUserId() + ", getTotalParticipants()="
-				+ getTotalParticipants() + ", getExExplanation()=" + getExExplanation() + ", toString()="
-				+ super.toString() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + "]";
+				+ ", dateDiff=" + dateDiff + ", achievement=" + achievement + ", getId()=" + getId() + ", getTitle()="
+				+ getTitle() + ", getExplanation()=" + getExplanation() + ", getMainImage()=" + getMainImage()
+				+ ", getGoodEx()=" + getGoodEx() + ", getBadEx()=" + getBadEx() + ", getEndDate()=" + getEndDate()
+				+ ", getStartDate()=" + getStartDate() + ", getPublicStatus()=" + getPublicStatus() + ", getRegdate()="
+				+ getRegdate() + ", getCount()=" + getCount() + ", getUserId()=" + getUserId()
+				+ ", getTotalParticipants()=" + getTotalParticipants() + ", getExExplanation()=" + getExExplanation()
+				+ ", toString()=" + super.toString() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ "]";
 	}
 	
 }

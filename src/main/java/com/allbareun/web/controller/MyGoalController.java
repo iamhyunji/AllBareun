@@ -44,6 +44,45 @@ public class MyGoalController {
 
 	@GetMapping("{goalId}/auth")
 	public String auth(@PathVariable(name = "goalId") int goalId, Principal principal, Model model) {
+		List<String> days = service.getDays(goalId); // 인증 날짜 받아오기
+		System.out.println(days);
+		/*요일 구하기*/
+		Calendar cal = Calendar.getInstance();
+		int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+		String day ="";
+		switch (dayOfWeek) {
+		case 1:
+			day = "일";
+			break;
+		case 2:
+			day = "월";
+			break;
+		case 3:
+			day = "화";
+			break;
+		case 4:
+			day = "수";
+			break;
+		case 5:
+			day = "목";
+			break;
+		case 6:
+			day = "금";
+			break;
+		case 7:
+			day = "토";
+			break;
+		}
+		boolean matchDay = false;
+		for (String d : days) {
+			if(d.equals(day)) {
+				matchDay = true;
+				break;
+			}
+		}
+		if(!matchDay)
+			return "error";
+		
 		String ids = service.getParticipantsId(goalId); // 참가자 id 받아오기
 		int userId = service.getUserIdByEmail(principal.getName());
 		String[] idStr = ids.split(",");
@@ -159,9 +198,8 @@ public class MyGoalController {
 		int[] id = Arrays.stream(idStr).mapToInt(Integer::parseInt).toArray();
 		for (int i = 0; i < id.length; i++) {
 			if (id[i] == userId) {
-				List<String> profileInfo = service.getUserProfile(ids);
+				List<User> profileInfo = service.getUserProfile(ids);
 				List<String> nameInfo = service.getUserName(ids);
-
 				model.addAttribute("list", list);
 				model.addAttribute("profileInfo", profileInfo);
 				model.addAttribute("nameInfo", nameInfo);
@@ -173,10 +211,15 @@ public class MyGoalController {
 	}
 
 	@GetMapping("list")
-	public String list(Model model, Principal principal) {
+	public String list(@RequestParam(name = "del-goalId", required = false, defaultValue = "0") int goalId,
+						@RequestParam(name = "sc", required = false) String[] categories,
+						@RequestParam(name = "sp", required = false, defaultValue = "0") int totalParticipants,
+						@RequestParam(name = "sa", required = false, defaultValue = "2") int achievement,
+						@RequestParam(name = "q", required = false) String query,
+						Model model, Principal principal) {
 
 		int userId = service.getUserIdByEmail(principal.getName());
-		List<GoalAllView> list = service.getAllViewList(userId, "present");
+		List<GoalAllView> list = service.getAllViewList(userId, "present",  categories, totalParticipants, achievement, query);
 
 		model.addAttribute("list", list);
 

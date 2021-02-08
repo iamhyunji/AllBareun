@@ -19,12 +19,12 @@ import com.allbareun.web.service.GoalService;
 @RestController("apiGoalController")
 @RequestMapping("/api/goal/")
 public class GoalController {
-	
+
 	@Autowired
 	private GoalService service;
-	
+
 	@RequestMapping("list")
-	public List<GoalView> certList(
+	public List<GoalView> list(
 			@RequestParam(name="categories", defaultValue = "") String categories,
 			@RequestParam(name="startDate", defaultValue="" ) String startDate,
 			@RequestParam(name="endDate", defaultValue="") String endDate,
@@ -32,10 +32,10 @@ public class GoalController {
 			@RequestParam(name="totalParticipants", defaultValue = "0") int totalParticipants,
 			@RequestParam(name="query",defaultValue = "") String query
 			) {
-		
+
 		List<GoalView> list = service.getViewList(categories, startDate, endDate, days, totalParticipants, query);
-		
-		
+
+
 		// color 변경
 		for (int i=0; i<list.size(); i++) {
 			GoalView gv = list.get(i); 
@@ -43,12 +43,42 @@ public class GoalController {
 			String[] categoryArr = list.get(i).getCategories().split(",");
 			for(int j=0; j<categoryArr.length; j++)
 				categoryArr[j] = "<span style=\"color:"+colors[j]+"; font-weight:bold;\">"+categoryArr[j]+"</span>";  
-			
+
 			String categoryStr = String.join(",", categoryArr);
 			list.get(i).setCategories(categoryStr);
 		}	
-		
+
 		return list;
+	}
+
+	@RequestMapping("scrollList")
+	public List<GoalView> scrollList(@RequestParam(name="categories", defaultValue = "") String categories,
+			@RequestParam(name="startDate", defaultValue="" ) String startDate,
+			@RequestParam(name="endDate", defaultValue="") String endDate,
+			@RequestParam(name="days", defaultValue = "") String days,
+			@RequestParam(name="totalParticipants", defaultValue = "0") int totalParticipants,
+			@RequestParam(name="query",defaultValue = "") String query,
+			@RequestParam(name="count", defaultValue = "12") int count,
+			@RequestParam(name="offset", defaultValue = "12") int offset
+			) {
+
+		List<GoalView> list = service.getViewList(categories, startDate, endDate, days, totalParticipants, query,count,offset);
+
+
+		// color 변경
+		for (int i=0; i<list.size(); i++) {
+			GoalView gv = list.get(i); 
+			String[] colors =  list.get(i).getCategoriesColor().split(",");			
+			String[] categoryArr = list.get(i).getCategories().split(",");
+			for(int j=0; j<categoryArr.length; j++)
+				categoryArr[j] = "<span style=\"color:"+colors[j]+"; font-weight:bold;\">"+categoryArr[j]+"</span>";  
+
+			String categoryStr = String.join(",", categoryArr);
+			list.get(i).setCategories(categoryStr);
+		}	
+
+		return list;
+		
 	}
 
 }

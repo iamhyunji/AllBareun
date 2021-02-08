@@ -27,7 +27,10 @@
                 </div>
                 <div class="profile-box">
                		<c:forEach var="p" items="${profileInfo}">
-               		<img class="profile-img" alt="" src="${p}">
+               		<div class="profile">
+               		<img class="profile-img" alt="" src="${p.profile}">
+               		<span class="profile-name">${p.name}</span>
+               		</div>
                		</c:forEach>
                	</div>
               </div>

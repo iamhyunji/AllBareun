@@ -2,7 +2,6 @@ package com.allbareun.web.controller;
 
 import java.security.Principal;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -21,7 +20,6 @@ import com.allbareun.web.entity.Cycle;
 import com.allbareun.web.entity.Evaluation;
 import com.allbareun.web.entity.EvaluationView;
 import com.allbareun.web.entity.Goal;
-import com.allbareun.web.entity.GoalAchievementView;
 import com.allbareun.web.entity.GoalAllView;
 import com.allbareun.web.entity.GoalCategory;
 import com.allbareun.web.entity.GoalDetailView;
@@ -39,15 +37,15 @@ public class MyPageController {
 
 	@GetMapping("done/list")
 	public String doneList(@RequestParam(name = "del-goalId", required = false, defaultValue = "0") int goalId,
+							@RequestParam(name = "sc", required = false) String[] categories,
+							@RequestParam(name = "sp", required = false, defaultValue = "0") int totalParticipants,
+							@RequestParam(name = "sa", required = false, defaultValue = "2") int achievement,
+							@RequestParam(name = "q", required = false) String query,
 							Model model, Principal principal) {
 
 		int userId = service.getUserIdByEmail(principal.getName());
-
-		List<GoalAllView> list = service.getAllViewList(userId, "done");
-		List<GoalAchievementView> gaList = service.getGoalAchievementViewList(userId);
-
+		List<GoalAllView> list = service.getAllViewList(userId, "done",  categories, totalParticipants, achievement, query);
 		model.addAttribute("list", list);
-		model.addAttribute("gaList", gaList);
 
 		// Delete Goal From User
 		if (goalId != 0) {
@@ -72,17 +70,18 @@ public class MyPageController {
 
 	@PostMapping("done/{id}/retry")
 	public String doneRetry(@RequestParam(name = "g-i") int id,
-			@RequestParam(name = "g-mImg", defaultValue = "/images/default-image2.png") String mainImage,
-			@RequestParam(name = "g-t") String title, @RequestParam(name = "g-ex") String explanation,
-			@RequestParam(name = "g-sd") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startDate,
-			@RequestParam(name = "g-ed") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date endDate,
-			@RequestParam(name = "g-ps") boolean publicStatus, @RequestParam(name = "g-c") int count,
-			@RequestParam(name = "g-tp") int totalParticipants,
-			@RequestParam(name = "g-gEx", required = false) String goodEx,
-			@RequestParam(name = "g-bEx", required = false) String badEx,
-			@RequestParam(name = "g-exEx", required = false) String exExplanation,
-			@RequestParam(name = "gct-id") int[] goalCategoryTypeIds, @RequestParam(name = "d-id") int[] dayIds,
-			@RequestParam(name = "g-m", required = false) int[] members, Principal principal) {
+							@RequestParam(name = "g-mImg", defaultValue = "/images/default-image2.png") String mainImage,
+							@RequestParam(name = "g-t") String title, @RequestParam(name = "g-ex") String explanation,
+							@RequestParam(name = "g-sd") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startDate,
+							@RequestParam(name = "g-ed") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date endDate,
+							@RequestParam(name = "g-ps") boolean publicStatus, @RequestParam(name = "g-c") int count,
+							@RequestParam(name = "g-tp") int totalParticipants,
+							@RequestParam(name = "g-gEx", required = false) String goodEx,
+							@RequestParam(name = "g-bEx", required = false) String badEx,
+							@RequestParam(name = "g-exEx", required = false) String exExplanation,
+							@RequestParam(name = "gct-id") int[] goalCategoryTypeIds,
+							@RequestParam(name = "d-id") int[] dayIds,
+							@RequestParam(name = "g-m", required = false) int[] members, Principal principal) {
 		int userId = service.getUserIdByEmail(principal.getName());
 		Goal goal = new Goal(id, title, explanation, mainImage, goodEx, badEx, endDate, startDate, publicStatus, null,
 				count, userId, totalParticipants, exExplanation);

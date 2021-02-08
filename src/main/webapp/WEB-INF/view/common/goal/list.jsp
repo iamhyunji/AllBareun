@@ -84,10 +84,20 @@
               <c:forEach var="n" items="${list}">
                 <!-- list -->
                 <li class="goal-list">
-                  <a href="#" class="image"><img src="${n.mainImage}" alt="" /></a>
+                    <c:if test="${n.totalParticipants == n.nowParticipantsCount}">
+                    	<img src="${n.mainImage}" alt="" />
+                    </c:if>
+                    <c:if test="${n.totalParticipants > n.nowParticipantsCount}">
+                    <a href="${n.id}" class="image"><img src="${n.mainImage}" alt="" /></a>
+                    </c:if>                  
                   <div class="para">
                     <div class="goal-title">
-                      <h2>${n.title}</h2>
+                    <c:if test="${n.totalParticipants == n.nowParticipantsCount}">
+						<h2 class="title">${n.title}</h2>
+                    </c:if>
+                    <c:if test="${n.totalParticipants > n.nowParticipantsCount}">
+                      <a href="${n.id }"><h2 class="title">${n.title}</h2></a>
+                    </c:if>                       
                       <span>${n.categories}</span>
                     </div>
                     <fmt:formatDate var="startDate" value="${n.startDate}" pattern="yyyy.MM.dd"/>

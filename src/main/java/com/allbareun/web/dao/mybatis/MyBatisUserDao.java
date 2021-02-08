@@ -94,4 +94,35 @@ public class MyBatisUserDao implements UserDao{
 		return mapper.getUserId(email);
 	}
 
+
+	@Override
+	public int isValidId(String name, String phone) {
+		// TODO Auto-generated method stub
+		return mapper.isValidId(name, phone);
+	}
+
+
+	@Override
+	public int isValidPwd(String email, String name, String phone) {
+		// TODO Auto-generated method stub
+		return mapper.isValidPwd(email, name, phone);
+	}
+
+
+	@Override
+	public int changePassword(String email, String password) {
+		// TODO Auto-generated method stub
+		return mapper.changePassword(email, password);
+	}
+
+
+	@Override
+	public User getUser(String email, String name, String phone) {
+		// TODO Auto-generated method stub
+		return mapper.getUser(email, name, phone);
+	}
+
+
+
+
 }

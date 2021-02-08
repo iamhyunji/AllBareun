@@ -23,14 +23,24 @@
     display: flex;
     justify-content: flex-end;
 }
-.search__form {
-    width: 1050px;
+.search__form,
+.search__form > div {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+}
+.search__form > * {
+	margin-left: 30px;
+}
+.search__form label {
+	padding: 0px 3px;
+}
+.search__form input[type="checkbox"] {
+	width: 20px;
+	height: 20px;
 }
 .search__form input {
-    padding: 0px 15px;
+    padding: 0px 5px;
+    border-radius: 5px;
 }
 
 

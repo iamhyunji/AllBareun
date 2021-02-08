@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import com.allbareun.web.dao.GoalDao;
 import com.allbareun.web.entity.CertificationView;
 import com.allbareun.web.entity.Goal;
-import com.allbareun.web.entity.GoalAchievementView;
 import com.allbareun.web.entity.GoalAllView;
 import com.allbareun.web.entity.GoalDetailView;
 import com.allbareun.web.entity.GoalView;
@@ -39,9 +38,9 @@ public class MyBatisGoalDao implements GoalDao {
 	}
 	
 	public List<GoalView> getViewList(String categories, String startDate, String endDate, String days, int totalParticipants,
-			String query) {
+			String query,int count,int offset) {
 
-		return mapper.getViewList(categories, startDate, endDate, days, totalParticipants, query);
+		return mapper.getViewList(categories, startDate, endDate, days, totalParticipants, query, count, offset);
 	}
 
 	@Override
@@ -70,9 +69,9 @@ public class MyBatisGoalDao implements GoalDao {
 	}
 
 	@Override
-	public List<GoalAllView> getAllViewList(int userId, String status) {
+	public List<GoalAllView> getAllViewList(int userId, String status, String[] categories, int totalParticipants, int achievement, String query) {
 
-		return mapper.getAllViewList(userId, status);
+		return mapper.getAllViewList(userId, status, categories, totalParticipants, achievement, query);
 	}
 
 
@@ -116,12 +115,6 @@ public class MyBatisGoalDao implements GoalDao {
 	public int getinfo(String email) {
 		// TODO Auto-generated method stub
 		return mapper.getinfo(email);
-	}
-
-	@Override
-	public List<GoalAchievementView> getGoalAchievementViewList(int userId) {
-		
-		return mapper.getGoalAchievementViewList(userId);
 	}
 
 //	@Override
