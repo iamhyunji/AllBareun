@@ -58,20 +58,26 @@ function render() {
         let startDate = getFormatDate(new Date(n.startDate));
         let endDate = getFormatDate(new Date(n.endDate));
         tr += `
-              <li class="goal-list">
-                <a href="#" class="image"><img src="${n.mainImage}" alt="" /></a>
-                <div class="para">
-                  <div class="goal-title">
-                    <h2>${n.title}</h2>
-                    <span>${n.categories}</span>
-                  </div>
-                  <p>기간 : ${n.dateDiff}주 (${startDate}~${endDate})</p>
-                  <p>횟수 : 주 ${n.count}회 (${n.days})</p>
-                  <p>모집 : ${n.totalParticipants}명 (${n.nowParticipantsCount}/${n.totalParticipants})</p>
-                  <a href="#" class="button">참가하기</a>
-                </div>
-              </li>
-            `;
+              <li class="goal-list">`;
+        if (n.totalParticipants <= n.nowParticipantsCount) tr += `<img src="${n.mainImage}" alt="" />`;
+        else tr += `<a href="${n.id}" class="image"><img src="${n.mainImage}" alt="" /></a>`;
+
+        tr += `<div class="para">
+              <div class="goal-title">`;
+        if (n.totalParticipants <= n.nowParticipantsCount) tr += `<h2 class="title">${n.title}</h2>`;
+        else tr += `<a href="${n.id}"><h2 class="title">${n.title}</h2></a>`;
+
+        tr += `<span>${n.categories}</span>
+              </div>
+              <p>기간 : ${n.dateDiff}주 (${startDate}~${endDate})</p>
+              <p>횟수 : 주 ${n.count}회 (${n.days})</p>
+              <p>모집 : ${n.totalParticipants}명 (${n.nowParticipantsCount}/${n.totalParticipants})</p>`;
+
+        if (n.totalParticipants <= n.nowParticipantsCount) tr += `<div class="full-button">마감</div>`;
+        else tr += `<a href="${n.id}" class="button">참가하기</a>`;
+
+        tr += `</div>
+                    </li>`;
       }
       listContainer.insertAdjacentHTML("beforeend", tr);
     });

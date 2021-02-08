@@ -56,6 +56,7 @@
 		<ul class="goals__list">
 			<c:forEach var="g" items="${list }">
 				<li>
+
 					<a href="${g.id }"><img class="s-img" src="${g.mainImage }" alt="" /></a>
 					<div class="goal__contents">
 						<div class="goal__title">

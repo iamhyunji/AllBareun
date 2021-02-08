@@ -20,6 +20,7 @@ import com.allbareun.web.entity.CertDetailView;
 import com.allbareun.web.entity.Certification;
 import com.allbareun.web.entity.CertificationView;
 import com.allbareun.web.entity.Cycle;
+import com.allbareun.web.entity.EvaluationView;
 import com.allbareun.web.entity.Goal;
 import com.allbareun.web.entity.GoalAllView;
 import com.allbareun.web.entity.GoalCategory;
@@ -49,10 +50,12 @@ public class GoalServiceImp implements GoalService {
 	@Autowired
 	private UserDao userDao;
 
+	
 	@Autowired
 	private EvaluationDao evaluationDao;
+	
 
-	@Override
+@Override
 	@Transactional
 	public int insert(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList) {
 
@@ -157,9 +160,17 @@ public class GoalServiceImp implements GoalService {
 	public List<GoalView> getViewList(String categories, String startDate, String endDate, String days,
 			int totalParticipants, String query) {
 		// TODO Auto-generated method stub
-		return goalDao.getViewList(categories, startDate, endDate, days, totalParticipants, query);
+		return goalDao.getViewList(categories, startDate, endDate, days, totalParticipants, query,12,0);
 	}
 
+	@Override
+	public List<GoalView> getViewList(String categories, String startDate, String endDate, String days,
+			int totalParticipants, String query, int count,int offset) {
+		// TODO Auto-generated method stub
+		return goalDao.getViewList(categories, startDate, endDate, days, totalParticipants, query,count,offset);
+
+	}
+	
 	public List<User> getProfile(int id) {
 		// TODO Auto-generated method stub
 		return goalDao.getProfile(id);
@@ -237,15 +248,15 @@ public class GoalServiceImp implements GoalService {
 	}
 
 	@Override
-	public List<String> getUserProfile(String ids) {
-		List<String> list = new ArrayList<String>();
+	public List<User> getUserProfile(String ids) {
+		List<User> list = new ArrayList<User>();
 
 		String[] idStr = ids.split(",");
 		int[] id = Arrays.stream(idStr).mapToInt(Integer::parseInt).toArray();
 		for (int i = 0; i < id.length; i++) {
 			User user = userDao.getById(id[i]);
-			String profile = user.getProfile();
-			list.add(profile);
+			//String profile = user.getProfile();
+			list.add(user);
 		}
 		return list;
 	}
@@ -321,6 +332,36 @@ public class GoalServiceImp implements GoalService {
 	public int getUserIdByEmail(String email) {
 
 		return userDao.getUserId(email);
+	}
+
+	@Override
+	public List<EvaluationView> getReport(int uid) {
+		// TODO Auto-generated method stub
+		return evaluationDao.getReport(uid);
+	}
+
+	@Override
+	public List<EvaluationView> categoryChart(int uid) {
+		// TODO Auto-generated method stub
+		return evaluationDao.categoryChart(uid);
+	}
+
+	@Override
+	public List<EvaluationView> getDoneLineChart(int id, int uid) {
+		// TODO Auto-generated method stub
+		return evaluationDao.getDoneLineChart(id,uid);
+	}
+
+	@Override
+	public List<EvaluationView> getDoneBarChart(int id, int uid) {
+		// TODO Auto-generated method stub
+		return evaluationDao.getDoneBarChart(id,uid);
+	}
+
+	@Override
+	public List<String> getDays(int goalId) {
+		// TODO Auto-generated method stub
+		return cycleDao.getDays(goalId);
 	}
 
 }

@@ -13,6 +13,7 @@ public class UserServiceImp implements UserService{
 	
 	@Autowired
 	private UserDao userDao;
+	
 	@Override
 	public boolean isValid(String email, String password) {
 		// TODO Auto-generated method stub
@@ -28,13 +29,13 @@ public class UserServiceImp implements UserService{
 	@Override
 	public String getEmail(String name, String phone) {
 		// TODO Auto-generated method stub
-		return null;
+		return userDao.getEmail(name, phone);
 	}
 
 	@Override
 	public String getPassword(String email, String name, String phone) {
 		// TODO Auto-generated method stub
-		return null;
+		return userDao.getPassword(email, name, phone);
 	}
 
 	@Override
@@ -66,6 +67,32 @@ public class UserServiceImp implements UserService{
 		// TODO Auto-generated method stub
 		session.invalidate();
 	}
+
+	@Override
+	public int isValidId(String name, String phone) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int isValidPwd(String email, String name, String phone) {
+		// TODO Auto-generated method stub
+		return userDao.isValidPwd(email, name, phone);
+	}
+
+	@Override
+	public int changePassword(String email, String password) {
+		// TODO Auto-generated method stub
+		return userDao.changePassword(email, password);
+	}
+
+	@Override
+	public User getUser(String email, String name, String phone) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 
 	
 

@@ -85,6 +85,7 @@
 		<if test="query != null and query !=''"> 
 		and title like '%${query}%';
 		</if>
+		limit #{count} offset #{offset}
    </select>
 
 	<select id="getAllViewList" resultType="com.allbareun.web.entity.GoalAllView">

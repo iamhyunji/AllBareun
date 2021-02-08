@@ -1,6 +1,7 @@
 package com.allbareun.web.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class Evaluation {
 
@@ -119,6 +120,11 @@ public class Evaluation {
 				+ ", id=" + id + ", userId=" + userId + ", regDate=" + regDate + ", certificationId=" + certificationId
 				+ "]";
 	}
+
+
+
+
+
 	
 	
 	

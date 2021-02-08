@@ -66,3 +66,22 @@ main{
         color: #ff8f00;
         border: 1px solid #ff8f00;
     }
+    #login-button{
+        margin-top: 100px;
+        margin-left: 150px;
+    }
+    #password-box{
+        width: 350px;
+        height: 100px;
+        margin-top: 0px;
+        margin-left: auto;
+        margin-right: auto;
+        
+    }
+    .password{
+        width: 200px;
+        padding-bottom: 20px;
+    }
+    .color{
+        color: coral;
+    }

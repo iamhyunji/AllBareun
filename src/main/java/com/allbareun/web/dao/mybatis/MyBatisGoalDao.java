@@ -38,9 +38,9 @@ public class MyBatisGoalDao implements GoalDao {
 	}
 	
 	public List<GoalView> getViewList(String categories, String startDate, String endDate, String days, int totalParticipants,
-			String query) {
+			String query,int count,int offset) {
 
-		return mapper.getViewList(categories, startDate, endDate, days, totalParticipants, query);
+		return mapper.getViewList(categories, startDate, endDate, days, totalParticipants, query, count, offset);
 	}
 
 	@Override

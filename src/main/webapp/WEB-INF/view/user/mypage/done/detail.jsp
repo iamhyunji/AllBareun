@@ -29,8 +29,8 @@
 
 <link href="/css/user/mypage/done/detail.css" type="text/css"
 	rel="stylesheet">
-	<script type="module" src="/js/user/mypage/done/imageAnimation.js"></script>
-	
+<script type="module" src="/js/user/mypage/done/imageAnimation.js"></script>
+
 
 
 
@@ -140,14 +140,20 @@
 
 <script>
     var ctx = document.getElementById('myChart').getContext('2d');
+    let month = new Array();
+	let lineSum = new Array();
+	 <c:forEach var="e" items="${lineChart}">
+		month.push(${e.month}+'월');
+		lineSum.push(${e.lineSum });
+	</c:forEach>
     var chart = new Chart(ctx, { // 챠트 종류를 선택 
         type: 'line',
         // 챠트를 그릴 데이타
         data: {
-            labels: ['1월', '2월', '3월', '4월', '5월', '6월', '7월'],
+            labels: month,
             datasets: [{
                 label: 'My First dataset', backgroundColor: 'transparent', borderColor: 'pink',
-                data: [0, 10, 5, 2, 20, 30, 45]
+                data: lineSum
             }]
         }, // 옵션 
         options: {}

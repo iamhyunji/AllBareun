@@ -42,7 +42,7 @@
                     <p>나이</p>
                     <input type="text" class="text-box" name="age" placeholder="예) 30">
                     
-                    <p>핸드폰 번호</p>
+                    <p><span class="star">*</span>핸드폰 번호</p>
                     <input type="text" class="text-box phone" name="phone" placeholder="예)010-1111-1234">
                     
                     <p>프로필 사진</p>

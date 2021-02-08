@@ -44,6 +44,45 @@ public class MyGoalController {
 
 	@GetMapping("{goalId}/auth")
 	public String auth(@PathVariable(name = "goalId") int goalId, Principal principal, Model model) {
+		List<String> days = service.getDays(goalId); // 인증 날짜 받아오기
+		System.out.println(days);
+		/*요일 구하기*/
+		Calendar cal = Calendar.getInstance();
+		int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+		String day ="";
+		switch (dayOfWeek) {
+		case 1:
+			day = "일";
+			break;
+		case 2:
+			day = "월";
+			break;
+		case 3:
+			day = "화";
+			break;
+		case 4:
+			day = "수";
+			break;
+		case 5:
+			day = "목";
+			break;
+		case 6:
+			day = "금";
+			break;
+		case 7:
+			day = "토";
+			break;
+		}
+		boolean matchDay = false;
+		for (String d : days) {
+			if(d.equals(day)) {
+				matchDay = true;
+				break;
+			}
+		}
+		if(!matchDay)
+			return "error";
+		
 		String ids = service.getParticipantsId(goalId); // 참가자 id 받아오기
 		int userId = service.getUserIdByEmail(principal.getName());
 		String[] idStr = ids.split(",");
@@ -68,11 +107,14 @@ public class MyGoalController {
 
 		// System.out.printf("goalId:%d,userId:%d,fileName:%s",goalId,userId,fileName);
 		LocalDate date = LocalDate.now(); // 현재날짜 받기
-		String url = "/upload/auth/images/" + goalId + "/" + date + "/" + userId;
-		String filePath = url + "/" + fileName;
-		int result = service.certAndEvalInsert(goalId, userId, filePath, answer1, answer2, answer3, explanation);
-		return "redirect:/mygoal/cert/list/" + userId;
-	}
+
+		String url = "/upload/auth/images/"+goalId+"/"+date+"/"+userId;
+		String filePath = url +"/"+ fileName;
+		int result = service.certAndEvalInsert(goalId,userId,filePath,answer1,answer2,answer3,explanation);
+		return "redirect:/mygoal/cert/list/"+goalId;
+	} 
+	
+	
 
 	@PostMapping("{goalId}/auth/upload")
 	@ResponseBody
@@ -156,9 +198,8 @@ public class MyGoalController {
 		int[] id = Arrays.stream(idStr).mapToInt(Integer::parseInt).toArray();
 		for (int i = 0; i < id.length; i++) {
 			if (id[i] == userId) {
-				List<String> profileInfo = service.getUserProfile(ids);
+				List<User> profileInfo = service.getUserProfile(ids);
 				List<String> nameInfo = service.getUserName(ids);
-
 				model.addAttribute("list", list);
 				model.addAttribute("profileInfo", profileInfo);
 				model.addAttribute("nameInfo", nameInfo);
