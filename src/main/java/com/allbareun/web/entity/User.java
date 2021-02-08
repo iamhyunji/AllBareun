@@ -10,16 +10,16 @@ public class User {
 	private String gender;
 	private Date joinDate;
 	private String profile;
-	private int age;
+	private String age;
 	private String phone;
 	
 	// --------------------------------- Constructor ---------------------------------
 	public User() {
-		this(0, null, null, null, null, null, null, 0, null);
+		this(0, null, null, null, null, null, null, null, null);
 	}
 
 	public User(int id, String name, String email, String password, String gender, Date joinDate, String profile,
-			int age, String phone) {
+			String age, String phone) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
@@ -88,11 +88,11 @@ public class User {
 		this.profile = profile;
 	}
 
-	public int getAge() {
+	public String getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(String age) {
 		this.age = age;
 	}
 

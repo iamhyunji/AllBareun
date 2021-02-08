@@ -6,65 +6,18 @@ window.addEventListener("load", function(){
 	let pwd = main.querySelector("#pwd");
 	let password = pwd.querySelector(".password");
 	let rePwd = pwd.querySelector(".re-pwd");
+	let name = main.querySelector(".name");
 	let phone = document.querySelector(".phone");
-	
 	let submitButton = main.querySelector("input[type=submit]");
 	
-    let check = false;
+    // let check = false;
 
 	//정규 표현식
 	var emailPattern = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]+$/i;
-	var pwdPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
+	var pwdPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,40}$/;
 	var phonePattern = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
-	var text = "";
-	function checkAll(){
-		//아이디
-		/*if(emailPattern.test(emailKey.value) == true){
-			text +="ID : " + emailKey.value + "\n";
-		}else
-			alert("아이디를 잘못 입력하셨습니다.");*/
-		if(!emailPattern.test(emailKey.value)){
-			alert("아이디를 잘못 입력했습니다.");
-			return false;
-		}
-			
-		//패스워드
-		/*else if(pwdPattern.test(password.value) == true){
-			if(pwdPattern.test(rePwd.value)== true){
-				if(password.value == rePwd.value){
-					text +="PWD" + password.value + "\n";
-				}
-			}else 
-				alert("패스워드가 일치하지 않습니다.");
-		}else{
-			alert("패스워드를 잘못 입력하셨습니다.")	
-		}	*/
-		else if(!pwdPattern.test(password.value)){
-			if(!pwdPattern.test(rePwd.value)){
-				alert("패스워드를 잘못 입력하셨습니다.")	
-				return false;
-			}
-			alert("패스워드를 잘못 입력하셨습니다.")	
-			return false;
-		}
-		else if(password.value != rePwd.value){
-			alert("패스워드가 일치하지 않습니다.");
-			return false;
-		}
-		//핸드폰번호
-		/*if(phonePattern.test(phone.value) == true){
-			text +="phone : " + phone.value + "\n";
-		}else
-			alert("형식에 어긋났습니다.");*/
-			else if(!phonePattern.test(phone.value)){
-				alert("형식에 어긋났습니다.");
-				return false;
-			}else{
-				return true;
-			}
-	}
 		
-	emailButton.onclick = function(){
+	emailButton.onclick = function idCheck(){
 		fetch("/checkDuplicate?checkKey="+emailKey.value,{
 			method: "POST"
 		})
@@ -74,7 +27,7 @@ window.addEventListener("load", function(){
 		.then((data)=>{
 			let result = data.checkResult;
 			
-			if(result == 0){
+			if(result == 0 || !check(emailPattern,emailKey,"이메일을 올바르게 입력해주세요")){
 				alert("사용할 수 있는 이메일입니다.");
 				check = true;
 			}else{
@@ -84,12 +37,51 @@ window.addEventListener("load", function(){
 	}
 	
 	submitButton.onclick = function submitCheck(){
-		if(check && password.value !="" && password.value == rePwd.value){
-			alert("회원가입이 됐습니다.")
-			return true;
-		}else{
-			alert("빈칸을 완성시켜주세요.");
+		if(email.value ==""){
+			alert("이메일을 입력해 주세요.");
+			email.focus();
 			return false;
 		}
+
+		if(!check(emailPattern,emailKey,"이메일을 올바르게 입력해주세요")){
+			return false;
+		}
+
+		if(!check(pwdPattern,password,"비밀번호는 숫자,영문,특수문자를 조합하여 8글자 이상으로 입력해주세요")){
+			return false;
+		}
+
+		if(password.value != rePwd.value){
+			alert("비밀번호가 다릅니다. 다시 입력해주세요.");
+			rePwd.value="";
+			rePwd.focus();
+			return false;
+		}
+
+		if(reg.name.value==""){
+			alert("이름을 입력해주세요.");
+			reg.name.focus();
+			return false;
+		}
+		if(!check(phonePattern,phone,"전화번호를 형식에 맞게 입력해주세요")){
+			return false;
+		}
+		alert("회원가입이 완료되었습니다.")
+		// if(check && password.value !="" && password.value == rePwd.value){
+		// 	alert("회원가입이 됐습니다.")
+		// 	return true;
+		// }else{
+		// 	alert("빈칸을 완성시켜주세요.");
+		// 	return false;
+		// }
+	}
+	function check(re, what, message) {
+		if(re.test(what.value)) {
+			return true;
+		}
+		alert(message);
+		what.value = "";
+		what.focus();
+		//return false;
 	}
 });

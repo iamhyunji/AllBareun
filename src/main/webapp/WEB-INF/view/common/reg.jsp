@@ -19,18 +19,18 @@
             <h1 class="text-xl">All바른생각</h1>
             <h2 class="text-l">회원가입</h2>
             
-            <form action="reg" method="post" class="member" onsubmit="return submitCheck();">
+            <form name="reg" action="reg" method="post" class="member" onsubmit="return submitCheck();">
                 <section class="member-box">
                     <p><span class="star">*</span>아이디</p>
                     <div id="email">
                     	<input type="email" class="text-box" name="email" placeholder="이메일 입력">
-                    	<button type="button" class="id-button">ID중복검사</button>
+                    	<button type="button" class="id-button" onclick="idCheck()">ID중복검사</button>
                     </div>
                     
                     <p><span class="star">*</span>비밀번호</p>
                     <div id="pwd">
-                    	<input type="text" class="text-box password" name="password" placeholder="비밀번호(숫자,영문,특수문자 조합 최소 8자)">
-                    	<input type="text" class="text-box re-pwd" name="re-pwd" placeholder="비밀번호 확인">
+                    	<input type="password" class="text-box password" name="password" placeholder="비밀번호(숫자,영문,특수문자 조합 최소 8자)">
+                    	<input type="password" class="text-box re-pwd" name="re-pwd" placeholder="비밀번호 확인">
                     </div>
                     
                     <p><span class="star">*</span>이름</p>
