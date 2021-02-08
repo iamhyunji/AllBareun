@@ -123,10 +123,11 @@ public class GoalController {
 			@RequestParam(name = "endDate", defaultValue = "") String endDate,
 			@RequestParam(name = "days", defaultValue = "") String days,
 			@RequestParam(name = "count", defaultValue = "0") int totalParticipants,
-			@RequestParam(name = "query", defaultValue = "") String query, Model model) {
+			@RequestParam(name = "query", defaultValue = "") String query,
+			@RequestParam(name = "count", defaultValue = "6") int count,
+			@RequestParam(name = "offset", defaultValue = "0") int offset
+			, Model model) {
 		
-		int count = 12; // 처음에 보여줄 목록 갯수
-		int offset = 0;
 		List<GoalView> list = service.getViewList(categories, startDate, endDate, days, totalParticipants, query,count,offset);
 		
 //		for (GoalView g : list) {

@@ -83,9 +83,14 @@
 		and totalParticipants = #{totalParticipants} 
 		</if>
 		<if test="query != null and query !=''"> 
-		and title like '%${query}%';
+		and title like '%${query}%'
 		</if>
-		limit #{count} offset #{offset}
+	<if test="count != null and count !=0">
+		limit #{count} 
+	 </if>
+	<if test="offset != null and offset !=0">
+		offset #{offset}
+	 </if>		
    </select>
 
 	<select id="getAllViewList" resultType="com.allbareun.web.entity.GoalAllView">
