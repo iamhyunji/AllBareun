@@ -130,7 +130,9 @@
 					</div>
 					<div class="goal__buttons">
 						<a href="./${g.id }/edit" class="setting"><i class="fas fa-cog"></i></a>
+						
 						<a class="a-input-orange-s" href="${g.id }/auth">인증하기</a>
+						
 					</div>
 				</li>
 			</c:forEach>
