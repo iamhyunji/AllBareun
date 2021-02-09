@@ -35,7 +35,6 @@ public class GoalController {
 			) {
 
 		List<GoalView> list = service.getViewList(categories, startDate, endDate, days, totalParticipants, query,count,0);
-		System.out.println(list);
 
 		// color 변경
 		for (int i=0; i<list.size(); i++) {
