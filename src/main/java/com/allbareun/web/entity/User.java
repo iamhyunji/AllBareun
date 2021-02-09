@@ -10,7 +10,7 @@ public class User {
 	private String gender;
 	private Date joinDate;
 	private String profile;
-	private String age;
+	private String birth;
 	private String phone;
 	
 	// --------------------------------- Constructor ---------------------------------
@@ -19,7 +19,7 @@ public class User {
 	}
 
 	public User(int id, String name, String email, String password, String gender, Date joinDate, String profile,
-			String age, String phone) {
+			String birth, String phone) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
@@ -27,7 +27,7 @@ public class User {
 		this.gender = gender;
 		this.joinDate = joinDate;
 		this.profile = profile;
-		this.age = age;
+		this.birth = birth;
 		this.phone = phone;
 	}
 
@@ -88,12 +88,12 @@ public class User {
 		this.profile = profile;
 	}
 
-	public String getAge() {
-		return age;
+	public String getBirth() {
+		return birth;
 	}
 
-	public void setAge(String age) {
-		this.age = age;
+	public void setBirth(String birth) {
+		this.birth = birth;
 	}
 
 	public String getPhone() {
@@ -108,7 +108,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", gender="
-				+ gender + ", joinDate=" + joinDate + ", profile=" + profile + ", age=" + age + ", phone=" + phone
+				+ gender + ", joinDate=" + joinDate + ", profile=" + profile + ", birth=" + birth + ", phone=" + phone
 				+ "]";
 	}
 
