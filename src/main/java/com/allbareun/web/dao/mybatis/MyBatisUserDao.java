@@ -123,6 +123,13 @@ public class MyBatisUserDao implements UserDao{
 	}
 
 
+	@Override
+	public int getLastId() {
+		// TODO Auto-generated method stub
+		return mapper.getLastId();
+	}
+
+
 
 
 }

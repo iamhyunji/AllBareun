@@ -1,3 +1,5 @@
+import ProfileUpload from "../modules/ProfileUpload.js"
+
 window.addEventListener("load", function(){
     let main = document.querySelector(".main");
 	let email = document.querySelector("#email");
@@ -9,6 +11,10 @@ window.addEventListener("load", function(){
 	let name = main.querySelector(".name");
 	let phone = document.querySelector(".phone");
 	let submitButton = main.querySelector("input[type=submit]");
+	const dropZone = document.querySelector(".drag-box");
+	const uploadBox = new ProfileUpload(dropZone, "/reg/upload");
+	const hiddenId = document.querySelector(".hidden-id");
+	const id = hiddenId.value;
 	
     // let check = false;
 

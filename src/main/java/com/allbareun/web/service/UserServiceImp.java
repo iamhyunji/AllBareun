@@ -92,6 +92,12 @@ public class UserServiceImp implements UserService{
 		return null;
 	}
 
+	@Override
+	public int getLastId() {
+		// TODO Auto-generated method stub
+		return userDao.getLastId();
+	}
+
 	
 
 	

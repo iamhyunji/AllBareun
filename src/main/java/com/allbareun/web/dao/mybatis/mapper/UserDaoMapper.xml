@@ -22,8 +22,8 @@
    </select>
    
    <insert id="insert" parameterType="com.allbareun.web.entity.User">
-      insert into User (email, password, name, gender, age, phone, profile)
-      		 values (#{email}, #{password}, #{name}, #{gender}, #{age}, #{phone}, #{profile} )
+      insert into User (email, password, name, gender, birth, phone, profile)
+      		 values (#{email}, #{password}, #{name}, #{gender}, #{birth}, #{phone}, #{profile} )
    </insert>
    
    <select id="update" resultType="com.allbareun.web.entity.User">
@@ -33,7 +33,7 @@
       	name = #{name},
       	gender = #{gender},
       	profile = #{profile},
-      	age = #{age},
+      	birth = #{birth},
       	phone = #{phone}
       where id = #{id}
    </select>
@@ -68,6 +68,10 @@
 	
 	<select id="getUser" resultType="com.allbareun.web.entity.User">
       select * from User where email = #{email} and name = #{name} and phone = #{phone}
+   </select>
+   
+   <select id="getLastId" resultType="int">
+   	select id from User order by joinDate desc limit 1
    </select>
    
 </mapper>
