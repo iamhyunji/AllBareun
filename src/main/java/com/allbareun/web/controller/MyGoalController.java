@@ -231,26 +231,29 @@ public class MyGoalController {
 
 		GoalAllView goalAllView = service.getAllView(id);
 		model.addAttribute("g", goalAllView);
+		
+//		System.out.println(goalAllView.getBadEx());
 
 		return "user.mygoal.edit";
 	}
 
 	@PostMapping("{id}/edit")
-	public String edit(@PathVariable("id") int id, GoalAllView goalAllView) {
+	public String edit(@PathVariable("id") int id,
+						@RequestParam(name = "g-mImg", defaultValue = "/images/default-image2.png") String mainImage,
+						@RequestParam(name = "g-t") String title,
+						@RequestParam(name = "g-ex") String explanation) {
 
 		Goal origin = service.get(id);
 
-		String mainImage = goalAllView.getMainImage();
-		String title = goalAllView.getTitle();
-		String explanation = goalAllView.getExplanation();
+		if (mainImage != null && !origin.getMainImage().equals(mainImage)) {
+			String mainImagePath = "/upload/goal/" + id + "/" + mainImage;
+			origin.setMainImage(mainImagePath);
+		}
 
-		if (mainImage != null)
-			origin.setMainImage(mainImage);
-
-		if (title != null)
+		if (title != null && !title.equals(""))
 			origin.setTitle(title);
 
-		if (explanation != null)
+		if (explanation != null && !explanation.equals(""))
 			origin.setExplanation(explanation);
 
 		service.update(origin);

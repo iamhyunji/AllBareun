@@ -1,11 +1,23 @@
+import UploadBox from "./UploadBox.js";
+
 window.addEventListener("load", () => {
 	const requiredContent = document.querySelector(".required__content");
+	const nonRequiired = document.querySelector(".non-required");
 	const categoryContainer = requiredContent.querySelector(".category-container");
 	const participationContainer = requiredContent.querySelector(".participation-container");
 	const participationSelect = participationContainer.querySelector("select");
 	const cycleContainer = requiredContent.querySelector(".cycle-container");
 	const cycleSelect = cycleContainer.querySelector("select");
 	const regButton = document.querySelector(".reg-button");
+
+	// 이미지 업로드
+	const mainImg = document.querySelector(".required__image .g-mImg");
+	const goodEx = nonRequiired.querySelector(".g-gEx");
+	const badEx = nonRequiired.querySelector(".g-bEx");
+
+	let mainUpload = new UploadBox(mainImg, mainImg.innerText);
+	let goodExUpload = new UploadBox(goodEx, goodEx.innerText);
+	let badExUpload = new UploadBox(badEx, badEx.innerText);
 
 	// 카테고리
 	let categoryCnt = 0;
@@ -16,15 +28,15 @@ window.addEventListener("load", () => {
 		let element = e.target;
 
 		// gct-id만 받기
-		if(element.name != "gct-id")
+		if (element.name != "gct-id")
 			return;
-		
-		if(element.checked)
+
+		if (element.checked)
 			categoryCnt++;
 		else
 			categoryCnt--;
 
-		if(categoryCnt > maxCategoryCnt) {
+		if (categoryCnt > maxCategoryCnt) {
 			alert(`카테고리는 최대 2개까지 선택 가능합니다`);
 			element.checked = false;
 			categoryCnt--;
@@ -32,22 +44,22 @@ window.addEventListener("load", () => {
 		}
 
 	});
-	
+
 	// '참가' 옵션 선택에 따른 인원선택, 초대 버튼 표시
 	participationContainer.addEventListener("change", (e) => {
-		if(e.target.name != "g-ps")
+		if (e.target.name != "g-ps")
 			return;
-		
+
 		let option = e.target.value;
 		let totalParticipantsInput = participationContainer.querySelector(".total-participants");
 		let invitedList = participationContainer.querySelector(".invited-list");
 		let inviteInput = participationContainer.querySelector(".invite");
 
-		switch(option) {
+		switch (option) {
 			case "-1":
 				let personalInput = `<input class="select-s total-participants" type="hidden" name="g-tp" value="1" min="1" max="1" />`;
 				totalParticipantsInput.remove();
-				if(invitedList!=null || inviteInput != null){
+				if (invitedList != null || inviteInput != null) {
 					invitedList.remove();
 					inviteInput.remove();
 				}
@@ -64,7 +76,7 @@ window.addEventListener("load", () => {
 			case "1":
 				let participationInput = `<input class="select-s total-participants" type="number" name="g-tp" value="2" min="2" max="10" />`;
 				totalParticipantsInput.remove();
-				if(invitedList!=null || inviteInput != null){
+				if (invitedList != null || inviteInput != null) {
 					invitedList.remove();
 					inviteInput.remove();
 				}
@@ -78,7 +90,7 @@ window.addEventListener("load", () => {
 		let option = e.target.value;
 		let cycle = cycleContainer.querySelector(".cycle");
 
-		switch(option) {
+		switch (option) {
 			case "everyday":
 				cycle.remove();
 
@@ -94,7 +106,7 @@ window.addEventListener("load", () => {
 
 				cycleContainer.insertAdjacentHTML('beforeend', cycleBox);
 				break;
-				
+
 			case "week":
 				cycle.remove();
 
@@ -110,7 +122,7 @@ window.addEventListener("load", () => {
 
 				cycleContainer.insertAdjacentHTML('beforeend', cycleBoxWeek);
 				break;
-				
+
 			case "weekday":
 				cycle.remove();
 
@@ -126,7 +138,7 @@ window.addEventListener("load", () => {
 
 				cycleContainer.insertAdjacentHTML('beforeend', cycleBoxWeekday);
 				break;
-				
+
 			case "weekend":
 				cycle.remove();
 
@@ -144,25 +156,25 @@ window.addEventListener("load", () => {
 				break;
 		}
 	});
-	
+
 	// 등록 시 실행 사항
 	regButton.addEventListener("click", (e) => {
-//		e.preventDefault();
-		
+		//e.preventDefault();
+
 		// 참가 개인일 대 초기화
-		if(participationSelect.value == "-1")
+		if (participationSelect.value == "-1")
 			participationSelect.value = "0";
-			
+
 		// 요일 개수
 		let checkeds = document.querySelectorAll(`input[name="d-id"]:checked`);
 		let countInput = `<input type="hidden" name="g-c" value="${checkeds.length}" />`;
 		cycleContainer.insertAdjacentHTML('beforeend', countInput);
-		
-		// console.log(checkeds.length);
+
+		// 이미지 업로드
+		mainUpload.upload();
+		goodExUpload.upload(); 
+		badExUpload.upload();
+
 	});
 
-	// 문제 ) 제목 입력 시 Enter 키 누르면 submit됨.
-	// => Enter 키 누르면 submit되는거 막아줄 것!
-	
-	// 인증사진 등록 시에만 인증 기준 사진 등록(좋은 예시, 나쁜 예시, 인증 방법 설명) 보이기
 })

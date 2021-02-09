@@ -19,7 +19,7 @@ public interface GoalService {
 
 	int insert(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList);
 	int update(Goal goal);
-	int delete(Goal goal);
+	int delete(int goalId);
 	Goal get(int id);
 
 	// -------------------------- View --------------------------
@@ -47,7 +47,7 @@ public interface GoalService {
 	int certAndEvalInsert(int goalId, int userId, String filePath, int answer1, int answer2, int answer3,String explanation);
 	int getinfo(String email);
 	int getUserIdByEmail(String name);
-	int retryGoal(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList);
+	int retryGoal(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList, int newGoalId);
 
 	List<EvaluationView> getReport(int uid);
 	List<EvaluationView> categoryChart(int uid);
@@ -56,5 +56,6 @@ public interface GoalService {
 	int deleteGoalFromUser(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList);
 
 	List<String> getDays(int goalId);
+	int makeGoal(int userId);
 
 }

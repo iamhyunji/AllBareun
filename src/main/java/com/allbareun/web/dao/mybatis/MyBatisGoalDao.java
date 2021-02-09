@@ -117,6 +117,18 @@ public class MyBatisGoalDao implements GoalDao {
 		return mapper.getinfo(email);
 	}
 
+	@Override
+	public int makeGoal(int userId) {
+		
+		return mapper.makeGoal(userId);
+	}
+
+	@Override
+	public int delete(int goalId) {
+		
+		return mapper.delete(goalId);
+	}
+
 //	@Override
 //	public CertificationView getAuthImage(int id) {
 //		// TODO Auto-generated method stub
