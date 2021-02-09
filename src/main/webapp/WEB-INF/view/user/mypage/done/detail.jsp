@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
 
 <title>개인 결과 리포트</title>
 <link rel="stylesheet"
@@ -29,8 +31,8 @@
 
 <link href="/css/user/mypage/done/detail.css" type="text/css"
 	rel="stylesheet">
-<script type="script" src="/js/user/mypage/done/imageAnimation.js"></script>
-<script type="script" src="/js/user/mypage/done/VideoPlayer.js"></script>
+<script type="module" src="/js/user/mypage/done/imageAnimation.js"></script>
+
 
 
 
@@ -41,131 +43,131 @@
 
 <!-- <tiles:insertAttribute name="main" /> -->
 <main id="main">
-	<section class="detail-info">
-		<div class="detail-info-img">
-			<img src="${detail.mainImage}" alt="메인 이미지" />
+
+		<section class="detail-info">
+			<div class="detail-info-img">
+				<img src="${detail.mainImage}" alt="메인 이미지" />
+
+			</div>
+			<div class="detail-info-text">
+				<h1>${detail.title}</h1>
+				<span>${detail.explanation}</span>
+				<table class="detail-table">
+					<tbody>
+
+						<tr>
+							<td class="center w100">기간</td>
+
+							<td class="left w200"><fmt:formatDate
+									value="${detail.startDate}" type="both" pattern="yyyy/MM/dd" />-
+								<fmt:formatDate value="${detail.endDate}" type="both"
+									pattern="yyyy/MM/dd" /></td>
+						</tr>
+						<tr>
+							<td class="center w100">인증횟수</td>
+							<td class="left w200">${detail.count}회</td>
+						</tr>
+
+						<tr>
+							<td class="center w100">인증 요일</td>
+							<td class="left w200">${detail.days}</td>
+						</tr>
+
+						<tr>
+							<td class="center w100">카테고리</td>
+							<td class="left w200">${detail.categories}</td>
+						</tr>
+
+						<tr>
+							<td class="center w100">참여인원</td>
+							<td class="left w200">${detail.participants}</td>
+							<td class="center w200"><c:forEach var="n"
+									items="${profile}">
+									<img class="w30-radius" src="${n.profile}" alt="프로필" />
+								</c:forEach></td>
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</section>
+
+
+		<div class="detail-result">
+			<div class="detail-result-chart">
+				<h2>평가지</h2>
+				<span>실제 인증 횟수/ 전체횟수</span>
+				<div class="chart1">
+					<canvas id="myChart"></canvas>
+
+				</div>
+			</div>
+
+			<div class="detail-result-chart">
+				<h2>달성도</h2>
+				<span>실제 인증 횟수/ 전체횟수</span>
+				<div class="chart2">
+					<canvas id="myChart2"></canvas>
+
+				</div>
+			</div>
+
+
+
 
 		</div>
-		<div class="detail-info-text">
-			<h1>${detail.title}</h1>
-			<span>${detail.explanation}</span>
-			<table class="detail-table">
-				<tbody>
-
-					<tr>
-						<td class="center w100">기간</td>
-
-						<td class="left w200"><fmt:formatDate
-								value="${detail.startDate}" type="both" pattern="yyyy/MM/dd" />-
-							<fmt:formatDate value="${detail.endDate}" type="both"
-								pattern="yyyy/MM/dd" /></td>
-					</tr>
-					<tr>
-						<td class="center w100">인증횟수</td>
-						<td class="left w200">${detail.count}회</td>
-					</tr>
-
-					<tr>
-						<td class="center w100">인증 요일</td>
-						<td class="left w200">${detail.days}</td>
-					</tr>
-
-					<tr>
-						<td class="center w100">카테고리</td>
-						<td class="left w200">${detail.categories}</td>
-					</tr>
-
-					<tr>
-						<td class="center w100">참여인원</td>
-						<td class="left w200">${detail.participants}</td>
-						<td class="center w200"><c:forEach var="n" items="${profile}">
-								<img class="w30-radius" src="${n.profile}" alt="프로필" />
-							</c:forEach></td>
-
-					</tr>
-				</tbody>
-			</table>
-		</div>
-
-	</section>
 
 
-	<div class="detail-result">
-		<div class="detail-result-chart">
-			<h2>평가지</h2>
-			<span>실제 인증 횟수/ 전체횟수</span>
-			<div class="chart1">
-				<canvas id="myChart"></canvas>
-
+		<div class="detail-result2">
+			<h2>이미지</h2>
+			<div class="video-section">
+				<div class="video-frame">
+					<img class="video-img" src="" alt="" />
+					<div class="video-stop"></div>
+				</div>
+				<div class="video-frame">
+					<img class="video-img" src="" alt="" />
+					<div class="video-stop"></div>
+				</div>
+				<div class="video-frame">
+					<img class="video-img" src="" alt="" />
+					<div class="video-stop"></div>
+				</div>
 			</div>
 		</div>
 
-		<div class="detail-result-chart">
-			<h2>달성도</h2>
-			<span>실제 인증 횟수/ 전체횟수</span>
-			<div class="chart2">
-				<canvas id="myChart2"></canvas>
+		<%--  <c:set var="i" value="${videoImage}" />
+	 <c:set var="i" value="${videoImage}" />
+	  <c:forEach items="${i.userId}" var="excelList">
+	   ${fn:length(videoImage)};
+	  </c:forEach> --%>
 
-			</div>
-		</div>
+		<%-- 	<c:if test="${id eq dateVar}" >
+ <c:forEach items="${videoImage}" var="excelList">
+          <td>${excelList.profile}</td>
+          <td>${excelList.authImage}</td>
+           <br>
+          </c:forEach>
+           </c:if> --%>
+
+		<%--         ${fn:length(videoImage)};
+          
+          
+     <c:forEach var="list1" items="${videoImage}" varStatus="status">
+    ${list1.userId}
+    ${list2[status.index].authImage}
+</c:forEach> --%>
 
 
-
-
-	</div>
-
-
-	<div class="detail-result2">
-		<h2>이미지</h2>
-		<div class="video-section">
-			<div class="video-frame">
-				<img class="video-img" src="" alt="" />
-				<div class="video-stop"></div>
-			</div>
-			<div class="video-frame">
-				<img class="video-img" src="" alt="" />
-				<div class="video-stop"></div>
-			</div>
-			<div class="video-frame">
-				<img class="video-img" src="" alt="" />
-				<div class="video-stop"></div>
-			</div>
-		</div>
-	</div>
-	
-	<table class="detail-recent-img">
-				<tr>
-					<c:forEach var="auth" items="${detailImage}" varStatus="status">
-						<c:if test="${status.index%3==0}">
-				</tr>
-				<tr>
-					</c:if>
-					<td style="position: relative;"><img  class="s-img" src="${auth.authImage}" alt="최근 이미지" />
-					<img style="position: absolute; bottom: 20px; right: 20px;" class="w50-radius" src="${auth.profile}" alt="프로필" /></td>
-					</c:forEach>
-				</tr>
-			</table>
-
+		<%--        <c:forEach items="${videoImage}" var="i">
+        </c:forEach>  --%>
 </main>
 
 
 
 
 <script>
-
-  const videoSection = document.querySelector(".video-section");
-  const videoFrame = document.querySelectorAll(".video-frame");
-  const imgTag = document.querySelectorAll(".video-img");
-  const stopIcon = document.querySelectorAll(".video-stop");
-  let imgArrs = [];
-  imgArrs[0] = ["/images/all.png", "/images/naver.png", "/images/all.png", "/images/naver.png", "/images/all.png"];
-  imgArrs[1] = ["/images/naver.png", "/images/kakao.png", "/images/naver.png", "/images/kakao.png", "/images/kakao.png", "/images/naver.png"];
-  imgArrs[2] = ["/images/kakao.png", "/images/all.png", "/images/kakao.png", "/images/all.png", "/images/kakao.png"];
-  let videoPlayers = [];
-  for (let i = 0; i < imgArrs.length; i++) {
-    videoPlayers[i] = new VideoPlayer(imgArrs[i], i, videoFrame, imgTag, stopIcon);
-  }
-
 
 
 
@@ -225,5 +227,10 @@
     
     
    
+
+</script>
+
+<script>
+
 
 </script>
