@@ -98,6 +98,12 @@ public class UserServiceImp implements UserService{
 		return userDao.getLastId();
 	}
 
+	@Override
+	public int getUserIdByEmail(String name) {
+		// TODO Auto-generated method stub
+		return userDao.getUserId(name);
+	}
+
 	
 
 	

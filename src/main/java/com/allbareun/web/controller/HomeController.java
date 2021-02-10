@@ -44,14 +44,14 @@ public class HomeController{
 	@Autowired
 	private UserService service;
 
-
 	public HomeController() {
 
 	}
 
 	@RequestMapping("index")
-	public String index() {
-
+	public String index(Principal principal) {
+		int userId = service.getUserIdByEmail(principal.getName());
+		
 		return "home.index";
 	}
 
