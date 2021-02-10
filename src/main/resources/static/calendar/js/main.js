@@ -57,7 +57,7 @@ var calendar = $("#calendar").fullCalendar({
       columnFormat: "",
     },
   },
-  customButtons: {
+/*  customButtons: {
     //주말 숨기기 & 보이기 버튼
     viewWeekends: {
       text: "주말",
@@ -68,7 +68,7 @@ var calendar = $("#calendar").fullCalendar({
         });
       },
     },
-  },
+  },*/
 
   eventRender: function (event, element, view) {
     //일정에 hover시 요약
@@ -193,8 +193,8 @@ contentType: 'application/json; charset=utf-8',
         regDate: event.regDate,
         title: event.title,
         description: event.description,
-        start: moment(event.start).format('YYYY-MM-DD'),
-        end: endDate,
+        start: new Date(newDates.startDate),
+        end: new Date(newDates.endDate),
         type: event.type,
         textColor: event.textColor,
         allDay: event.allDay,
