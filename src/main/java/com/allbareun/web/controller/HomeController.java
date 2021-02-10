@@ -49,9 +49,11 @@ public class HomeController{
 	}
 
 	@RequestMapping("index")
-	public String index(Principal principal) {
+	public String index(Principal principal,Model model) {
+		if(principal!=null) {
 		int userId = service.getUserIdByEmail(principal.getName());
-		
+		model.addAttribute("userId", userId);
+		}
 		return "home.index";
 	}
 

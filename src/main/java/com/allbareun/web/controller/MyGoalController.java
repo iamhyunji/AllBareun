@@ -203,6 +203,7 @@ public class MyGoalController {
 				model.addAttribute("list", list);
 				model.addAttribute("profileInfo", profileInfo);
 				model.addAttribute("nameInfo", nameInfo);
+				model.addAttribute("g", goalId);
 				return "user.mygoal.cert.list";
 			}
 		}

@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Calendar {
 	private int id;
-	private String userId;
+	private int userId;
 	private Date regDate;
 	private Date start;
 	private Date end;
@@ -21,7 +21,7 @@ public class Calendar {
 	}
 
 
-	public Calendar(int id, String userId, Date regDate, Date start, Date end, String title, String type,
+	public Calendar(int id, int userId, Date regDate, Date start, Date end, String title, String type,
 			String description, String textColor, boolean allDay, String backgroundColor) {
 		super();
 		this.id = id;
@@ -48,12 +48,12 @@ public class Calendar {
 	}
 
 
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
 
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 
@@ -150,11 +150,13 @@ public class Calendar {
 
 	@Override
 	public String toString() {
-		return "Schedule [id=" + id + ", userId=" + userId + ", regDate=" + regDate + ", start=" + start + ", end="
+		return "Calendar [id=" + id + ", userId=" + userId + ", regDate=" + regDate + ", start=" + start + ", end="
 				+ end + ", title=" + title + ", type=" + type + ", description=" + description + ", textColor="
 				+ textColor + ", allDay=" + allDay + ", backgroundColor=" + backgroundColor + "]";
 	}
-    
+
+
+	
 	
 	
 }

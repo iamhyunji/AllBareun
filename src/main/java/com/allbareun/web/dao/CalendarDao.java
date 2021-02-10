@@ -1,6 +1,8 @@
 package com.allbareun.web.dao;
 
-import java.util.Calendar;
+import java.util.List;
+
+import com.allbareun.web.entity.Calendar;
 
 public interface CalendarDao {
 
@@ -9,5 +11,8 @@ public interface CalendarDao {
 	int update(Calendar calendar);
 
 	int delete(Calendar calendar);
+
+	List<Calendar> getByUserId(Calendar calendar);
+
 
 }
