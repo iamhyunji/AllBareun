@@ -385,4 +385,19 @@ public class GoalServiceImp implements GoalService {
 		return insertedGoal.getId();
 	}
 
+	@Override
+	public boolean isValidUserByEamil(String email) {
+		boolean valid = false;
+		User user = userDao.getUserByEamil(email);
+		if(user != null)
+			valid = true;
+		return valid;
+	}
+
+	@Override
+	public User getUser(int id) {
+		
+		return userDao.getuserById(id);
+	}
+
 }

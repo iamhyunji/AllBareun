@@ -111,6 +111,7 @@ class UploadBox {
 		//let fileName = e.dataTransfer.files[0];
 		let fileName = this.#imageFileName;
 
+/*
 		if (fileName == null) {
 			let fileArr = this.#imageInput.value.split("/");
 			let len = fileArr.length;
@@ -118,8 +119,8 @@ class UploadBox {
 			let type = fileArr[len - 1].split(".")[1];
 			fileName = new File([this.#imageInput], this.#imageInput.value, { type: "image/" + type });
 		}
-		else
-			this.#imageInput.value = fileName.name;
+		else*/
+		this.#imageInput.value = fileName.name;
 
 		let url = `/goal/reg/upload?id=${this.#goalId}`;
 		let fd = new FormData();

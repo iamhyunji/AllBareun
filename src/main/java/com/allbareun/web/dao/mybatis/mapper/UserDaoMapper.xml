@@ -70,4 +70,12 @@
       select * from User where email = #{email} and name = #{name} and phone = #{phone}
    </select>
    
+   <select id="getUserByEamil" resultType="com.allbareun.web.entity.User">
+		select * from User where email=#{email}
+	</select>
+   
+   <select id="getuserById" resultType="com.allbareun.web.entity.User">
+		select * from User where id=#{id}
+	</select>
+   
 </mapper>

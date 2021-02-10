@@ -57,5 +57,7 @@ public interface GoalService {
 
 	List<String> getDays(int goalId);
 	int makeGoal(int userId);
+	boolean isValidUserByEamil(String email);
+	User getUser(int id);
 
 }

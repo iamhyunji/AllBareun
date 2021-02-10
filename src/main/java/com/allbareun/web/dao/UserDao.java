@@ -21,6 +21,8 @@ public interface UserDao {
 	int isValidPwd(String email, String name, String phone);
 	int changePassword(String email, String password);
 	User getUser(String email, String name, String phone);
+	User getUserByEamil(String email);
+	User getuserById(int id);
 	
 
 }

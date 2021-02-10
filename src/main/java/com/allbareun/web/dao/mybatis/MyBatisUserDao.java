@@ -123,6 +123,20 @@ public class MyBatisUserDao implements UserDao{
 	}
 
 
+	@Override
+	public User getUserByEamil(String email) {
+		
+		return mapper.getUserByEamil(email);
+	}
+
+
+	@Override
+	public User getuserById(int id) {
+		
+		return mapper.getuserById(id);
+	}
+
+
 
 
 }

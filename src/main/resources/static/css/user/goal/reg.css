@@ -61,3 +61,38 @@ input[type=text],
 .buttons > * {
     margin-right: 30px;
 }
+
+/* --------- ModalBox --------- */
+.modalbox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.modalbox .search,
+.modalbox .friends-list {
+    width: 90%;
+    padding: 0;
+}
+.modalbox .search .friend {
+	width: 70%;
+    height: 30px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+.modalbox .search .friend:focus {
+    outline: none;
+}
+.modalbox .friends-list {
+    flex-grow: 1;
+    overflow: scroll;
+}
+.modalbox .friends-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 2px;
+}
+.modalbox .friends-list li:hover {
+    background: #e9e9e9;
+}

@@ -1,19 +1,14 @@
 package com.allbareun.web.controller.api;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.allbareun.web.entity.CertDetailView;
-import com.allbareun.web.entity.CertificationView;
 import com.allbareun.web.entity.GoalView;
+import com.allbareun.web.entity.User;
 import com.allbareun.web.service.GoalService;
 
 @RestController("apiGoalController")
@@ -23,6 +18,22 @@ public class GoalController {
 	@Autowired
 	private GoalService service;
 
+	@RequestMapping("reg")
+	public int reg(@RequestParam(name="email", defaultValue = "") String email) {
+		boolean valid = service.isValidUserByEamil(email);
+		int userId = 0;
+		if(valid)
+			userId = service.getUserIdByEmail(email);
+		return userId;
+	}
+	
+	@RequestMapping("reg/profile")
+	public User reg(@RequestParam(name="id") int id) {
+		User user = service.getUser(id);
+		
+		return user;
+	}
+	
 	@RequestMapping("list")
 	public List<GoalView> list(
 			@RequestParam(name="categories", defaultValue = "") String categories,

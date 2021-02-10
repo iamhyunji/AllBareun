@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/user/goal/reg.css">
 <script type="module" src="/js/user/goal/reg.js"></script>
 
@@ -44,7 +45,6 @@
 							<option value="0">지인 그룹</option>
 							<option value="1">공개 그룹</option>
 						</select>
-						<input class="select-s total-participants" type="hidden" name="g-tp" value="1" min="1" max="1" />
 					</div>
 
 					<div class="cycle-container">
