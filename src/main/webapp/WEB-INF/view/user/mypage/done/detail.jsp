@@ -136,32 +136,14 @@
 				</div>
 			</div>
 		</div>
+		
+		 <c:forEach items="${videoImage}" var="e">
+		 <div class="arrayValue">${e}</div>
+		 <div class="authImage"> ${e.authImage}</div>
+		 <div class="userId"> ${e.userId}</div>
+		 </c:forEach>
+		 <div class="aaa">${videoImage}</div>
 
-		<%--  <c:set var="i" value="${videoImage}" />
-	 <c:set var="i" value="${videoImage}" />
-	  <c:forEach items="${i.userId}" var="excelList">
-	   ${fn:length(videoImage)};
-	  </c:forEach> --%>
-
-		<%-- 	<c:if test="${id eq dateVar}" >
- <c:forEach items="${videoImage}" var="excelList">
-          <td>${excelList.profile}</td>
-          <td>${excelList.authImage}</td>
-           <br>
-          </c:forEach>
-           </c:if> --%>
-
-		<%--         ${fn:length(videoImage)};
-          
-          
-     <c:forEach var="list1" items="${videoImage}" varStatus="status">
-    ${list1.userId}
-    ${list2[status.index].authImage}
-</c:forEach> --%>
-
-
-		<%--        <c:forEach items="${videoImage}" var="i">
-        </c:forEach>  --%>
 </main>
 
 
@@ -197,7 +179,7 @@
     var ctx = document.getElementById('myChart2');
     var myChart = new Chart(ctx, {
         type: 'bar', data: {
-            labels: ['1월', '2월', '3월', '4월', '5월', '6월', '7월'],
+            labels: month,
             datasets: [{
                 label: '# of Votes', data: [12, 19, 3, 5, 2, 3,5],
                 backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)',

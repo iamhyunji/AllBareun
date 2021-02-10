@@ -1,6 +1,7 @@
 package com.allbareun.web.dao.mybatis;
 
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -39,11 +40,11 @@ public class MyBatisEvaluationDao implements EvaluationDao{
 		return mapper.getDoneLineChart(id,uid);
 	}
 
-	@Override
-	public List<EvaluationView> getDoneBarChart(int id, int uid) {
-		// TODO Auto-generated method stub
-		return mapper.getDoneBarChart(id,uid);
-	}
+//	@Override
+//	public List<EvaluationView> getDoneBarChart(int id, int uid) {
+//		// TODO Auto-generated method stub
+//		return mapper.getDoneBarChart(id,uid);
+//	}
 
 
 	@Override
@@ -51,5 +52,13 @@ public class MyBatisEvaluationDao implements EvaluationDao{
 		// TODO Auto-generated method stub
 		return mapper.insert(userId, goalId, answer1, answer2, answer3, explanation, certificationId);
 	}
+
+	@Override
+	public List<EvaluationView> getDoneBarChart(String startDate) {
+		// TODO Auto-generated method stub
+		return mapper.getDoneBarChart(startDate);
+	}
+
+
 	
 }

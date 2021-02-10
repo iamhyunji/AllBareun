@@ -1,5 +1,6 @@
 package com.allbareun.web.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.allbareun.web.entity.CertDetailView;
@@ -52,11 +53,14 @@ public interface GoalService {
 	List<EvaluationView> getReport(int uid);
 	List<EvaluationView> categoryChart(int uid);
 	List<EvaluationView> getDoneLineChart(int id, int uid);
-	List<EvaluationView> getDoneBarChart(int id, int uid);
+	//List<EvaluationView> getDoneBarChart(int id, int uid);
 	int deleteGoalFromUser(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList);
 
 	List<CertificationView> getVideoImage(int id);
 
 	List<String> getDays(int goalId);
+	Date getStartDate(int id);
+	Date getEndDate(int id);
+	List<EvaluationView> getDoneBarChart(String startDate);
 
 }
