@@ -1,5 +1,6 @@
 package com.allbareun.web.dao.mybatis;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -115,6 +116,18 @@ public class MyBatisGoalDao implements GoalDao {
 	public int getinfo(String email) {
 		// TODO Auto-generated method stub
 		return mapper.getinfo(email);
+	}
+
+	@Override
+	public Date getStartDate(int id) {
+		// TODO Auto-generated method stub
+		return mapper.getStartDate(id);
+	}
+
+	@Override
+	public Date getEndDate(int id) {
+		// TODO Auto-generated method stub
+		return mapper.getEndDate(id);
 	}
 
 //	@Override

@@ -1,6 +1,7 @@
 package com.allbareun.web.controller;
 
 import java.security.Principal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -119,8 +120,17 @@ public class MyPageController {
 		
 		String email = principal.getName(); // 로그인 인증 정보가 갖고와짐
 		 int uid = service.getinfo(email);
+		 Date beforStartDate = service.getStartDate(id);
+		 Date endDate = service.getEndDate(id);
+		 
+		 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		 String startDate =  simpleDateFormat.format(beforStartDate);
+
+		System.out.println(startDate);
+		
+
 		 List<EvaluationView> lineChart = service.getDoneLineChart(id,uid);
-		 //List<EvaluationView> varChart = service.getDoneBarChart(id,uid);
+		 List<EvaluationView> varChart = service.getDoneBarChart(startDate);
 		 
 		GoalDetailView detail = service.getDetailView(id);
 		 List<User> profile = service.getProfile(id);
@@ -131,6 +141,8 @@ public class MyPageController {
 		 model.addAttribute("profile", profile);
 		 model.addAttribute("lineChart", lineChart);
 		 model.addAttribute("videoImage", videoImage);
+		 model.addAttribute("varChart", varChart);
+		 System.out.println(varChart);
 
 		return "user.mypage.done.detail";
 	}

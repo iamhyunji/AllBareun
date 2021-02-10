@@ -2,6 +2,7 @@ package com.allbareun.web.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -352,11 +353,11 @@ public class GoalServiceImp implements GoalService {
 		return evaluationDao.getDoneLineChart(id,uid);
 	}
 
-	@Override
-	public List<EvaluationView> getDoneBarChart(int id, int uid) {
-		// TODO Auto-generated method stub
-		return evaluationDao.getDoneBarChart(id,uid);
-	}
+//	@Override
+//	public List<EvaluationView> getDoneBarChart(int id, int uid) {
+//		// TODO Auto-generated method stub
+//		return evaluationDao.getDoneBarChart(id,uid);
+//	}
 
 	@Override
 	public List<String> getDays(int goalId) {
@@ -368,6 +369,24 @@ public class GoalServiceImp implements GoalService {
 	public List<CertificationView> getVideoImage(int id) {
 		// TODO Auto-generated method stub
 		return certificationDao.getVideoImage(id);
+	}
+
+	@Override
+	public Date getStartDate(int id) {
+		// TODO Auto-generated method stub
+		return goalDao.getStartDate(id);
+	}
+
+	@Override
+	public Date getEndDate(int id) {
+		// TODO Auto-generated method stub
+		return  goalDao.getEndDate(id);
+	}
+
+	@Override
+	public List<EvaluationView> getDoneBarChart(String startDate) {
+		// TODO Auto-generated method stub
+		return evaluationDao.getDoneBarChart(startDate);
 	}
 
 }

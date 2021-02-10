@@ -208,5 +208,14 @@
      <select id="getinfo" resultType="int">
    		select id from User where email = #{param1};
    	</select>
+   	
+   	
+   	<select id="getStartDate" resultType="Date">
+   		select startDate from Goal where id = #{param1};
+   	</select>
+   	
+   	   	<select id="getEndDate" resultType="Date">
+   		select endDate from Goal where id = #{param1};
+   	</select>
    
 </mapper>
