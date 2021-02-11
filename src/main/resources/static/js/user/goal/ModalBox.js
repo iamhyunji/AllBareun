@@ -29,14 +29,14 @@ class ModalBox {
 			screen.addEventListener("transitionend", () => {
 				CSS.set(frame, {
 					opacity: "1",
-					top: "150px"
+					top: "30%"
 				});
 			});
 
 			CSS.set(frame, {
 				position: "fixed",
-				top: "100px",
-				left: "400px",
+				top: "40%",
+				left: "30%",
 				background: "#fff",
 				width: "400px",
 				height: "300px",
@@ -74,7 +74,7 @@ class ModalBox {
 			};
 		});
 	}
-	
+
 	static confirm(message) {
 		let screen = document.createElement("div");
 		let frame = document.createElement("div");
@@ -102,14 +102,14 @@ class ModalBox {
 		screen.addEventListener("transitionend", () => {
 			CSS.set(frame, {
 				opacity: "1",
-				top: "150px"
+				top: "30%"
 			});
 		});
 
 		CSS.set(frame, {
 			position: "fixed",
-			top: "100px",
-			left: "400px",
+			top: "40%",
+			left: "30%",
 			background: "#fff",
 			width: "400px",
 			height: "300px",
@@ -135,7 +135,7 @@ class ModalBox {
 			frame.remove();
 		};
 	}
-	
+
 	static confirmMypage(message) {
 		return new Promise((resolve, reject) => {
 			let screen = document.createElement("div");
@@ -164,14 +164,14 @@ class ModalBox {
 			screen.addEventListener("transitionend", () => {
 				CSS.set(frame, {
 					opacity: "1",
-					top: "150px"
+					top: "30%"
 				});
 			});
 
 			CSS.set(frame, {
 				position: "fixed",
-				top: "100px",
-				left: "400px",
+				top: "40%",
+				left: "30%",
 				background: "#fff",
 				width: "400px",
 				height: "300px",
@@ -179,7 +179,7 @@ class ModalBox {
 				transition: "top 1s"
 			});
 
-			frame.className = "modalbox__alert";
+			frame.className = "modalbox__confirm";
 			frame.innerHTML = `
             <div>
                 <h1 class="text-l" style="text-align:center">목표 삭제</h1>
@@ -238,14 +238,14 @@ class ModalBox {
 			screen.addEventListener("transitionend", () => {
 				CSS.set(frame, {
 					opacity: "1",
-					top: "150px"
+					top: "30%"
 				});
 			});
 
 			CSS.set(frame, {
 				position: "fixed",
-				top: "100px",
-				left: "400px",
+				top: "40%",
+				left: "30%",
 				background: "#fff",
 				width: "400px",
 				height: "300px",

@@ -121,3 +121,19 @@
 .goals .setting {
     align-self: flex-end;
 }
+
+
+
+
+/* --------- ModalBox --------- */
+.modalbox__alert,
+.modalbox__confirm {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+}
+.modalbox__alert > *,
+.modalbox__confirm > * {
+	margin: 20px 0px;
+}
