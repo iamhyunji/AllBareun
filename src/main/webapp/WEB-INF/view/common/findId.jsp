@@ -24,7 +24,7 @@
 
             <form class="find-id" method="post" action="findIdPage">
             <input type="text" class="text-box name-box" name="name" placeholder="이름을 입력해 주세요.">
-            <input type="text" class="text-box phone-box" name="phone" placeholder="핸드폰 번호를 입력해 주세요.(-없이)">
+            <input type="text" class="text-box phone-box" name="phone" placeholder="핸드폰 번호를 입력해 주세요.(-포함)">
 			<br>
 			<input type="submit" class="find-btn" value="아이디 찾기">
             </form>
