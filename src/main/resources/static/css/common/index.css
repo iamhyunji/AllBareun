@@ -85,3 +85,10 @@ header {
  }
  body {
  padding:0}
+ 
+ #defaultCanvas0 {
+ position:absolute;
+ top:73px;
+ z-index:-1;
+ 
+ }

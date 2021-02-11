@@ -26,10 +26,16 @@
     </section>
     </c:if>
     
-    <c:if test="${!empty userId}">    
+    <c:if test="${!empty userId}">   
+        <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/p5.min.js"
+      integrity="sha512-b/htz6gIyFi3dwSoZ0Uv3cuv3Ony7EeKkacgrcVg8CMzu90n777qveu0PBcbZUA7TzyENGtU+qZRuFAkfqgyoQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="/js/modules/Snowflake.js"></script> 
     <section class="main">
 
-    <div class="container">
+    <div id="i-container">
 
         <!-- 일자 클릭시 메뉴오픈 -->
         <div id="contextMenu" class="dropdown clearfix">
