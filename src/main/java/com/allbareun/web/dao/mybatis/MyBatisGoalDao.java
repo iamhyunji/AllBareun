@@ -141,6 +141,12 @@ public class MyBatisGoalDao implements GoalDao {
 		return mapper.getEndDate(id);
 	}
 
+	@Override
+	public List<GoalAllView> getInvitedList(int userId, String[] categories, String query) {
+		
+		return mapper.getInvitedList(userId, categories, query);
+	}
+
 //	@Override
 //	public CertificationView getAuthImage(int id) {
 //		// TODO Auto-generated method stub

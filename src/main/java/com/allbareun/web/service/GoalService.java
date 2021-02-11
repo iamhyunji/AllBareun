@@ -65,5 +65,8 @@ public interface GoalService {
 	Date getStartDate(int id);
 	Date getEndDate(int id);
 	List<EvaluationView> getDoneBarChart(String startDate);
+	List<GoalAllView> getInvitedList(int userId, String[] categories, String query);
+	int rejectGoal(int goalId, int userId);
+	int acceptGoal(int challengeGoalId, int userId);
 
 }

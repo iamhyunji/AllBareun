@@ -1,3 +1,5 @@
+import ModalBox from '/js/user/goal/ModalBox.js';
+
 window.addEventListener("load", () => {
 	const goalContainer = document.querySelector(".goals");
 	
@@ -6,9 +8,11 @@ window.addEventListener("load", () => {
 		if(!e.target.classList.contains("del-button"))
 			return;
 
-		let confirmValue = window.confirm(`정말로 이 목표를 삭제하시겠습니까?`)
-		if(!confirmValue)
-			return;
+		ModalBox.confirmMypage(`정말로 이 목표를 삭제하시겠습니까?`)
+		.then((result) => {
+			if(!result)
+				return;
+		});
 			
 		let delReload = e.target.firstElementChild;
 		let event = new MouseEvent("click", {

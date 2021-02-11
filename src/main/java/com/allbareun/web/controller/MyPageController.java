@@ -41,7 +41,8 @@ public class MyPageController {
 							@RequestParam(name = "sc", required = false) String[] categories,
 							@RequestParam(name = "sp", required = false, defaultValue = "0") int totalParticipants,
 							@RequestParam(name = "sa", required = false, defaultValue = "2") int achievement,
-							@RequestParam(name = "q", required = false) String query, Model model, Principal principal) {
+							@RequestParam(name = "q", required = false) String query,
+							Model model, Principal principal) {
 
 		int userId = service.getUserIdByEmail(principal.getName());
 		List<GoalAllView> list = service.getAllViewList(userId, "done", categories, totalParticipants, achievement,
@@ -63,10 +64,10 @@ public class MyPageController {
 	@GetMapping("done/{id}/retry")
 	public String doneRetry(@PathVariable(name = "id") int id, Model model, Principal principal) {
 		int userId = service.getUserIdByEmail(principal.getName());
-		
+
 		GoalAllView retryGoal = service.getAllView(id);
 		int goalId = service.makeGoal(userId);
-		
+
 		model.addAttribute("rg", retryGoal);
 		model.addAttribute("gId", goalId);
 
@@ -74,8 +75,7 @@ public class MyPageController {
 	}
 
 	@PostMapping("done/{id}/retry")
-	public String doneRetry(@RequestParam(name = "id") int newGoalId,
-							@RequestParam(name = "g-id") int id,
+	public String doneRetry(@RequestParam(name = "id") int newGoalId, @RequestParam(name = "g-id") int id,
 							@RequestParam(name = "g-mImg", defaultValue = "/images/default-image2.png") String mainImage,
 							@RequestParam(name = "g-t") String title, @RequestParam(name = "g-ex") String explanation,
 							@RequestParam(name = "g-sd") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startDate,
@@ -85,8 +85,7 @@ public class MyPageController {
 							@RequestParam(name = "g-gEx", required = false) String goodEx,
 							@RequestParam(name = "g-bEx", required = false) String badEx,
 							@RequestParam(name = "g-exEx", required = false) String exExplanation,
-							@RequestParam(name = "gct-id") int[] goalCategoryTypeIds,
-							@RequestParam(name = "d-id") int[] dayIds,
+							@RequestParam(name = "gct-id") int[] goalCategoryTypeIds, @RequestParam(name = "d-id") int[] dayIds,
 							@RequestParam(name = "g-m", required = false) int[] members, Principal principal) {
 
 		int userId = service.getUserIdByEmail(principal.getName());
@@ -95,7 +94,8 @@ public class MyPageController {
 		goodEx = "/upload/goal/" + newGoalId + "/" + goodEx;
 		badEx = "/upload/goal/" + newGoalId + "/" + badEx;
 
-		Goal goal = new Goal(id, title, explanation, mainImage, goodEx, badEx, endDate, startDate, publicStatus, null, count, userId, totalParticipants, exExplanation);
+		Goal goal = new Goal(id, title, explanation, mainImage, goodEx, badEx, endDate, startDate, publicStatus, null,
+				count, userId, totalParticipants, exExplanation);
 
 		List<GoalCategory> gcList = new ArrayList<>();
 		List<Cycle> cList = new ArrayList<>();
@@ -128,49 +128,60 @@ public class MyPageController {
 	@GetMapping("done/{id}/retry/cancel")
 	public String doneRetry(@RequestParam(name = "id") int id) {
 		service.delete(id);
-		
+
 		return "redirect:/mypage/done/list";
 	}
-	
+
 	@GetMapping("done/invited")
-	public String invited(@RequestParam(name = "del-goalId", required = false, defaultValue = "0") int goalId,
+	public String invited(@RequestParam(name = "reject", required = false, defaultValue = "0") int delGoalId,
+							@RequestParam(name = "accept", required = false, defaultValue = "0") int challengeGoalId,
 							@RequestParam(name = "sc", required = false) String[] categories,
-							@RequestParam(name = "q", required = false) String query, Model model, Principal principal) {
+							@RequestParam(name = "q", required = false) String query,
+							Model model, Principal principal) {
 
 		int userId = service.getUserIdByEmail(principal.getName());
-		List<GoalAllView> list = service.getAllViewList(userId, "done", categories, 0, 0, query);
+		List<GoalAllView> list = service.getInvitedList(userId, categories, query);
 		model.addAttribute("list", list);
+
+		// Delete Goal From User
+		if (delGoalId != 0) {
+			service.rejectGoal(delGoalId, userId);
+			return "redirect:./invited";
+		}
+		else if(challengeGoalId != 0) {
+			service.acceptGoal(challengeGoalId, userId);
+			return "redirect:../../mygoal/list";
+		}
 
 		return "user.mypage.done.invited";
 	}
-	
+
 	@GetMapping("done/{id}")
 	public String doneDetail(@PathVariable(name = "id") int id, Principal principal, Model model) {
-		
+
 		String email = principal.getName(); // 로그인 인증 정보가 갖고와짐
-		 int uid = service.getinfo(email);
-		 Date beforStartDate = service.getStartDate(id);
-		 Date endDate = service.getEndDate(id);
-		 
-		 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		 String startDate =  simpleDateFormat.format(beforStartDate);
+		int uid = service.getinfo(email);
+		Date beforStartDate = service.getStartDate(id);
+		Date endDate = service.getEndDate(id);
+
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		String startDate = simpleDateFormat.format(beforStartDate);
 
 		System.out.println(startDate);
-		
 
-		 List<EvaluationView> lineChart = service.getDoneLineChart(id,uid);
-		 List<EvaluationView> varChart = service.getDoneBarChart(startDate);
-		 
+		List<EvaluationView> lineChart = service.getDoneLineChart(id, uid);
+		List<EvaluationView> varChart = service.getDoneBarChart(startDate);
+
 		GoalDetailView detail = service.getDetailView(id);
-		 List<User> profile = service.getProfile(id);
-		 List<CertificationView> videoImage = service.getVideoImage(id);
-		
-		 model.addAttribute("detail", detail);
-		 model.addAttribute("profile", profile);
-		 model.addAttribute("lineChart", lineChart);
-		 model.addAttribute("videoImage", videoImage);
-		 model.addAttribute("varChart", varChart);
-		 System.out.println(varChart);
+		List<User> profile = service.getProfile(id);
+		List<CertificationView> videoImage = service.getVideoImage(id);
+
+		model.addAttribute("detail", detail);
+		model.addAttribute("profile", profile);
+		model.addAttribute("lineChart", lineChart);
+		model.addAttribute("videoImage", videoImage);
+		model.addAttribute("varChart", varChart);
+		System.out.println(varChart);
 
 		return "user.mypage.done.detail";
 	}

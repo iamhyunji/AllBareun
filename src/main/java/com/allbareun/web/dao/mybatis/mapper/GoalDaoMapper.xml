@@ -137,8 +137,7 @@
 		limit #{count} offset #{offset}
 	</select>
 
-	<select id="getAllViewList"
-		resultType="com.allbareun.web.entity.GoalAllView">
+	<select id="getAllViewList" resultType="com.allbareun.web.entity.GoalAllView">
 		select GAV.*
 		from(select GV.*, ROUND((CV.certCnt / (GV.count * GV.dateDiff)) * 100, 2) achievement
 			from GoalAllParticipantsView GPV
@@ -284,4 +283,21 @@
 		select endDate from Goal where id = #{param1};
 	</select>
 
+	<select id="getInvitedList" resultType="com.allbareun.web.entity.GoalAllView">
+		select GAV.* from GoalAllView GAV
+		right join  (select * from `Group` where requestReceiveUserId = #{userId} and answer = 0) GV on GAV.id = GV.goalId
+		<if test="query != null and query != ''">
+			where (GAV.title LIKE '%${query}%' OR GAV.participants LIKE '%${query}%')
+		</if>
+		<if test="categories != null and categories !=''">
+			<choose>
+				<when test="query != null and query != ''">and</when>
+				<otherwise>where</otherwise>
+			</choose>
+			<foreach item="category" index="index" collection="categories" open="(" separator="OR" close=")">
+				categories like '%${category}%'
+			</foreach>
+		</if>
+	</select>
+	
 </mapper>

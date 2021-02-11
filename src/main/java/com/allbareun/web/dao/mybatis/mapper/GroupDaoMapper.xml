@@ -8,7 +8,15 @@
 	</insert>
 	
 	<update id="update">
-		UPDATE `Group` SET answer = false
+		UPDATE `Group`
+		<choose>
+			<when test="answer == true">
+				SET answer = true
+			</when>
+			<otherwise>
+				SET answer = false		
+			</otherwise>
+		</choose>
 		WHERE goalId = #{goalId} and requestReceiveUserId = #{userId};
 	</update>
 	

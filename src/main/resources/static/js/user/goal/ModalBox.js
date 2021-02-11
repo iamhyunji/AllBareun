@@ -63,14 +63,14 @@ class ModalBox {
 			const okButton = frame.querySelector("input[value=확인]");
 			const cancelButton = frame.querySelector("input[value=취소]");
 			okButton.onclick = () => {
-				resolve("확인");
 				screen.remove();
 				frame.remove();
+				resolve("확인");
 			};
 			cancelButton.onclick = () => {
-				resolve("취소");
 				screen.remove();
 				frame.remove();
+				resolve("취소");
 			};
 		});
 	}
@@ -134,6 +134,80 @@ class ModalBox {
 			screen.remove();
 			frame.remove();
 		};
+	}
+	
+	static confirmMypage(message) {
+		return new Promise((resolve, reject) => {
+			let screen = document.createElement("div");
+			let frame = document.createElement("div");
+
+			// ----------------------------- Set screen CSS -----------------------------
+			CSS.set(screen, {
+				position: "fixed",
+				left: "0px",
+				top: "0px",
+				width: "100%",
+				height: "100%",
+				background: "#000",
+				opacity: "0",
+				transition: "1s"
+			});
+
+			document.body.append(screen);
+			setTimeout(() => {
+				CSS.set(screen, {
+					opacity: "0.7"
+				});
+			});
+
+			// ----------------------------- Set frame CSS -----------------------------
+			screen.addEventListener("transitionend", () => {
+				CSS.set(frame, {
+					opacity: "1",
+					top: "150px"
+				});
+			});
+
+			CSS.set(frame, {
+				position: "fixed",
+				top: "100px",
+				left: "400px",
+				background: "#fff",
+				width: "400px",
+				height: "300px",
+				opacity: "0",
+				transition: "top 1s"
+			});
+
+			frame.className = "modalbox__alert";
+			frame.innerHTML = `
+            <div>
+                <h1 class="text-l" style="text-align:center">목표 삭제</h1>
+            </div>
+			<div>
+				${message}
+			</div>
+            <div>
+                <input type="button" class="a-input-orange-m" value="확인">
+                <input type="button" class="a-input-white-m" value="취소">
+            </div>`;
+
+			document.body.append(frame)
+
+			// ----------------------------- Submit -----------------------------
+			const okButton = frame.querySelector("input[value=확인]");
+			const cancelButton = frame.querySelector("input[value=취소]");
+			okButton.onclick = () => {
+				screen.remove();
+				frame.remove();
+				return resolve();
+			};
+			cancelButton.onclick = () => {
+				screen.remove();
+				frame.remove();
+				return reject();
+			};
+		});
 	}
 
 	static invite() {
@@ -248,15 +322,15 @@ class ModalBox {
 			let answer = {};
 			okButton.onclick = () => {
 				answer = { "button": "OK", totalParticipants, participants };
-				resolve(args);
 				screen.remove();
 				frame.remove();
+				resolve(args);
 			};
 			cancelButton.onclick = () => {
 				answer = { "button": "CANCEL", totalParticipants: 0, participants: null };
-				resolve(args);
 				screen.remove();
 				frame.remove();
+				resolve(args);
 			};
 		});
 

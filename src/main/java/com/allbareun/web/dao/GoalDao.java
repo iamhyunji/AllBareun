@@ -37,5 +37,6 @@ public interface GoalDao {
 	int delete(int goalId);
 	Date getStartDate(int id);
 	Date getEndDate(int id);
+	List<GoalAllView> getInvitedList(int userId, String[] categories, String query);
 
 }

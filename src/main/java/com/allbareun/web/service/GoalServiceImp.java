@@ -117,7 +117,7 @@ public class GoalServiceImp implements GoalService {
 		}
 		// 그룹 : 익명 & 지인
 		else if (originTotalParticipants > 1) {
-			groupDao.update(goalId, userId);
+			groupDao.update(goalId, userId, false);
 			participationDao.delete(goalId, userId);
 		}
 
@@ -188,11 +188,9 @@ public class GoalServiceImp implements GoalService {
 	}
 
 	@Override
-	public List<GoalAllView> getAllViewList(int userId, String status, String[] categories, int totalParticipants,
-			int achievement, String query) {
+	public List<GoalAllView> getAllViewList(int userId, String status, String[] categories, int totalParticipants, int achievement, String query) {
 
-		List<GoalAllView> list = goalDao.getAllViewList(userId, status, categories, totalParticipants, achievement,
-				query);
+		List<GoalAllView> list = goalDao.getAllViewList(userId, status, categories, totalParticipants, achievement, query);
 
 		// Set Category Color & Set Participants Profile Image
 		for (GoalAllView gav : list) {
@@ -422,6 +420,51 @@ public class GoalServiceImp implements GoalService {
 	public List<EvaluationView> getDoneBarChart(String startDate) {
 		// TODO Auto-generated method stub
 		return evaluationDao.getDoneBarChart(startDate);
+	}
+
+	@Override
+	public List<GoalAllView> getInvitedList(int userId, String[] categories, String query) {
+		List<GoalAllView> list = goalDao.getInvitedList(userId, categories, query);
+
+		// Set Category Color & Set Participants Profile Image
+		for (GoalAllView gav : list) {
+			// Set Category Color
+			String[] colors = gav.getCategoriesColor().split(",");
+			String[] categoryArr = gav.getCategories().split(",");
+
+			for (int j = 0; j < categoryArr.length; j++)
+				categoryArr[j] = "<span style=\"color:" + colors[j] + "; font-weight:bold;\">" + categoryArr[j]
+						+ "</span>";
+
+			String categoryStr = String.join(",", categoryArr);
+			gav.setCategories(categoryStr);
+
+			// Set Participants Profile Image
+			String[] profilesSrc = gav.getProfiles().split(",");
+			String[] participants = gav.getParticipants().split(",");
+
+			for (int j = 0; j < participants.length; j++) {
+				participants[j] = "<div class=\"profile\"><img class=\"profile__image\" src=\"" + profilesSrc[j]
+						+ "\" />" + "<span class=\"profile__info\">" + participants[j] + "</span></div>";
+			}
+
+			String profilesStr = String.join("", participants);
+			gav.setParticipants(profilesStr);
+		}
+
+		return list;
+	}
+
+	@Override
+	public int rejectGoal(int goalId, int userId) {
+		
+		return groupDao.delete(goalId, userId);
+	}
+
+	@Override
+	public int acceptGoal(int challengeGoalId, int userId) {
+		
+		return groupDao.update(challengeGoalId, userId, true);
 	}
 
 }

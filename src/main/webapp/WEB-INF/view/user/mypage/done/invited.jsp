@@ -4,14 +4,14 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/user/mypage/done/list.css">
-<script type="text/javascript" src="/js/user/mypage/done/list.js"></script>
+<script type="module" src="/js/user/mypage/done/invited.js"></script>
 
 <main id="main">
 	<h1 class="d-none">Content Body > Main</h1>
 
 	<section class="search">
 		<h1 class="d-none">검색폼</h1>
-		<form action="list" method="get" class="search__form">
+		<form action="invited" method="get" class="search__form">
 			<div>
 				<input type="checkbox" name="sc" value="생활" />
 				<label>생활</label>
@@ -53,8 +53,8 @@
 						</div>
 					</div>
 					<div class="goal__buttons">
-						<i class="fas fa-times del-button"><a href="invited?del-goalId=${g.id }" style="display : none"></a></i>
-						<a class="a-input-orange-s" href="#">도전</a>
+						<i class="fas fa-times del-button"><a href="invited?reject=${g.id }" style="display : none"></a></i>
+						<a class="a-input-orange-s" href="invited?accept=${g.id }">도전</a>
 					</div>
 				</li>
 			</c:forEach>
