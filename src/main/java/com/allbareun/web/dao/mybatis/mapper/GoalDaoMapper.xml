@@ -86,11 +86,14 @@
 				`badEx` = #{badEx},
 				`startDate` = #{startDate},
 				`endDate` = #{endDate},
-				`publicStatus` = #{publicStatus},
+				`publicStatus` =
+				#{publicStatus},
 				`count` = #{count},
-				`totalParticipants` = #{totalParticipants},
+				`totalParticipants` =
+				#{totalParticipants},
 				`exExplanation` = #{exExplanation}
-				WHERE id = #{id}
+				WHERE id =
+				#{id}
 			</otherwise>
 		</choose>
 	</update>
@@ -216,7 +219,10 @@
 
 	<select id="getAuthImages"
 		resultType="com.allbareun.web.entity.CertificationView">
-		select * from CertificationView where goalId = ${param1};
+		select * from CertificationView
+		where goalId = ${param1} and
+		regdate between ADDDATE(sysdate(),(-15 + date_format(sysdate(),'%w')))
+		and ADDDATE(sysdate(),(4 + date_format(sysdate(),'%w')));
 
 	</select>
 
@@ -234,8 +240,7 @@
 		resultType="com.allbareun.web.entity.Goal">
 		select * from Goal
 		where userId = #{userId}
-		order by regdate
-		desc
+		order by regdate desc
 		limit 1;
 	</select>
 
@@ -272,8 +277,15 @@
 	</select>
 
 	<select id="getinfo" resultType="int">
-		select id from User where email
-		= #{param1};
+		select id from User where email = #{param1};
+	</select>
+
+	<select id="getStartDate" resultType="Date">
+		select startDate from Goal where id = #{param1};
+	</select>
+
+	<select id="getEndDate" resultType="Date">
+		select endDate from Goal where id = #{param1};
 	</select>
 
 </mapper>

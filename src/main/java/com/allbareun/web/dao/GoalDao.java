@@ -1,5 +1,6 @@
 package com.allbareun.web.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import com.allbareun.web.entity.CertificationView;
@@ -34,5 +35,7 @@ public interface GoalDao {
 			String query, int count,int offset);
 	int makeGoal(int userId);
 	int delete(int goalId);
+	Date getStartDate(int id);
+	Date getEndDate(int id);
 
 }

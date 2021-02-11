@@ -49,4 +49,15 @@
  	SELECT * from Certification 
 	where userId=#{userId} and goalId=#{goalId} order by regdate desc limit 1;
  	</select>
+ 	
+ 	
+ 		<select id="getVideoImage" resultType="com.allbareun.web.entity.CertificationView">
+ 		select * from Certification C 
+ 		left join User U 
+ 		on C.userId = U.id 
+ 		where goalId = ${param1} ;
+ 	</select>
+ 	
+ 	
+ 	
 </mapper>

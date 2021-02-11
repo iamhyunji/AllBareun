@@ -20,4 +20,5 @@ public interface UserService{
 	int isValidPwd(String email, String name, String phone);
 	int changePassword(String email, String password);
 	User getUser(String email, String name, String phone);
+	int getLastId();
 }

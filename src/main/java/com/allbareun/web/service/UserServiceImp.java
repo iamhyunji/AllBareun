@@ -61,17 +61,16 @@ public class UserServiceImp implements UserService{
 		// TODO Auto-generated method stub
 		return userDao.idCheck(query);
 	}
+	@Override
+	public int isValidId(String name, String phone) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	@Override
 	public void logout(HttpSession session) {
 		// TODO Auto-generated method stub
 		session.invalidate();
-	}
-
-	@Override
-	public int isValidId(String name, String phone) {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	@Override
@@ -90,6 +89,12 @@ public class UserServiceImp implements UserService{
 	public User getUser(String email, String name, String phone) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int getLastId() {
+		// TODO Auto-generated method stub
+		return userDao.getLastId();
 	}
 
 	

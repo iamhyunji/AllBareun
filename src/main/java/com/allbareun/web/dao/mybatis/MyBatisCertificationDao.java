@@ -79,5 +79,11 @@ public class MyBatisCertificationDao implements CertificationDao {
 
 
 
+	@Override
+	public List<CertificationView> getVideoImage(int id) {
+		// TODO Auto-generated method stub
+		return mapper.getVideoImage(id);
+	}
+
 
 }

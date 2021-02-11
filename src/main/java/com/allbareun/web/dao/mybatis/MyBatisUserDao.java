@@ -135,6 +135,11 @@ public class MyBatisUserDao implements UserDao{
 		
 		return mapper.getuserById(id);
 	}
+	
+	public int getLastId() {
+		// TODO Auto-generated method stub
+		return mapper.getLastId();
+	}
 
 
 

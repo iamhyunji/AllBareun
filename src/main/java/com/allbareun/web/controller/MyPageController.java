@@ -1,6 +1,7 @@
 package com.allbareun.web.controller;
 
 import java.security.Principal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.allbareun.web.entity.CertificationView;
 import com.allbareun.web.entity.Cycle;
 import com.allbareun.web.entity.Evaluation;
 import com.allbareun.web.entity.EvaluationView;
@@ -132,18 +134,31 @@ public class MyPageController {
 	
 	@GetMapping("done/{id}")
 	public String doneDetail(@PathVariable(name = "id") int id, Principal principal, Model model) {
-
+		
 		String email = principal.getName(); // 로그인 인증 정보가 갖고와짐
-		int uid = service.getinfo(email);
-		List<EvaluationView> lineChart = service.getDoneLineChart(id, uid);
-		// List<EvaluationView> varChart = service.getDoneBarChart(id,uid);
+		 int uid = service.getinfo(email);
+		 Date beforStartDate = service.getStartDate(id);
+		 Date endDate = service.getEndDate(id);
+		 
+		 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		 String startDate =  simpleDateFormat.format(beforStartDate);
 
+		System.out.println(startDate);
+		
+
+		 List<EvaluationView> lineChart = service.getDoneLineChart(id,uid);
+		 List<EvaluationView> varChart = service.getDoneBarChart(startDate);
+		 
 		GoalDetailView detail = service.getDetailView(id);
-		List<User> profile = service.getProfile(id);
-
-		model.addAttribute("detail", detail);
-		model.addAttribute("profile", profile);
-		model.addAttribute("lineChart", lineChart);
+		 List<User> profile = service.getProfile(id);
+		 List<CertificationView> videoImage = service.getVideoImage(id);
+		
+		 model.addAttribute("detail", detail);
+		 model.addAttribute("profile", profile);
+		 model.addAttribute("lineChart", lineChart);
+		 model.addAttribute("videoImage", videoImage);
+		 model.addAttribute("varChart", varChart);
+		 System.out.println(varChart);
 
 		return "user.mypage.done.detail";
 	}

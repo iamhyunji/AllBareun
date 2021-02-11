@@ -27,6 +27,9 @@ public interface CertificationDao {
 	Certification getLast(int userId, int goalId);
 
 
+	List<CertificationView> getVideoImage(int id);
+
+
 
 
 

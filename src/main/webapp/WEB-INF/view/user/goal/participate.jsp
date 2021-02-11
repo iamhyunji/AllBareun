@@ -53,7 +53,7 @@
 									
 									<td class="center w200">
 									<c:forEach var="n" items="${profile}">
-										<img class="w30" src="${n.profile}" alt="프로필" />
+										<img class="w30-radius" src="${n.profile}" alt="프로필" />
 									</c:forEach>
 									</td>
 										

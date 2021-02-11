@@ -35,7 +35,16 @@
 <!-- --------------------------- main --------------------------------------- -->
 
 <!-- <tiles:insertAttribute name="main" /> -->
+<div class="tab-part">
+	<div class="tab">
+		<a href="${detail.id}" class="tab-button">디테일 인덱스</a> 
+		<a class="tab-button">이미지</a>
+	</div>
+
+</div>
 <main id="main">
+
+
 	<section class="detail-info">
 		<div class="detail-info-img">
 			<img src="${detail.mainImage}" alt="메인 이미지" />
@@ -74,7 +83,7 @@
 						<td class="center w100">참여인원</td>
 						<td class="left w200">${detail.participants}</td>
 						<td class="center w200"><c:forEach var="n" items="${profile}">
-								<img class="w30" src="${n.profile}" alt="프로필" />
+								<img class="w30-radius" src="${n.profile}" alt="프로필" />
 							</c:forEach></td>
 
 					</tr>
@@ -113,7 +122,7 @@
 
 	<div class="detail-img-part">
 		<h2>이미지</h2>
-<%-- 		<div class="detail-recent-img">
+		<%-- 		<div class="detail-recent-img">
 			<c:forEach var="auth" items="${detailImage}" varStatus="status">
 				<div>
 					<img class="s-img" src="${auth.authImage}" alt="최근 이미지" />
@@ -123,22 +132,24 @@
 				</c:if>
 			</c:forEach> --%>
 
-			<table class="detail-recent-img">
-				<tr>
-					<c:forEach var="auth" items="${detailImage}" varStatus="status">
-						<c:if test="${status.index%3==0}">
-				</tr>
-				<tr>
-					</c:if>
-					<td style="position: relative;"><img  class="s-img" src="${auth.authImage}" alt="최근 이미지" />
-					<img style="position: absolute; bottom: 20px; right: 20px;" class="w50" src="${auth.profile}" alt="프로필" /></td>
-					</c:forEach>
-				</tr>
-			</table>
+		<table class="detail-recent-img">
+			<tr>
+				<c:forEach var="auth" items="${detailImage}" varStatus="status">
+					<c:if test="${status.index%3==0}">
+			</tr>
+			<tr>
+				</c:if>
+				<td style="position: relative;"><img class="s-img"
+					src="${auth.authImage}" alt="최근 이미지" /> <img
+					style="position: absolute; bottom: 20px; right: 20px;"
+					class="w50-radius" src="${auth.profile}" alt="프로필" /></td>
+				</c:forEach>
+			</tr>
+		</table>
 
 
 
-			<!-- 	<div>
+		<!-- 	<div>
 							<img class="s-img" src="/images/default-image2.png" alt="최근 이미지" />
 						</div>
 						<div>
@@ -148,7 +159,7 @@
 							<img class="s-img" src="/images/default-image2.png" alt="최근 이미지" />
 						</div> -->
 
-	<!-- 	</div> -->
+		<!-- 	</div> -->
 
 	</div>
 

@@ -23,6 +23,7 @@ public interface UserDao {
 	User getUser(String email, String name, String phone);
 	User getUserByEamil(String email);
 	User getuserById(int id);
+	int getLastId();
 	
 
 }
