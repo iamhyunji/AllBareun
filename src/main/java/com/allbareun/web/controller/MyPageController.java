@@ -38,14 +38,14 @@ public class MyPageController {
 
 	@GetMapping("done/list")
 	public String doneList(@RequestParam(name = "del-goalId", required = false, defaultValue = "0") int goalId,
-							@RequestParam(name = "sc", required = false) String[] categories,
-							@RequestParam(name = "sp", required = false, defaultValue = "0") int totalParticipants,
-							@RequestParam(name = "sa", required = false, defaultValue = "2") int achievement,
-							@RequestParam(name = "q", required = false) String query,
-							Model model, Principal principal) {
+			@RequestParam(name = "sc", required = false) String[] categories,
+			@RequestParam(name = "sp", required = false, defaultValue = "0") int totalParticipants,
+			@RequestParam(name = "sa", required = false, defaultValue = "2") int achievement,
+			@RequestParam(name = "q", required = false) String query, Model model, Principal principal) {
 
 		int userId = service.getUserIdByEmail(principal.getName());
-		List<GoalAllView> list = service.getAllViewList(userId, "done",  categories, totalParticipants, achievement, query);
+		List<GoalAllView> list = service.getAllViewList(userId, "done", categories, totalParticipants, achievement,
+				query);
 		model.addAttribute("list", list);
 
 		// Delete Goal From User
@@ -61,16 +61,21 @@ public class MyPageController {
 	}
 
 	@GetMapping("done/{id}/retry")
-	public String doneRetry(@PathVariable(name = "id") int id, Model model) {
-
+	public String doneRetry(@PathVariable(name = "id") int id, Model model, Principal principal) {
+		int userId = service.getUserIdByEmail(principal.getName());
+		
 		GoalAllView retryGoal = service.getAllView(id);
+		int goalId = service.makeGoal(userId);
+		
 		model.addAttribute("rg", retryGoal);
+		model.addAttribute("gId", goalId);
 
 		return "user.mypage.done.retry";
 	}
 
 	@PostMapping("done/{id}/retry")
-	public String doneRetry(@RequestParam(name = "g-i") int id,
+	public String doneRetry(@RequestParam(name = "id") int newGoalId,
+							@RequestParam(name = "g-id") int id,
 							@RequestParam(name = "g-mImg", defaultValue = "/images/default-image2.png") String mainImage,
 							@RequestParam(name = "g-t") String title, @RequestParam(name = "g-ex") String explanation,
 							@RequestParam(name = "g-sd") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startDate,
@@ -83,9 +88,14 @@ public class MyPageController {
 							@RequestParam(name = "gct-id") int[] goalCategoryTypeIds,
 							@RequestParam(name = "d-id") int[] dayIds,
 							@RequestParam(name = "g-m", required = false) int[] members, Principal principal) {
+
 		int userId = service.getUserIdByEmail(principal.getName());
-		Goal goal = new Goal(id, title, explanation, mainImage, goodEx, badEx, endDate, startDate, publicStatus, null,
-				count, userId, totalParticipants, exExplanation);
+
+		mainImage = "/upload/goal/" + newGoalId + "/" + mainImage;
+		goodEx = "/upload/goal/" + newGoalId + "/" + goodEx;
+		badEx = "/upload/goal/" + newGoalId + "/" + badEx;
+
+		Goal goal = new Goal(id, title, explanation, mainImage, goodEx, badEx, endDate, startDate, publicStatus, null, count, userId, totalParticipants, exExplanation);
 
 		List<GoalCategory> gcList = new ArrayList<>();
 		List<Cycle> cList = new ArrayList<>();
@@ -110,13 +120,20 @@ public class MyPageController {
 		else
 			gList = null;
 
-		service.retryGoal(goal, gcList, cList, gList);
+		service.retryGoal(goal, gcList, cList, gList, newGoalId);
 
 		return "redirect:/mygoal/list";
 	}
+
+	@GetMapping("done/{id}/retry/cancel")
+	public String doneRetry(@RequestParam(name = "id") int id) {
+		service.delete(id);
+		
+		return "redirect:/mypage/done/list";
+	}
 	
 	@GetMapping("done/{id}")
-	public String doneDetail(@PathVariable(name="id") int id ,Principal principal,Model model) {
+	public String doneDetail(@PathVariable(name = "id") int id, Principal principal, Model model) {
 		
 		String email = principal.getName(); // 로그인 인증 정보가 갖고와짐
 		 int uid = service.getinfo(email);
@@ -135,7 +152,6 @@ public class MyPageController {
 		GoalDetailView detail = service.getDetailView(id);
 		 List<User> profile = service.getProfile(id);
 		 List<CertificationView> videoImage = service.getVideoImage(id);
-
 		
 		 model.addAttribute("detail", detail);
 		 model.addAttribute("profile", profile);
@@ -146,30 +162,24 @@ public class MyPageController {
 
 		return "user.mypage.done.detail";
 	}
-	
 
-	 
-	
 	@GetMapping("report/result")
-	public String reportResult(Principal principal,Model model) {
-		
+	public String reportResult(Principal principal, Model model) {
+
 		String email = principal.getName(); // 로그인 인증 정보가 갖고와짐
-		 int uid = service.getinfo(email);
-		 List<EvaluationView> evaluation = service.getReport(uid);
-		 List<EvaluationView> categoryChart = service.categoryChart(uid);
-		 
-		 
-		 
+		int uid = service.getinfo(email);
+		List<EvaluationView> evaluation = service.getReport(uid);
+		List<EvaluationView> categoryChart = service.categoryChart(uid);
+
 //		 SELECT GC.goalCategoryTypeId, GCT.title,
 //	       sum(answer1+answer2+answer3)
 //	  FROM Evaluation E left join GoalCategory GC on E.goalId = GC.goalId
 //	  left join GoalCategoryType GCT on GCT.id = GC.goalCategoryTypeId
 //	 GROUP BY GC.goalCategoryTypeId;
-		 
-		 
-		 model.addAttribute("evaluation", evaluation);
-		 model.addAttribute("categoryChart", categoryChart);
-	
+
+		model.addAttribute("evaluation", evaluation);
+		model.addAttribute("categoryChart", categoryChart);
+
 		return "user.mypage.report.result";
 	}
 

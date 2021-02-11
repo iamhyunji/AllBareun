@@ -33,6 +33,8 @@ public interface GoalDao {
 	int getinfo(String email);
 	List<GoalView> getViewList(String categories, String startDate, String endDate, String days, int totalParticipants,
 			String query, int count,int offset);
+	int makeGoal(int userId);
+	int delete(int goalId);
 	Date getStartDate(int id);
 	Date getEndDate(int id);
 

@@ -119,6 +119,17 @@ public class MyBatisGoalDao implements GoalDao {
 	}
 
 	@Override
+	public int makeGoal(int userId) {
+		
+		return mapper.makeGoal(userId);
+	}
+
+	@Override
+	public int delete(int goalId) {
+		
+		return mapper.delete(goalId);
+	}
+	
 	public Date getStartDate(int id) {
 		// TODO Auto-generated method stub
 		return mapper.getStartDate(id);
