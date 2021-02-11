@@ -25,6 +25,11 @@ input[type=text],
     resize: none;
 }
 
+
+
+
+
+
 /* --------- Required --------- */
 .required{
     display: flex;
@@ -75,6 +80,10 @@ input[type=text],
 	background-color: #ff8f00;
 }
 
+
+
+
+
 /* --------- Non-Required --------- */
 .non-required > div > div{
     display: inline-block;
@@ -86,6 +95,11 @@ input[type=text],
     margin-top: 20px;
     min-height: 150px;
 }
+
+
+
+
+
 /* --------- Buttons --------- */
 .buttons {
     display: flex;
@@ -93,4 +107,20 @@ input[type=text],
 }
 .buttons > * {
     margin-right: 30px;
+}
+
+
+
+
+/* --------- ModalBox --------- */
+.modalbox__alert,
+.modalbox__confirm {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.modalbox__alert > *,
+.modalbox__confirm > * {
+	margin: 20px 0px;
 }

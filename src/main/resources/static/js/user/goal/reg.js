@@ -40,7 +40,7 @@ window.addEventListener("load", () => {
 			categoryCnt--;
 
 		if (categoryCnt > maxCategoryCnt) {
-			alert(`카테고리는 최대 2개까지 선택 가능합니다`);
+			ModalBox.confirm(`카테고리는 최대 2개까지 선택 가능합니다`);
 			element.checked = false;
 			categoryCnt--;
 			return;
@@ -126,7 +126,7 @@ window.addEventListener("load", () => {
 
 								let pContainer = document.querySelector(".participants__container");
 								let inviteButton = participationContainer.querySelector(".invite");
-								
+
 								inviteButton.remove();
 								pContainer.insertAdjacentHTML('beforeend', userProfileInput);
 								participationContainer.insertAdjacentHTML('beforeend', totalParticipantsInput);

@@ -38,10 +38,18 @@
 	width: 20px;
 	height: 20px;
 }
-.search__form input {
+.search__form input, 
+.search__form select {
+	height : 25px;
     padding: 0px 5px;
     border-radius: 5px;
+    border: 1px solid gray;
 }
+.search__form input[type=text]:focus,
+.search__form select:focus {
+	outline: none;
+}
+
 
 
 

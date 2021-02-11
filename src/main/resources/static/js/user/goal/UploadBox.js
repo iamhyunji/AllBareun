@@ -1,4 +1,5 @@
 import CSS from '../../modules/CSS.js';
+import ModalBox from './ModalBox.js';
 
 class UploadBox {
 	#dropZone
@@ -35,7 +36,7 @@ class UploadBox {
 
 		// 유효하지 않은 형식일 때 처리 방식
 		if (!valid) {
-			alert('이미지가 아닙니다.');
+			ModalBox.confirm('이미지가 아닙니다.');
 
 			CSS.set(this.#dropZone, {
 				background: "#e9e9e9",

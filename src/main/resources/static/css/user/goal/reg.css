@@ -20,6 +20,10 @@ input[type=text],
     resize: none;
     border-radius: 5px;
 }
+input[type=text]:focus,
+textarea:focus {
+	outline: none;
+}
 
 
 
@@ -114,6 +118,13 @@ input[type=text],
 
 
 /* --------- ModalBox --------- */
+.modalbox__alert,
+.modalbox__confirm {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
 .modalbox{
     display: flex;
     flex-direction: column;

@@ -38,10 +38,10 @@ public class MyPageController {
 
 	@GetMapping("done/list")
 	public String doneList(@RequestParam(name = "del-goalId", required = false, defaultValue = "0") int goalId,
-			@RequestParam(name = "sc", required = false) String[] categories,
-			@RequestParam(name = "sp", required = false, defaultValue = "0") int totalParticipants,
-			@RequestParam(name = "sa", required = false, defaultValue = "2") int achievement,
-			@RequestParam(name = "q", required = false) String query, Model model, Principal principal) {
+							@RequestParam(name = "sc", required = false) String[] categories,
+							@RequestParam(name = "sp", required = false, defaultValue = "0") int totalParticipants,
+							@RequestParam(name = "sa", required = false, defaultValue = "2") int achievement,
+							@RequestParam(name = "q", required = false) String query, Model model, Principal principal) {
 
 		int userId = service.getUserIdByEmail(principal.getName());
 		List<GoalAllView> list = service.getAllViewList(userId, "done", categories, totalParticipants, achievement,
@@ -130,6 +130,18 @@ public class MyPageController {
 		service.delete(id);
 		
 		return "redirect:/mypage/done/list";
+	}
+	
+	@GetMapping("done/invited")
+	public String invited(@RequestParam(name = "del-goalId", required = false, defaultValue = "0") int goalId,
+							@RequestParam(name = "sc", required = false) String[] categories,
+							@RequestParam(name = "q", required = false) String query, Model model, Principal principal) {
+
+		int userId = service.getUserIdByEmail(principal.getName());
+		List<GoalAllView> list = service.getAllViewList(userId, "done", categories, 0, 0, query);
+		model.addAttribute("list", list);
+
+		return "user.mypage.done.invited";
 	}
 	
 	@GetMapping("done/{id}")

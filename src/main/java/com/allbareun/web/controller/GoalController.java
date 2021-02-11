@@ -79,9 +79,7 @@ public class GoalController {
 		mainImage = "/upload/goal/" + id + "/" + mainImage;
 		goodEx = "/upload/goal/" + id + "/" + goodEx;
 		badEx = "/upload/goal/" + id + "/" + badEx;
-		
-		System.out.println(goodEx);
-		System.out.println(badEx);
+
 		Goal goal = new Goal(id, title, explanation, mainImage, goodEx, badEx, endDate, startDate, publicStatus, null, count, userId, totalParticipants, exExplanation);
 		
 		List<GoalCategory> gcList = new ArrayList<>();

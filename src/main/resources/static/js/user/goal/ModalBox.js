@@ -5,7 +5,8 @@ class ModalBox {
 		return new Promise(resolve => {
 			let screen = document.createElement("div");
 			let frame = document.createElement("div");
-			// 차트, 탐색기, 드래그 업로드 박스, 모달박스, 편집기, ...
+
+			// ----------------------------- Set screen CSS -----------------------------
 			CSS.set(screen, {
 				position: "fixed",
 				left: "0px",
@@ -24,57 +25,115 @@ class ModalBox {
 				});
 			});
 
+			// ----------------------------- Set frame CSS -----------------------------
 			screen.addEventListener("transitionend", () => {
 				CSS.set(frame, {
 					opacity: "1",
-					top: "200px"
+					top: "150px"
 				});
 			});
 
 			CSS.set(frame, {
 				position: "fixed",
-				top: "300px",
+				top: "100px",
 				left: "400px",
 				background: "#fff",
 				width: "400px",
-				minHeight: "300px",
-				display: "flex",
-				flexDirection: "column",
+				height: "300px",
 				opacity: "0",
 				transition: "top 1s"
 			});
 
+			frame.className = "modalbox__alert";
 			frame.innerHTML = `
-                <div>
-                    <h1 class="text-l" style="text-align:center">경고</h1>
-                </div>
-                <div style="flex-grow: 1; display:flex;justify-content: center;align-items: center;">
-                    이미지 형식의 파일을 올려주세요(png, jpg)
-                </div>
-                <div style="display:flex;justify-content: center;">
-                    <input type="button" class="a-input-orange-m" value="OK">
-                    <input type="button" class="a-input-white-m" value="CANCEL">
-                </div>
-            `;
+            <div>
+                <h1 class="text-l" style="text-align:center">목표 삭제</h1>
+            </div>
+			<div>
+				${message}
+			</div>
+            <div>
+                <input type="button" class="a-input-orange-m" value="확인">
+                <input type="button" class="a-input-white-m" value="취소">
+            </div>`;
 
-			document.body.append(frame);
+			document.body.append(frame)
 
-			const okButton = frame.querySelector("input[value=OK]");
-			const cancelButton = frame.querySelector("input[value=CANCEL]");
+			// ----------------------------- Submit -----------------------------
+			const okButton = frame.querySelector("input[value=확인]");
+			const cancelButton = frame.querySelector("input[value=취소]");
 			okButton.onclick = () => {
-				resolve("OK");
+				resolve("확인");
 				screen.remove();
 				frame.remove();
 			};
 			cancelButton.onclick = () => {
-				resolve("CANCEL");
+				resolve("취소");
 				screen.remove();
 				frame.remove();
 			};
 		});
 	}
-	static confirm() {
+	
+	static confirm(message) {
+		let screen = document.createElement("div");
+		let frame = document.createElement("div");
 
+		// ----------------------------- Set screen CSS -----------------------------
+		CSS.set(screen, {
+			position: "fixed",
+			left: "0px",
+			top: "0px",
+			width: "100%",
+			height: "100%",
+			background: "#000",
+			opacity: "0",
+			transition: "1s"
+		});
+
+		document.body.append(screen);
+		setTimeout(() => {
+			CSS.set(screen, {
+				opacity: "0.7"
+			});
+		});
+
+		// ----------------------------- Set frame CSS -----------------------------
+		screen.addEventListener("transitionend", () => {
+			CSS.set(frame, {
+				opacity: "1",
+				top: "150px"
+			});
+		});
+
+		CSS.set(frame, {
+			position: "fixed",
+			top: "100px",
+			left: "400px",
+			background: "#fff",
+			width: "400px",
+			height: "300px",
+			opacity: "0",
+			transition: "top 1s"
+		});
+
+		frame.className = "modalbox__confirm";
+		frame.innerHTML = `<div>
+				                <h1 class="text-l" style="text-align:center">경고</h1>
+				            </div>
+							<div>
+								${message}
+							</div>
+				            <input type="button" class="a-input-orange-m" value="확인">`;
+
+		document.body.append(frame)
+
+		// ----------------------------- Submit -----------------------------
+		const okButton = frame.querySelector("input[value=확인]");
+		okButton.onclick = () => {
+			screen.remove();
+			frame.remove();
+		};
 	}
 
 	static invite() {
@@ -130,7 +189,7 @@ class ModalBox {
             <ul class="friends-list">
 
             </ul>
-            <div class="buttons">
+            <div>
                 <input type="button" class="a-input-orange-m" value="확인">
                 <input type="button" class="a-input-white-m" value="취소">
             </div>
@@ -155,7 +214,7 @@ class ModalBox {
 					.then((response) => response.text())
 					.then((result) => {
 						result = parseInt(result);
-						
+
 						switch (result) {
 							case 0:
 								alert('잘못된 이메일입니다');
@@ -163,7 +222,7 @@ class ModalBox {
 							default:
 								let div = `<li>${friend.value}<i class="fas fa-times del"><input type="hidden" value="${result}"></i></li>`;
 								friendsList.insertAdjacentHTML('beforeend', div);
-								
+
 								friend.value = "";
 								totalParticipants++;
 								participants.push(result);
@@ -176,7 +235,7 @@ class ModalBox {
 			friendsList.onclick = (e) => {
 				if (!e.target.classList.contains("del"))
 					return;
-					
+
 				totalParticipants--;
 				let index = participants.indexOf(parseInt(e.target.firstElementChild.value));
 				participants.splice(index, 1);
@@ -186,15 +245,15 @@ class ModalBox {
 			// ----------------------------- Submit -----------------------------
 			const okButton = frame.querySelector("input[value=확인]");
 			const cancelButton = frame.querySelector("input[value=취소]");
-			let args = {};
+			let answer = {};
 			okButton.onclick = () => {
-				args = {"button" : "OK", totalParticipants, participants};
+				answer = { "button": "OK", totalParticipants, participants };
 				resolve(args);
 				screen.remove();
 				frame.remove();
 			};
 			cancelButton.onclick = () => {
-				args = {"button" : "CANCEL", totalParticipants:0, participants:null};
+				answer = { "button": "CANCEL", totalParticipants: 0, participants: null };
 				resolve(args);
 				screen.remove();
 				frame.remove();
