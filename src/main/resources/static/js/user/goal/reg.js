@@ -21,7 +21,7 @@ window.addEventListener("load", () => {
 	let badExUpload = new UploadBox(badEx, badEx.innerText);
 
 	// 날짜 선택
-	
+
 	// 카테고리
 	let categoryCnt = 0;
 	let maxCategoryCnt = 2;
@@ -62,10 +62,10 @@ window.addEventListener("load", () => {
 
 			case "0":
 				removeInputsBeforeParticipation();
-				
+
 				let inviteInput = `<input class="a-input-white-s invite" type="button" value="초대">`;
 				participationContainer.insertAdjacentHTML('beforeend', inviteInput);
-				
+
 				let pContainer = document.createElement("div");
 				pContainer.classList.add("participants__container");
 				participationContainer.insertAdjacentElement('beforeend', pContainer);
@@ -77,19 +77,19 @@ window.addEventListener("load", () => {
 
 			case "1":
 				removeInputsBeforeParticipation();
-				
+
 				let participationInput = `<input class="select-s total-participants" type="number" name="g-tp" value="2" min="2" max="10" />`;
 				participationContainer.insertAdjacentHTML('beforeend', participationInput);
 				break;
 		}
 	});
-	
+
 	function removeInputsBeforeParticipation() {
 		let totalParticipantsInput = participationContainer.querySelector(".total-participants");
 		let invitedList = participationContainer.querySelectorAll(".invited-list");
 		let inviteButton = participationContainer.querySelector(".invite");
 		let pContainer = document.querySelector(".participants__container");
-		
+
 		if (totalParticipantsInput != null)
 			totalParticipantsInput.remove();
 		if (invitedList.item(1) != null)
@@ -99,43 +99,45 @@ window.addEventListener("load", () => {
 		if (pContainer != null)
 			pContainer.remove();
 	};
-	
+
 	// 지인 초대
 	function inviteButtonClickHandler() {
-		ModalBox.invite().then(({ button, totalParticipants, participants }) => {
-			switch (button) {
-				case "OK":
-					let totalParticipantsInput = `<input class="select-s total-participants" type="hidden" name="g-tp" value="${totalParticipants}"/>`;
-					let participantsInput = "";
-					let userProfileInput = "";
-					
-					new Promise()
-					for (let i = 0; i < participants.length; i++){
-						fetch(`/api/goal/reg/profile?id=${participants[i]}`)
-						.then((response) => response.json())
-						.then((user) => {
-							userProfileInput += `<div class="profile"><img class="profile__image" src=${user.profile} /><span class="profile__info">${user.name}</span></div>`;
-							console.log(1);
-							console.log(userProfileInput);
-						});
-						console.log(2);
-						console.log(userProfileInput);
-						participantsInput += `<input class="invited-list" type="hidden" name="g-m" value="${participants[i]}" />`;
-					}
+		ModalBox.invite()
+			.then(({ button, totalParticipants, participants }) => {
+				switch (button) {
+					case "OK":
+						let totalParticipantsInput = `<input class="select-s total-participants" type="hidden" name="g-tp" value="${totalParticipants}"/>`;
 
-					let pContainer = document.querySelector(".participants__container");
-					console.log(pContainer);
-					console.log(userProfileInput);
-					pContainer.insertAdjacentHTML('beforeend', userProfileInput);
-					participationContainer.insertAdjacentHTML('beforeend', totalParticipantsInput);
-					participationContainer.insertAdjacentHTML('beforeend', participantsInput);
-					
-					break;
+						(async () => {
+							let userProfileInput = "";
 
-				case "CANCEL":
-					break;
-			}
-		});
+							for (let i = 0; i < participants.length; i++) {
+								let response = await fetch(`/api/goal/reg/profile?id=${participants[i]}`);
+								let user = await response.json();
+								userProfileInput += `<div class="profile"><img class="profile__image" src=${user.profile} /><span class="profile__info">${user.name}</span></div>`;
+							}
+
+							return userProfileInput;
+						})()
+							.then((userProfileInput) => {
+								let participantsInput = "";
+								for (let i = 0; i < participants.length; i++)
+									participantsInput += `<input class="invited-list" type="hidden" name="g-m" value="${participants[i]}" />`;
+
+								let pContainer = document.querySelector(".participants__container");
+								let inviteButton = participationContainer.querySelector(".invite");
+								
+								inviteButton.remove();
+								pContainer.insertAdjacentHTML('beforeend', userProfileInput);
+								participationContainer.insertAdjacentHTML('beforeend', totalParticipantsInput);
+								participationContainer.insertAdjacentHTML('beforeend', participantsInput);
+							});
+
+						break;
+					default:
+						break;
+				}
+			});
 	};
 
 	// 문제 ) '인증 횟수'에서 매일 제외 나머지는 요일 선택 체크박스 보이기

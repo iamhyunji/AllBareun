@@ -21,6 +21,9 @@ input[type=text],
     border-radius: 5px;
 }
 
+
+
+
 /* --------- Required --------- */
 .required{
     display: flex;
@@ -41,6 +44,47 @@ input[type=text],
 .required .cycle{
     display: inline-block;
 }
+.participation-container {
+	display: flex;
+	align-items: center;
+}
+.participation-container > * {
+	margin-right: 10px;
+}
+.participants__container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.participants__container .profile {
+	position: relative;
+}
+.participants__container .profile__image {
+	border-radius: 50%;
+	width: 45px;
+	height: 45px;
+	margin-left: 10px;
+}
+.participants__container .profile__info {
+	display: none;
+	width: 80px;
+  	color: #fff;
+  	text-align: center;
+  	background-color: #fff;
+  	border-radius: 5px;
+  	padding: 5px 0;
+	position: absolute;
+	left: -8px;
+	bottom: -30px;
+  	z-index: 10;
+  	transition: background-color 2s;
+}
+.participants__container .profile:hover .profile__info {
+	display: inline;
+	background-color: #ff8f00;
+}
+
+
 
 /* --------- Non-Required --------- */
 .non-required > div > div{
@@ -53,6 +97,10 @@ input[type=text],
     margin-top: 20px;
     min-height: 150px;
 }
+
+
+
+
 /* --------- Buttons --------- */
 .buttons {
     display: flex;
@@ -61,6 +109,9 @@ input[type=text],
 .buttons > * {
     margin-right: 30px;
 }
+
+
+
 
 /* --------- ModalBox --------- */
 .modalbox{
