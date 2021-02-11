@@ -24,10 +24,10 @@
             <form class="find-pwd-page" method="post" action="changePwd">
                 <div id="password-box">
                     <ul>
-                        <li >새 비밀번호</li>
-                        <li class="password"><input type="password" name="pwd"></li>
+                        <li >바꾸실 비밀번호</li>
+                        <li class="password-text"><input type="password" class="password" name = "pwd"></li>
                         <li>비밀번호 확인</li>
-                        <li class="password"><input type="password"></li>
+                        <li class="password-text"><input type="password" class="re-password"></li>
                     </ul>
                 </div>
                 
