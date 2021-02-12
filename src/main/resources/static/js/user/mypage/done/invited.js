@@ -7,17 +7,21 @@ window.addEventListener("load", () => {
 		if (!e.target.classList.contains("del-button"))
 			return;
 
-		let answer = ModalBox.confirmMypage(`정말로 이 목표를 삭제하시겠습니까?`);
-		
-		console.log(answer);
-/*
-		let delReload = e.target.firstElementChild;
-		let event = new MouseEvent("click", {
-			'view': window,
-			'bubbles': true,
-			'cancelable': true
-		});
+		ModalBox.confirmMypage(`정말로 이 목표를 거절하시겠습니까?`).then((answer) => {
+			switch (answer) {
+				case "확인":
+					let delReload = e.target.firstElementChild;
+					let event = new MouseEvent("click", {
+						'view': window,
+						'bubbles': true,
+						'cancelable': true
+					});
 
-		delReload.dispatchEvent(event);*/
+					delReload.dispatchEvent(event);
+					break;
+				default:
+					break;
+			}
+		});
 	});
 })

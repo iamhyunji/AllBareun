@@ -200,12 +200,12 @@ class ModalBox {
 			okButton.onclick = () => {
 				screen.remove();
 				frame.remove();
-				return resolve();
+				return resolve("확인");
 			};
 			cancelButton.onclick = () => {
 				screen.remove();
 				frame.remove();
-				return reject();
+				return resolve("취소");
 			};
 		});
 	}
