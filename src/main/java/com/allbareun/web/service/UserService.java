@@ -21,4 +21,5 @@ public interface UserService{
 	int changePassword(String email, String password);
 	User getUser(String email, String name, String phone);
 	int getLastId();
+	int getUserIdByEmail(String name);
 }

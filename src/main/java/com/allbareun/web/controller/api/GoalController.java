@@ -41,11 +41,11 @@ public class GoalController {
 			@RequestParam(name="endDate", defaultValue="") String endDate,
 			@RequestParam(name="days", defaultValue = "") String days,
 			@RequestParam(name="totalParticipants", defaultValue = "0") int totalParticipants,
-			@RequestParam(name="query",defaultValue = "") String query
+			@RequestParam(name="query",defaultValue = "") String query,
+			@RequestParam(name="count", defaultValue = "6") int count
 			) {
 
-		List<GoalView> list = service.getViewList(categories, startDate, endDate, days, totalParticipants, query);
-
+		List<GoalView> list = service.getViewList(categories, startDate, endDate, days, totalParticipants, query,count,0);
 
 		// color 변경
 		for (int i=0; i<list.size(); i++) {
@@ -69,8 +69,8 @@ public class GoalController {
 			@RequestParam(name="days", defaultValue = "") String days,
 			@RequestParam(name="totalParticipants", defaultValue = "0") int totalParticipants,
 			@RequestParam(name="query",defaultValue = "") String query,
-			@RequestParam(name="count", defaultValue = "12") int count,
-			@RequestParam(name="offset", defaultValue = "12") int offset
+			@RequestParam(name="count", defaultValue = "6") int count,
+			@RequestParam(name="offset", defaultValue = "6") int offset
 			) {
 
 		List<GoalView> list = service.getViewList(categories, startDate, endDate, days, totalParticipants, query,count,offset);

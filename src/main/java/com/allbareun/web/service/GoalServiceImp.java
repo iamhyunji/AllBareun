@@ -158,7 +158,7 @@ public class GoalServiceImp implements GoalService {
 	public List<GoalView> getViewList(String categories, String startDate, String endDate, String days,
 			int totalParticipants, String query) {
 		// TODO Auto-generated method stub
-		return goalDao.getViewList(categories, startDate, endDate, days, totalParticipants, query, 12, 0);
+		return goalDao.getViewList(categories, startDate, endDate, days, totalParticipants, query,0,0);
 	}
 
 	@Override
