@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.allbareun.web.dao.CalendarDao;
 import com.allbareun.web.dao.CertificationDao;
 import com.allbareun.web.dao.CycleDao;
 import com.allbareun.web.dao.EvaluationDao;
@@ -17,6 +18,7 @@ import com.allbareun.web.dao.GoalDao;
 import com.allbareun.web.dao.GroupDao;
 import com.allbareun.web.dao.ParticipationDao;
 import com.allbareun.web.dao.UserDao;
+import com.allbareun.web.entity.Calendar;
 import com.allbareun.web.entity.CertDetailView;
 import com.allbareun.web.entity.Certification;
 import com.allbareun.web.entity.CertificationView;
@@ -53,6 +55,8 @@ public class GoalServiceImp implements GoalService {
 
 	@Autowired
 	private EvaluationDao evaluationDao;
+	@Autowired
+	private CalendarDao calendarDao;
 
 	@Override
 	@Transactional
@@ -467,4 +471,9 @@ public class GoalServiceImp implements GoalService {
 		return groupDao.update(challengeGoalId, userId, true);
 	}
 
+	@Override
+	public List<Calendar> getByUserId(Calendar calendar) {
+		
+		return calendarDao.getByUserId(calendar);
+	}
 }

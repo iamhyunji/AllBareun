@@ -1,6 +1,7 @@
 package com.allbareun.web.controller.api;
 
 import java.io.File;
+import java.security.Principal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,13 +12,17 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.allbareun.web.entity.Calendar;
 import com.allbareun.web.entity.CertDetailView;
 import com.allbareun.web.entity.CertificationView;
 import com.allbareun.web.service.GoalService;
+import com.google.gson.Gson;
 
 @RestController("apiMyGoalController")
 @RequestMapping("/api/mygoal/")
@@ -71,5 +76,21 @@ public class MyGoalController {
 	      if(realPathFile.exists())
 	         realPathFile.delete(); // 파일 삭제
 		return "ok11";
+	}
+	
+	@PostMapping("list")
+	public String weeklyList(Principal principal) {
+
+		System.out.println("================ api weekly 들어옴 ================");
+		
+		int userId = service.getUserIdByEmail(principal.getName());
+		Calendar cal = new Calendar();
+		cal.setUserId(userId);
+		List<Calendar> list = service.getByUserId(cal);
+		
+		System.out.println(list);
+		System.out.println(new Gson().toJson(list));
+		
+		return new Gson().toJson(list);
 	}
 }

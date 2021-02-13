@@ -3,6 +3,7 @@ package com.allbareun.web.service;
 import java.util.Date;
 import java.util.List;
 
+import com.allbareun.web.entity.Calendar;
 import com.allbareun.web.entity.CertDetailView;
 import com.allbareun.web.entity.CertificationView;
 import com.allbareun.web.entity.Cycle;
@@ -68,5 +69,6 @@ public interface GoalService {
 	List<GoalAllView> getInvitedList(int userId, String[] categories, String query);
 	int rejectGoal(int goalId, int userId);
 	int acceptGoal(int challengeGoalId, int userId);
+	List<Calendar> getByUserId(Calendar cal);
 
 }
