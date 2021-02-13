@@ -79,21 +79,18 @@
 			</when>
 			<otherwise>
 				SET
-				title = #{title},
-				explanation = #{explanation},
-				mainImage = #{mainImage},
-				`goodEx` = #{goodEx},
-				`badEx` = #{badEx},
-				`startDate` = #{startDate},
-				`endDate` = #{endDate},
-				`publicStatus` =
-				#{publicStatus},
-				`count` = #{count},
-				`totalParticipants` =
-				#{totalParticipants},
-				`exExplanation` = #{exExplanation}
-				WHERE id =
-				#{id}
+					title = #{title},
+					explanation = #{explanation},
+					mainImage = #{mainImage},
+					`goodEx` = #{goodEx},
+					`badEx` = #{badEx},
+					`startDate` = #{startDate},
+					`endDate` = #{endDate},
+					`publicStatus` = #{publicStatus},
+					`count` = #{count},
+					`totalParticipants` = #{totalParticipants},
+					`exExplanation` = #{exExplanation}
+				WHERE id = #{id}
 			</otherwise>
 		</choose>
 	</update>
@@ -166,8 +163,7 @@
 			</choose>
 	
 			<if test="query != null and query != ''">
-				and (GV.title LIKE '%${query}%' OR GV.participants LIKE
-				'%${query}%')
+				and (GV.title LIKE '%${query}%' OR GV.participants LIKE '%${query}%')
 			</if>
 	
 			<if test="categories != null and categories !=''">
@@ -180,10 +176,10 @@
 		) GAV
 		<choose>
 			<when test="achievement == 0">
-				where achievement &lt; 5
+				where achievement &lt; 80
 			</when>
 			<when test="achievement == 1">
-				where 5 &lt;= achievement
+				where 80 &lt;= achievement
 			</when>
 		</choose>
 	</select>

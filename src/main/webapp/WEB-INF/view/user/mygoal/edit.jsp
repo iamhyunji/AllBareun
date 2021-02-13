@@ -12,9 +12,9 @@
 			<h1 class="d-none">Main 1 : 목표 기본 등록폼</h1>
 			<section class="required__image">
 				<h1 class="d-none">목표 메인 이미지</h1>
-				<div class="m-img g-mImg" style="background-image: url(${g.mainImage });">
+				<div class="m-img g-mImg" style="background: linear-gradient( rgba(255, 255, 255, 0.8) 100%, rgba(255, 255, 255, 0.8) 100%), center / 100% no-repeat url(${g.mainImage });">
 					<input class="g-mImg-file" type="hidden" name="g-mImg" value="${g.mainImage }"/>
-					<span></span>
+					<span class="text-l">이미지 드래그& 드롭</span>
 				</div>
 			</section>
 
