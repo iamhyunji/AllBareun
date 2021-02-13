@@ -218,8 +218,38 @@ public class MyGoalController {
 		int userId = service.getUserIdByEmail(principal.getName());
 		List<GoalAllView> list = service.getAllViewList(userId, "present",  categories, totalParticipants, achievement, query);
 
+		String dayOfWeek = "";
+		Date today = new Date();
+		Calendar cal = Calendar.getInstance();
+	    cal.setTime(today);
+	    int dayOfWeekNumber = cal.get(Calendar.DAY_OF_WEEK);
+	    switch(dayOfWeekNumber) {
+	    	case 1:
+	    		dayOfWeek = "일";
+	    		break;
+	    	case 2:
+	    		dayOfWeek = "월";
+	    		break;
+	    	case 3:
+	    		dayOfWeek = "화";
+	    		break;
+	    	case 4:
+	    		dayOfWeek = "수";
+	    		break;
+	    	case 5:
+	    		dayOfWeek = "목";
+	    		break;
+	    	case 6:
+	    		dayOfWeek = "금";
+	    		break;
+	    	case 7:
+	    		dayOfWeek = "토";
+	    		break;
+	    }
+	    
 		model.addAttribute("list", list);
-		model.addAttribute("today", new Date());
+		model.addAttribute("today", today);
+		model.addAttribute("day", dayOfWeek);
 
 		return "user.mygoal.list";
 	}
