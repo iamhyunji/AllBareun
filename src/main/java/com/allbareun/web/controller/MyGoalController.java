@@ -2,14 +2,12 @@ package com.allbareun.web.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Iterator;
+import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -24,13 +22,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.allbareun.web.entity.CertDetailView;
+import com.allbareun.web.entity.CertificationView;
 import com.allbareun.web.entity.Goal;
 import com.allbareun.web.entity.GoalAllView;
-import com.allbareun.web.entity.CertDetailView;
-import com.allbareun.web.entity.Certification;
-import com.allbareun.web.entity.CertificationView;
 import com.allbareun.web.entity.GoalDetailView;
-import com.allbareun.web.entity.GoalView;
 import com.allbareun.web.entity.User;
 import com.allbareun.web.service.GoalService;
 
@@ -223,6 +219,7 @@ public class MyGoalController {
 		List<GoalAllView> list = service.getAllViewList(userId, "present",  categories, totalParticipants, achievement, query);
 
 		model.addAttribute("list", list);
+		model.addAttribute("today", new Date());
 
 		return "user.mygoal.list";
 	}

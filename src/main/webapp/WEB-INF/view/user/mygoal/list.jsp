@@ -114,7 +114,7 @@
 		<h1 class="d-none">목표 리스트</h1>
 		<ul class="goals__list">
 			<c:forEach var="g" items="${list }">
-				<li>
+				<li class="${(today < g.startDate)? 'inactive': ''}">
 					<a href="${g.id }"><img class="s-img" src="${g.mainImage }" alt="" /></a>
 					<div class="goal__contents">
 						<div class="goal__title">
@@ -130,9 +130,7 @@
 					</div>
 					<div class="goal__buttons">
 						<a href="./${g.id }/edit" class="setting"><i class="fas fa-cog"></i></a>
-						
 						<a class="a-input-orange-s" href="${g.id }/auth">인증하기</a>
-						
 					</div>
 				</li>
 			</c:forEach>

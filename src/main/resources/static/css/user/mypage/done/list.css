@@ -121,6 +121,10 @@
 .goals .setting {
     align-self: flex-end;
 }
+.goals .inactive {
+	opacity: 0.2;
+	pointer-events: none;
+}
 
 
 

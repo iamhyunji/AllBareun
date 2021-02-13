@@ -75,7 +75,6 @@
 						<c:if test="${g.achievement < 80}">
 							<a class="a-input-white-s retry-button" href="${g.id }/retry">재도전</a>
 						</c:if>
-						<span>${g.achievement}</span>
 						<a class="a-input-orange-s" href="#">결과 리포트</a>
 					</div>
 				</li>
