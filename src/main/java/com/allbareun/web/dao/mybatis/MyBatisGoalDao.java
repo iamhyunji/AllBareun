@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.allbareun.web.dao.GoalDao;
 import com.allbareun.web.entity.CertificationView;
 import com.allbareun.web.entity.Goal;
+import com.allbareun.web.entity.GoalAllParticipantsView;
 import com.allbareun.web.entity.GoalAllView;
 import com.allbareun.web.entity.GoalDetailView;
 import com.allbareun.web.entity.GoalView;
@@ -51,7 +52,7 @@ public class MyBatisGoalDao implements GoalDao {
 	}
 
 	@Override
-	public List<User> getProfile(int id) {
+	public List<GoalAllParticipantsView> getProfile(int id) {
 		// TODO Auto-generated method stub
 		return mapper.getProfile(id);
 	}

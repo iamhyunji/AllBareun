@@ -5,6 +5,8 @@ import java.util.List;
 import com.allbareun.web.entity.CertDetailView;
 import com.allbareun.web.entity.Certification;
 import com.allbareun.web.entity.CertificationView;
+import com.allbareun.web.entity.EvaluationView;
+import com.allbareun.web.entity.Participation;
 
 public interface CertificationDao {
 
@@ -27,7 +29,19 @@ public interface CertificationDao {
 	Certification getLast(int userId, int goalId);
 
 
+	//List<CertificationView> getVideoImage(int id);
+
+
+	Integer getVarChartCount(int id, int uid);
+
+
+	int getReportBarChartCount(int uid);
+
+
 	List<CertificationView> getVideoImage(int id);
+
+
+	//List<CertificationView> getVideoImage(int id, int userId);
 
 
 

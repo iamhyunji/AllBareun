@@ -13,13 +13,15 @@
 		FROM Evaluation
 		where userId =
 		${param1}
-		GROUP BY month;
+		GROUP BY month
+		order BY month;
 	</select>
 
 
 	<select id="categoryChart"
 		resultType="com.allbareun.web.entity.EvaluationView">
-		SELECT GC.goalCategoryTypeId categoryId, GCT.title
+	  select aaa.categoryTitle, sum(aaa.categorySum) AS categorySum
+        from(SELECT GC.goalCategoryTypeId categoryId, GCT.title
 		categoryTitle,
 		sum(answer1+answer2+answer3) AS categorySum
 		FROM
@@ -27,7 +29,14 @@
 		left
 		join GoalCategoryType GCT on GCT.id = GC.goalCategoryTypeId
 		where E.userId = ${param1}
-		GROUP BY categoryId;
+        	GROUP BY categoryId
+        union all
+        SELECT GC.goalCategoryTypeId categoryId, GCT.title
+		categoryTitle,
+		sum(0) AS categorySum
+		FROM  GoalCategory GC left join GoalCategoryType GCT  on GC.goalCategoryTypeId = GCT.id
+		GROUP BY categoryId) aaa
+        GROUP BY aaa.categoryTitle;
 	</select>
 
 
@@ -39,13 +48,15 @@
 		where goalId =
 		${param1}
 		and userId = ${param2}
-		GROUP BY month;
+		GROUP BY month
+		order by month;
 	</select>
 
 
 	<select id="getDoneBarChart"
-		resultType="int">
-		select month(aa.Date), count(month(aa.Date))
+		resultType="com.allbareun.web.entity.EvaluationView">
+			select round(#{param1} * 100 / count(month(aaa.Date))) as barSum
+        	from (select  *
 			from(select a.Date 
 			from (
 			select curdate() - INTERVAL (a.a + (10 * b.a) + (100 * c.a) + (1000 * d.a) ) DAY as Date
@@ -54,12 +65,20 @@
 			cross join (select 0 as a union all select 1 union all select 2 union all select 3 union all select 4 union all select 5 union all select 6 union all select 7 union all select 8 union all select 9) as c
 			cross join (select 0 as a union all select 1 union all select 2 union all select 3 union all select 4 union all select 5 union all select 6 union all select 7 union all select 8 union all select 9) as d
 			) a
-			where a.Date between #{param1} and sysdate()) aa
-			group by month(aa.Date);
+			where a.Date between #{param2} and sysdate()) aa)aaa
+			where WEEKDAY(aaa.Date) in (select dayId from Cycle where goalId = #{param3})
+			group by month(aaa.Date)
+			order by month(aaa.Date);
 		
 
 
 	</select>
+	
+	<!-- 	<select id="getMyGoalLineChart" resultType="com.allbareun.web.entity.EvaluationView">
+
+
+	</select> -->
+	
 
 
 	<insert id="insert">

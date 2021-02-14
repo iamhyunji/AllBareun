@@ -4,9 +4,11 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.security.Principal;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.TimeZone;
@@ -25,10 +27,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.allbareun.web.entity.Goal;
+import com.allbareun.web.entity.GoalAllParticipantsView;
 import com.allbareun.web.entity.GoalAllView;
 import com.allbareun.web.entity.CertDetailView;
 import com.allbareun.web.entity.Certification;
 import com.allbareun.web.entity.CertificationView;
+import com.allbareun.web.entity.EvaluationView;
 import com.allbareun.web.entity.GoalDetailView;
 import com.allbareun.web.entity.GoalView;
 import com.allbareun.web.entity.User;
@@ -144,15 +148,46 @@ public class MyGoalController {
 	}
 
 	@RequestMapping("{id}")
-	public String participate(Model model, @PathVariable(name = "id") int id) {
+	public String participate(Model model, @PathVariable(name = "id") int id , Principal principal) {
+		
+		String email = principal.getName(); // 로그인 인증 정보가 갖고와짐
+		int uid = service.getinfo(email);
 
 		GoalDetailView detail = service.getDetailView(id);
-		List<User> profile = service.getProfile(id);
+		List<GoalAllParticipantsView> profile = service.getProfile(id);
 		List<CertificationView> detailImage = service.getAuthImages(id);
+		/* List<EvaluationView> lineChart = service.getMyGoalLineChart(id); */
+		
+		
+		Date beforStartDate = service.getStartDate(id);
+		Date endDate = service.getEndDate(id);
+
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		String startDate = simpleDateFormat.format(beforStartDate);
+
+		// System.out.println(startDate);
+
+		List<EvaluationView> lineChart = service.getDoneLineChart(id, uid);
+		// System.out.println(lineChart);
+
+		int barChartCount = service.getVarChartCount(id, uid);
+//		 if (barChartCount == null) {
+//			 barChartCount = 0;
+//		 }
+
+		// System.out.println(barChartCount.size());
+		List<EvaluationView> barChartTotal = service.getDoneBarChart(barChartCount, startDate, id);
+
 
 		model.addAttribute("detail", detail);
 		model.addAttribute("profile", profile);
 		model.addAttribute("detailImage", detailImage);
+		/* model.addAttribute("lineChart", lineChart); */
+		model.addAttribute("lineChart", lineChart);
+		// model.addAttribute("videoImage", videoImage);
+		model.addAttribute("barChartTotal", barChartTotal);
+		
+		
 
 		return "user.mygoal.detail";
 

@@ -2,34 +2,35 @@ package com.allbareun.web.entity;
 
 import java.util.Date;
 
-public class GoalDetailView extends Goal{
+public class GoalDetailView extends GoalView{
 	private String userName;
 	private String categories;
 	private String days;
 	private String participants;
 	private String profile;
+	private String exExplanation;
+	private String goodEx;
+	private String badEx;
 
 	
 	public GoalDetailView() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public GoalDetailView(int id, String title, String explanation, String mainImage, String goodEx, String badEx,
-						Date endDate, Date startDate, boolean publicStatus, Date regdate, int count, int userId, int totalParticipants,
-						String exExplanation, String userName, String categories, String days, String participants, String profile) {
-		
-		super(id, title, explanation, mainImage, goodEx, badEx, endDate, startDate, publicStatus, regdate, count, userId, totalParticipants,exExplanation);
-		
-		this.userName = userName;
-		this.categories = categories;
-		this.days = days;
+	public GoalDetailView(int id, String title, String mainImage, Date endDate, Date startDate, int dateDiff,
+			boolean publicStatus, Date regdate, int count, String userName, String categories, String days,
+			int totalParticipants, int nowParticipantsCount, String categoriesColor, String exExplanation,
+			String participants,String profile,String goodEx,String badEx) {
+		super(id, title, mainImage, endDate, startDate, dateDiff, publicStatus, regdate, count, userName, categories,
+				days, totalParticipants, nowParticipantsCount, categoriesColor);
+	
+		this.exExplanation = exExplanation;
+		this.goodEx = goodEx;
+		this.badEx = badEx;
 		this.participants = participants;
 		this.profile = profile;
 	}
 	
-	
-	
-
 	public String getUserName() {
 		return userName;
 	}
@@ -69,16 +70,42 @@ public class GoalDetailView extends Goal{
 	public void setProfile(String profile) {
 		this.profile = profile;
 	}
+	
+	
+
+	public String getExExplanation() {
+		return exExplanation;
+	}
+
+	public void setExExplanation(String exExplanation) {
+		this.exExplanation = exExplanation;
+	}
+
+	public String getGoodEx() {
+		return goodEx;
+	}
+
+	public void setGoodEx(String goodEx) {
+		this.goodEx = goodEx;
+	}
+
+	public String getBadEx() {
+		return badEx;
+	}
+
+	public void setBadEx(String badEx) {
+		this.badEx = badEx;
+	}
 
 	@Override
 	public String toString() {
 		return "GoalDetailView [userName=" + userName + ", categories=" + categories + ", days=" + days
 				+ ", participants=" + participants + ", profile=" + profile + ", getId()=" + getId() + ", getTitle()="
-				+ getTitle() + ", getExplanation()=" + getExplanation() + ", getMainImage()=" + getMainImage()
+				+ getTitle() + ", getExExplanation()=" + getExExplanation() + ", getMainImage()=" + getMainImage()
 				+ ", getGoodEx()=" + getGoodEx() + ", getBadEx()=" + getBadEx() + ", getEndDate()=" + getEndDate()
-				+ ", getStartDate()=" + getStartDate() + ", getPublicStatus()=" + getPublicStatus() + ", getRegdate()="
-				+ getRegdate() + ", getCount()=" + getCount() + ", getUserId()=" + getUserId()
-				+ ", getTotalParticipants()=" + getTotalParticipants() + ", getExExplanation()=" + getExExplanation()
+				+ ", getStartDate()=" + getStartDate() + ", getRegdate()="
+				+ getRegdate() + ", getCount()=" + getCount() 
+				+ ", getTotalParticipants()=" + getTotalParticipants() 
 				+ ", toString()=" + super.toString() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
 				+ "]";
 	}

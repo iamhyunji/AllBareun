@@ -72,4 +72,7 @@ public class MyGoalController {
 	         realPathFile.delete(); // 파일 삭제
 		return "ok11";
 	}
+	
+	
+	
 }

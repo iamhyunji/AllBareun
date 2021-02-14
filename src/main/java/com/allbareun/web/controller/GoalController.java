@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.allbareun.web.entity.Cycle;
 import com.allbareun.web.entity.Goal;
+import com.allbareun.web.entity.GoalAllParticipantsView;
 import com.allbareun.web.entity.GoalCategory;
 import com.allbareun.web.entity.GoalDetailView;
 import com.allbareun.web.entity.GoalView;
@@ -89,8 +90,10 @@ public class GoalController {
 	@GetMapping("{id}")
 	public String participate(@PathVariable("id") int id, Model model) {
 
+		
+		List<GoalAllParticipantsView> profile = service.getProfile(id);
 		GoalDetailView detail = service.getDetailView(id);
-		List<User> profile = service.getProfile(id);
+		
 
 		model.addAttribute("detail", detail);
 		model.addAttribute("profile", profile);

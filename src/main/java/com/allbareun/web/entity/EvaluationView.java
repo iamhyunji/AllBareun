@@ -9,6 +9,8 @@ public class EvaluationView extends Evaluation{
 	private String categoryTitle;
 	private int categoryId;
 	private int categorySum;
+	private String profile;
+	private int barSum;
 	
 	
 	public EvaluationView() {
@@ -16,13 +18,16 @@ public class EvaluationView extends Evaluation{
 	}
 
 	public EvaluationView(int answer1, int answer2, int answer3, int goalId, int id, int userId, Date regDate,
-			int certificationId, int month, int lineSum, String categoryTitle,int categoryId, int categorySum) {
+			int certificationId, int month, int lineSum, String categoryTitle,int categoryId, int categorySum,String profile,int barSum) {
 		super(answer1, answer2, answer3, goalId, id, userId, regDate, certificationId);
 		this.month = month;
 		this.lineSum = lineSum;
 		this.categoryTitle = categoryTitle;
 		this.categoryId = categoryId;
 		this.categorySum = categorySum;
+		this.profile = profile;
+		this.barSum = barSum;
+		
 	}
 
 
@@ -46,6 +51,16 @@ public class EvaluationView extends Evaluation{
 	}
 	
 	
+	
+	
+
+	public int getBarSum() {
+		return barSum;
+	}
+
+	public void setBarSum(int barSum) {
+		this.barSum = barSum;
+	}
 
 	public int getCategorySum() {
 		return categorySum;
@@ -70,10 +85,20 @@ public class EvaluationView extends Evaluation{
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
+	
+	
+
+	public String getProfile() {
+		return profile;
+	}
+
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
 
 	@Override
 	public String toString() {
-		return "EvaluationView [month=" + month + ", lineSum=" + lineSum + ", categoryTitle=" + categoryTitle
+		return "EvaluationView [month=" + month + ", lineSum=" + lineSum + ", barSum=" + barSum + ",categoryTitle=" + categoryTitle
 				+ ", categoryId=" + categoryId + ", categorySum=" + categorySum + ", getAnswer1()=" + getAnswer1()
 				+ ", getAnswer2()=" + getAnswer2() + ", getAnswer3()=" + getAnswer3() + ", getGoalId()=" + getGoalId()
 				+ ", getId()=" + getId() + ", getUserId()=" + getUserId() + ", getRegDate()=" + getRegDate()

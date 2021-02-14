@@ -23,6 +23,7 @@ import com.allbareun.web.entity.CertificationView;
 import com.allbareun.web.entity.Cycle;
 import com.allbareun.web.entity.EvaluationView;
 import com.allbareun.web.entity.Goal;
+import com.allbareun.web.entity.GoalAllParticipantsView;
 import com.allbareun.web.entity.GoalAllView;
 import com.allbareun.web.entity.GoalCategory;
 import com.allbareun.web.entity.GoalDetailView;
@@ -172,7 +173,7 @@ public class GoalServiceImp implements GoalService {
 
 	}
 	
-	public List<User> getProfile(int id) {
+	public List<GoalAllParticipantsView> getProfile(int id) {
 		// TODO Auto-generated method stub
 		return goalDao.getProfile(id);
 	}
@@ -383,10 +384,33 @@ public class GoalServiceImp implements GoalService {
 		return  goalDao.getEndDate(id);
 	}
 
+//	@Override
+//	public List<EvaluationView> getDoneBarChart(String startDate) {
+//		// TODO Auto-generated method stub
+//		return evaluationDao.getDoneBarChart(startDate);
+//	}
+
 	@Override
-	public List<EvaluationView> getDoneBarChart(String startDate) {
+	public Integer getVarChartCount(int id, int uid) {
 		// TODO Auto-generated method stub
-		return evaluationDao.getDoneBarChart(startDate);
+		return certificationDao.getVarChartCount(id,uid);
 	}
+
+	@Override
+	public List<EvaluationView> getDoneBarChart(int varChartCount, String startDate, int id) {
+		// TODO Auto-generated method stub
+		return evaluationDao.getDoneBarChart(varChartCount,startDate,id);
+	}
+
+	@Override
+	public int getReportBarChartCount(int uid) {
+		// TODO Auto-generated method stub
+		return certificationDao.getReportBarChartCount(uid);
+	}
+
+	/*
+	 * @Override public List<EvaluationView> getMyGoalLineChart(int id) { // TODO
+	 * Auto-generated method stub return evaluationDao.getMyGoalLineChart(id); }
+	 */
 
 }

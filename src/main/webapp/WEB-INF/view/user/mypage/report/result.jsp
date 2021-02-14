@@ -59,11 +59,7 @@
                     
 		
 		</div>
-		 <c:forEach var="c" items="${categoryChart}">
-		
-		${c.categoryTitle}
-		${c.categorySum}
-	</c:forEach>
+	
 	</div>
 
 	<div class="result-chart">
@@ -82,6 +78,7 @@
 var ctx1 = document.getElementById('myChart').getContext('2d');
 let month = new Array();
 let lineSum = new Array();
+
  <c:forEach var="e" items="${evaluation}">
 	month.push(${e.month}+'월');
 	lineSum.push(${e.lineSum });
@@ -101,27 +98,13 @@ let lineSum = new Array();
     });
 
 
-    var ctx3 = document.getElementById('myChart3').getContext('2d');
 
-    var chart = new Chart(ctx3, { // 챠트 종류를 선택 
-        type: 'radar',
-        // 챠트를 그릴 데이타
-        data: {
-            labels: ['생활','자산','운동'],
-            datasets: [{
-                label: '데이터 표시 색', backgroundColor: 'rgba(75, 192, 192, 0.2)', borderColor: 'green',
-
-                 data: [22,12,34]
-            }]
-        }, // 옵션 
-        options: {}
-    });
 
 
     var ctx2 = document.getElementById('myChart2');
     var myChart = new Chart(ctx2, {
         type: 'bar', data: {
-            labels: ['1월', '2월', '3월', '4월', '5월', '6월', '7월'],
+            labels: month,
             datasets: [{
                 label: '데이터 표시 색', data: [12, 19, 3, 5, 2, 3,5],
                 backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)',
@@ -146,5 +129,26 @@ let lineSum = new Array();
                 }]
             }
         }
+    });
+    
+    var ctx3 = document.getElementById('myChart3').getContext('2d');
+let category = new Array();
+	let radarSum = new Array();
+	 <c:forEach var="c" items="${categoryChart}">
+		category.push('${c.categoryTitle}');
+		radarSum.push(${c.categorySum});
+	</c:forEach>
+    var chart = new Chart(ctx3, { // 챠트 종류를 선택 
+        type: 'radar',
+        // 챠트를 그릴 데이타
+        data: {
+            labels: category,
+            datasets: [{
+                label: '데이터 표시 색', backgroundColor: 'rgba(75, 192, 192, 0.2)', borderColor: 'green',
+
+                 data: radarSum
+            }]
+        }, // 옵션 
+        options: {}
     });
 </script>

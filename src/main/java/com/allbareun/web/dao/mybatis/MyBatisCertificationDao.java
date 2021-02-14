@@ -10,6 +10,8 @@ import com.allbareun.web.dao.CertificationDao;
 import com.allbareun.web.entity.CertDetailView;
 import com.allbareun.web.entity.Certification;
 import com.allbareun.web.entity.CertificationView;
+import com.allbareun.web.entity.EvaluationView;
+import com.allbareun.web.entity.Participation;
 
 @Repository
 public class MyBatisCertificationDao implements CertificationDao {
@@ -83,6 +85,22 @@ public class MyBatisCertificationDao implements CertificationDao {
 	public List<CertificationView> getVideoImage(int id) {
 		// TODO Auto-generated method stub
 		return mapper.getVideoImage(id);
+	}
+
+
+
+	@Override
+	public Integer getVarChartCount(int id, int uid) {
+		// TODO Auto-generated method stub
+		return  mapper.getVarChartCount(id,uid);
+	}
+
+
+
+	@Override
+	public int getReportBarChartCount(int uid) {
+		// TODO Auto-generated method stub
+		return mapper.getReportBarChartCount(uid);
 	}
 
 

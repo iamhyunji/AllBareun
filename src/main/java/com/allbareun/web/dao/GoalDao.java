@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.allbareun.web.entity.CertificationView;
 import com.allbareun.web.entity.Goal;
+import com.allbareun.web.entity.GoalAllParticipantsView;
 import com.allbareun.web.entity.GoalAllView;
 import com.allbareun.web.entity.GoalDetailView;
 import com.allbareun.web.entity.GoalView;
@@ -23,7 +24,7 @@ public interface GoalDao {
 	GoalAllView getAllView(int id);
 	List<GoalView> getViewList();
 	List<GoalAllView> getAllViewList(int userId, String status, String[] categories, int totalParticipants, int achievement, String query);
-	List<User> getProfile(int id);
+	List<GoalAllParticipantsView> getProfile(int id);
 	List<CertificationView> getAuthImages(int id);
 	int enter(Participation participation);
 	//CertificationView getAuthImage(int id);

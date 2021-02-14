@@ -52,12 +52,22 @@
  	
  	
  		<select id="getVideoImage" resultType="com.allbareun.web.entity.CertificationView">
- 		select * from Certification C 
- 		left join User U 
- 		on C.userId = U.id 
- 		where goalId = ${param1} ;
+ 		select * from CertificationView C 
+ 		<!-- left join User U 
+ 		on C.userId = U.id  -->
+ 		where C.goalId = #{param1}
+ 		order by C.userId;
+ 	</select>
+ 	
+ 		<select id="getVarChartCount" resultType="int">
+ 		select count(regdate) from Certification 
+ 		where goalId = #{param1} and userId = #{param2};
  	</select>
  	
  	
+ 		<select id="getReportBarChartCount" resultType="int">
+       select count(regdate) from Certification 
+ 		where userId = #{param2};
+ 	</select>
  	
 </mapper>

@@ -8,6 +8,7 @@ import com.allbareun.web.entity.CertificationView;
 import com.allbareun.web.entity.Cycle;
 import com.allbareun.web.entity.EvaluationView;
 import com.allbareun.web.entity.Goal;
+import com.allbareun.web.entity.GoalAllParticipantsView;
 import com.allbareun.web.entity.GoalAllView;
 import com.allbareun.web.entity.GoalCategory;
 import com.allbareun.web.entity.GoalDetailView;
@@ -32,7 +33,7 @@ public interface GoalService {
 			String query, int count,int offset);
 	GoalDetailView getDetailView(int id);
 	List<CertificationView> getAuthImages(int id);
-	List<User> getProfile(int id);
+	List<GoalAllParticipantsView> getProfile(int id);
 	
 	List<CertificationView> getCertViewListById(int goalId);
 	List<CertificationView> getCertViewListById(int goalId, String name, String startDate, String endDate);
@@ -56,11 +57,18 @@ public interface GoalService {
 	//List<EvaluationView> getDoneBarChart(int id, int uid);
 	int deleteGoalFromUser(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList);
 
-	List<CertificationView> getVideoImage(int id);
+	//List<CertificationView> getVideoImage(int id);
 
 	List<String> getDays(int goalId);
 	Date getStartDate(int id);
 	Date getEndDate(int id);
-	List<EvaluationView> getDoneBarChart(String startDate);
+	//List<EvaluationView> getDoneBarChart(String startDate);
+	Integer getVarChartCount(int id, int uid);
+	List<EvaluationView> getDoneBarChart(int barChartCount, String startDate, int id);
+	/* List<EvaluationView> getMyGoalLineChart(int id); */
+	int getReportBarChartCount(int uid);
+	//List<CertificationView> getVideoImage(int id, int userId);
+	List<CertificationView> getVideoImage(int id);
+	//List<CertificationView> getVideoImage(int id, int userId);
 
 }

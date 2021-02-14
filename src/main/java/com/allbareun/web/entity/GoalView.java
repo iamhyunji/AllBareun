@@ -196,6 +196,10 @@ public class GoalView {
 		this.categoriesColor = categoriesColor;
 	}
 
+	
+
+	
+
 
 	@Override
 	public String toString() {
