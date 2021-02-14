@@ -11,6 +11,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -78,19 +79,13 @@ public class MyGoalController {
 		return "ok11";
 	}
 	
-	@PostMapping("list")
-	public String weeklyList(Principal principal) {
-
-		System.out.println("================ api weekly 들어옴 ================");
-		
+	@GetMapping("list")
+	public List<Calendar> weeklyList(Principal principal) {
 		int userId = service.getUserIdByEmail(principal.getName());
 		Calendar cal = new Calendar();
 		cal.setUserId(userId);
 		List<Calendar> list = service.getByUserId(cal);
 		
-		System.out.println(list);
-		System.out.println(new Gson().toJson(list));
-		
-		return new Gson().toJson(list);
+		return list;
 	}
 }

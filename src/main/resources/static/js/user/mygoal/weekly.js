@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 	var calendarEl = document.querySelector('.calendar__weekly');
-	let calendarEvents = [];
+	let content = [];
 
 	var calendar = new FullCalendar.Calendar(calendarEl, {
 		headerToolbar: {
@@ -15,14 +15,11 @@ document.addEventListener('DOMContentLoaded', function() {
 		navLinks: false, // can click day/week names to navigate views
 		editable: false,
 		dayMaxEvents: true, // allow "more" link when too many events
-		events: {
-			url: '/api/mygoal/list',
-			method: 'POST',
-			success: (content, xhr) => {
-				calendarEvents = content;
-				return content;
-			}
-		}
+		dayHeaderContent: function(date) {
+			let weekList = ["일", "월", "화", "수", "목", "금", "토"];
+			return weekList[date.dow];
+		},
+		events: '/api/mygoal/list'
 	});
 
 	calendar.render();
