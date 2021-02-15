@@ -11,6 +11,7 @@ public class EvaluationView extends Evaluation{
 	private int categorySum;
 	private String profile;
 	private int barSum;
+	private int count;
 	
 	
 	public EvaluationView() {
@@ -18,7 +19,7 @@ public class EvaluationView extends Evaluation{
 	}
 
 	public EvaluationView(int answer1, int answer2, int answer3, int goalId, int id, int userId, Date regDate,
-			int certificationId, int month, int lineSum, String categoryTitle,int categoryId, int categorySum,String profile,int barSum) {
+			int certificationId, int month, int lineSum, String categoryTitle,int categoryId, int categorySum,String profile,int barSum, int count) {
 		super(answer1, answer2, answer3, goalId, id, userId, regDate, certificationId);
 		this.month = month;
 		this.lineSum = lineSum;
@@ -27,6 +28,7 @@ public class EvaluationView extends Evaluation{
 		this.categorySum = categorySum;
 		this.profile = profile;
 		this.barSum = barSum;
+		this.count = count;
 		
 	}
 
@@ -53,6 +55,14 @@ public class EvaluationView extends Evaluation{
 	
 	
 	
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
 
 	public int getBarSum() {
 		return barSum;
@@ -101,7 +111,7 @@ public class EvaluationView extends Evaluation{
 		return "EvaluationView [month=" + month + ", lineSum=" + lineSum + ", barSum=" + barSum + ",categoryTitle=" + categoryTitle
 				+ ", categoryId=" + categoryId + ", categorySum=" + categorySum + ", getAnswer1()=" + getAnswer1()
 				+ ", getAnswer2()=" + getAnswer2() + ", getAnswer3()=" + getAnswer3() + ", getGoalId()=" + getGoalId()
-				+ ", getId()=" + getId() + ", getUserId()=" + getUserId() + ", getRegDate()=" + getRegDate()
+				+ ", getId()=" + getId() + ", getUserId()=" + getUserId() + ",getCount()=" + getCount() + ", getRegDate()=" + getRegDate()
 				+ ", getCertificationId()=" + getCertificationId() + ", toString()=" + super.toString()
 				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + "]";
 	}

@@ -8,6 +8,91 @@ window.addEventListener("load", function() {
 	const stopIcon = document.querySelectorAll(".video-stop");
 	let id = document.location.href.split("/")[5];
 
+
+
+	fetch(`/api/mypage/barChart/${id}`)
+		.then((response) => response.json())
+		.then((json) => {
+			console.log(json);
+			var ctx = document.getElementById('myChart2');
+			let barSum = new Array();
+			let month2 = new Array();
+			for (let a of json) {
+				for (let b of a) {
+					barSum.push(b.barSum);
+					month2.push(b.month+"월");
+				}
+
+			}
+			var myChart = new Chart(ctx, {
+				type: 'bar', data: {
+					labels: month2,
+					datasets: [{
+						label: '데이터 표시 모양', data: barSum,
+						backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)',
+							'rgba(255, 206, 86, 0.2)',
+							'rgba(75, 192, 192, 0.2)',
+							'rgba(153, 102, 255, 0.2)',
+							'rgba(255, 159, 64, 0.2)'],
+						borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)',
+							'rgba(255, 206, 86, 1)',
+							'rgba(75, 192, 192, 1)',
+							'rgba(153, 102, 255, 1)',
+							'rgba(255, 159, 64, 1)'],
+						borderWidth: 1
+					}]
+				},
+				options: {
+					scales: {
+						yAxes: [{
+							ticks: {
+								beginAtZero: true
+							}
+						}]
+					}
+				}
+			});
+
+
+
+		});
+
+
+
+
+
+
+	fetch(`/api/mypage/lineChart/${id}`)
+		.then((response) => response.json())
+		.then((json2) => {
+
+			console.log(json2);
+			var ctx = document.getElementById('myChart').getContext('2d');
+			let month = new Array();
+			let lineSum = new Array();
+			for (let n of json2) {
+				month.push(n.month + "월");
+				lineSum.push(n.lineSum);
+
+			}
+			var chart = new Chart(ctx, { // 챠트 종류를 선택 
+				type: 'line',
+				// 챠트를 그릴 데이타
+				data: {
+					labels: month,
+					datasets: [{
+						label: '데이터 표시 색', backgroundColor: 'transparent', borderColor: 'red',
+						data: lineSum
+					}]
+				}, // 옵션 
+				options: {}
+			});
+
+
+
+		});
+
+
 	fetch(`/api/mypage/done/${id}`)
 		.then((response) => response.json())
 		.then((json) => {
@@ -20,10 +105,6 @@ window.addEventListener("load", function() {
 				authImage.push(n.authImage);
 				partUser.push(n.name);
 
-				/*console.log(partUser);
-				console.log(date);*/
-
-				//console.log(json)
 			}
 
 			fetch(`/api/mypage/profile/${id}`)
@@ -42,49 +123,29 @@ window.addEventListener("load", function() {
 					}
 
 
-					//console.log(json2);
-					/*console.log(profile);
-					console.log(userName);
-					*/
-					
 					let imgArrs = new Array(profile.length);  // 2차원 배열 [사람index][이미지갯수]
 					for (var x = 0; x < profile.length; x++) {
 						let tr = ``;
 						tr = `<img class="w30-radius" src=${profile[x]} /> <span style="padding-right: 310px;">${userName[x]}</span>`;
 						profileLoc.insertAdjacentHTML("beforeend", tr);
-						
+
 						let arr = [];		// 해당 회원이 등록한 인증 이미지 목록
 						for (var y = 0; y < partUser.length; y++) {
 
-							/*console.log("-----------profile----------------");
-							console.log(profile);
-							console.log("-------------partUser--------------");
-							console.log(partUser);
-							console.log("----------authImage-----------------");
-							console.log(authImage);
-							console.log("------------userName---------------");
-							console.log(userName);*/
-							console.log(`userName[${x}]=${userName[x]} / partUser[${y}]=${partUser[y]}`);
 							if (userName[x] == partUser[y]) {
-								
-							/*	let td = ``;
-								td = `<img class="w50-radius" src=${authImage[y]} />`;
 
-								profileLoc.insertAdjacentHTML("beforeend", td);*/
-								console.log("-----------"+userName[x]+"-------------------");
-								console.log(authImage);
 								arr.push(authImage[y]);
 							}
 						}
-						
-						imgArrs[x] = arr;
-						
-					}
-								let videoPlayers = [];
-								for (let i = 0; i < imgArrs.length; i++) {
-									videoPlayers.push(new VideoPlayer(imgArrs[i], i, videoFrame, imgTag, stopIcon));
 
-								}
+						imgArrs[x] = arr;
+
+					}
+					let videoPlayers = [];
+					for (let i = 0; i < imgArrs.length; i++) {
+						videoPlayers.push(new VideoPlayer(imgArrs[i], i, videoFrame, imgTag, stopIcon));
+
+					}
 
 
 				});

@@ -67,8 +67,8 @@ public interface GoalService {
 	Date getStartDate(int id);
 	Date getEndDate(int id);
 	//List<EvaluationView> getDoneBarChart(String startDate);
-	Integer getVarChartCount(int id, int uid);
-	List<EvaluationView> getDoneBarChart(int barChartCount, String startDate, String endDate, int id);
+	List<EvaluationView> getVarChartCount(int id, int uid);
+	List<EvaluationView> getDoneBarChart(int barChartCount, String startDate, String endDate, int id, int month);
 	/* List<EvaluationView> getMyGoalLineChart(int id); */
 	int getReportBarChartCount(int uid);
 	//List<CertificationView> getVideoImage(int id, int userId);
@@ -78,5 +78,6 @@ public interface GoalService {
 	int rejectGoal(int goalId, int userId);
 	int acceptGoal(int challengeGoalId, int userId);
 	List<Calendar> getByUserId(Calendar cal);
+	List<EvaluationView> getDoneBar(int barChartCount, String startDate, String endDate, int id);
 
 }

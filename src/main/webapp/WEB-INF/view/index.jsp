@@ -17,7 +17,7 @@
     <c:if test="${empty userId}">
      <section class="main">
         <div class="img-container">
-            <img src="../images/index.jpg">
+            <img src="../images/index2.jpg">
 
             <div class="text1 text">인생을 바꾸는건 결심보다 행동!</div>
             <div class="text2 text">전 국민 목표 달성 프로젝트, All바른생각</div>

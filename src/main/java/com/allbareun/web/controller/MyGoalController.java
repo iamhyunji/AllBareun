@@ -170,13 +170,16 @@ public class MyGoalController {
 		List<EvaluationView> lineChart = service.getDoneLineChart(id, uid);
 		// System.out.println(lineChart);
 
-		int barChartCount = service.getVarChartCount(id, uid);
+		List<EvaluationView> barChartCount = service.getVarChartCount(id, uid);
 //		 if (barChartCount == null) {
 //			 barChartCount = 0;
 //		 }
 
 		// System.out.println(barChartCount.size());
-		List<EvaluationView> barChartTotal = service.getDoneBarChart(barChartCount, startDate,endDate, id);
+		for(int i=0; i<barChartCount.size(); i++) {
+
+			List<EvaluationView> barChartTotal = service.getDoneBar(barChartCount.get(i).getCount(), startDate,endDate, id);
+		}
 
 
 		model.addAttribute("detail", detail);
@@ -185,7 +188,7 @@ public class MyGoalController {
 		/* model.addAttribute("lineChart", lineChart); */
 		model.addAttribute("lineChart", lineChart);
 		// model.addAttribute("videoImage", videoImage);
-		model.addAttribute("barChartTotal", barChartTotal);
+		//model.addAttribute("barChartTotal", barChartTotal);
 		
 		
 

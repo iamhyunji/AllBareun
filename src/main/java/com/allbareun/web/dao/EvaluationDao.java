@@ -18,8 +18,11 @@ public interface EvaluationDao {
 	int insert(int userId, int goalId, int answer1, int answer2, int answer3, String explanation, int certificationId);
 
 	//List<EvaluationView> getDoneBarChart(String startDate);
-	List<EvaluationView> getDoneBarChart(int varChartCount, String startDate, String endDate, int id);
+	List<EvaluationView> getDoneBarChart(int varChartCount, String startDate, String endDate, int id, int month);
 	List<EvaluationView> getMyGoalLineChart(int id);
+	List<EvaluationView> getDoneBar(int barChartCount, String startDate, String endDate, int id);
+	
+	List<EvaluationView> getVarChartCount(int id, int uid);
 }
 
 

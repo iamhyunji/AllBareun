@@ -28,6 +28,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
 	integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
 	crossorigin="anonymous" />
+<script src="/js/user/mygoal/detail.js"></script>
 
 
 <!-- --------------------------- <body> --------------------------------------- -->
@@ -37,8 +38,8 @@
 <!-- <tiles:insertAttribute name="main" /> -->
 <div class="tab-part">
 	<div class="tab">
-		<a href="${detail.id}" class="tab-button">디테일 인덱스</a> 
-		<a href="cert/list/${detail.id}" class="tab-button">이미지</a>
+		<a href="${detail.id}" class="tab-button">디테일 인덱스</a> <a
+			href="cert/list/${detail.id}" class="tab-button">이미지</a>
 	</div>
 
 </div>
@@ -117,58 +118,16 @@
 				<canvas id="myChart2"></canvas>
 			</div>
 		</div>
+		
 
 
 
 
 	</div>
-	
-	
-
-
-	<!-- <div class="detail-img-part">
-		<h2>이미지</h2> -->
 		
-		
-		
-		<%-- 		<div class="detail-recent-img">
-			<c:forEach var="auth" items="${detailImage}" varStatus="status">
-				<div>
-					<img class="s-img" src="${auth.authImage}" alt="최근 이미지" />
-				</div>
-				<c:if test="${ status.count%3 eq 0 }">
-					<tr>
-				</c:if>
-			</c:forEach> --%>
-
-		<%-- <table class="detail-recent-img">
-			<tr>
-				<c:forEach var="auth" items="${detailImage}" varStatus="status">
-					<c:if test="${status.index%3==0}">
-			</tr>
-			<tr>
-				</c:if>
-				<td style="position: relative;"><img class="s-img"
-					src="${auth.authImage}" alt="최근 이미지" /> <img
-					style="position: absolute; bottom: 20px; right: 20px;"
-					class="w50-radius" src="${auth.profile}" alt="프로필" /></td>
-				</c:forEach>
-			</tr>
-		</table> --%>
 
 
 
-		<!-- 	<div>
-							<img class="s-img" src="/images/default-image2.png" alt="최근 이미지" />
-						</div>
-						<div>
-							<img class="s-img" src="/images/default-image2.png" alt="최근 이미지" />
-						</div>
-						<div>
-							<img class="s-img" src="/images/default-image2.png" alt="최근 이미지" />
-						</div> -->
-
-		<!-- 	</div> -->
 
 	</div>
 
@@ -176,72 +135,9 @@
 
 </main>
 
-
 <script>
 
 
- var ctx = document.getElementById('myChart').getContext('2d');
-    let month = new Array();
-	let lineSum = new Array();
-	 <c:forEach var="e" items="${lineChart}">
-		month.push(${e.month}+'월');
-		lineSum.push(${e.lineSum });
-	</c:forEach>
-    var chart = new Chart(ctx, { // 챠트 종류를 선택 
-        type: 'line',
-        // 챠트를 그릴 데이타
-        data: {
-            labels: month,
-            datasets: [{
-                label: 'My First dataset', backgroundColor: 'transparent', borderColor: 'pink',
-                data: lineSum
-            }]
-        }, // 옵션 
-        options: {}
-    });
-
-
-
-    var ctx = document.getElementById('myChart2');
-    let barSum = new Array();
-     <c:forEach var="v" items="${barChartTotal}">
-		barSum.push(${v.barSum});
-	</c:forEach>
-    var myChart = new Chart(ctx, {
-        type: 'bar', data: {
-            labels: month,
-            datasets: [{
-                label: '# of Votes', data: barSum,
-                backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'],
-                borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
-    });
-    
-    
-	
-
-
-
-			
-
+   
 
 </script>
