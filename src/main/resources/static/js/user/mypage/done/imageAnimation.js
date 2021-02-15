@@ -19,7 +19,11 @@ window.addEventListener("load", function() {
 
 				date.push(n.authImage);
 				partUser.push(n.name);
-				console.log(partUser);
+				
+				/*console.log(partUser);
+				console.log(date);*/
+				
+				console.log(json)
 			}
 
 			fetch(`/api/mypage/profile/${id}`)
@@ -38,11 +42,10 @@ window.addEventListener("load", function() {
 					}
 					
 					
-					
-					console.log(profile.length);
-					console.log(partUser);
+					console.log(json2);
+					/*console.log(profile);
 					console.log(userName);
-					
+					*/
 					for (var x = 0; x < profile.length; x++) {
 						let tr = ``;
 							tr = `<img class="w30-radius" src=${profile[x]} /> <span>${userName[x]}</span>`;
@@ -63,7 +66,6 @@ window.addEventListener("load", function() {
 								for (let i = 0; i < imgArrs.length; i++) {
 									videoPlayers[i] = new VideoPlayer(imgArrs[i], i, videoFrame, imgTag, stopIcon);
 
-
 								}
 
 
@@ -77,10 +79,6 @@ window.addEventListener("load", function() {
 
 
 				});
-
-
-
-
 
 		});
 
