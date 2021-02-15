@@ -122,10 +122,15 @@
 
 
 	</div>
+	
+	
 
 
-	<div class="detail-img-part">
-		<h2>이미지</h2>
+	<!-- <div class="detail-img-part">
+		<h2>이미지</h2> -->
+		
+		
+		
 		<%-- 		<div class="detail-recent-img">
 			<c:forEach var="auth" items="${detailImage}" varStatus="status">
 				<div>
@@ -136,7 +141,7 @@
 				</c:if>
 			</c:forEach> --%>
 
-		<table class="detail-recent-img">
+		<%-- <table class="detail-recent-img">
 			<tr>
 				<c:forEach var="auth" items="${detailImage}" varStatus="status">
 					<c:if test="${status.index%3==0}">
@@ -149,7 +154,7 @@
 					class="w50-radius" src="${auth.profile}" alt="프로필" /></td>
 				</c:forEach>
 			</tr>
-		</table>
+		</table> --%>
 
 
 

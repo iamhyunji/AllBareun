@@ -433,9 +433,9 @@ public class GoalServiceImp implements GoalService {
 	}
 
 	@Override
-	public List<EvaluationView> getDoneBarChart(int varChartCount, String startDate, int id) {
+	public List<EvaluationView> getDoneBarChart(int barChartCount, String startDate, String endDate, int id) {
 		// TODO Auto-generated method stub
-		return evaluationDao.getDoneBarChart(varChartCount,startDate,id);
+		return evaluationDao.getDoneBarChart(barChartCount,startDate,endDate,id);
 	}
 
 	@Override

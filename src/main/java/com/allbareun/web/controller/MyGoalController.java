@@ -159,10 +159,11 @@ public class MyGoalController {
 		
 		
 		Date beforStartDate = service.getStartDate(id);
-		Date endDate = service.getEndDate(id);
+		Date beforEndDate = service.getEndDate(id);
 
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String startDate = simpleDateFormat.format(beforStartDate);
+		String endDate = simpleDateFormat.format(beforEndDate);
 
 		// System.out.println(startDate);
 
@@ -175,7 +176,7 @@ public class MyGoalController {
 //		 }
 
 		// System.out.println(barChartCount.size());
-		List<EvaluationView> barChartTotal = service.getDoneBarChart(barChartCount, startDate, id);
+		List<EvaluationView> barChartTotal = service.getDoneBarChart(barChartCount, startDate,endDate, id);
 
 
 		model.addAttribute("detail", detail);

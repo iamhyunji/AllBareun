@@ -46,6 +46,8 @@ public class MyPageController {
 //			}
 //			
 //		}
+		
+		System.out.println(videoImage);
 		return videoImage;
 	}
 	
@@ -55,6 +57,8 @@ public class MyPageController {
 	public  List<GoalAllParticipantsView> getProfile(@PathVariable(name = "id") int id) {
 		
 		List<GoalAllParticipantsView> profile = service.getProfile(id);
+		
+		System.out.println(profile);
 
 		return profile;
 	}
