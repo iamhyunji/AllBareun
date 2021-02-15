@@ -210,7 +210,8 @@ public class MyGoalController {
 				CertDetailView detail = service.getCertDetailView(id);
 				CertDetailView prev = service.getPrev(id, goalId);
 				CertDetailView next = service.getNext(id, goalId);
-
+				Goal goal = service.get(goalId);
+				model.addAttribute("g", goalId);
 				model.addAttribute("d", detail);
 				model.addAttribute("prev", prev);
 				model.addAttribute("next", next);
