@@ -43,7 +43,6 @@ window.addEventListener("load", function(){
          let result = data.checkResult;
          if(email.value ==""){
             alert("이메일을 입력해 주세요.");
-            email.value="";
             email.focus();
             return false;
          }
@@ -79,14 +78,6 @@ window.addEventListener("load", function(){
       if(!check(phonePattern,phone,"전화번호를 형식에 맞게 입력해주세요")){
          return false;
       }
-      alert("회원가입이 완료되었습니다.")
-      // if(check && password.value !="" && password.value == rePwd.value){
-      //    alert("회원가입이 됐습니다.")
-      //    return true;
-      // }else{
-      //    alert("빈칸을 완성시켜주세요.");
-      //    return false;
-      // }
+      alert("회원가입이 완료되었습니다.");
    }
-   
 });

@@ -64,6 +64,14 @@
                </p>
                <input type="text" class="text-box phone" name="phone"
                   placeholder="예)010-1111-1234">
+                  
+                <p>
+                  <span class="star">*</span>이메일 주소
+               </p>
+               <div id="mail">
+                  <input type="email" class="text-box" name="mail"
+                     placeholder="이메일 입력">
+               </div>
 
                <p>프로필 사진</p>
 

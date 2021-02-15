@@ -14,7 +14,7 @@
    </select>
    
    <select id="getEmail" resultType="String">
-      select email from User where name = #{name} and phone= #{phone};
+      select email from User where name = #{name} and phone= #{phone} and mail = #{mail};
    </select>
    
    <select id="getPassword" resultType="com.allbareun.web.entity.User">
@@ -22,8 +22,8 @@
    </select>
    
    <insert id="insert" parameterType="com.allbareun.web.entity.User">
-      insert into User (email, password, name, gender, birth, phone, profile)
-      		 values (#{email}, #{password}, #{name}, #{gender}, #{birth}, #{phone}, #{profile} )
+      insert into User (email, password, name, gender, birth, phone, profile, mail)
+      		 values (#{email}, #{password}, #{name}, #{gender}, #{birth}, #{phone}, #{profile}, #{mail})
    </insert>
    
    <select id="update" resultType="com.allbareun.web.entity.User">

@@ -12,14 +12,15 @@ public class User {
 	private String profile;
 	private String birth;
 	private String phone;
+	private String mail;
 	
 	// --------------------------------- Constructor ---------------------------------
 	public User() {
-		this(0, null, null, null, null, null, null, null, null);
+		this(0, null, null, null, null, null, null, null, null,null);
 	}
 
 	public User(int id, String name, String email, String password, String gender, Date joinDate, String profile,
-			String birth, String phone) {
+			String birth, String phone, String mail) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
@@ -29,6 +30,15 @@ public class User {
 		this.profile = profile;
 		this.birth = birth;
 		this.phone = phone;
+		this.mail = mail;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 
 	// --------------------------------- Getters/Setters ---------------------------------
@@ -104,14 +114,16 @@ public class User {
 		this.phone = phone;
 	}
 
+	
+
 	// --------------------------------- Function ---------------------------------
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", gender="
 				+ gender + ", joinDate=" + joinDate + ", profile=" + profile + ", birth=" + birth + ", phone=" + phone
-				+ "]";
+				+ ", mail=" + mail + "]";
 	}
-
 	
 	
 }

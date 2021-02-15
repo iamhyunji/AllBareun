@@ -126,7 +126,15 @@ public class HomeController{
 		return "/common/login";
 	}
 
+	@PostMapping("checkEmail")
+	@ResponseBody
+	public Map<String, Object> checkEmail(String checkKey){
+		Map<String, Object> map = new HashMap<>();
+		int checkResult = service.idCheck(checkKey);
+		map.put("checkResult", checkResult);
 
+		return map;
+	}
 
 	@GetMapping("logout")
 	public String logout(HttpSession session) {
@@ -146,8 +154,9 @@ public class HomeController{
 	public String findIdPage(
 			@RequestParam(name = "name") String name,
 			@RequestParam(name = "phone")String phone,
+			@RequestParam(name = "mail")String mail,
 			Model model) {
-		String email = service.getEmail(name, phone);
+		String email = service.getEmail(name, phone,mail);
 		model.addAttribute("name",name);
 		model.addAttribute("email", email);
 

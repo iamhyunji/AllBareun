@@ -19,11 +19,9 @@
 				<a href="./index.html"> All바른생각</a>
 			</h1>
 			<form action="login" method="post" class="login">
-				<input type="email" class="text-box id-box" id="id-box"
-					name="username" placeholder="아이디를 입력해 주세요."> <input
-					type="password" class="text-box pwd-box" id="pwd-box"
-					name="password" placeholder="패스워드를 입력해 주세요"> <input
-					type="submit" class="login-box" value="로그인">
+				<input type="email" class="email text-box id-box" id="id-box" name="username" placeholder="아이디를 입력해 주세요.">
+				<input type="password" class="password text-box pwd-box" id="pwd-box" name="password" placeholder="패스워드를 입력해 주세요"> 
+				<input type="submit" class="login-box" value="로그인">
 			</form>
 
 

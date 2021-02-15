@@ -33,9 +33,9 @@ public class MyBatisUserDao implements UserDao{
 	}
 
 	@Override
-	public String getEmail(String name, String phone) {
+	public String getEmail(String name, String phone, String mail) {
 		// TODO Auto-generated method stub
-		return mapper.getEmail(name, phone);
+		return mapper.getEmail(name, phone, mail);
 	}
 
 	@Override
