@@ -21,7 +21,7 @@
               <div class="tab-part">
                 <div class="tab">
                   <a href="../../${g}" class="tab-button">디테일 인덱스</a>
-                  <a href="./${g}" class="tab-button">이미지/동영상</a>
+                  <a href="./${g}" class="tab-button">이미지</a>
                 </div>
                 <div class="profile-box">
                		<c:forEach var="p" items="${profileInfo}">

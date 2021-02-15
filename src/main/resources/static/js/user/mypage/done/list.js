@@ -9,18 +9,22 @@ window.addEventListener("load", () => {
 			return;
 
 		ModalBox.confirmMypage(`정말로 이 목표를 삭제하시겠습니까?`)
-		.then((result) => {
-			if(!result)
-				return;
-		});
-			
-		let delReload = e.target.firstElementChild;
-		let event = new MouseEvent("click", {
-            'view' : window,
-            'bubbles' : true,
-            'cancelable' : true
-        });
+		.then((answer) => {
+			switch (answer) {
+				case "확인":
+					let delReload = e.target.firstElementChild;
+					let event = new MouseEvent("click", {
+						'view': window,
+						'bubbles': true,
+						'cancelable': true
+					});
 
-        delReload.dispatchEvent(event);
+					delReload.dispatchEvent(event);
+					break;
+				default:
+					break;
+			}
+		});
+		
 	});
 })

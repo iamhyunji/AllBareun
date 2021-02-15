@@ -85,7 +85,7 @@
                 <!-- list -->
                 <li class="goal-list">
                     <c:if test="${n.totalParticipants == n.nowParticipantsCount}">
-                    	<img src="${n.mainImage}" alt="" />
+                    <a href="${n.id}" class="image"><img src="${n.mainImage}" alt="" /></a>
                     </c:if>
                     <c:if test="${n.totalParticipants > n.nowParticipantsCount}">
                     <a href="${n.id}" class="image"><img src="${n.mainImage}" alt="" /></a>
@@ -93,7 +93,7 @@
                   <div class="para">
                     <div class="goal-title">
                     <c:if test="${n.totalParticipants == n.nowParticipantsCount}">
-						<h2 class="title">${n.title}</h2>
+						<a href="${n.id }"><h2 class="title">${n.title}</h2></a>
                     </c:if>
                     <c:if test="${n.totalParticipants > n.nowParticipantsCount}">
                       <a href="${n.id }"><h2 class="title">${n.title}</h2></a>

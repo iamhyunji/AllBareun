@@ -73,9 +73,8 @@
 					<div class="goal__buttons">
 						<i class="fas fa-times del-button"><a href="list?del-goalId=${g.id }" style="display : none"></a></i>
 						<c:if test="${g.achievement < 80}">
-							<a class="a-input-white-s retry-button" href="${g.id }/retry">재도전</a>
+							<a class="a-input-orange-s retry-button" href="${g.id }/retry">재도전</a>
 						</c:if>
-						<a class="a-input-orange-s" href="#">결과 리포트</a>
 					</div>
 				</li>
 			</c:forEach>

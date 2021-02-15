@@ -19,7 +19,7 @@
               <div class="tab-part">
                 <div class="tab">
                   <a class="tab-button">디테일 인덱스</a>
-                  <a class="tab-button">이미지/동영상</a>
+                  <a class="tab-button">이미지</a>
                 </div>
               </div>
               <fmt:timeZone value="KST">
