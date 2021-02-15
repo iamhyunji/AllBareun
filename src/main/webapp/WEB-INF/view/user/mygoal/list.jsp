@@ -3,78 +3,18 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/user/mygoal/list.css">
+<link rel="stylesheet" href="/css/user/mypage/done/list.css">
+<link rel="stylesheet" href="/js/user/mygoal/main.css">
+<script type="text/javascript" src="/js/user/mygoal/main.js"></script>
+<link rel="stylesheet" href="/js/user/mygoal/weekly.css">
+<script type="text/javascript" src="/js/user/mygoal/weekly.js"></script>
 
 <main id="main">
 	<h1 class="d-none">Content Body > Main</h1>
 	
 	<section>
 		<h1 class="d-none">주단위 캘린더</h1>
-		<ol class="calendar__weekly">
-			<li>
-				<div>
-					4일
-					<ul>
-						<li>스트레칭 하기</li>
-						<li>저녁 일기 쓰기</li>
-					</ul>
-				</div>
-			</li>
-			<li>
-				<div>
-					5일
-					<ul>
-						<li>스트레칭 하기</li>
-						<li>저녁 일기 쓰기</li>
-					</ul>
-				</div>
-			</li>
-			<li>
-				<div>
-					6일
-					<ul>
-						<li>스트레칭 하기</li>
-						<li>저녁 일기 쓰기</li>
-					</ul>
-				</div>
-			</li>
-			<li>
-				<div>
-					7일
-					<ul>
-						<li>스트레칭 하기</li>
-						<li>저녁 일기 쓰기</li>
-					</ul>
-				</div>
-			</li>
-			<li>
-				<div>
-					8일
-					<ul>
-						<li>스트레칭 하기</li>
-						<li>저녁 일기 쓰기</li>
-					</ul>
-				</div>
-			</li>
-			<li>
-				<div>
-					9일
-					<ul>
-						<li>스트레칭 하기</li>
-						<li>저녁 일기 쓰기</li>
-					</ul>
-				</div>
-			</li>
-			<li>
-				<div>
-					10일
-					<ul>
-						<li>스트레칭 하기</li>
-						<li>저녁 일기 쓰기</li>
-					</ul>
-				</div>
-			</li>
-		</ol>
+		<ol class="calendar__weekly"></ol>
 	</section>
 	
 	<section class="search">
@@ -114,7 +54,7 @@
 		<h1 class="d-none">목표 리스트</h1>
 		<ul class="goals__list">
 			<c:forEach var="g" items="${list }">
-				<li>
+				<li class="${(today < g.startDate)? 'inactive': ''}">
 					<a href="${g.id }"><img class="s-img" src="${g.mainImage }" alt="" /></a>
 					<div class="goal__contents">
 						<div class="goal__title">
@@ -130,9 +70,9 @@
 					</div>
 					<div class="goal__buttons">
 						<a href="./${g.id }/edit" class="setting"><i class="fas fa-cog"></i></a>
-						
-						<a class="a-input-orange-s" href="${g.id }/auth">인증하기</a>
-						
+						<c:if test="${g.startDate <= today and (g.days).contains(day)}">
+							<a class="a-input-orange-s" href="${g.id }/auth">인증하기</a>
+						</c:if>
 					</div>
 				</li>
 			</c:forEach>

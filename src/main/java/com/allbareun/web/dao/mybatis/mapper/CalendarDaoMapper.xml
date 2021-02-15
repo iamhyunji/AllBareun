@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.allbareun.web.dao.CalendarDao">
+
+	<select id="getByUserId" resultType="com.allbareun.web.entity.Calendar">
+      	SELECT * FROM Calendar where userId=#{userId};
+   	</select>
+
+	<insert id="insert">
+INSERT INTO Calendar 
+(`userId`,`title`,`description`,`start`,`end`,`type`,`textColor`,`allDay`,`backgroundColor`) 
+VALUES 
+(#{userId},#{title},#{description},#{start},#{end},#{type},#{textColor},#{allDay},#{backgroundColor});
+	</insert>
+	
+	<update id="update">
+      	UPDATE Calendar SET 
+		`userId` = #{userId},
+		`title` = #{title},
+		`description` = #{description},
+		`start` = #{start},
+		`end` = #{end},
+		`type` = #{type},
+		`allDay` = #{allDay},
+		`backgroundColor` = #{backgroundColor} 
+		WHERE `id` = #{id};
+   	</update>
+	<delete id="delete">
+	delete from Calendar where id=#{id};
+	</delete>
+</mapper>

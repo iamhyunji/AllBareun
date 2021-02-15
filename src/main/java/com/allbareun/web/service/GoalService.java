@@ -3,6 +3,7 @@ package com.allbareun.web.service;
 import java.util.Date;
 import java.util.List;
 
+import com.allbareun.web.entity.Calendar;
 import com.allbareun.web.entity.CertDetailView;
 import com.allbareun.web.entity.CertificationView;
 import com.allbareun.web.entity.Cycle;
@@ -21,7 +22,7 @@ public interface GoalService {
 
 	int insert(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList);
 	int update(Goal goal);
-	int delete(Goal goal);
+	int delete(int goalId);
 	Goal get(int id);
 
 	// -------------------------- View --------------------------
@@ -49,7 +50,7 @@ public interface GoalService {
 	int certAndEvalInsert(int goalId, int userId, String filePath, int answer1, int answer2, int answer3,String explanation);
 	int getinfo(String email);
 	int getUserIdByEmail(String name);
-	int retryGoal(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList);
+	int retryGoal(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList, int newGoalId);
 
 	List<EvaluationView> getReport(int uid);
 	List<EvaluationView> categoryChart(int uid);
@@ -60,6 +61,9 @@ public interface GoalService {
 	//List<CertificationView> getVideoImage(int id);
 
 	List<String> getDays(int goalId);
+	int makeGoal(int userId);
+	boolean isValidUserByEamil(String email);
+	User getUser(int id);
 	Date getStartDate(int id);
 	Date getEndDate(int id);
 	//List<EvaluationView> getDoneBarChart(String startDate);
@@ -70,5 +74,9 @@ public interface GoalService {
 	//List<CertificationView> getVideoImage(int id, int userId);
 	List<CertificationView> getVideoImage(int id);
 	//List<CertificationView> getVideoImage(int id, int userId);
+	List<GoalAllView> getInvitedList(int userId, String[] categories, String query);
+	int rejectGoal(int goalId, int userId);
+	int acceptGoal(int challengeGoalId, int userId);
+	List<Calendar> getByUserId(Calendar cal);
 
 }

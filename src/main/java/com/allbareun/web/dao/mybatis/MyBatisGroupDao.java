@@ -20,9 +20,9 @@ public class MyBatisGroupDao implements GroupDao {
 	}
 
 	@Override
-	public int update(int goalId, int userId) {
+	public int update(int goalId, int userId, boolean answer) {
 		System.out.println("okay3");
-		return session.getMapper(GroupDao.class).update(goalId, userId);
+		return session.getMapper(GroupDao.class).update(goalId, userId, answer);
 	}
 
 	@Override

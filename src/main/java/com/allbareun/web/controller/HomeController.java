@@ -44,14 +44,16 @@ public class HomeController{
 	@Autowired
 	private UserService service;
 
-
 	public HomeController() {
 
 	}
 
 	@RequestMapping("index")
-	public String index() {
-
+	public String index(Principal principal,Model model) {
+		if(principal!=null) {
+		int userId = service.getUserIdByEmail(principal.getName());
+		model.addAttribute("userId", userId);
+		}
 		return "home.index";
 	}
 

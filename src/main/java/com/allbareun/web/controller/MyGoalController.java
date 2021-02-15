@@ -2,7 +2,6 @@ package com.allbareun.web.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -11,7 +10,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.TimeZone;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -26,6 +24,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.allbareun.web.entity.CertDetailView;
+import com.allbareun.web.entity.CertificationView;
 import com.allbareun.web.entity.Goal;
 import com.allbareun.web.entity.GoalAllParticipantsView;
 import com.allbareun.web.entity.GoalAllView;
@@ -34,7 +34,6 @@ import com.allbareun.web.entity.Certification;
 import com.allbareun.web.entity.CertificationView;
 import com.allbareun.web.entity.EvaluationView;
 import com.allbareun.web.entity.GoalDetailView;
-import com.allbareun.web.entity.GoalView;
 import com.allbareun.web.entity.User;
 import com.allbareun.web.service.GoalService;
 
@@ -238,6 +237,7 @@ public class MyGoalController {
 				model.addAttribute("list", list);
 				model.addAttribute("profileInfo", profileInfo);
 				model.addAttribute("nameInfo", nameInfo);
+				model.addAttribute("g", goalId);
 				return "user.mygoal.cert.list";
 			}
 		}
@@ -256,7 +256,38 @@ public class MyGoalController {
 		int userId = service.getUserIdByEmail(principal.getName());
 		List<GoalAllView> list = service.getAllViewList(userId, "present",  categories, totalParticipants, achievement, query);
 
+		String dayOfWeek = "";
+		Date today = new Date();
+		Calendar cal = Calendar.getInstance();
+	    cal.setTime(today);
+	    int dayOfWeekNumber = cal.get(Calendar.DAY_OF_WEEK);
+	    switch(dayOfWeekNumber) {
+	    	case 1:
+	    		dayOfWeek = "일";
+	    		break;
+	    	case 2:
+	    		dayOfWeek = "월";
+	    		break;
+	    	case 3:
+	    		dayOfWeek = "화";
+	    		break;
+	    	case 4:
+	    		dayOfWeek = "수";
+	    		break;
+	    	case 5:
+	    		dayOfWeek = "목";
+	    		break;
+	    	case 6:
+	    		dayOfWeek = "금";
+	    		break;
+	    	case 7:
+	    		dayOfWeek = "토";
+	    		break;
+	    }
+	    
 		model.addAttribute("list", list);
+		model.addAttribute("today", today);
+		model.addAttribute("day", dayOfWeek);
 
 		return "user.mygoal.list";
 	}
@@ -266,26 +297,29 @@ public class MyGoalController {
 
 		GoalAllView goalAllView = service.getAllView(id);
 		model.addAttribute("g", goalAllView);
+		
+//		System.out.println(goalAllView.getBadEx());
 
 		return "user.mygoal.edit";
 	}
 
 	@PostMapping("{id}/edit")
-	public String edit(@PathVariable("id") int id, GoalAllView goalAllView) {
+	public String edit(@PathVariable("id") int id,
+						@RequestParam(name = "g-mImg", defaultValue = "/images/default-image2.png") String mainImage,
+						@RequestParam(name = "g-t") String title,
+						@RequestParam(name = "g-ex") String explanation) {
 
 		Goal origin = service.get(id);
 
-		String mainImage = goalAllView.getMainImage();
-		String title = goalAllView.getTitle();
-		String explanation = goalAllView.getExplanation();
+		if (mainImage != null && !origin.getMainImage().equals(mainImage)) {
+			String mainImagePath = "/upload/goal/" + id + "/" + mainImage;
+			origin.setMainImage(mainImagePath);
+		}
 
-		if (mainImage != null)
-			origin.setMainImage(mainImage);
-
-		if (title != null)
+		if (title != null && !title.equals(""))
 			origin.setTitle(title);
 
-		if (explanation != null)
+		if (explanation != null && !explanation.equals(""))
 			origin.setExplanation(explanation);
 
 		service.update(origin);

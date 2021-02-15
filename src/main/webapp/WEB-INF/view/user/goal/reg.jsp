@@ -1,15 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/user/goal/reg.css">
-<script src="/js/user/goal/reg.js"></script>
+<script type="module" src="/js/user/goal/reg.js"></script>
 
 <main id="main">
-	<form action="reg" method="post">
+	<form action="reg" method="post" enctype="multipart/form-data">
 		<section class="required">
 			<h1 class="d-none">Main 1 : 목표 기본 등록폼</h1>
 			<section class="required__image">
 				<h1 class="d-none">목표 메인 이미지</h1>
-				<div class="m-img" name="g-mImg">메인 이미지 등록 선택 / 드래그&드롭</div>
+				<div class="m-img g-mImg">
+					<input class="g-mImg-file" type="hidden" name="g-mImg" />
+					<span>메인 이미지 드래그&드롭</span>
+				</div>
 			</section>
 
 			<section class="required__content">
@@ -41,7 +45,6 @@
 							<option value="0">지인 그룹</option>
 							<option value="1">공개 그룹</option>
 						</select>
-						<input class="select-s total-participants" type="hidden" name="g-tp" value="1" min="1" max="1" />
 					</div>
 
 					<div class="cycle-container">
@@ -62,12 +65,6 @@
 							<input type="checkbox" name="d-id" value="7" checked />일
 						</div>
 					</div>
-
-					<div>
-						<label>인증 사진</label>
-						<input type="radio" />인증 사진 있음
-						<input type="radio" />인증 사진 없음
-					</div>
 				</div>
 			</section>
 		</section>
@@ -77,12 +74,18 @@
 			<div>
 				<div>
 					<h2 class="text-l">좋은 인증</h2>
-					<div class="m-img" name="g-gEx">좋은 인증 예시 사진</div>
+					<div class="m-img g-gEx">
+						<input class="g-gEx-hidden" type="hidden" name="g-gEx" />
+						<span>좋은 인증 예시 사진 드래그&드롭</span>
+					</div>
 				</div>
 
 				<div>
 					<h2 class="text-l">나쁜 인증</h2>
-					<div class="m-img" name="g-bEx">나쁜 인증 예시 사진</div>
+					<div class="m-img g-bEx">
+						<input class="g-bEx-hidden" type="hidden" name="g-bEx" />
+						<span>나쁜 인증 예시 사진 드래그&드롭</span>
+					</div>
 				</div>
 
 				<textarea class="description" name="g-exEx" rows="2" cols="30" placeholder="인증 기준과 인증 방법을 서술해주세요"></textarea>
@@ -91,7 +94,8 @@
 
 		<section class="buttons">
 			<h1 class="d-none">버튼</h1>
-			<a class="a-input-white-l" href="#">취소</a>
+			<a class="a-input-white-l" href="./reg/cancel?id=${gId}">취소</a>
+			<input class="goalId" type="hidden" name="g-id" value="${gId }" />
 			<input class="a-input-orange-l reg-button" type="submit" value="제 목표를 개설해주세요">
 		</section>
 	</form>

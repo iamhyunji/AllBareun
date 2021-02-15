@@ -16,33 +16,34 @@
 <main id="main">
 	<!-- Main -->
 
-	<div id="page-wrapper">
-		<section>
-			<div class="tab-part">
-				<div class="tab">
-					<a class="tab-button">디테일 인덱스</a> <a class="tab-button">이미지/동영상</a>
-				</div>
-				<div class="profile-box">
-					<c:forEach var="p" items="${profileInfo}">
-						<div class="profile">
-							<img class="profile-img" alt="" src="${p.profile}"> <span
-								class="profile-name">${p.name}</span>
-						</div>
-					</c:forEach>
-				</div>
-			</div>
-			<div class="major">
-				<div class="input-box">
-					<select class="select-name" name="name" id="">
-						<option value="">전체</option>
-						<c:forEach var="na" items="${nameInfo}">
-							<option value="${na}">${na}</option>
-						</c:forEach>
-					</select> <input class="start-date" type="date" value="" /> - <input
-						class="end-date" type="date" value="" /> <input
-						class="a-input-orange-s all-date-button" type="button"
-						value="전체 날짜" />
-				</div>
+          <div id="page-wrapper">
+            <section>
+              <div class="tab-part">
+                <div class="tab">
+                  <a href="../../${g}" class="tab-button">디테일 인덱스</a>
+                  <a href="./${g}" class="tab-button">이미지/동영상</a>
+                </div>
+                <div class="profile-box">
+               		<c:forEach var="p" items="${profileInfo}">
+               		<div class="profile">
+               		<img class="profile-img" alt="" src="${p.profile}">
+               		<span class="profile-name">${p.name}</span>
+               		</div>
+               		</c:forEach>
+               	</div>
+              </div>
+              <div class="major">
+                <div class="input-box">
+                  <select class="select-name" name="name" id="">
+                    <option value="">전체</option>
+                  <c:forEach var="na" items="${nameInfo}">
+                    <option value="${na}">${na}</option>
+                  </c:forEach>
+                  </select>
+                  <input class="start-date" type="date" value="" /> -
+                  <input class="end-date" type="date" value="" />
+                  <input class="a-input-orange-s all-date-button"  type="button" value="전체 날짜"/>
+                </div>
 
 			</div>
 

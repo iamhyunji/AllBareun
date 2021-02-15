@@ -4,7 +4,7 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/user/mypage/done/list.css">
-<script type="text/javascript" src="/js/user/mypage/done/list.js"></script>
+<script type="module" src="/js/user/mypage/done/list.js"></script>
 
 <main id="main">
 	<h1 class="d-none">Content Body > Main</h1>
@@ -72,7 +72,7 @@
 					</div>
 					<div class="goal__buttons">
 						<i class="fas fa-times del-button"><a href="list?del-goalId=${g.id }" style="display : none"></a></i>
-						<c:if test="${g.achievement < 5}">
+						<c:if test="${g.achievement < 80}">
 							<a class="a-input-white-s retry-button" href="${g.id }/retry">재도전</a>
 						</c:if>
 						<a class="a-input-orange-s" href="#">결과 리포트</a>

@@ -120,6 +120,17 @@ public class MyBatisGoalDao implements GoalDao {
 	}
 
 	@Override
+	public int makeGoal(int userId) {
+		
+		return mapper.makeGoal(userId);
+	}
+
+	@Override
+	public int delete(int goalId) {
+		
+		return mapper.delete(goalId);
+	}
+	
 	public Date getStartDate(int id) {
 		// TODO Auto-generated method stub
 		return mapper.getStartDate(id);
@@ -129,6 +140,12 @@ public class MyBatisGoalDao implements GoalDao {
 	public Date getEndDate(int id) {
 		// TODO Auto-generated method stub
 		return mapper.getEndDate(id);
+	}
+
+	@Override
+	public List<GoalAllView> getInvitedList(int userId, String[] categories, String query) {
+		
+		return mapper.getInvitedList(userId, categories, query);
 	}
 
 //	@Override

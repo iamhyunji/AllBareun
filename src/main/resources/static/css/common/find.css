@@ -78,10 +78,14 @@ main{
         margin-right: auto;
         
     }
-    .password{
+    .password-text{
         width: 200px;
         padding-bottom: 20px;
     }
     .color{
         color: coral;
+    }
+    #login-button{
+        margin-top: 100px;
+        margin-left: 150px;
     }

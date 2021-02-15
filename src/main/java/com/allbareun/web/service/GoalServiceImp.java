@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.allbareun.web.dao.CalendarDao;
 import com.allbareun.web.dao.CertificationDao;
 import com.allbareun.web.dao.CycleDao;
 import com.allbareun.web.dao.EvaluationDao;
@@ -17,6 +18,7 @@ import com.allbareun.web.dao.GoalDao;
 import com.allbareun.web.dao.GroupDao;
 import com.allbareun.web.dao.ParticipationDao;
 import com.allbareun.web.dao.UserDao;
+import com.allbareun.web.entity.Calendar;
 import com.allbareun.web.entity.CertDetailView;
 import com.allbareun.web.entity.Certification;
 import com.allbareun.web.entity.CertificationView;
@@ -52,20 +54,18 @@ public class GoalServiceImp implements GoalService {
 	@Autowired
 	private UserDao userDao;
 
-	
 	@Autowired
 	private EvaluationDao evaluationDao;
-	
+	@Autowired
+	private CalendarDao calendarDao;
 
-@Override
+	@Override
 	@Transactional
 	public int insert(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList) {
 
 		int result = 0;
-		goalDao.insert(goal);
-
-		Goal insertedGoal = goalDao.getLastInserted(goal.getUserId());
-		int goalId = insertedGoal.getId();
+		int goalId = goal.getId();
+		goalDao.update(goal);
 
 		// 카테고리
 		for (GoalCategory gc : gcList) {
@@ -122,7 +122,7 @@ public class GoalServiceImp implements GoalService {
 		}
 		// 그룹 : 익명 & 지인
 		else if (originTotalParticipants > 1) {
-			groupDao.update(goalId, userId);
+			groupDao.update(goalId, userId, false);
 			participationDao.delete(goalId, userId);
 		}
 
@@ -136,10 +136,11 @@ public class GoalServiceImp implements GoalService {
 
 	@Override
 	@Transactional
-	public int retryGoal(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList) {
+	public int retryGoal(Goal goal, List<GoalCategory> gcList, List<Cycle> cList, List<Group> gList, int newGoalId) {
 		int result = 0;
 
 		this.deleteGoalFromUser(goal, gcList, cList, gList);
+		goal.setId(newGoalId);
 		this.insert(goal, gcList, cList, gList);
 
 		result++;
@@ -148,9 +149,9 @@ public class GoalServiceImp implements GoalService {
 	}
 
 	@Override
-	public int delete(Goal goal) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int delete(int goalId) {
+
+		return goalDao.delete(goalId);
 	}
 
 	public GoalDetailView getDetailView(int id) {
@@ -162,17 +163,17 @@ public class GoalServiceImp implements GoalService {
 	public List<GoalView> getViewList(String categories, String startDate, String endDate, String days,
 			int totalParticipants, String query) {
 		// TODO Auto-generated method stub
-		return goalDao.getViewList(categories, startDate, endDate, days, totalParticipants, query,12,0);
+		return goalDao.getViewList(categories, startDate, endDate, days, totalParticipants, query,0,0);
 	}
 
 	@Override
 	public List<GoalView> getViewList(String categories, String startDate, String endDate, String days,
-			int totalParticipants, String query, int count,int offset) {
+			int totalParticipants, String query, int count, int offset) {
 		// TODO Auto-generated method stub
-		return goalDao.getViewList(categories, startDate, endDate, days, totalParticipants, query,count,offset);
+		return goalDao.getViewList(categories, startDate, endDate, days, totalParticipants, query, count, offset);
 
 	}
-	
+	@Override
 	public List<GoalAllParticipantsView> getProfile(int id) {
 		// TODO Auto-generated method stub
 		return goalDao.getProfile(id);
@@ -183,7 +184,6 @@ public class GoalServiceImp implements GoalService {
 		// TODO Auto-generated method stub
 		return goalDao.getAuthImages(id);
 	}
-//	////////////////////////////////////////////////
 
 	@Override
 	public Goal get(int id) {
@@ -208,27 +208,40 @@ public class GoalServiceImp implements GoalService {
 
 			String categoryStr = String.join(",", categoryArr);
 			gav.setCategories(categoryStr);
-			
+
 			// Set Participants Profile Image
 			String[] profilesSrc = gav.getProfiles().split(",");
 			String[] participants = gav.getParticipants().split(",");
-			
+
 			for (int j = 0; j < participants.length; j++) {
-				participants[j] = "<div class=\"profile\"><img class=\"profile__image\" src=\"" + profilesSrc[j] + "\" />"
-						+ "<span class=\"profile__info\">" + participants[j] + "</span></div>";
+				participants[j] = "<div class=\"profile\"><img class=\"profile__image\" src=\"" + profilesSrc[j]
+						+ "\" />" + "<span class=\"profile__info\">" + participants[j] + "</span></div>";
 			}
 
 			String profilesStr = String.join("", participants);
 			gav.setParticipants(profilesStr);
 		}
-		
+
 		return list;
 	}
 
 	@Override
 	public GoalAllView getAllView(int id) {
+		GoalAllView gav = goalDao.getAllView(id);
 
-		return goalDao.getAllView(id);
+		// Set Participants Profile Image
+		String[] profilesSrc = gav.getProfiles().split(",");
+		String[] participants = gav.getParticipants().split(",");
+
+		for (int j = 0; j < participants.length; j++) {
+			participants[j] = "<div class=\"profile\"><img class=\"profile__image\" src=\"" + profilesSrc[j] + "\" />"
+					+ "<span class=\"profile__info\">" + participants[j] + "</span></div>";
+		}
+
+		String profilesStr = String.join("", participants);
+		gav.setParticipants(profilesStr);
+
+		return gav;
 	}
 
 	@Override
@@ -257,7 +270,7 @@ public class GoalServiceImp implements GoalService {
 		int[] id = Arrays.stream(idStr).mapToInt(Integer::parseInt).toArray();
 		for (int i = 0; i < id.length; i++) {
 			User user = userDao.getById(id[i]);
-			//String profile = user.getProfile();
+			// String profile = user.getProfile();
 			list.add(user);
 		}
 		return list;
@@ -351,7 +364,7 @@ public class GoalServiceImp implements GoalService {
 	@Override
 	public List<EvaluationView> getDoneLineChart(int id, int uid) {
 		// TODO Auto-generated method stub
-		return evaluationDao.getDoneLineChart(id,uid);
+		return evaluationDao.getDoneLineChart(id, uid);
 	}
 
 //	@Override
@@ -367,6 +380,29 @@ public class GoalServiceImp implements GoalService {
 	}
 
 	@Override
+	@Transactional
+	public int makeGoal(int userId) {
+		goalDao.makeGoal(userId);
+		Goal insertedGoal = goalDao.getLastInserted(userId);
+
+		return insertedGoal.getId();
+	}
+
+	@Override
+	public boolean isValidUserByEamil(String email) {
+		boolean valid = false;
+		User user = userDao.getUserByEamil(email);
+		if(user != null)
+			valid = true;
+		return valid;
+	}
+
+	@Override
+	public User getUser(int id) {
+		
+		return userDao.getuserById(id);
+	}
+	
 	public List<CertificationView> getVideoImage(int id) {
 		// TODO Auto-generated method stub
 		return certificationDao.getVideoImage(id);
@@ -412,5 +448,55 @@ public class GoalServiceImp implements GoalService {
 	 * @Override public List<EvaluationView> getMyGoalLineChart(int id) { // TODO
 	 * Auto-generated method stub return evaluationDao.getMyGoalLineChart(id); }
 	 */
+	public List<GoalAllView> getInvitedList(int userId, String[] categories, String query) {
+		List<GoalAllView> list = goalDao.getInvitedList(userId, categories, query);
 
+		// Set Category Color & Set Participants Profile Image
+		for (GoalAllView gav : list) {
+			// Set Category Color
+			String[] colors = gav.getCategoriesColor().split(",");
+			String[] categoryArr = gav.getCategories().split(",");
+
+			for (int j = 0; j < categoryArr.length; j++)
+				categoryArr[j] = "<span style=\"color:" + colors[j] + "; font-weight:bold;\">" + categoryArr[j]
+						+ "</span>";
+
+			String categoryStr = String.join(",", categoryArr);
+			gav.setCategories(categoryStr);
+
+			// Set Participants Profile Image
+			String[] profilesSrc = gav.getProfiles().split(",");
+			String[] participants = gav.getParticipants().split(",");
+
+			for (int j = 0; j < participants.length; j++) {
+				participants[j] = "<div class=\"profile\"><img class=\"profile__image\" src=\"" + profilesSrc[j]
+						+ "\" />" + "<span class=\"profile__info\">" + participants[j] + "</span></div>";
+			}
+
+			String profilesStr = String.join("", participants);
+			gav.setParticipants(profilesStr);
+		}
+
+		return list;
+	}
+
+	@Override
+	public int rejectGoal(int goalId, int userId) {
+		
+		return groupDao.delete(goalId, userId);
+	}
+
+	@Override
+	public int acceptGoal(int challengeGoalId, int userId) {
+		
+		return groupDao.update(challengeGoalId, userId, true);
+	}
+
+	@Override
+	public List<Calendar> getByUserId(Calendar calendar) {
+		
+		return calendarDao.getByUserId(calendar);
+	}
+
+	
 }
