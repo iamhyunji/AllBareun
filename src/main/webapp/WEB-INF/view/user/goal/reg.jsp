@@ -24,7 +24,7 @@
 
 					<div>
 						<label>기간</label>
-						<span>4주</span>
+						<span></span>
 						<input type="date" name="g-sd" required="required" /> - <input type="date" name="g-ed" required="required" />
 					</div>
 
