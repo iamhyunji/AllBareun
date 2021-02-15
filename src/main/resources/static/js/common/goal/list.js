@@ -20,9 +20,13 @@ window.addEventListener("load", () => {
 
     //현재 화면 높이 값
     let clientHeight = document.documentElement.clientHeight;
-
+	console.log("scrollHeight:"+scrollHeight);
+	console.log("scrollTop:"+scrollTop);
+	console.log("clientHeight:"+clientHeight);
+	
     if (scrollTop + clientHeight == scrollHeight) {
       //스크롤이 마지막일때
+		console.log("마지막");
       scrollCount++;
       render(scrollCount);
     }
