@@ -65,8 +65,8 @@
 			cross join (select 0 as a union all select 1 union all select 2 union all select 3 union all select 4 union all select 5 union all select 6 union all select 7 union all select 8 union all select 9) as c
 			cross join (select 0 as a union all select 1 union all select 2 union all select 3 union all select 4 union all select 5 union all select 6 union all select 7 union all select 8 union all select 9) as d
 			) a
-			where a.Date between #{param2} and sysdate()) aa)aaa
-			where WEEKDAY(aaa.Date) in (select dayId from Cycle where goalId = #{param3})
+			where a.Date between #{param2} and #{param3}) aa)aaa
+			where WEEKDAY(aaa.Date) in (select dayId from Cycle where goalId = #{param4})
 			group by month(aaa.Date)
 			order by month(aaa.Date);
 		

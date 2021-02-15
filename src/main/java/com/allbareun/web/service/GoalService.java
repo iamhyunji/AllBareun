@@ -68,7 +68,7 @@ public interface GoalService {
 	Date getEndDate(int id);
 	//List<EvaluationView> getDoneBarChart(String startDate);
 	Integer getVarChartCount(int id, int uid);
-	List<EvaluationView> getDoneBarChart(int barChartCount, String startDate, int id);
+	List<EvaluationView> getDoneBarChart(int barChartCount, String startDate, String endDate, int id);
 	/* List<EvaluationView> getMyGoalLineChart(int id); */
 	int getReportBarChartCount(int uid);
 	//List<CertificationView> getVideoImage(int id, int userId);

@@ -106,7 +106,7 @@ let lineSum = new Array();
         type: 'bar', data: {
             labels: month,
             datasets: [{
-                label: '데이터 표시 색', data: [12, 19, 3, 5, 2, 3,5],
+                label: '데이터 표시 색', data: [0],
                 backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)',
                     'rgba(255, 206, 86, 0.2)',
                     'rgba(75, 192, 192, 0.2)',

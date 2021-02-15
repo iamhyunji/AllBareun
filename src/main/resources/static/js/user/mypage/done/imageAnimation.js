@@ -13,17 +13,17 @@ window.addEventListener("load", function() {
 		.then((json) => {
 			profileLoc.innerHTML = "";
 
-			let date = new Array();
+			let authImage = new Array();
 			let partUser = new Array();
 			for (let n of json) {
 
-				date.push(n.authImage);
+				authImage.push(n.authImage);
 				partUser.push(n.name);
-				
+
 				/*console.log(partUser);
 				console.log(date);*/
-				
-				console.log(json)
+
+				//console.log(json)
 			}
 
 			fetch(`/api/mypage/profile/${id}`)
@@ -40,42 +40,40 @@ window.addEventListener("load", function() {
 						userName.push(a.userName);
 
 					}
-					
-					
-					console.log(json2);
+
+
+					//console.log(json2);
 					/*console.log(profile);
 					console.log(userName);
 					*/
+					
+					let imgArrs = new Array(profile.length);  // 2차원 배열 [사람index][이미지갯수]
 					for (var x = 0; x < profile.length; x++) {
 						let tr = ``;
-							tr = `<img class="w30-radius" src=${profile[x]} /> <span>${userName[x]}</span>`;
-							profileLoc.insertAdjacentHTML("beforeend", tr);
+						tr = `<img class="w30-radius" src=${profile[x]} /> <span>${userName[x]}</span>`;
+						profileLoc.insertAdjacentHTML("beforeend", tr);
+						
+						let arr = [];		// 해당 회원이 등록한 인증 이미지 목록
 						for (var y = 0; y < partUser.length; y++) {
-								
+							console.log(`userName[${x}]=${userName[x]} / partUser[${y}]=${partUser[y]}`);
 							if (userName[x] == partUser[y]) {
-								let arr = new Array();
 								let td = ``;
-								td = `<img class="w50-radius" src=${date[y]} />`;
-								arr = date[y];
+								td = `<img class="w50-radius" src=${authImage[y]} />`;
 
 								profileLoc.insertAdjacentHTML("beforeend", td);
-
-								let imgArrs = [];
-									imgArrs[x] = arr;
-								let videoPlayers = [];
-								for (let i = 0; i < imgArrs.length; i++) {
-									videoPlayers[i] = new VideoPlayer(imgArrs[i], i, videoFrame, imgTag, stopIcon);
-
-								}
-
-
+								console.log("-----------"+userName[x]+"-------------------");
+								console.log(authImage);
+								arr.push(authImage[y]);
 							}
-							
-						}
-
+						}						
+						imgArrs[x] = arr;						
+					}
+					
+					let videoPlayers = [];
+					for (let i = 0; i < imgArrs.length; i++) {
+						videoPlayers.push(new VideoPlayer(imgArrs[i], i, videoFrame, imgTag, stopIcon));
 
 					}
-					console.log(profile.length);
 
 
 				});

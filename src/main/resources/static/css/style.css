@@ -34,13 +34,16 @@ html {
 
 .w30{
 	width: 30px;
+	height: 30px;
 }
 .w50-radius{
+	height: 50px;
 	width: 50px;
 	border-radius: 50%;
 }
 
 .w30-radius{
+	height: 30px;
 	width: 30px;
 	border-radius: 50%;
 }
