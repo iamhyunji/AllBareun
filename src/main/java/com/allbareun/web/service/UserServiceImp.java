@@ -27,9 +27,9 @@ public class UserServiceImp implements UserService{
 	}
 
 	@Override
-	public String getEmail(String name, String phone, String mail) {
+	public String getEmail(String name, String phone) {
 		// TODO Auto-generated method stub
-		return userDao.getEmail(name, phone, mail);
+		return userDao.getEmail(name, phone);
 	}
 
 	@Override
