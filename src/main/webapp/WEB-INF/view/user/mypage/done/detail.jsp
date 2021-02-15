@@ -122,6 +122,11 @@
 
 
 	</div>
+	
+		 <c:forEach var="e" items="${lineChart}">
+		${e.month};
+		${e.lineSum };
+	</c:forEach>
 
 	<div class="aaa">
 		<c:forEach var="a" items="${a}">
@@ -149,6 +154,8 @@
 			</div>
 		</div>
 	</div>
+	
+	
 
 	<%-- 	<c:forEach items="${videoImage}" var="e">
 		<div class="arrayValue">${e}</div>

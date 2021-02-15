@@ -161,11 +161,12 @@ public class MyPageController<E> {
 		String email = principal.getName(); // 로그인 인증 정보가 갖고와짐
 		int uid = service.getinfo(email);
 		Date beforStartDate = service.getStartDate(id);
-		Date endDate = service.getEndDate(id);
+		Date beforEndDate = service.getEndDate(id);
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String startDate = simpleDateFormat.format(beforStartDate);
+		String endDate = simpleDateFormat.format(beforEndDate);
 		System.out.println(startDate);
-		// System.out.println(startDate);
+		 System.out.println(endDate);
 
 		// System.out.println(lineChart);
 
@@ -175,7 +176,7 @@ public class MyPageController<E> {
 		 */
 
 		// System.out.println(barChartCount.size());
-		List<EvaluationView> barChartTotal = service.getDoneBarChart(barChartCount, startDate, id);
+		List<EvaluationView> barChartTotal = service.getDoneBarChart(barChartCount, startDate,endDate, id);
 
 		System.out.println(barChartCount);
 		List<EvaluationView> lineChart = service.getDoneLineChart(id, uid);

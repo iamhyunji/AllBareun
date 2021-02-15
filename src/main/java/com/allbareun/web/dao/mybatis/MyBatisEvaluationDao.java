@@ -54,9 +54,9 @@ public class MyBatisEvaluationDao implements EvaluationDao{
 	}
 
 	@Override
-	public List<EvaluationView> getDoneBarChart(int varChartCount, String startDate, int id) {
+	public List<EvaluationView> getDoneBarChart(int barChartCount, String startDate, String endDate, int id) {
 		// TODO Auto-generated method stub
-		return mapper.getDoneBarChart(varChartCount,startDate,id);
+		return mapper.getDoneBarChart(barChartCount,startDate,endDate,id);
 	}
 
 	@Override
