@@ -154,9 +154,8 @@ public class HomeController{
 	public String findIdPage(
 			@RequestParam(name = "name") String name,
 			@RequestParam(name = "phone")String phone,
-			@RequestParam(name = "mail")String mail,
 			Model model) {
-		String email = service.getEmail(name, phone,mail);
+		String email = service.getEmail(name, phone);
 		model.addAttribute("name",name);
 		model.addAttribute("email", email);
 
