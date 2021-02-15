@@ -18,8 +18,9 @@ header {
  }
  
  header > nav {
-    width:600px;
+    width:450px;
     height:100%;
+    margin-right: 25px;
  }
  
  header .h-list {
