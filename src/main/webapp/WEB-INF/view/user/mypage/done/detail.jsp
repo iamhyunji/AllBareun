@@ -122,17 +122,8 @@
 
 
 	</div>
-	
-		 <c:forEach var="e" items="${lineChart}">
-		${e.month};
-		${e.lineSum };
-	</c:forEach>
 
-	<div class="aaa">
-		<c:forEach var="a" items="${a}">
-		"${a}",
-	</c:forEach>
-	</div>
+
 
 	<div class="detail-result2">
 		<h2>이미지</h2>
