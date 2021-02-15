@@ -11,7 +11,6 @@
 	<nav>
 		<h1 class="d-none">Header Navigation Bar</h1>
 		<ul class="h-list">
-			<li><a href="#">서비스 소개</a></li>
 			<li><a href="/goal/list">목표</a></li>
 			<li><a href="/goal/reg">개설</a></li>
 			<li><a href="/mygoal/list">내 목표</a></li>
