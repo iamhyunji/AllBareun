@@ -95,12 +95,12 @@ function render(scrollCount = 0) {
           let endDate = getFormatDate(new Date(n.endDate));
           tr += `
               <li class="goal-list">`;
-          if (n.totalParticipants <= n.nowParticipantsCount) tr += `<img src="${n.mainImage}" alt="" />`;
+          if (n.totalParticipants <= n.nowParticipantsCount) tr += `<a href="${n.id}" class="image"><img src="${n.mainImage}" alt="" /></a>`;
           else tr += `<a href="${n.id}" class="image"><img src="${n.mainImage}" alt="" /></a>`;
 
           tr += `<div class="para">
               <div class="goal-title">`;
-          if (n.totalParticipants <= n.nowParticipantsCount) tr += `<h2 class="title">${n.title}</h2>`;
+          if (n.totalParticipants <= n.nowParticipantsCount) tr += `<a href="${n.id}"><h2 class="title">${n.title}</h2></a>`;
           else tr += `<a href="${n.id}"><h2 class="title">${n.title}</h2></a>`;
 
           tr += `<span>${n.categories}</span>

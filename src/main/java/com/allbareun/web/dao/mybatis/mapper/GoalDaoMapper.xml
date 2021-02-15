@@ -132,12 +132,14 @@
 		<if test="query != null and query !=''"> 
 		and title like '%${query}%'
 		</if>
+		order by startDate desc 
 	<if test="count != null and count !=0">
 		limit #{count} 
 	 </if>
 	<if test="offset != null and offset !=0">
 		offset #{offset}
-	 </if>		
+	 </if>
+	 		
    </select>
 
 
