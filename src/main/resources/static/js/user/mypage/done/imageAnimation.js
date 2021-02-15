@@ -55,8 +55,18 @@ window.addEventListener("load", function() {
 						
 						let arr = [];		// 해당 회원이 등록한 인증 이미지 목록
 						for (var y = 0; y < partUser.length; y++) {
+
+							/*console.log("-----------profile----------------");
+							console.log(profile);
+							console.log("-------------partUser--------------");
+							console.log(partUser);
+							console.log("----------authImage-----------------");
+							console.log(authImage);
+							console.log("------------userName---------------");
+							console.log(userName);*/
 							console.log(`userName[${x}]=${userName[x]} / partUser[${y}]=${partUser[y]}`);
 							if (userName[x] == partUser[y]) {
+								
 								let td = ``;
 								td = `<img class="w50-radius" src=${authImage[y]} />`;
 
@@ -65,15 +75,16 @@ window.addEventListener("load", function() {
 								console.log(authImage);
 								arr.push(authImage[y]);
 							}
-						}						
-						imgArrs[x] = arr;						
+						}
+						
+						imgArrs[x] = arr;
+						
 					}
-					
-					let videoPlayers = [];
-					for (let i = 0; i < imgArrs.length; i++) {
-						videoPlayers.push(new VideoPlayer(imgArrs[i], i, videoFrame, imgTag, stopIcon));
+								let videoPlayers = [];
+								for (let i = 0; i < imgArrs.length; i++) {
+									videoPlayers.push(new VideoPlayer(imgArrs[i], i, videoFrame, imgTag, stopIcon));
 
-					}
+								}
 
 
 				});

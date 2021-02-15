@@ -136,13 +136,13 @@
 
 	<div class="detail-result2">
 		<h2>이미지</h2>
+			
 		<div class="video-section">
-		
+	
 			<div class="video-frame">
-			<div class="profile"></div>
+		 	<div class="profile"></div>
 				<img class="video-img" src="" alt="" />
 				<div class="video-stop"></div>
-				
 			</div>
 			<div class="video-frame">
 				<img class="video-img" src="" alt="" />
