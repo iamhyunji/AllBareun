@@ -324,13 +324,13 @@ class ModalBox {
 				answer = { "button": "OK", totalParticipants, participants };
 				screen.remove();
 				frame.remove();
-				resolve(args);
+				resolve(answer);
 			};
 			cancelButton.onclick = () => {
 				answer = { "button": "CANCEL", totalParticipants: 0, participants: null };
 				screen.remove();
 				frame.remove();
-				resolve(args);
+				resolve(answer);
 			};
 		});
 
