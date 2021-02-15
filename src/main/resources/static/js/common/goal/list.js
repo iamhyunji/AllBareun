@@ -24,7 +24,7 @@ window.addEventListener("load", () => {
 	console.log("scrollTop:"+scrollTop);
 	console.log("clientHeight:"+clientHeight);
 	
-    if (scrollTop + clientHeight >= scrollHeight) {
+    if (scrollTop + clientHeight >= scrollHeight - 3) {
       //스크롤이 마지막일때
 		console.log("마지막");
       scrollCount++;
