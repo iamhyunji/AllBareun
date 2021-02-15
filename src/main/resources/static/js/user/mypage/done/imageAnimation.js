@@ -50,30 +50,41 @@ window.addEventListener("load", function() {
 					let imgArrs = new Array(profile.length);  // 2차원 배열 [사람index][이미지갯수]
 					for (var x = 0; x < profile.length; x++) {
 						let tr = ``;
-						tr = `<img class="w30-radius" src=${profile[x]} /> <span>${userName[x]}</span>`;
+						tr = `<img class="w30-radius" src=${profile[x]} /> <span style="padding-right: 310px;">${userName[x]}</span>`;
 						profileLoc.insertAdjacentHTML("beforeend", tr);
 						
 						let arr = [];		// 해당 회원이 등록한 인증 이미지 목록
 						for (var y = 0; y < partUser.length; y++) {
+
+							/*console.log("-----------profile----------------");
+							console.log(profile);
+							console.log("-------------partUser--------------");
+							console.log(partUser);
+							console.log("----------authImage-----------------");
+							console.log(authImage);
+							console.log("------------userName---------------");
+							console.log(userName);*/
 							console.log(`userName[${x}]=${userName[x]} / partUser[${y}]=${partUser[y]}`);
 							if (userName[x] == partUser[y]) {
-								let td = ``;
+								
+							/*	let td = ``;
 								td = `<img class="w50-radius" src=${authImage[y]} />`;
 
-								profileLoc.insertAdjacentHTML("beforeend", td);
+								profileLoc.insertAdjacentHTML("beforeend", td);*/
 								console.log("-----------"+userName[x]+"-------------------");
 								console.log(authImage);
 								arr.push(authImage[y]);
 							}
-						}						
-						imgArrs[x] = arr;						
+						}
+						
+						imgArrs[x] = arr;
+						
 					}
-					
-					let videoPlayers = [];
-					for (let i = 0; i < imgArrs.length; i++) {
-						videoPlayers.push(new VideoPlayer(imgArrs[i], i, videoFrame, imgTag, stopIcon));
+								let videoPlayers = [];
+								for (let i = 0; i < imgArrs.length; i++) {
+									videoPlayers.push(new VideoPlayer(imgArrs[i], i, videoFrame, imgTag, stopIcon));
 
-					}
+								}
 
 
 				});
