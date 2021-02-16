@@ -89,12 +89,6 @@ public class MyBatisCertificationDao implements CertificationDao {
 
 
 
-	@Override
-	public Integer getVarChartCount(int id, int uid) {
-		// TODO Auto-generated method stub
-		return  mapper.getVarChartCount(id,uid);
-	}
-
 
 
 	@Override

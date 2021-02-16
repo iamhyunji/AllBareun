@@ -165,41 +165,18 @@ public class MyPageController<E> {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String startDate = simpleDateFormat.format(beforStartDate);
 		String endDate = simpleDateFormat.format(beforEndDate);
-		System.out.println(startDate);
-		 System.out.println(endDate);
 
-		// System.out.println(lineChart);
+		List<EvaluationView> barChartCount = service.getVarChartCount(id, uid);
+		for(int i=0; i<barChartCount.size(); i++) {
 
-		int barChartCount = service.getVarChartCount(id, uid);
-		/*
-		 * if (barChartCount == null) { barChartCount = 0; }
-		 */
+			List<EvaluationView> barChartTotal = service.getDoneBar(barChartCount.get(i).getCount(), startDate,endDate, id);
+		}
 
-		// System.out.println(barChartCount.size());
-		List<EvaluationView> barChartTotal = service.getDoneBarChart(barChartCount, startDate,endDate, id);
-
-		System.out.println(barChartCount);
 		List<EvaluationView> lineChart = service.getDoneLineChart(id, uid);
 
 		GoalDetailView detail = service.getDetailView(id);
 		List<GoalAllParticipantsView> profile = service.getProfile(id);
-		// List<CertificationView> videoImage = service.getVideoImage(id);
-		
-		
 	
-		for (int i = 0; i < profile.size(); i++) {
-			// System.out.println(profile.get(i).getUserName());
-			
-			/*
-			 * List<CertificationView> videoImage = service.getVideoImage(id,
-			 * profile.get(i).getUserId()); String[] a = new String[videoImage.size()]; for
-			 * (int j = 0; j < videoImage.size(); j++) {
-			 * System.out.println(videoImage.get(j).getName() +
-			 * videoImage.get(j).getAuthImage()); a[j] = videoImage.get(j).getAuthImage();
-			 * model.addAttribute("a", a); }
-			 */
-			
-		}
 		
 		List<CertificationView> videoImage = service.getVideoImage(id);
 
@@ -212,13 +189,8 @@ public class MyPageController<E> {
 		model.addAttribute("detail", detail);
 		model.addAttribute("profile", profile);
 		model.addAttribute("lineChart", lineChart);
-		// model.addAttribute("videoImage", videoImage);
-		model.addAttribute("barChartTotal", barChartTotal);
+		//model.addAttribute("barChartTotal", barChartTotal);
 
-		// model.addAttribute("varChartCount", varChartCount);
-		/*
-		 * System.out.println(barChartTotal); System.out.println(barChartCount);
-		 */
 		return "user.mypage.done.detail";
 	}
 
@@ -231,17 +203,10 @@ public class MyPageController<E> {
 		List<EvaluationView> categoryChart = service.categoryChart(uid);
 
 		int reportBarChartCount = service.getReportBarChartCount(uid);
-		/*
-		 * if (reportBarChartCount == null) { reportBarChartCount = 0; }
-		 */
+	
 		model.addAttribute("reportBarChartCount", reportBarChartCount);
 		System.out.println(reportBarChartCount);
 
-//		 SELECT GC.goalCategoryTypeId, GCT.title,
-//	       sum(answer1+answer2+answer3)
-//	  FROM Evaluation E left join GoalCategory GC on E.goalId = GC.goalId
-//	  left join GoalCategoryType GCT on GCT.id = GC.goalCategoryTypeId
-//	 GROUP BY GC.goalCategoryTypeId;
 
 		model.addAttribute("evaluation", evaluation);
 		model.addAttribute("categoryChart", categoryChart);

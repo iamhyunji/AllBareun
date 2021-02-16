@@ -367,11 +367,7 @@ public class GoalServiceImp implements GoalService {
 		return evaluationDao.getDoneLineChart(id, uid);
 	}
 
-//	@Override
-//	public List<EvaluationView> getDoneBarChart(int id, int uid) {
-//		// TODO Auto-generated method stub
-//		return evaluationDao.getDoneBarChart(id,uid);
-//	}
+
 
 	@Override
 	public List<String> getDays(int goalId) {
@@ -420,22 +416,18 @@ public class GoalServiceImp implements GoalService {
 		return  goalDao.getEndDate(id);
 	}
 
-//	@Override
-//	public List<EvaluationView> getDoneBarChart(String startDate) {
-//		// TODO Auto-generated method stub
-//		return evaluationDao.getDoneBarChart(startDate);
-//	}
+
 
 	@Override
-	public Integer getVarChartCount(int id, int uid) {
+	public List<EvaluationView> getVarChartCount(int id, int uid) {
 		// TODO Auto-generated method stub
-		return certificationDao.getVarChartCount(id,uid);
+		return evaluationDao.getVarChartCount(id,uid);
 	}
 
 	@Override
-	public List<EvaluationView> getDoneBarChart(int barChartCount, String startDate, String endDate, int id) {
+	public List<EvaluationView> getDoneBarChart(int barChartCount, String startDate, String endDate, int id,int month) {
 		// TODO Auto-generated method stub
-		return evaluationDao.getDoneBarChart(barChartCount,startDate,endDate,id);
+		return evaluationDao.getDoneBarChart(barChartCount,startDate,endDate,id,month);
 	}
 
 	@Override
@@ -496,6 +488,12 @@ public class GoalServiceImp implements GoalService {
 	public List<Calendar> getByUserId(Calendar calendar) {
 		
 		return calendarDao.getByUserId(calendar);
+	}
+
+	@Override
+	public List<EvaluationView> getDoneBar(int barChartCount, String startDate, String endDate, int id) {
+		// TODO Auto-generated method stub
+		return evaluationDao.getDoneBar(barChartCount,startDate,endDate,id);
 	}
 
 	

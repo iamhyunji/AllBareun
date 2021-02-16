@@ -26,7 +26,7 @@
 <link href="/css/user/mypage/report/result.css" type="text/css"
 	rel="stylesheet">
 <!-- <script src="/js/user/mypage/report/result.js"></script> -->
-
+<!-- <script src="/js/user/mypage/report/result.js"></script> -->
 <!----------------------------- <body> --------------------------------------- -->
 
 <!----------------------------- main --------------------------------------- -->
@@ -106,7 +106,7 @@ let lineSum = new Array();
         type: 'bar', data: {
             labels: month,
             datasets: [{
-                label: '데이터 표시 색', data: [0],
+                label: '데이터 표시 색', data: [88,89,78],
                 backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)',
                     'rgba(255, 206, 86, 0.2)',
                     'rgba(75, 192, 192, 0.2)',

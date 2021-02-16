@@ -32,7 +32,7 @@ public interface CertificationDao {
 	//List<CertificationView> getVideoImage(int id);
 
 
-	Integer getVarChartCount(int id, int uid);
+	
 
 
 	int getReportBarChartCount(int uid);
