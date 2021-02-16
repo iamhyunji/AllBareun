@@ -126,7 +126,7 @@
 
 
 	<div class="detail-result2">
-		<h2>이미지</h2>
+		<a href="/mygoal/cert/list/2"><h2>이미지</h2></a>
 			<div class="profile"></div>
 		<div class="video-section">
 	

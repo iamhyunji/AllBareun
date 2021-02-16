@@ -22,7 +22,7 @@
                   <a href="/mygoal/cert/list/${g}" class="tab-button">이미지</a>
                 </div>
               </div>
-              <fmt:timeZone value="KST">
+             <%--  <fmt:timeZone value="KST"> --%>
               <div class="major"></div>
               <div class="goal-container">
                 <img src="${d.authImage}" alt="" class="l-img" />
@@ -39,7 +39,7 @@
 	                 <span class="name">${d.name }</span>
 	                </div>
                  </div>
-                 </fmt:timeZone>
+                 <%-- </fmt:timeZone> --%>
                 <div class="answer-container">
                   <ul>
                     <div class="answer">
