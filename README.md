@@ -6,3 +6,15 @@
 
 ## 기획 배경
 <div align="center"><img src="/src/main/resources/static/images/readme/기획 배경.png"></div>
+
+## 사용 기술
+
+## E-R Diagram
+
+## 실행 화면
+
+## 개발자
+
+## Contribution
+
+## Download
