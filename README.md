@@ -51,28 +51,34 @@
 [![findPwd](https://github.com/cyon13/AllBareun/raw/master/src/main/resources/static/images/video/updatePwd.gif)](https://github.com/cyon13/AllBareun/blob/master/src/main/resources/static/images/video/updatePwd.gif)
 
 ✅ [5] 인덱스 페이지 : full calendar 라이브러리와 p5.js 라이브러리를 이용해서 달력기능과 눈 효과를 구현해서 구성했습니다.
-
-![달력](C:\Users\Bonyul\Dropbox\typoraImg\README\달력.gif)
+![달력](https://user-images.githubusercontent.com/35316595/108858471-89100100-762f-11eb-88a2-4c6dcb4082f5.gif)
 
 ✅ [6] 목표 개설 : 각자가 원하는 목표를 개설할 수 있는 기능으로, **혼자서 목표 진행, 친구를 초대해서 진행, 목표를 공개해서 다른 사람들과 함께 진행**할 수 있도록 구현하였습니다. 
 
-![목표개설](C:\Users\Bonyul\Dropbox\typoraImg\README\목표개설.gif)
+![목표개설](https://user-images.githubusercontent.com/35316595/108858794-eb690180-762f-11eb-8f9a-a3ad1539aba3.gif)
+
 
 ✅ [7] 목표 탭 : 공개된 목표를 볼 수 있는 곳으로 스크롤에 따라 추가적으로 목표를 볼 수 있으며 검색 기능을 통해 원하는 목표를 찾아서 선택할 수 있습니다.
 
- ![전체목표-검색](C:\Users\Bonyul\Dropbox\typoraImg\README\전체목표-검색.gif)
+ ![전체목표검색](https://user-images.githubusercontent.com/35316595/108859065-308d3380-7630-11eb-9190-1c5ab226a837.gif)
+
 
 ✅ [8] 목표 참가 : 개설된 목표에 참가할 수 있습니다. 참가 되면 내 목표 탭에서 목표를 확인할 수 있습니다.
 
-![목표참가](C:\Users\Bonyul\Dropbox\typoraImg\README\목표참가.gif)
+![목표참가](https://user-images.githubusercontent.com/35316595/108856661-a04def00-762d-11eb-9833-b4c1c2a21b5a.gif)
+
 
 ✅ [9] 목표 인증  : 목표 설정에 맞게 인증하는 날짜에 따라서 목표를 사진과 함께 인증할 수 있습니다. 드래그 앤 드롭으로 사진을 올릴 수 있으며 사진 수정이 가능합니다. 인증이 되면 각 목표의 디테일페이지에서 인증된 결과를 확인할 수 있습니다.
 
-![인증](C:\Users\Bonyul\Dropbox\typoraImg\README\인증.gif)
+![인증](https://user-images.githubusercontent.com/35316595/108856599-94fac380-762d-11eb-8ba7-413789860bd1.gif)
 
-![인증디테일](C:\Users\Bonyul\Dropbox\typoraImg\README\인증디테일.gif)
 
-✅ [10] 완료된 목표 : 목표가 다 끝나면 달성도(80% 기준)에 따라 재도전을 선택할 수 있고 목표 기간동안 인증했던 내용들을 사진으로 볼 수 있으며 각자가 목표 기간동안 올려왔던 사진들을 동영상으로 볼 수 있도록 구현하였습니다. chart.js 를 이용하여 목표 달성도와 평가지 데이터를 기반으로 결과를 요약하여 나타내었습니다. ![완료된목표](C:\Users\Bonyul\Dropbox\typoraImg\README\완료된목표.gif)
+![인증디테일](https://user-images.githubusercontent.com/35316595/108856535-844a4d80-762d-11eb-86e4-887e59339201.gif)
+
+
+✅ [10] 완료된 목표 : 목표가 다 끝나면 달성도(80% 기준)에 따라 재도전을 선택할 수 있고 목표 기간동안 인증했던 내용들을 사진으로 볼 수 있으며 각자가 목표 기간동안 올려왔던 사진들을 동영상으로 볼 수 있도록 구현하였습니다. chart.js 를 이용하여 목표 달성도와 평가지 데이터를 기반으로 결과를 요약하여 나타내었습니다.
+![완료된목표](https://user-images.githubusercontent.com/35316595/108859292-6b8f6700-7630-11eb-94da-1a66f21cb57a.gif)
+
 
 ## 💻 개발자
 
