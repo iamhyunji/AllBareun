@@ -1,7 +1,7 @@
 # AllBareun
-
-![logo](src/main/resources/static/images/readme/all.png)
-
+<p align="center">
+<img width="400px" src="src/main/resources/static/images/readme/all.png"/>
+</p>
 
 ## 📑 프로젝트 소개
 
