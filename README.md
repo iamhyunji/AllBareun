@@ -1,6 +1,6 @@
 # AllBareun
 
-![logo](https://github.com/Joong-eon/AllBareun/raw/master/src/main/resources/static/images/all.png)
+![logo](src/main/resources/static/images/readme/all.png)
 
 
 ## 📑 프로젝트 소개
@@ -22,17 +22,17 @@
 
 ## 📅 개발 기간
 
-![프로젝트일정(올바른생각)](https://github.com/cyon13/AllBareun/blob/master/src/main/resources/static/images/2차 프로젝트 일정.png)
+![프로젝트일정(올바른생각)](src/main/resources/static/images/readme/schedule.png)
 
 
 ## 📊 E-R Diagram
 
-![E-R Diagram](https://github.com/cyon13/AllBareun/blob/master/src/main/resources/static/images/ERwin.png)
+![E-R Diagram](src/main/resources/static/images/readme/ERwin.png)
 
 
 ## 📖 Issues 관리
 
-[![img](https://github.com/cyon13/AllBareun/raw/master/src/main/resources/static/images/%EC%9D%B4%EC%8A%88%EA%B4%80%EB%A6%AC.png)](https://github.com/cyon13/AllBareun/blob/master/src/main/resources/static/images/이슈관리.png)
+![issue](src/main/resources/static/images/readme/issue.png)
 
 ## 🎞 실행 화면
 
@@ -90,8 +90,8 @@
 
 
 ## 기여
-- [x] Front-end
-- [x] Back-end
+- [x] Front End
+- [x] Back End
 
 
 ## 어려웠던 점
