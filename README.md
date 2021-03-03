@@ -4,8 +4,6 @@
 </p>
 
 ## 📑 프로젝트 소개
-![배경](src/main/resources/static/images/readme/background.png)
-
 -  새해맞이 목표 달성 사이트
 
   탄생 배경
