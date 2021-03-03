@@ -1,9 +1,10 @@
-# AllBareun
+# 올바른생각
 <p align="center">
 <img width="400px" src="src/main/resources/static/images/readme/all.png"/>
 </p>
 
 ## 📑 프로젝트 소개
+![배경](src/main/resources/static/images/readme/background.png)
 
 -  새해맞이 목표 달성 사이트
 
