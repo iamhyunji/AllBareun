@@ -7,16 +7,16 @@
     <link rel="stylesheet" href="../css/reset.css" type="text/css" />
     <link rel="stylesheet" href="../css/layout.css" type="text/css" />
     <link rel="stylesheet" href="../css/common/login.css" type="text/css" />
+    <script src="../js/common/login.js"></script>
 </head>
 <body>
-    
     <!-- main -->
     <main>
         <section class="main">
             <h1 class="text-xl"><a href="./index.html"> All바른생각</a></h1>
             <form class="login">
-                <input type="text" class="text-box id-box" id="id-box" name="email" placeholder="아이디를 입력해 주세요.">
-                <input type="password" class="text-box pwd-box" id="pwd-box" name="password" placeholder="패스워드를 입력해 주세요">
+                <input type="email" class="email text-box id-box" id="id-box" name="email" placeholder="아이디를 입력해 주세요.">
+                <input type="password" class="passwordtext-box pwd-box" id="pwd-box" name="password" placeholder="패스워드를 입력해 주세요">
                 <input type="submit" class="login-box" value="로그인">
             </form>
 
@@ -39,11 +39,33 @@
             </div>
 
             <div class="sns-box">
-                <a href="" class="login-btn kakao">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../images/kakao.png"><span>&nbsp;카카오로 시작하기</span></a>
+                <a href="javascript:kakaoLogin();" class="login-btn kakao">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../images/kakao.png"><span>&nbsp;카카오로 시작하기</span></a>
                 <a href="" class="login-btn naver">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../images/naver.png"><span>&nbsp;네이버로 시작하기</span></a>
                 <a href="" class="login-btn google">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../images/google.png"><span>&nbsp;구글로 시작하기</span></a>
             </div>
         </section>
     </main>
+
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script>
+        Kakao.init('d54c8d7c2510743fb3d930e99341fc2d');
+        Kakao.isInitialized();
+
+        function kakaoLogin() {
+            window.Kakao.Auth.login({
+                scope:'profile, account_email, gender, age_range',
+                success: function(authObj) {
+                    console.log(authObj);
+                    window.kakao.API.request({
+                        url:'/v2/user/me',
+                        success: res => {
+                            const kakao_account = res.kakao_account;
+                            console.log(kakao_account);
+                        }
+                    });
+                }
+            });
+        }
+    </script>
 </body>
 </html>

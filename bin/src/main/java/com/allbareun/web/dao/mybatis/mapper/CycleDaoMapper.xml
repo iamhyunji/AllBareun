@@ -6,4 +6,9 @@
 		INSERT INTO Cycle (`goalId`, `dayId`)
 		VALUES(#{goalId}, #{dayId});
 	</insert>
+	
+	<select id="getDays" resultType="string">
+      	SELECT dayName FROM Cycle c 
+		join Day d on d.id = c.dayId where goalId=#{goalId};
+   	</select>
 </mapper>

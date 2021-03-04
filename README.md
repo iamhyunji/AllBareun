@@ -4,12 +4,11 @@
 </p>
 
 ## 📑 프로젝트 소개
--  새해맞이 목표 달성 사이트
-
-  탄생 배경
-
-  - 신년을 맞아 새로운 목표들을 세우게 되나 번번이 1달을 못 채우고 끝나는 경우가 많다.
-  - 이에 목표 달성 과정을 도와줄 수 있는 사이트가 있으면 좋겠다 생각하게 되어 프로젝트를 시작했다.
+![기획배경](src/main/resources/static/images/readme/background.png)
+![핵심기능](src/main/resources/static/images/readme/features.png)
+- [x] 새해맞이 목표 달성 커뮤니티 사이트
+- [x] 많은 사람들이 목표를 세우지만 목표 달성률은 8%에 그치는 문제를 돕고자 기획
+- [x] 다양한 사람들과 공동 목표를 도전하고, 주기적인 인증을 통해 지속적인 행동을 할 수 있게 도와주고, 목표가 종료되면 내 결과 리포트로 발전을 확인할 수 있음
 
 
 ## 🛠 사용 기술
@@ -83,7 +82,7 @@
 
 ## 💻 개발자
 
- | ![신중언](https://avatars2.githubusercontent.com/u/64012038?s=400&u=c1bf92ce021077a9d78d8418315c938e797fb238&v=4) | ![구본율](https://avatars.githubusercontent.com/u/35316595?s=400&v=4) | ![김현지](https://avatars.githubusercontent.com/u/55617281?s=400&u=45166515684d080b5782457babcc6920191823ee&v=4) | ![임혜영](https://avatars.githubusercontent.com/u/54495841?s=400&v=4) |
+ | ![신중언](https://avatars2.githubusercontent.com/u/64012038?s=400&u=c1bf92ce021077a9d78d8418315c938e797fb238&v=4)<br>[신중언](https://github.com/Joong-eon)| ![구본율](https://avatars.githubusercontent.com/u/35316595?s=400&v=4)<br>[구본율](https://github.com/cyon13) | ![김현지](https://avatars.githubusercontent.com/u/55617281?s=400&u=45166515684d080b5782457babcc6920191823ee&v=4)<br>[김현지](https://github.com/iamhyunji) | ![임혜영](https://avatars.githubusercontent.com/u/54495841?s=400&v=4)<br>[임혜영](https://github.com/HYEYOUNGLIM) |
  | :---------------: | :---------------: | :---------------: | :---------------: |
  | [신중언](https://github.com/Joong-eon) | [구본율](https://github.com/cyon13) | [김현지](https://github.com/iamhyunji) | [임혜영](https://github.com/HYEYOUNGLIM) |
 

@@ -34,35 +34,50 @@ html {
 
 .w30{
 	width: 30px;
+	height: 30px;
+}
+.w50-radius{
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+}
+
+.w30-radius{
+	height: 30px;
+	width: 30px;
+	border-radius: 50%;
 }
 
 /* --------------- select --------------- */
 /* small, medium, large, x-large */
 .select-s {
 
-  /* 2-4湲��옄 �젙�룄 �삁�긽 */
+  /* text size : 2-4 */
   width: 100px;
   padding: 3px 5px;
   font-size: 0.8rem;
 }
 .select-m {
-  /* 4-8湲��옄 �젙�룄 �삁�긽 */
+  /* text size : 4-8 */
   width: 150px;
   padding: 3px 5px;
   font-size: 0.8rem;
 }
 .select-l {
-  /* 8-12湲��옄 �젙�룄 �삁�긽 */
+  /* text size : 8-12 */
   width: 200px;
   padding: 3px 5px;
   font-size: 0.8rem;
 }
 .select-xl {
-  /* 15�옄 �씠�긽 湲��옄 �젙�룄 �삁�긽 */
+  /* text size : 15 more */
   width: 400px;
   padding: 3px 5px;
   font-size: 0.8rem;
 }
+/* .profile-margin{
+	padding-right: 200px;
+} */
 
 /* --------------- text --------------- */
 /* small, medium, large, x-large */
@@ -76,7 +91,7 @@ html {
 .text-m-bold,
 .text-m-bold > * {
   /* �뿤�뜑�쓽 nav �젙�룄 */
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 900;
 }
 .text-l,
@@ -109,6 +124,7 @@ html {
   width: 1200px;
   height: 500px;
   padding: 25px;
+  object-fit:contain;
 }
 .m-img {
   width: 500px;

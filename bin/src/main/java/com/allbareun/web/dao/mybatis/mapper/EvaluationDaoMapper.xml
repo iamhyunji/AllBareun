@@ -1,11 +1,121 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.allbareun.web.dao.EvaluationDao">
-	<insert id="insert">
-		INSERT INTO Evaluation (`userId`,`goalId`,`answer1`, `answer2`,`answer3`,`certificationId`,`explanation`)
-		VALUES(#{userId},#{goalId},#{answer1}, #{answer2},#{answer3},#{certificationId},#{explanation});
-	</insert>
+
+
+	<select id="getReport"
+		resultType="com.allbareun.web.entity.EvaluationView">
+		SELECT MONTH(regdate) AS month,
+		sum(answer1+answer2+answer3) AS lineSum
+		FROM Evaluation
+		where userId =
+		${param1}
+		GROUP BY month
+		order BY month;
+	</select>
+
+
+	<select id="categoryChart"
+		resultType="com.allbareun.web.entity.EvaluationView">
+	  select aaa.categoryTitle, sum(aaa.categorySum) AS categorySum
+        from(SELECT GC.goalCategoryTypeId categoryId, GCT.title
+		categoryTitle,
+		sum(answer1+answer2+answer3) AS categorySum
+		FROM
+		Evaluation E left join GoalCategory GC on E.goalId = GC.goalId
+		left
+		join GoalCategoryType GCT on GCT.id = GC.goalCategoryTypeId
+		where E.userId = ${param1}
+        	GROUP BY categoryId
+        union all
+        SELECT GC.goalCategoryTypeId categoryId, GCT.title
+		categoryTitle,
+		sum(0) AS categorySum
+		FROM  GoalCategory GC left join GoalCategoryType GCT  on GC.goalCategoryTypeId = GCT.id
+		GROUP BY categoryId) aaa
+        GROUP BY aaa.categoryTitle;
+	</select>
+
+
+	<select id="getDoneLineChart"
+		resultType="com.allbareun.web.entity.EvaluationView">
+		SELECT MONTH(regdate) AS month,
+		sum(answer1+answer2+answer3) AS lineSum
+		FROM Evaluation
+		where goalId =
+		${param1}
+		and userId = ${param2}
+		GROUP BY month
+		order by month;
+	</select>
+
+
+	<select id="getDoneBar"
+		resultType="com.allbareun.web.entity.EvaluationView">
+			select round(#{param1} * 100 / count(month(aaa.Date))) as barSum, month(aaa.Date) as month
+        	from (select  *
+			from(select a.Date 
+			from (
+			select curdate() - INTERVAL (a.a + (10 * b.a) + (100 * c.a) + (1000 * d.a) ) DAY as Date
+			from (select 0 as a union all select 1 union all select 2 union all select 3 union all select 4 union all select 5 union all select 6 union all select 7 union all select 8 union all select 9) as a
+			cross join (select 0 as a union all select 1 union all select 2 union all select 3 union all select 4 union all select 5 union all select 6 union all select 7 union all select 8 union all select 9) as b
+			cross join (select 0 as a union all select 1 union all select 2 union all select 3 union all select 4 union all select 5 union all select 6 union all select 7 union all select 8 union all select 9) as c
+			cross join (select 0 as a union all select 1 union all select 2 union all select 3 union all select 4 union all select 5 union all select 6 union all select 7 union all select 8 union all select 9) as d
+			) a
+			where a.Date between #{param2} and #{param3}) aa)aaa
+			where WEEKDAY(aaa.Date) in (select dayId from Cycle where goalId = #{param4})
+			group by month(aaa.Date)
+			order by month(aaa.Date);
+		
+	</select>
 	
+		<select id="getDoneBarChart"
+		resultType="com.allbareun.web.entity.EvaluationView">
+			select round(#{param1} * 100 / count(month(aaa.Date))) as barSum, month(aaa.Date) as month
+        	from (select  *
+			from(select a.Date 
+			from (
+			select curdate() - INTERVAL (a.a + (10 * b.a) + (100 * c.a) + (1000 * d.a) ) DAY as Date
+			from (select 0 as a union all select 1 union all select 2 union all select 3 union all select 4 union all select 5 union all select 6 union all select 7 union all select 8 union all select 9) as a
+			cross join (select 0 as a union all select 1 union all select 2 union all select 3 union all select 4 union all select 5 union all select 6 union all select 7 union all select 8 union all select 9) as b
+			cross join (select 0 as a union all select 1 union all select 2 union all select 3 union all select 4 union all select 5 union all select 6 union all select 7 union all select 8 union all select 9) as c
+			cross join (select 0 as a union all select 1 union all select 2 union all select 3 union all select 4 union all select 5 union all select 6 union all select 7 union all select 8 union all select 9) as d
+			) a
+			where a.Date between #{param2} and #{param3}) aa)aaa
+			where WEEKDAY(aaa.Date) in (select dayId from Cycle where goalId = #{param4}) and
+            month(aaa.Date) = #{param5}
+			group by month(aaa.Date)
+			order by month(aaa.Date);
+		
+	</select>
+	
+	<!-- 	<select id="getMyGoalLineChart" resultType="com.allbareun.web.entity.EvaluationView">
+
+
+	</select> -->
+	
+		<select id="getVarChartCount" resultType="com.allbareun.web.entity.EvaluationView">
+ 		<!-- select count(regdate) from Certification 
+ 		where goalId = #{param1} and userId = #{param2}; -->
+ 		
+
+ 		 select count(month(regdate)) as count from Certification 
+			where goalId = #{param1} and userId = #{param2}
+            group by month(regdate)
+            order by month(regdate);
+ 	</select>
+	
+
+
+	<insert id="insert">
+		INSERT INTO Evaluation (`userId`,`goalId`,`answer1`,
+		`answer2`,`answer3`,`certificationId`,`explanation`)
+		VALUES(#{userId},#{goalId},#{answer1},
+		#{answer2},#{answer3},#{certificationId},#{explanation});
+	</insert>
+
 
 </mapper>

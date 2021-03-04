@@ -14,19 +14,19 @@
     <!-- main -->
     <main>
         <section class="main">
-            <div class="page-back"><a href="./login.html"> &lt;</a></div>
+            <div class="page-back"><a href="./login"> &lt;</a></div>
             <h1>아이디 찾기</h1>
 
             <div class="find-box">
                 <div class="find-id find unclicked">아이디 찾기</div>
-                <a href="./findpwd.html"><div class="find-pwd find clicked">비밀번호 찾기</div></a>
+                <a href="./findPwd"><div class="find-pwd find clicked">비밀번호 찾기</div></a>
             </div>
 
-            <form class="find-id">
+            <form class="find-id" method="post" action="findIdPage">
             <input type="text" class="text-box name-box" name="name" placeholder="이름을 입력해 주세요.">
-            <input type="text" class="text-box phone-box" name="phoen" placeholder="핸드폰 번호를 입력해 주세요.(-없이)">
-
-            <input type="submit" class="find-btn" value="아이디 찾기">
+            <input type="text" class="text-box phone-box" name="phone" placeholder="핸드폰 번호를 입력해 주세요.(-포함)">
+			<br>
+			<input type="submit" class="find-btn" value="아이디 찾기">
             </form>
         </section>
     </main>

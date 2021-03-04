@@ -78,7 +78,7 @@
                 </div>
                 <div class="button-container">
                   <input class="submit-btn a-input-orange-l" type="submit" value="확인" />
-                  <input class="cancel-btn a-input-white-l" type="button" value="취소" />
+                  <a href="/mygoal/list"><input class="cancel-btn a-input-white-l" type="button" value="취소" /></a>
                 </div>
               </div>
             </section>

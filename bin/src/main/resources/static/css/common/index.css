@@ -1,4 +1,4 @@
-.img-container{
+ .img-container{
     width: 1200px;
     height: 700px;
     margin-left: auto;
@@ -39,6 +39,56 @@
     }
     a:hover{
         text-decoration: none;
-    }
+    } 
 
-
+header {
+    background-color: white;
+    position: sticky;
+    width:100%;
+    height:70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    box-shadow: 0px 3px 7px 0px rgba(255, 229, 204, 0.75);
+    
+    
+ }
+ 
+ header .main-logo img{
+    width: 80px;
+    margin-left: 20px;
+ }
+ 
+ header > nav {
+    width:600px;
+    height:100%;
+ }
+ 
+ header .h-list {
+    width:100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    
+ }
+ 
+ header .h-list > li a{
+    font-size:18px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: #d67900;
+    --font-weight: 600;
+    /* text-shadow: -1px 0 #d37800, 0 1px #d37800, 1px 0 #d37800, 0 -1px #d37800;
+    */
+ }
+ body {
+ padding:0}
+ 
+ #defaultCanvas0 {
+ position:absolute;
+ top:73px;
+ z-index:-1;
+ 
+ }

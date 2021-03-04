@@ -1,15 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <link rel="stylesheet" href="/css/user/goal/reg.css">
-<script src="/js/user/goal/reg.js"></script>
+<link rel="stylesheet" href="/css/user/mypage/done/retry.css">
+<script type="module" src="/js/user/goal/reg.js"></script>
 
 <main id="main">
-	<form action="retry" method="post">
+	<form action="retry" method="post" enctype="multipart/form-data">
 		<section class="required">
 			<h1 class="d-none">Main 1 : 목표 기본 등록폼</h1>
 			<section class="required__image">
 				<h1 class="d-none">목표 메인 이미지</h1>
-				<div class="m-img" name="gMainImg">${rg.mainImage }</div>
+				<%-- <div class="m-img g-mImg" style="background-image: url(${rg.mainImage });"> --%>
+				<div class="m-img g-mImg" style="background: linear-gradient( rgba(255, 255, 255, 0.8) 100%, rgba(255, 255, 255, 0.8) 100%), center / 100% no-repeat url(${rg.mainImage });">
+					<input class="g-mImg-file" type="hidden" name="g-mImg" value="${rg.mainImage }"/>
+					<span class="text-l">이미지 드래그& 드롭</span>
+				</div>
 			</section>
 
 			<section class="required__content">
@@ -62,12 +67,6 @@
 							<input type="checkbox" name="d-id" value="7" checked />일
 						</div>
 					</div>
-
-					<div>
-						<label>인증 사진</label>
-						<input type="radio" />인증 사진 있음
-						<input type="radio" />인증 사진 없음
-					</div>
 				</div>
 			</section>
 		</section>
@@ -77,12 +76,20 @@
 			<div>
 				<div>
 					<h2 class="text-l">좋은 인증</h2>
-					<div class="m-img" name="g-gEx">${rg.goodEx }</div>
+					<%-- <div class="m-img g-gEx" style="background-image: url(${rg.goodEx });"> --%>
+					<div class="m-img g-gEx" style="background: linear-gradient( rgba(255, 255, 255, 0.8) 100%, rgba(255, 255, 255, 0.8) 100%), center / 100% no-repeat url(${rg.goodEx });">
+						<input class="g-gEx-hidden" type="hidden" name="g-gEx" value="${rg.goodEx }"/>
+						<span class="text-l">이미지 드래그& 드롭</span>
+					</div>
 				</div>
 
 				<div>
 					<h2 class="text-l">나쁜 인증</h2>
-					<div class="m-img" name="g-bEx">${rg.badEx }</div>
+					<%-- <div class="m-img g-bEx" style="background-image: url(${rg.badEx });"> --%>
+					<div class="m-img g-bEx" style="background: linear-gradient( rgba(255, 255, 255, 0.8) 100%, rgba(255, 255, 255, 0.8) 100%), center / 100% no-repeat url(${rg.badEx });">
+						<input class="g-bEx-hidden" type="hidden" name="g-bEx" value="${rg.badEx }"/>
+						<span class="text-l">이미지 드래그& 드롭</span>
+					</div>
 				</div>
 
 				<textarea class="description" name="g-exEx" rows="2" cols="30" placeholder="인증 기준과 인증 방법을 서술해주세요">${rg.exExplanation }</textarea>
@@ -91,8 +98,9 @@
 
 		<section class="buttons">
 			<h1 class="d-none">버튼</h1>
-			<input type="hidden" name="g-i" value="${rg.id }"/>
-			<a class="a-input-white-l" href="../list">취소</a>
+			<input class="goalId" type="hidden" name="id" value="${gId }"/>
+			<input type="hidden" name="g-id" value="${rg.id }"/>
+			<a class="a-input-white-l" href="retry/cancel?id=${gId }">취소</a>
 			<input class="a-input-orange-l reg-button" type="submit" value="이 목표를 재도전 합니다">
 		</section>
 	</form>

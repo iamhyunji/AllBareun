@@ -84,10 +84,20 @@
               <c:forEach var="n" items="${list}">
                 <!-- list -->
                 <li class="goal-list">
-                  <a href="#" class="image"><img src="${n.mainImage}" alt="" /></a>
+                    <c:if test="${n.totalParticipants == n.nowParticipantsCount}">
+                    	<a href="${n.id}" class="image"><img src="${n.mainImage}" alt="" /></a>
+                    </c:if>
+                    <c:if test="${n.totalParticipants > n.nowParticipantsCount}">
+                    	<a href="${n.id}" class="image"><img src="${n.mainImage}" alt="" /></a>
+                    </c:if>                  
                   <div class="para">
                     <div class="goal-title">
-                      <h2>${n.title}</h2>
+                    <c:if test="${n.totalParticipants == n.nowParticipantsCount}">
+						<a href="${n.id }"><h2 class="title">${n.title}</h2></a>
+                    </c:if>
+                    <c:if test="${n.totalParticipants > n.nowParticipantsCount}">
+                      <a href="${n.id }"><h2 class="title">${n.title}</h2></a>
+                    </c:if>                       
                       <span>${n.categories}</span>
                     </div>
                     <fmt:formatDate var="startDate" value="${n.startDate}" pattern="yyyy.MM.dd"/>
@@ -95,7 +105,12 @@
                     <p>기간 : ${n.dateDiff}주 (${startDate}~${endDate})</p>
                     <p>횟수 : 주 ${n.count}회 (${n.days})</p>
                     <p>모집 : ${n.totalParticipants}명 (${n.nowParticipantsCount}/${n.totalParticipants})</p>
-                    <a href="#" class="button">참가하기</a>
+                    <c:if test="${n.totalParticipants == n.nowParticipantsCount}">
+                 		<div class="full-button">마감</div>
+                    </c:if>
+                    <c:if test="${n.totalParticipants > n.nowParticipantsCount}">
+                    	<a href="${n.id}" class="button">참가하기</a>
+                    </c:if>
                   </div>
                 </li>
               </c:forEach>

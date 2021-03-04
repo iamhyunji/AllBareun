@@ -3,8 +3,12 @@
 @import "/css/header.css";
 @import "/css/style.css";
 /* ---------------------------------------------- */
+body{
+	position: relative;
+}
 #body{
     background-color: rgba(255, 253, 248, 0.726);
+    padding-bottom: 100px;
 }
 #body .content-container{
     
