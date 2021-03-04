@@ -3,23 +3,22 @@
 <img width="400px" src="src/main/resources/static/images/readme/all.png"/>
 </p>
 
+
 ## 📑 프로젝트 소개
 - [x] 새해맞이 목표 달성 커뮤니티 사이트
 - [x] 많은 사람들이 목표를 세우지만 목표 달성률은 8%에 그치는 문제를 돕고자 기획
-- [x] 다양한 사람들과 구체적인 방법으로 공동 목표를 도전
-- [x] 주기적인 인증을 통해 지속적인 행동을 할 수 있게 도와줌
-- [x] 목표가 종료되면 내 결과 리포트로 발전을 확인할 수 있음
+- [x] 주요 기능1. 다양한 사람들과 구체적인 방법으로 공동 목표를 도전
+- [x] 주요 기능2. 주기적인 인증을 통해 지속적인 행동을 할 수 있게 도와줌
+- [x] 주요 기능3. 목표가 종료되면 내 결과 리포트로 발전을 확인할 수 있음
 
 
 ## 🛠 사용 기술
-
 | Front-End      | Back-End       | DataBase | Tool                                       |
 | -------------- | -------------- | -------- | ------------------------------------------ |
 | HTML5<br>CSS3<br>JS ES6 | Mybatis<br>Spring | MySQL    | SpringBoot<br>Git<br>Trello<br>Kakao Oven<br>Photoshop |
 
 
 ## 📅 개발 기간
-
 ![프로젝트일정(올바른생각)](src/main/resources/static/images/readme/schedule.png)
 
 
@@ -30,13 +29,12 @@
 
 
 ## 📊 E-R Diagram
-
 ![E-R Diagram](src/main/resources/static/images/readme/ERwin.png)
 
 
 ## 📖 Issues 관리
-
 ![issue](src/main/resources/static/images/readme/issue.png)
+
 
 ## 🎞 실행 화면
 
