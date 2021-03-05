@@ -39,8 +39,7 @@
 ## 🎞 실행 화면
 
 ✅ [1] 회원가입 : 올바른생각 웹서비스를 이용하기 위한 회원가입 페이지 입니다.  아이디 중복체크와 비밀번호 유효성 검사를 구현하였습니다. 또한 프로필 이미지를 설정할 수 있도록 드래그 앤 드롭 파일 업로드를 통해 이미지를 삽입할 수 있게 구현했습니다.
-
-[![signup](https://github.com/cyon13/AllBareun/raw/master/src/main/resources/static/images/video/reg.gif)](https://github.com/cyon13/AllBareun/blob/master/src/main/resources/static/images/video/reg.gif)
+![](src/main/resources/static/images/readme/gif/goal.gif)
 
 ✅ [2] 로그인 :  로그인 페이지입니다.
 
