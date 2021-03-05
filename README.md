@@ -58,31 +58,31 @@
 
 ![개설](src/main/resources/static/images/readme/gif/reg.gif)
 
-✅ [6] 초대 응답 : 초대 응답 페이지로, 초대 받은 사용자는 초대를 삭제함으로써 초대를 거절할 수도 있고, 수락할 수도 있습니다.
+✅ [6] 초대 응답 : 초대 응답 페이지로, 초대 받은 사용자는 초대를 삭제함으로써 초대를 거절할 수도 있고, 도전함으로써 수락할 수도 있습니다.
 
 ![초대 응답](src/main/resources/static/images/readme/gif/invited.gif)
 
-✅ [7] 내 목표 : 현재 진행 가능한 목표 리스트로, 참여하는 목표의 양이 많아짐에 따라 검색하여 원하는 목표를 찾을 수 있습니다.
+✅ [7] 내 목표 : 현재 진행하고 있는 목표 리스트로, 원하는 목표를 검색하여 찾을 수도 있습니다.
 
 ![내 목표](src/main/resources/static/images/readme/gif/mygoal.gif)
 
-✅ [8] 인증 : 
+✅ [8] 인증 : 인증 기준과 설명에 따라 인증 사진을 등록합니다.
 
 ![인증](src/main/resources/static/images/readme/gif/auth.gif)
 
-✅ [9] 디테일
+✅ [9] 디테일 : 목표에 대한 디테일 페이지로, 해당 목표를 설명하는 정보란, 각 참여자의 집계 데이터, 모든 참여자의 인증 내역을 확인할 수 있습니다.
 
 ![디테일](src/main/resources/static/images/readme/gif/detail.gif)
 
-✅ [10] 종합 리포트
+✅ [10] 종합 리포트 : 사용자가 참여하고 있는 모든 목표들을 카테고리별로 집계/분석한 종합 리포트입니다.
 
 ![종합 리포트](src/main/resources/static/images/readme/gif/total-report.gif)
 
-✅ [11] 목표 리포트
+✅ [11] 목표 리포트 : 완료된 해당 목표의 집계 데이터 및 모든 인증 내역을 엮어 보여주는 페이지입니다.
 
 ![목표 리포트](src/main/resources/static/images/readme/gif/goal-report.gif)
 
-✅ [12] 재도전
+✅ [12] 재도전 : 기준(달성률 80% 이상)을 달성하지 못하면 해당 목표는 삭제 또는 재도전할 수 있습니다.
 
 ![재도전](src/main/resources/static/images/readme/gif/retry.gif)
 
