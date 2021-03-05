@@ -38,7 +38,7 @@
 
 ## 🎞 실행 화면
 
-✅ [1] 회원가입 : 서비스 이용을 위한 회원가입 페이지로, 아이디 중복 체크 및 비밀번호 유효성 검사 기능을 구현했고, JS의 Drag & Drop API 통해 사용자 프로필 이미지 등록 기능 구현했습니다.
+✅ [1] 회원가입 : 서비스를 이용하기 위한 회원가입 페이지입니다.
 
 ![회원가입](src/main/resources/static/images/readme/gif/sign-up.gif)
 
@@ -46,27 +46,27 @@
 
 ![로그인](src/main/resources/static/images/readme/gif/sign-in.gif)
 
-✅ [3] 인덱스 페이지 : 개인별 일정을 관리할 수 있는 페이지로, full calendar 라이브러리를 통해 달력 기능을, p5.js 라이브러리를 이용해 눈 효과를 구현했습니다.
+✅ [3] 인덱스 페이지 : 로그인 후 개인별 스케줄을 관리할 수 있는 인덱스 페이지입니다. FullCalendar 라이브러리를 통해 구현하였고, 이벤트 생성, 수정, 삭제가 가능합니다.
 
 ![인덱스](src/main/resources/static/images/readme/gif/index.gif)
 
-✅ [4] 목표 탭 & 참가 : 사용자들이 공개 설정한 목표 리스트로, 검색 기능 및 화면 스크롤 시 6개 데이터씩 추가 렌더하였고, 참가 클릭 시 해당 목표에 바로 참여가 가능한 상태가 됩니다.
+✅ [4] 목표 탭 & 참가 : 사용자들이 공개한 목표 리스트로, 원하는 내용으로 검색이 가능하고, 사용자들은 마감하지 않은 목표에 한에 참가할 수 있습니다.
 
 ![참가](src/main/resources/static/images/readme/gif/goal.gif)
 
-✅ [5] 목표 개설 : 목표를 개설하는 페이지로, 
+✅ [5] 목표 개설 : 원하는 목표를 개설하는 페이지로, 참가는 개인, 지인, 공개 중 선택할 수 있으며, 지인과 함께 목표를 진행할 시 이메일을 초대 가능합니다.
 
 ![개설](src/main/resources/static/images/readme/gif/reg.gif)
 
-✅ [6] 초대 응답
+✅ [6] 초대 응답 : 초대 응답 페이지로, 초대 받은 사용자는 초대를 삭제함으로써 초대를 거절할 수도 있고, 수락할 수도 있습니다.
 
 ![초대 응답](src/main/resources/static/images/readme/gif/invited.gif)
 
-✅ [7] 내 목표
+✅ [7] 내 목표 : 현재 진행 가능한 목표 리스트로, 참여하는 목표의 양이 많아짐에 따라 검색하여 원하는 목표를 찾을 수 있습니다.
 
 ![내 목표](src/main/resources/static/images/readme/gif/mygoal.gif)
 
-✅ [8] 인증
+✅ [8] 인증 : 
 
 ![인증](src/main/resources/static/images/readme/gif/auth.gif)
 
