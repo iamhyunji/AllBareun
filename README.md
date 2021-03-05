@@ -38,7 +38,7 @@
 
 ## 🎞 실행 화면
 
-✅ [1] 회원가입 : 아이디 중복 체크 및 비밀번호 유효성 검사 기능 구현, JS의 Drag & Drop API 통해 사용자 프로필 이미지 등록 기능 구현
+✅ [1] 회원가입 : 서비스 이용을 위한 회원가입 페이지로, 아이디 중복 체크 및 비밀번호 유효성 검사 기능을 구현했고, JS의 Drag & Drop API 통해 사용자 프로필 이미지 등록 기능 구현했습니다.
 
 ![회원가입](src/main/resources/static/images/readme/gif/sign-up.gif)
 
@@ -46,15 +46,15 @@
 
 ![로그인](src/main/resources/static/images/readme/gif/sign-in.gif)
 
-✅ [3] 인덱스 페이지 : full calendar 라이브러리를 통해 달력 기능을, p5.js 라이브러리를 이용해 눈 효과를 구현
+✅ [3] 인덱스 페이지 : 개인별 일정을 관리할 수 있는 페이지로, full calendar 라이브러리를 통해 달력 기능을, p5.js 라이브러리를 이용해 눈 효과를 구현했습니다.
 
 ![인덱스](src/main/resources/static/images/readme/gif/index.gif)
 
-✅ [4] 목표 탭 & 참가 : 화면 스크롤 시 6개 데이터씩 추가, 검색 기능 구현
+✅ [4] 목표 탭 & 참가 : 사용자들이 공개 설정한 목표 리스트로, 검색 기능 및 화면 스크롤 시 6개 데이터씩 추가 렌더하였고, 참가 클릭 시 해당 목표에 바로 참여가 가능한 상태가 됩니다.
 
 ![참가](src/main/resources/static/images/readme/gif/goal.gif)
 
-✅ [5] 목표 개설
+✅ [5] 목표 개설 : 목표를 개설하는 페이지로, 
 
 ![개설](src/main/resources/static/images/readme/gif/reg.gif)
 
